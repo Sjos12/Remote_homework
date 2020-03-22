@@ -1,0 +1,13 @@
+body {
+  background-color: #2D2D37;
+}
+
+.form-control { display: inline-block !important; }
+
+.col-8 {
+  background-color: black;
+}
+
+h1 {
+  text-align: right;
+}

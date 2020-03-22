@@ -1,0 +1,24 @@
+body {
+  background-color: #2D2D37;
+}
+
+
+
+.sidenav {
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #FF7733;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+.sidenav h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+  text-align: center;
+  color: #FAFCEE;
+  margin-top: 0px;
+}
