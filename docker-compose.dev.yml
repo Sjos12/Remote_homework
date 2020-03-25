@@ -1,0 +1,24 @@
+version: "3.7"
+
+services:
+  phpstan:
+    image: phpstan/phpstan
+    volumes:
+      - code:/app
+
+  # @todo: should not always start. Should start when test suite is started and stopped if test suite ended without error
+  test_db:
+    image: mysql:8.0
+    container_name: "${PROJECT_NAME}_test_db"
+    restart: "always"
+    environment:
+      # maybe this can be replaced with an include of the project `.env`? But then `.env` cannot have quotes etc, so probably not
+      MYSQL_DATABASE: "${PROJECT_NAME}_test_db"
+      MYSQL_USER: homestead
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - test_db:/var/lib/mysql
+    networks:
+      - remote_homework_network
+      - ssh
