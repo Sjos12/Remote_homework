@@ -55,7 +55,7 @@
 
 <div class="container" id="content2">
   <h3>How does it work?</h3>
-  <p class="col-xs-6">The idea of our tool is to make it easier to help with homework if your child has a question. Then you upload it onto our website. You can then send it to another user. Then you can both work live on the document by placing draggable boxes with audiofiles, videos, or text. </p>
+  <p class="col-xs-6">The idea of our tool is to make it easier to help with blablabla homework if your child has a question. Then you upload it onto our website. You can then send it to another user. Then you can both work live on the document by placing draggable boxes with audiofiles, videos, or text. </p>
   <img src="phone-template.png" alt="phone" class="col-xs-6">
 </div>
 
