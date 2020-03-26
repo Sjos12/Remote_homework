@@ -5,9 +5,7 @@
   <!-- Insert your adress bar icon here -->
   <LINK REL="SHORTCUT ICON"
        HREF="top-icon.ico">
-  <style>
-    @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
-  </style>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="style.css">
@@ -16,7 +14,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
-<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+<body data-spy="scroll" data-target=".navbar" data-offset="50" id="content1">
     <!-- Grey with black text -->
     <nav class="navbar sticky-top navbar-expand-sm bg-white navbar-light ">
         <a class="navbar-brand" href="#">
@@ -26,37 +25,77 @@
 
         <div class="collapse navbar-collapse" id="data">
             <ul class="navbar-nav">
-                <li class="nav-item active">
+                <li class="nav-item">
                 <a class="nav-link" href="#content1">Home</a>
                 </li>
                 <li class="nav-item">
                 <a class="nav-link" href="#content2">Info</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#content3">Signup</a>
+                <a class="nav-link" href="#content3">Login</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#content4">Login</a>
+                <a class="nav-link" href="#content4">Signup</a>
                 </li>
             </ul>
         </div> 
     </nav>
-
   
-<div class="container" id="#content1">
-  <h3>Homework just got a lot easier</h3>
-  <p>Remote homework is an online tool that makes collaborating remotely on a centurie us PageMaker including verLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsumsions of Lorem Ipsumering lan gvmdfo oid eet kaas graag </p>
-  <a href="#" class="btn btn-primary">Get Started</a> 
+<div class="container" id="content1">
+  <div class="startpage">
+    <h3>Homework just got a lot easier</h3>
+    <p>Remote homework is an online tool that makes collaborating remotely on a project easy. </p>
+  </div>
+  <div class="wrapper">
+    <a href="#content3" class="shadow-sm btn btn-primary btn-md">Get Started</a> 
+  </div>
 </div>
 
 <hr>
 
-<div class="container" id="#content2">
-  <h3>Homework just got a lot easier</h3>
-  <p>Remote homework is an online tool that makes collaborating remotely on a project easy. </p>
-  <a href="#" class="btn btn-primary">Get Started</a> 
+<div class="container" id="content2">
+  <h3>How does it work?</h3>
+  <p class="col-xs-6">The idea of our tool is to make it easier to help with homework if your child has a question. Then you upload it onto our website. You can then send it to another user. Then you can both work live on the document by placing draggable boxes with audiofiles, videos, or text. </p>
+  <img src="phone-template.png" alt="phone" class="col-xs-6">
+</div>
+
+<hr>
+
+<div class="container" id="content3">
+  <form>
+    <h3>Login</h3>
+
+    <div class="form-group">
+      <input type="email" class="shadow-sm form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <input type="password" class="shadow-sm form-control form-control-sm" id="exampleInputPassword1" placeholder="Password">
+    </div>
+    <button type="submit" class="btn btn-primary" id="submitbutton">Login</button>
+  </form>
+</div>
+
+<hr>
+
+<div class="container" id="content4">
+  <form>
+    <h3>Signup</h3>
+
+    <div class="form-group">
+      <input type="email" class="shadow-sm form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <input type="password" class="shadow-sm form-control form-control-sm" id="exampleInputPassword1" placeholder="Password">
+    </div>
+    <button type="submit" class="btn btn-primary" id="submitbutton">Login</button>
+  </form>
 </div>
 </body>
 </html>
 
+<?php
+  require 'footer.php' 
+?>
 
