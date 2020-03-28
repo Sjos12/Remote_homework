@@ -37,7 +37,7 @@ services:
       - remote_homework_network
 
   db:
-    image: mysql:8.0
+    image: mysql:5.7
     container_name: "${PROJECT_NAME}_db"
     environment:
       # maybe this can be replaced with an include of the project `.env`? But then `.env` cannot have quotes etc, so probably not

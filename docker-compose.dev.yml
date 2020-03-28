@@ -8,7 +8,7 @@ services:
 
   # @todo: should not always start. Should start when test suite is started and stopped if test suite ended without error
   test_db:
-    image: mysql:8.0
+    image: mysql:5.7
     container_name: "${PROJECT_NAME}_test_db"
     restart: "always"
     environment:

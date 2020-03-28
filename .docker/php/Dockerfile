@@ -21,7 +21,7 @@ RUN apk update && apk upgrade \
     && docker-php-ext-enable xdebug \
     && docker-php-source delete \
     && docker-php-ext-configure opcache --enable-opcache \
-    && docker-php-ext-install mbstring opcache pdo_mysql soap zip gmp
+    && docker-php-ext-install mbstring opcache pdo_mysql mysqli soap zip gmp
 
 # Cleanup
 RUN apk del ${PHPIZE_DEPS} \
