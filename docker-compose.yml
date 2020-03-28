@@ -1,0 +1,74 @@
+version: "3.7"
+
+services:
+  webserver:
+    image: nginx
+    container_name: "${PROJECT_NAME}_webserver"
+    volumes:
+      - code:/app
+      - ./.docker/nginx/default.template:/etc/nginx/conf.d/default.template:ro
+    environment:
+      PHP_SERVICE: ${PROJECT_NAME}_php # Pass the variable on to the container
+    command: /bin/bash -c "envsubst '$${PHP_SERVICE}' < /etc/nginx/conf.d/default.template > /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;'"
+    labels:
+      # Enable this service for Traefik dynamic configuration
+      - "traefik.enable=true"
+      # Inform Traefik which Docker network traffic should be send to
+      - "traefik.docker.network=webgateway"
+      # Define the capture rule for traffic to this service
+      - "traefik.http.routers.insights_webserver.rule=${TRAEFIK_ROUTER_WEBSERVER_RULE}"
+      # Only match HTTPS traffic (@see entrypoints in Traefik config)
+      - "traefik.http.routers.insights_webserver.entrypoints=https"
+      # Enable TLS to allow for https
+      - "traefik.http.routers.insights_webserver.tls=true"
+    networks:
+      - default
+      - remote_homework_network
+
+  php:
+    build:
+      dockerfile: Dockerfile
+      context: ./.docker/php
+    container_name: "${PROJECT_NAME}_php"
+    volumes:
+      - code:/app
+    networks:
+      - default # necessary for XDEBUG
+      - remote_homework_network
+
+  db:
+    image: mysql:5.7
+    container_name: "${PROJECT_NAME}_db"
+    environment:
+      # maybe this can be replaced with an include of the project `.env`? But then `.env` cannot have quotes etc, so probably not
+      MYSQL_DATABASE: "${PROJECT_NAME}_local"
+      MYSQL_USER: homestead
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - db:/var/lib/mysql
+    networks:
+      - remote_homework_network
+      - ssh
+
+networks:
+  default:
+    external:
+      name: webgateway
+  ssh:
+    external:
+      name: ssh
+  remote_homework_network:
+    internal: true
+
+volumes:
+  code:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=host.docker.internal,rw,nolock,hard,nointr,nfsvers=3
+      device: ":${PWD}"
+  db:
+    driver: local
+  test_db:
+    driver: local
