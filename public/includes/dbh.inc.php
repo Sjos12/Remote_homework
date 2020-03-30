@@ -1,9 +1,9 @@
 <?php
 
-$servername = "localhost";
-$dbUsername = "root";
-$dbPassword = "";
-$dbName = "loginsystemtut";
+$servername = "db";
+$dbUsername = "homestead";
+$dbPassword = "secret";
+$dbName = "remote_homework_local";
 
 $conn = mysqli_connect($servername, $dbUsername, $dbPassword, $dbName);
 

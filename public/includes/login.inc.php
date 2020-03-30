@@ -1,6 +1,6 @@
  <?php
 //checks if client actually clicked submit button
-if (isset($_POST['login-submit'])) {
+if (isset($_POST['mailuid'] , $_POST['pwd'])){
   //includes dbh.inc.php script
   require 'dbh.inc.php';
 

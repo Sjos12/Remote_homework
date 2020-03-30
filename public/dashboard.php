@@ -1,6 +1,7 @@
 <?php
 //put this above every page that doesn't have the header
   session_start();
+  require 'header.php'
  ?>
 
 <!DOCTYPE html>
