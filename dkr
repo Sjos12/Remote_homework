@@ -6,9 +6,15 @@ COMPOSE="docker-compose --env-file .env.docker.local -f docker-compose.yml -f do
 # If the amount of arguments passed onto this script is greater than 0
 if [[ $# -gt 0 ]]; then
 
+    # If "art" is used, pass-thru to php container
+    # inside a new container
+    if [[ "$1" =~ ^(art|artisan)$ ]]; then
+        shift 1
+        ${COMPOSE} run --rm php php artisan "$@"
+
     # If "php" is used, pass-thru to php container
     # inside a new container
-    if [ "$1" == "php" ]; then
+    elif [ "$1" == "php" ]; then
         shift 1
         ${COMPOSE} run --rm php php "$@"
 
