@@ -18,5 +18,7 @@ final class Authenticate extends BaseAuthenticate
         if (! $request->expectsJson()) {
             return route('login');
         }
+
+        return null;
     }
 }

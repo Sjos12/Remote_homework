@@ -67,7 +67,7 @@ test-acceptance:	vendor services-testing
 phpstan:	## Run PHPStan static code analysis
 phpstan:	vendor
 	$(info Running PHPStan static analysis...)
-	./dkr run --rm phpstan analyze --level=1 modules app config routes database
+	./dkr run --rm phpstan analyze --memory-limit=2G
 
 #
 # Rules from files (non-phony targets)
