@@ -34,15 +34,17 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}">Home</a>
+                            <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('info') }}">Info</a>
+                            <a class="nav-link" href="{{ route('info') }}">{{ __('Info') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('contact') }}">Contact</a>
+                            <a class="nav-link" href="{{ route('contact') }}">{{ __('Contact') }}</a>
                         </li>
-
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('question.create') }}">{{ __('Ask a question') }}</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
