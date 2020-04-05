@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
 
-final class HomeController
+final class ContactController
 {
     public function __invoke(): Renderable
     {
-        return view('pages.home');
+        return view('pages.contact');
     }
 }

@@ -1,6 +1,15 @@
 <?php
+declare(strict_types=1);
 
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Auth\ConfirmPasswordController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\Auth\VerificationController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InfoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,10 +23,88 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', static function () {
-    return view('home');
-});
+// Authentication Routes...
+Route::get('login', [LoginController::class, 'showLoginForm'])
+     ->middleware([
+         'guest',
+     ])
+     ->name('login');
+Route::post('login', [LoginController::class, 'login'])
+     ->middleware([
+         'guest',
+     ]);
+Route::post('logout', [LoginController::class, 'logout'])
+     ->name('logout');
 
-Auth::routes();
+// Registration Routes...
+Route::get('register', [RegisterController::class, 'showRegistrationForm'])
+     ->middleware([
+         'guest',
+     ])
+     ->name('register');
+Route::post('register', [RegisterController::class, 'register'])
+     ->middleware([
+         'guest',
+     ]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Password Reset Routes...
+Route::get(
+    'password/reset',
+    [ForgotPasswordController::class, 'showLinkRequestForm']
+)
+     ->name('password.request');
+Route::post(
+    'password/email',
+    [ForgotPasswordController::class, 'sendResetLinkEmail']
+)
+     ->name('password.email');
+Route::get(
+    'password/reset/{token}',
+    [ResetPasswordController::class, 'showResetForm']
+)
+     ->name('password.reset');
+Route::post('password/reset', [ResetPasswordController::class, 'reset'])
+     ->name('password.update');
+
+// Password Confirmation Routes...
+Route::get('password/confirm',
+    [ConfirmPasswordController::class, 'showConfirmForm'])
+     ->name('password.confirm');
+Route::post('password/confirm', [ConfirmPasswordController::class, 'confirm'])
+     ->middleware([
+         'auth',
+     ]);
+
+// Email Verification Routes...
+Route::get('email/verify', [VerificationController::class, 'show'])
+     ->middleware([
+         'auth',
+     ])
+     ->name('verification.notice');
+Route::get('email/verify/{id}/{hash}',
+    [VerificationController::class, 'verify'])
+     ->middleware([
+         'auth',
+         'signed',
+     ])
+     ->name('verification.verify');
+Route::post('email/resend', [VerificationController::class, 'resend'])
+     ->middleware([
+         'auth',
+         'signed',
+         'throttle:6,1',
+     ])
+     ->name('verification.resend');
+
+Route::middleware([
+    'auth'
+])
+     ->group(static function () {
+         // Application routes
+         Route::get('/', HomeController::class)
+              ->name('home');
+         Route::get('/contact', ContactController::class)
+              ->name('contact');
+         Route::get('/info', InfoController::class)
+              ->name('info');
+     });
