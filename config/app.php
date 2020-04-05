@@ -1,4 +1,7 @@
 <?php
+declare(strict_types=1);
+
+use Dyrynda\Database\LaravelEfficientUuidServiceProvider;
 
 return [
 
@@ -67,7 +70,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Europe/Amsterdam',
 
     /*
     |--------------------------------------------------------------------------
@@ -165,6 +168,7 @@ return [
         /*
          * Package Service Providers...
          */
+        LaravelEfficientUuidServiceProvider::class,
 
         /*
          * Application Service Providers...
