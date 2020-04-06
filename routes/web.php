@@ -101,17 +101,17 @@ Route::middleware([
     'auth'
 ])
      ->group(static function () {
-         // Application routes
-         Route::get('/', HomeController::class)
-              ->name('home');
-         Route::get('/contact', ContactController::class)
-              ->name('contact');
-         Route::get('/info', InfoController::class)
-              ->name('info');
-
          // Question routes
          Route::get('/user/question', [QuestionController::class, 'create'])
               ->name('question.create');
          Route::post('/user/question', [QuestionController::class, 'store'])
               ->name('question.store');
      });
+
+// Application routes
+Route::get('/', HomeController::class)
+     ->name('home');
+Route::get('/contact', ContactController::class)
+     ->name('contact');
+Route::get('/info', InfoController::class)
+     ->name('info');
