@@ -18,10 +18,14 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- Stylesheet from initial buid, located in public folder -->
+    <link rel="stylesheet" href="<?php echo asset('style.css')?>" type="text/css"> 
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            <!-- Use container-fluid to arrange navbar items from edge to edge --> 
             <div class="container">
                 <a class="navbar-brand" href="{{ route('home') }}">
                     <img src="better_logo.png" alt="Logo" style="width:105px;">

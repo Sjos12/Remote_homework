@@ -4,7 +4,7 @@
     <div class="container">
         @if ($errors->any())
         <div class="row">
-            <div class="col-12 col-md-8 offset-md-2">
+            <div class="col-12 col-md-12 offset-md-2">
                 <div class="alert alert-danger" role="alert">
                     {{ __('Form could not be processed, please check the fields for errors.') }}
                 </div>

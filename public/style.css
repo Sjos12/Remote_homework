@@ -38,7 +38,7 @@
 }
 
 /* resizes image inside #content2 */
-.container img {
+#iphoneimage {
     height: 300px;
     width: 150px;
 }
