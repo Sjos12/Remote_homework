@@ -14,6 +14,11 @@
 
 */
 
+#mac {
+    padding-top: 20px;
+}
+
+
 /* styles the submit button for both login aswell as signup form */
 #login-submit {
     background-color: #FE6B39 !important;
@@ -37,12 +42,16 @@
     padding-top: 8px;
 }
 
+#content2_header {
+    text-align: center;
+    padding-bottom: 3%;
+}
+
 /* resizes image inside #content2 */
 #iphoneimage {
     height: 300px;
     width: 150px;
 }
-
 /* styling for the "Get Started" button*/
 .btn-primary:hover {
     background-color: rgb(255, 255, 255) !important;
@@ -60,6 +69,22 @@
     margin-bottom: 8px;
 }
 
+.btn-white:hover {
+    background-color:#5BB9FD !important;
+    color: white !important;
+    border-radius: 0;
+    outline: none;
+    bottom: 50%;
+}
+
+.btn-white {
+    border-radius: 0px !important;
+    outline: #5BB9FD;
+    bottom: 50%;
+    margin-bottom: 8px;
+    margin-left: 5px;
+    color: #5BB9FD;
+}
 /* gives all the headers and paragraphs Montserrat font*/
 h4, h3, h2, h1 {
     font-family: 'Montserrat', sans-serif;

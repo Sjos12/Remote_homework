@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Remote Homework') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -24,7 +24,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav id="navbar" class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <!-- Use container-fluid to arrange navbar items from edge to edge --> 
             <div class="container">
                 <a class="navbar-brand" href="{{ route('home') }}">
@@ -38,14 +38,14 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
+                            <a class="nav-link" href="#content1">{{ __('Home') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('info') }}">{{ __('Info') }}</a>
+                            <a class="nav-link" href="#content2">{{ __('Info') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('contact') }}">{{ __('Contact') }}</a>
-                        </li>
+                            <a class="nav-link" href="#content3">{{ __('Contact') }}</a>
+                        </li> 
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('question.create') }}">{{ __('Ask a question') }}</a>
                         </li>
