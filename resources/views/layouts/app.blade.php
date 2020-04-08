@@ -91,6 +91,11 @@
         <main class="py-4">
             @yield('content')
         </main>
+        <main class="py-4">
+            @yield('footer')
+        </main>
     </div>
+
+    
 </body>
 </html>
