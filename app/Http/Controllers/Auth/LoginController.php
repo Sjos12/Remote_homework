@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Auth;
 
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Symfony\Component\HttpFoundation\Response;
 
 final class LoginController
 {
@@ -19,4 +20,9 @@ final class LoginController
     */
 
     use AuthenticatesUsers;
+
+    public function redirectTo(): string
+    {
+        return route('home');
+    }
 }
