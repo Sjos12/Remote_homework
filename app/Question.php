@@ -12,9 +12,15 @@ final class Question extends Model
 {
     use GeneratesUuid, SoftDeletes;
 
+    /**
+     * @var array
+     */
     protected $casts = [
         'uuid' => EfficientUuid::class,
     ];
 
+    /**
+     * @var array
+     */
     protected $guarded = [];
 }
