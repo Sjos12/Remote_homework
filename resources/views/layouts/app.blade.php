@@ -20,12 +20,12 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <!-- Stylesheet from initial buid, located in public folder -->
-    <link rel="stylesheet" href="<?php echo asset('style.css')?>" type="text/css"> 
+    <link rel="stylesheet" href="<?php echo asset('style.css')?>" type="text/css">
 </head>
 <body>
     <div id="app">
         <nav id="navbar" class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <!-- Use container-fluid to arrange navbar items from edge to edge --> 
+            <!-- Use container-fluid to arrange navbar items from edge to edge -->
             <div class="container">
                 <a class="navbar-brand" href="{{ route('home') }}">
                     <img src="better_logo.png" alt="Logo" style="width:105px;">
@@ -45,10 +45,15 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#content3">{{ __('Contact') }}</a>
-                        </li> 
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('question.create') }}">{{ __('Ask a question') }}</a>
                         </li>
+                        @auth()
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('questions.overview') }}">{{ __('My questions') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('questions.create') }}">{{ __('Ask a question') }}</a>
+                        </li>
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -96,6 +101,6 @@
         </main>
     </div>
 
-    
+
 </body>
 </html>

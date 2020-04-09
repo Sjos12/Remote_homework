@@ -4,15 +4,15 @@
     <div class="container">
         @if ($errors->any())
         <div class="row">
-            <div class="col-12 col-md-12 offset-md-2">
+            <div class="col-12 col-md-8 offset-md-2">
                 <div class="alert alert-danger" role="alert">
-                    {{ __('Form could not be processed, please check the fields for errors.') }}
+                    {{ __('Check form for errors') }}
                 </div>
             </div>
         </div>
         @endif
         <div class="row">
-            <form action="{{ route('question.store') }}"
+            <form action="{{ route('questions.store') }}"
                   method="post"
                   class="col-12 col-md-8 offset-md-2"
             >
@@ -20,7 +20,7 @@
                 <div class="form-group">
                     <label for="title">{{ __('Your question') }}</label>
                     <input type="text"
-                           class="form-control"
+                           class="form-control @error('title') is-invalid @enderror"
                            id="title"
                            name="title"
                            aria-describedby="titleHelp"
