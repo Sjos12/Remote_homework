@@ -1,13 +1,43 @@
-/node_modules
+# ###############################
+# #  Resources / Assets files   #
+# ###############################
 /public/hot
-/public/storage
 /storage/*.key
+
+# ###############################
+# #      Package Managers       #
+# ###############################
 /vendor
-.env
-.env.backup
-.phpunit.result.cache
-Homestead.json
-Homestead.yaml
+/node_modules
 npm-debug.log
 yarn-error.log
+
+
+# ###############################
+# #     Build/test artifacts    #
+# ###############################
+/coverage/
+
+# ###############################
+# #     Configuration files     #
+# ###############################
+.env
+.env.behat
+.env.backup
+.phpunit.result.cache
+phpunit.xml
+phpstan.neon
+
+
+# ###############################
+# #         Docker              #
+# ###############################
+.env.docker.*
+!.env.docker.example
+
+docker-compose.override.yml
+
+# ###############################
+# #         Other files         #
+# ###############################
 nginx.error.log
