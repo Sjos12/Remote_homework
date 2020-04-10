@@ -101,11 +101,17 @@ Route::middleware([
     'auth'
 ])
      ->group(static function () {
+         //
          // Question routes
-         Route::get('/user/question', [QuestionController::class, 'create'])
-              ->name('question.create');
-         Route::post('/user/question', [QuestionController::class, 'store'])
-              ->name('question.store');
+         //
+         // Create questions
+         Route::get('/user/questions/new', [QuestionController::class, 'create'])
+              ->name('questions.create');
+         Route::post('/user/questions', [QuestionController::class, 'store'])
+              ->name('questions.store');
+         // View questions
+         Route::get('user/questions', [QuestionController::class, 'overview'])
+             ->name('questions.overview');
      });
 
 // Application routes

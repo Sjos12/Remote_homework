@@ -7,6 +7,7 @@ use App\Question;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 final class QuestionController
@@ -23,17 +24,27 @@ final class QuestionController
         $validated_data = $this->validate(
             $request,
             [
-                'title' => 'required',
+                'title'   => 'required|unique:questions,title',
                 'content' => 'nullable',
             ]
         );
 
-        $question = Question::create([
+        Question::create([
             'user_id' => $request->user()->id,
-            'title' => $validated_data['title'],
+            'title'   => $validated_data['title'],
             'content' => $validated_data['content'] ?? null,
         ]);
 
-        return redirect()->to(route('home'));
+        return redirect()->to(route('questions.overview'));
+    }
+
+    public function overview(): Renderable
+    {
+        $questions = Question::where('user_id', Auth::id())
+                             ->get();
+
+        return view('questions.overview', [
+            'questions' => $questions,
+        ]);
     }
 }

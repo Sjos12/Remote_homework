@@ -6,6 +6,7 @@
     "license": "proprietary",
     "require": {
         "php": "^7.4.0",
+        "ext-pdo": "*",
         "dyrynda/laravel-efficient-uuid": "^4.0",
         "dyrynda/laravel-model-uuid": "^6.1",
         "fideloper/proxy": "^4.2",
@@ -16,8 +17,12 @@
         "laravel/ui": "^2.0"
     },
     "require-dev": {
+        "behat/behat": "^3.6",
+        "behat/mink-goutte-driver": "^1.2",
         "doctrine/dbal": "^2.10",
         "facade/ignition": "^2.0",
+        "friends-of-behat/mink": "^1.8",
+        "friends-of-behat/mink-extension": "^2.4",
         "fzaninotto/faker": "^1.9.1",
         "mockery/mockery": "^1.3.1",
         "nunomaduro/collision": "^4.1",
@@ -28,7 +33,8 @@
     "config": {
         "optimize-autoloader": true,
         "platform": {
-            "php": "7.4.0"
+            "php": "7.4.0",
+            "ext-pdo": "7.4.0"
         },
         "preferred-install": "dist",
         "sort-packages": true
