@@ -76,9 +76,9 @@
 }
 
 .btn-white:hover {
-    background-color:#5BB9FD !important;
-    color: white !important;
-    border-radius: 0;
+    border-width: 2px !important;
+    color: #5BB9FD;
+    box-shadow: 10px;
     outline: none;
     bottom: 50%;
 }

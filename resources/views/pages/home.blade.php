@@ -13,7 +13,7 @@
           <p>Remote homework is an online tool that makes collaborating remotely on projects or homework a piece of cake. </p>
           <div class="wrapper">
               <a href="{{ route('login') }}" class="shadow-sm btn btn-primary btn-md border border-info">Get Started</a>
-              <a href="#content2" class="shadow-sm btn btn-white btn-md border border-info">Contact us here</a>
+              <a href="#content2" class="shadow-sm btn btn-white btn-md border border-info">Contact us here</a> 
           </div>
         </div>
         <!-- Apple mac that is displayed on content1 -->

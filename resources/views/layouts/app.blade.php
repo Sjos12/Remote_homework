@@ -91,9 +91,8 @@
         <main class="py-4">
             @yield('content')
         </main>
-        <main class="py-4">
-            @yield('footer')
-        </main>
+        
+        @include('pages.footer')
     </div>
 
     
