@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+<hr>
 @auth
                     {{-- The user is authenticated... --}}
                     <div class="alert alert-success" role="alert">

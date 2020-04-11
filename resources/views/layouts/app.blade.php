@@ -24,10 +24,10 @@
 </head>
 <body>
     <div id="app">
-        <nav id="navbar" class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav id="navbar" class="navbar navbar-expand-md navbar-light bg-white shadow-sm sticky-top">
             <!-- Use container-fluid to arrange navbar items from edge to edge -->
             <div class="container">
-                <a class="navbar-brand" href="{{ route('home') }}">
+                <a class="navbar-brand" href="{{ route('home') }}#content1">
                     <img src="{{ asset('images/better_logo.png') }}" alt="Logo" style="width:105px;">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -38,13 +38,13 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#content1">{{ __('Home') }}</a>
+                            <a class="nav-link" href="{{ route('home') }}#content1">{{ __('Home') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#content2">{{ __('Info') }}</a>
+                            <a class="nav-link" href="{{ route('home') }}#content2">{{ __('Info') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#content3">{{ __('Contact') }}</a>
+                            <a class="nav-link" href="{{ route('home') }}#content3">{{ __('Contact') }}</a>
                         </li>
                         @auth()
                         <li class="nav-item">
