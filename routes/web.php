@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\QuestionController;
@@ -101,10 +102,14 @@ Route::middleware([
     'auth'
 ])
      ->group(static function () {
+          //dashboard route
+          Route::get('/dashboard', DashboardController::class)
+              ->name('pages.dashboard');
          //
          // Question routes
          //
          // Create questions
+         
          Route::get('/user/questions/new', [QuestionController::class, 'create'])
               ->name('questions.create');
          Route::post('/user/questions', [QuestionController::class, 'store'])

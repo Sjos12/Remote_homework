@@ -1,6 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
+
+@auth
+                    {{-- The user is authenticated... --}}
+                    <div class="alert alert-success" role="alert">
+                    You are logged in!
+                    </div>
+                @endauth
+                @guest
+                    {{-- The user is not authenticated... --}}
+                @endguest
+</hr>
 <div data-spy="scroll" data-target="#navbar" data-offset="0">
   <div class="container">
         <div class="row justify-content-center">
@@ -70,16 +81,6 @@
     <!--<img src="phone-template.png" alt="phone" class="col-xs-8" id="iphoneimage">-->
   </div>
 </div>
-<hr>
-                @auth
-                    {{-- The user is authenticated... --}}
-                    <div class="alert alert-success" role="alert">
-                    You are logged in!
-                    </div>
-                @endauth
-                @guest
-                    {{-- The user is not authenticated... --}}
-                @endguest
           </div>
       </div>
   </div>

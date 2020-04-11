@@ -23,6 +23,11 @@ final class RegisterController
 
     use RegistersUsers;
 
+    public function redirectTo(): string
+    {
+        return route('home');
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *

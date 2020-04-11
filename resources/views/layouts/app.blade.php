@@ -48,6 +48,10 @@
                         </li>
                         @auth()
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('pages.dashboard') }}">{{ __('Dashboard') }}</a>
+                        </li>
+                    
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('questions.overview') }}">{{ __('My questions') }}</a>
                         </li>
                         <li class="nav-item">
@@ -99,7 +103,5 @@
         
         @include('pages.footer')
     </div>
-
-
 </body>
 </html>
