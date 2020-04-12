@@ -13,6 +13,11 @@
 }
 
 */
+
+.question-input {
+    color: blue !important;
+}
+
 .dropdownmenu-hr {
     margin-top: 4% !important;
     margin-bottom: 4% !important;
@@ -22,7 +27,7 @@
     position: fixed;
 }
 #content1 {
-    
+
     padding-top: 3%;
     padding-bottom: 3%;
 }

@@ -47,10 +47,10 @@
                             <a class="nav-link" href="{{ route('home') }}#content3">{{ __('Contact') }}</a>
                         </li>
                         @auth()
-                        
-                    
-                        
-                        
+
+
+
+
                         @endauth
                     </ul>
 
@@ -66,12 +66,12 @@
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
-                        <!-- only gets called when user is logged in --> 
+                        <!-- only gets called when user is logged in -->
                         @else
-                            <li class="nav-item"> 
-                                <!-- put the route for the 'public' questions here--> 
-                                <a href="#" class="nav-link">Question Feed</a>
-                            </li> 
+                            <li class="nav-item">
+                                <!-- put the route for the 'public' questions here-->
+                                <a href="{{ route('questions.feed') }}" class="nav-link">Question Feed</a>
+                            </li>
 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -79,11 +79,11 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    
+
                                     <a class="dropdown-item" href="{{ route('questions.overview') }}">{{ __('My questions') }}</a>
                                     <!--<a class="dropdown-item" href="{{ route('pages.dashboard') }}">{{ __('Dashboard') }}</a>-->
                                     <a class="dropdown-item" href="{{ route('questions.create') }}">{{ __('Ask a question') }}</a>
-                                    
+
                                     <hr class="dropdownmenu-hr">
 
                                     <a class="dropdown-item"
@@ -92,9 +92,9 @@
                                     >
                                         {{ __('Logout') }}
                                     </a>
-                                    
-                                   
-                                
+
+
+
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
@@ -107,10 +107,10 @@
         </nav>
 
         <main class="py-4">
-            <!-- main content of the page --> 
+            <!-- main content of the page -->
             @yield('content')
         </main>
-        <!-- the footer of the page --> 
+        <!-- the footer of the page -->
         @include('pages.footer')
     </div>
 </body>

@@ -47,4 +47,13 @@ final class QuestionController
             'questions' => $questions,
         ]);
     }
+
+    public function feed(): Renderable
+    {
+        $questions = Question::all();
+
+        return view('questions.feed', [
+            'questions' => $questions,
+        ]);
+    }
 }

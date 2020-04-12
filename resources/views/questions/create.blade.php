@@ -24,7 +24,14 @@
                            id="title"
                            name="title"
                            aria-describedby="titleHelp"
+                           placeholder="Type a title for your question"
                     >
+
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Type your question here </label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="content"></textarea>
+                    </div>
+
                     <small id="titleHelp" class="form-text text-muted">
                         {{ __('Your question in as terse but specific way as possible') }}
                     </small>

@@ -109,15 +109,17 @@ Route::middleware([
          // Question routes
          //
          // Create questions
-         
          Route::get('/user/questions/new', [QuestionController::class, 'create'])
               ->name('questions.create');
          Route::post('/user/questions', [QuestionController::class, 'store'])
               ->name('questions.store');
-         // View questions
+         // View own questions
          Route::get('user/questions', [QuestionController::class, 'overview'])
              ->name('questions.overview');
      });
+//
+Route::get('feed', [QuestionController::class, 'feed'])
+     ->name('questions.feed');
 
 // Application routes
 Route::get('/', HomeController::class)
