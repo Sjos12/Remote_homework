@@ -66,7 +66,13 @@
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
+                        <!-- only gets called when user is logged in --> 
                         @else
+                            <li class="nav-item"> 
+                                <!-- put the route for the 'public' questions here--> 
+                                <a href="#" class="nav-link">Question Feed</a>
+                            </li> 
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -101,9 +107,10 @@
         </nav>
 
         <main class="py-4">
+            <!-- main content of the page --> 
             @yield('content')
         </main>
-        
+        <!-- the footer of the page --> 
         @include('pages.footer')
     </div>
 </body>
