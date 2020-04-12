@@ -13,11 +13,9 @@
 }
 
 */
-.sidebar {
-    background-color: blue;
-    height: 100%;
-    padding-bottom: 100%;
-    position: fixed;
+.dropdownmenu-hr {
+    margin-top: 4% !important;
+    margin-bottom: 4% !important;
 }
 
 .content {
@@ -129,12 +127,12 @@ div.username_greeting p {
 
 }
 
-div hr.linebreak {
+/*div hr.linebreak {
     color: #FE6B39;
     width:100%;
     height:2px;
     position: absolute;
     left: 0px;
     margin-top: -1px;
-}
+}*/
 
