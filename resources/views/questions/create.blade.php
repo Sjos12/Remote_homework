@@ -32,6 +32,11 @@
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="content"></textarea>
                     </div>
 
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1">Upload your image</label>
+                        <input type="file" class="form-control-file" id="imageupload">
+                    </div>
+
                     <small id="titleHelp" class="form-text text-muted">
                         {{ __('Your question in as terse but specific way as possible') }}
                     </small>
