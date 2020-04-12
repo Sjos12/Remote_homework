@@ -2,31 +2,13 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
-            <div class="col-12 table-responsive">
-                <table class="table table-hover">
-                    <thead class="thead-light">
-                    <tr>
-                        <th scope="col">{{ __('Title') }}</th>
-                        <th scope="col">{{ __('Status') }}</th>
-                        <th scope="col">{{ __('ID') }}</th>
-                        <th scope="col">{{ __('Created') }}</th>
-                        <th scope="col">{{ __('Updated') }}</th>
-                    </tr>
-                    </thead>
-                    <tbody>
                     @foreach($questions as $question)
-                        <tr>
-                            <th scope="row">{{ $question->title }}</th>
-                            <td>{{ $question->state }}</td>
-                            <td>{{ $question->uuid }}</td>
-                            <td>{{ $question->created_at->toDateTimeString() }}</td>
-                            <td>{{ $question->updated_at->toDateTimeString() }}</td>
-                        </tr>
+                            <h3 class="">{{ $question->title }}</h3>
+                            <p class="">{{$question->content}}</p>
+                            <p class="">Submitted by: {{ $question->author->name }}</p>
+                            <p class="ml-auto">{{ $question->created_at->toDateTimeString() }}</p>
+                            <p class="mr-auto">{{ $question->updated_at->toDateTimeString() }}</p>
+                        <hr>
                     @endforeach
-                    </tbody>
-                </table>
-            </div>
-        </div>
     </div>
 @endsection
