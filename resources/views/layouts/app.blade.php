@@ -21,14 +21,16 @@
 
     <!-- Stylesheet from initial build, located in public folder -->
     <link rel="stylesheet" href="{{ asset('style.css') }}" type="text/css">
+
+    
 </head>
-<body>
-    <div id="app">
+<body onscroll="scrollFunction()" >
+    <div id="app" >
         <nav id="navbar" class="navbar navbar-expand-md navbar-light bg-white shadow-sm sticky-top">
             <!-- Use container-fluid to arrange navbar items from edge to edge -->
             <div class="container">
                 <a class="navbar-brand" href="{{ route('home') }}#content1">
-                    <img src="{{ asset('images/better_logo.png') }}" alt="Logo" style="width:105px;">
+                    <img id="logo" src="{{ asset('images/better_logo.png') }}" alt="Logo" style="width:105px;">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -113,5 +115,6 @@
         <!-- the footer of the page -->
         @include('pages.footer')
     </div>
+    <script src="index.js"></script>
 </body>
 </html>
