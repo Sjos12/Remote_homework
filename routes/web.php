@@ -116,6 +116,10 @@ Route::middleware([
          // View own questions
          Route::get('user/questions', [QuestionController::class, 'overview'])
              ->name('questions.overview');
+
+          //marketplace route 
+          Route::get('marketplace', [MarketplaceController::class, 'home'])
+             ->name('marketplace.home');
      });
 //
 Route::get('feed', [QuestionController::class, 'feed'])

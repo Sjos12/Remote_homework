@@ -16,7 +16,7 @@
 
 /* this style is solely for making the navbar resizing look smooth*/
 #navbar, #logo {
-    transition: 0.4s;
+    transition: 0.3s;
 }
 
 .question-data{

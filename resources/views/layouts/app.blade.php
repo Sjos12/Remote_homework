@@ -85,6 +85,8 @@
                                     <a class="dropdown-item" href="{{ route('questions.overview') }}">{{ __('My questions') }}</a>
                                     <!--<a class="dropdown-item" href="{{ route('pages.dashboard') }}">{{ __('Dashboard') }}</a>-->
                                     <a class="dropdown-item" href="{{ route('questions.create') }}">{{ __('Ask a question') }}</a>
+                                    
+                                    <a class="dropdown-item" href="{{ route('marketplace.home')}}">{{ __('Marketplace') }}</a>
 
                                     <hr class="dropdownmenu-hr">
 
