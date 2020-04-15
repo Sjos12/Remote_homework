@@ -121,9 +121,11 @@ Route::middleware([
           Route::get('marketplace', [MarketplaceController::class, 'home'])
              ->name('marketplace.home');
      });
-//
+// @todo: move to another controller, the context is slightly different
 Route::get('feed', [QuestionController::class, 'feed'])
      ->name('questions.feed');
+Route::get('feed/{question}', [QuestionController::class, 'detail'])
+     ->name('questions.detail');
 
 // Application routes
 Route::get('/', HomeController::class)

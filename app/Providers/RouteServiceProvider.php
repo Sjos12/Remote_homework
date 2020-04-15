@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use App\Question;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
 
@@ -11,6 +12,8 @@ final class RouteServiceProvider extends ServiceProvider
 
     /**
      * The path to the "home" route for your application.
+     *
+     * @todo: phase out usage?
      *
      * @var string
      */
@@ -23,7 +26,9 @@ final class RouteServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Route::bind('question', static function ($question) {
+            return Question::whereUuid($question)->first();
+        });
 
         parent::boot();
     }
