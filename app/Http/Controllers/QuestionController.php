@@ -56,4 +56,11 @@ final class QuestionController
             'questions' => $questions,
         ]);
     }
+
+    public function detail(Question $question): Renderable
+    {
+        return view('questions.detail', [
+            'question' => $question,
+        ]);
+    }
 }
