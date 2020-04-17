@@ -6,6 +6,7 @@
     "license": "proprietary",
     "require": {
         "php": "^7.4.0",
+        "ext-exif": "*",
         "ext-pdo": "*",
         "dyrynda/laravel-efficient-uuid": "^4.0",
         "dyrynda/laravel-model-uuid": "^6.1",
@@ -14,7 +15,8 @@
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
-        "laravel/ui": "^2.0"
+        "laravel/ui": "^2.0",
+        "spatie/laravel-medialibrary": "^8.2"
     },
     "require-dev": {
         "behat/behat": "^3.6",
@@ -34,6 +36,7 @@
         "optimize-autoloader": true,
         "platform": {
             "php": "7.4.0",
+            "ext-exif": "7.4.0",
             "ext-pdo": "7.4.0"
         },
         "preferred-install": "dist",
