@@ -96,4 +96,36 @@ p {
   margin-top: 30px;
   margin-bottom: 30px;
 }
+
+/*implements dark mode */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1E1E1E;
+  }
+  p {
+    color: #ffffff;
+    size: 15px;
+  }
+  h1, h2, h3, h4 {
+    color: #ffffff;
+  }
+  .darkmodetoggle {
+    background-color: #191516 !important;
+  }
+  label {
+    color: #ffffff;
+  }
+  .card-body {
+    background-color: #1E1E1E;
+  }
+  .card-header {
+    background-color: #191516 !important;
+    color: #ffffff !important;
+    border-color: #191516 !important;
+  }
+  input {
+    background-color: #302C2D !important;
+    color: #ffffff !important;
+  }
+}
 /*# sourceMappingURL=main.css.map */

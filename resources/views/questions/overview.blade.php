@@ -3,31 +3,37 @@
 @section('content')
     <div class="container">
        <div class="row">
-            <div class="col-12 table-responsive">
-                <table class="table table-hover">
-                    <thead class="thead-light">
-                    <tr>
-                        <th scope="col">{{ __('Title') }}</th>
-                        <th scope="col">{{ __('Content') }}</th>
-                        <th scope="col">{{ __('Status') }}</th>
-                        <th scope="col">{{ __('ID') }}</th>
-                        <th scope="col">{{ __('Created') }}</th>
-                        <th scope="col">{{ __('Updated') }}</th>
-                    </tr>
-                    </thead>
-                    <tbody>
+    
                      @foreach($questions as $question)
-                        <tr>
-                            <th scope="row">{{ $question->title }}</th>
-                            <td>{{ $question->content }}</td>
-                            <td>{{ $question->state }}</td>
-                            <td>{{ $question->uuid }}</td>
-                            <td>{{ $question->created_at->toDateTimeString() }}</td>
-                            <td>{{ $question->updated_at->toDateTimeString() }}</td>
-                        </tr>
+                            
+                            @if (empty($questions))
+                                <h1>Nothing here</h1> 
+                            @else
+                                <div class="row">
+                                    <h3 class="col-6">{{ $question->title }}</h3>
+
+                                    <p class="col-10">{{$question->content}}</p>
+                                    <div class="text-right col-2">
+                                        <a class="btn btn-xs btn-primary"
+                                        href="{{ route('questions.detail', ['question' => $question->uuid]) }}"
+                                        >
+                                            View Question
+                                        </a>
+                                    </div>
+                                    <p class="col-12 question-data">
+                                        Submitted by: {{ $question->author->name }}
+                                    </p>
+                                    <p class="col-6 question-data">
+                                        Posted at: {{ $question->created_at->toDateTimeString() }}
+                                    </p>
+                                    <p class="mr-auto col-6 question-data text-right">
+                                        Last updated at: {{ $question->updated_at->toDateTimeString() }}
+                                    </p>
+
+                                </div>
+                                <hr>
+                            @endif
                     @endforeach
-                    </tbody>
-                </table>
             </div>
         </div>
     </div>

@@ -26,7 +26,7 @@
 </head>
 <body onscroll="scrollFunction()" >
     <div id="app" >
-        <nav id="navbar" class="navbar navbar-expand-md navbar-light bg-white shadow-sm sticky-top">
+        <nav id="navbar" class="navbar navbar-expand-md bg-white shadow-sm sticky-top darkmodetoggle">
             <!-- Use container-fluid to arrange navbar items from edge to edge -->
             <div class="container">
                 <a class="navbar-brand" href="{{ route('home') }}#content1">

@@ -1,6 +1,9 @@
 @import'variables';
 @import'functions';
 
+
+
+
 /* this style is solely for making the navbar resizing look smooth*/
 #navbar, #logo {
     transition: 0.3s;
@@ -89,4 +92,36 @@ p {
 /* gives every content the margin around the text*/
 #content2, #content3, #content4 {
     @include contentmargin();
+}
+/*implements dark mode */
+@media (prefers-color-scheme: dark) {
+    body {
+       background-color: $darkmodecolor;
+   }
+
+   p {
+    color: $darkmodetextcolor;
+    size: 15px; 
+    }
+    h1, h2, h3, h4 {
+        color:$darkmodetextcolor;
+    }
+    .darkmodetoggle {
+        background-color: $darkmodecolor_dark !important; 
+    }
+    label {
+        color: $darkmodetextcolor;
+    }
+    .card-body {
+        background-color: $darkmodecolor;
+    }
+    .card-header {
+        background-color: $darkmodecolor_dark !important;
+        color: $darkmodetextcolor !important;
+        border-color: $darkmodecolor_dark !important;
+    }
+    input {
+        background-color: $darkmodecolor_light !important;
+        color: $darkmodetextcolor !important;
+    }
 }

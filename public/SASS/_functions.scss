@@ -13,3 +13,8 @@
     height: 300px;
     width: 150px;
 }
+
+@mixin darkmodestyling { 
+    background-color: black;
+    color: white;
+}

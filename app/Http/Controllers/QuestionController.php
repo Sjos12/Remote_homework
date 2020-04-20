@@ -47,6 +47,8 @@ final class QuestionController
         return view('questions.overview', [
             'questions' => $questions,
         ]);
+
+        
     }
 
     public function feed(): Renderable
