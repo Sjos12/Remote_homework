@@ -16,11 +16,11 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-    <!-- Styles -->
+    <!-- Bootstrap implementation -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <!-- Stylesheet from initial build, located in public folder -->
-    <link rel="stylesheet" href="{{ asset('style.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('SASS/main.css')}}" type="text/css">
 
     
 </head>

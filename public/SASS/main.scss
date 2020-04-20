@@ -1,0 +1,119 @@
+@import('variables')
+
+/* this style is solely for making the navbar resizing look smooth*/
+#navbar, #logo {
+    transition: 0.3s;
+}
+
+.question-data{
+    font-size: 90% !important;
+    font-style: italic;
+}
+
+.question-input {
+    color: blue !important;
+}
+
+.dropdownmenu-hr {
+    margin-top: 4% !important;
+    margin-bottom: 4% !important;
+}
+
+.content {
+    position: fixed;
+}
+#content1 {
+
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+#mac {
+    padding-top: 20px;
+}
+
+/* adds some padding to the first page */
+.startpage {
+    padding-top: 8px;
+}
+
+#content2_header {
+    text-align: center;
+    padding-bottom: 3%;
+}
+
+/* resizes image inside #content2 */
+#iphoneimage {
+    height: 300px;
+    width: 150px;
+}
+/* styling for the "Get Started" button*/
+.btn-primary:hover {
+    background-color: rgb(255, 255, 255) !important;
+    color: $buttoncolor !important;
+    border-radius: 0;
+    outline: none;
+    bottom: 50%;
+}
+
+.btn-primary {
+    background-color: $buttoncolor !important;
+    border-radius: 0 !important;
+    outline: #585858 !important;
+    bottom: 50%;
+    margin-bottom: 8px;
+}
+
+.btn-white:hover {
+    border-width: 2px !important;
+    color: $buttoncolor;
+    box-shadow: 10px;
+    outline: none;
+    bottom: 50%;
+}
+
+.btn-white {
+    border-radius: 0px !important;
+    outline: $buttoncolor;
+    bottom: 50%;
+    margin-bottom: 8px;
+    margin-left: 5px;
+    color: $buttoncolor;
+}
+/* gives all the headers and paragraphs Montserrat font*/
+h4, h3, h2, h1 {
+    font-family: 'Montserrat', sans-serif;
+    color: #585858;
+}
+
+p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    color: #585858;
+}
+
+/* gives every content the margin around the text*/
+#content2, #content3, #content4 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+div.username_greeting {
+    text-align: right;
+}
+
+div.username_greeting p {
+    margin-top: 0 !important;
+    padding-top: 10px;
+    text-align: left;
+
+}
+
+/*div hr.linebreak {
+    color: #FE6B39;
+    width:100%;
+    height:2px;
+    position: absolute;
+    left: 0px;
+    margin-top: -1px;
+}*/
