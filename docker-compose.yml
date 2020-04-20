@@ -16,11 +16,11 @@ services:
       # Inform Traefik which Docker network traffic should be send to
       - "traefik.docker.network=webgateway"
       # Define the capture rule for traffic to this service
-      - "traefik.http.routers.insights_webserver.rule=${TRAEFIK_ROUTER_WEBSERVER_RULE}"
+      - "traefik.http.routers.${PROJECT_NAME}_webserver.rule=${TRAEFIK_ROUTER_WEBSERVER_RULE}"
       # Only match HTTPS traffic (@see entrypoints in Traefik config)
-      - "traefik.http.routers.insights_webserver.entrypoints=https"
+      - "traefik.http.routers.${PROJECT_NAME}_webserver.entrypoints=https"
       # Enable TLS to allow for https
-      - "traefik.http.routers.insights_webserver.tls=true"
+      - "traefik.http.routers.${PROJECT_NAME}_webserver.tls=true"
     networks:
       - default
       - remote_homework_network
