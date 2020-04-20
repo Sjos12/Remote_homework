@@ -41,6 +41,7 @@ final class QuestionController
     public function overview(): Renderable
     {
         $questions = Question::where('user_id', Auth::id())
+                             ->orderBy('updated_at', 'desc')
                              ->get();
 
         return view('questions.overview', [
@@ -50,7 +51,8 @@ final class QuestionController
 
     public function feed(): Renderable
     {
-        $questions = Question::all();
+        $questions = Question::orderBy('updated_at', 'desc')
+                             ->get();
 
         return view('questions.feed', [
             'questions' => $questions,
