@@ -1,0 +1,15 @@
+
+@mixin fontstandard {
+    font-family: 'Montserrat', sans-serif;
+    color: #585858;
+}
+
+@mixin contentmargin { 
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+@mixin iphoneimgsize {
+    height: 300px;
+    width: 150px;
+}
