@@ -11,6 +11,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InfoController;
+use App\Http\Controllers\MarketplaceController;
 use App\Http\Controllers\QuestionController;
 use Illuminate\Support\Facades\Route;
 
@@ -117,8 +118,8 @@ Route::middleware([
          Route::get('user/questions', [QuestionController::class, 'overview'])
              ->name('questions.overview');
 
-          //marketplace route 
-          Route::get('marketplace', [MarketplaceController::class, 'home'])
+          //Marketplace route 
+          Route::get('marketplace', MarketplaceController::class)
              ->name('marketplace.home');
      });
 // @todo: move to another controller, the context is slightly different
