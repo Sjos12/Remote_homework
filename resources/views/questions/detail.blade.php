@@ -5,12 +5,11 @@
         <div class="row">
             <h3 class="col-6">{{ $question->title }}</h3>
 
-            @isset($media)
+            @if($firstImage)
             <div class="col-10">
-                {{-- @todo: this is way too ugly, and will require copy/pasting everywhere the illustration needs to be displayed. Replace with ViewModel --}}
-                {{ $media->img()->attributes(['class' => 'img-fluid', 'alt' => $question->title]) }}
+                {{ $firstImage->img()->attributes(['class' => 'img-fluid', 'alt' => $question->title]) }}
             </div>
-            @endisset
+            @endif
 
             <p class="col-10">{{$question->content}}</p>
 

@@ -36,10 +36,4 @@ final class Question extends Model
         return $this->hasMany(Illustration::class)
                     ->orderBy('created_at');
     }
-
-    public function firstIllustration(): HasMany
-    {
-        return $this->illustrations()
-                    ->limit(1);
-    }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Illustration;
 use App\Question;
+use App\ViewModels\QuestionViewModel;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
@@ -94,7 +95,8 @@ final class QuestionController
     public function feed(): Renderable
     {
         $questions = Question::orderBy('updated_at', 'desc')
-                             ->get();
+                             ->get()
+        ->map(fn(Question $question) => new QuestionViewModel($question));
 
         return view('questions.feed', [
             'questions' => $questions,
@@ -103,16 +105,6 @@ final class QuestionController
 
     public function detail(Question $question): Renderable
     {
-        // @todo: replace by ViewModel!
-        $first_illustration = $question->firstIllustration->first();
-
-        if ($first_illustration) {
-            $media = $first_illustration->getFirstMedia(Illustration::COLLECTION_IMAGES);
-        }
-
-        return view('questions.detail', [
-            'question' => $question,
-            'media' => $media ?? null,
-        ]);
+        return view('questions.detail', new QuestionViewModel($question));
     }
 }
