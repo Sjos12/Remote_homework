@@ -29,7 +29,7 @@ final class QuestionController
         $validated_data = $this->validate(
             $request,
             [
-                'title'        => 'required|unique:questions,title',// @todo: should not be forbidden, but result in a suggestion to look at existing question, if permissions allow that
+                'title'        => 'required|unique:questions,title', // @todo: should not be forbidden, but result in a suggestion to look at existing question, if permissions allow that
                 'content'      => 'nullable',
                 'illustration' => 'required|image',
             ]

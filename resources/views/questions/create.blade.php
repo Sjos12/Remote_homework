@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+ <div class="container">
         @if ($errors->any())
             <div class="row">
                 <div class="col-12 col-md-8 offset-md-2">
@@ -35,7 +35,7 @@
                            name="title"
                            aria-describedby="titleHelp"
                            placeholder="Type a title for your question"
-                           required="required"
+                           required="5"
                            value="{{ old('title') }}"
                     >
                     <small id="titleHelp" class="form-text text-muted">
