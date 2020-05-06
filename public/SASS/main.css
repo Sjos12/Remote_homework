@@ -1,4 +1,8 @@
 /*colors*/
+#feedhr {
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
 /* this style is solely for making the navbar resizing look smooth*/
 #navbar, #logo {
   -webkit-transition: 0.3s;
