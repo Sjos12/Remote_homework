@@ -1,6 +1,39 @@
 /*colors*/
-#feedhr {
-  border-top: 1px solid rgba(255, 255, 255, 0.3);
+/* this is a tool called hover.css which is responsible for the hover effect on navbar. Before we go online be sure to change this as this isn't allowed to be used for commercial use.*/
+#nav-link {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+          box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+  overflow: hidden;
+}
+
+#nav-link:before {
+  position: absolute;
+  z-index: -1;
+  left: 51%;
+  right: 51%;
+  bottom: 0;
+  background: #5BB9FD;
+  height: 4px;
+  -webkit-transition-property: left, right;
+  transition-property: left, right;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+
+#nav-link:hover:before, #nav-link:focus:before, #nav-link:active:before {
+  left: 0;
+  right: 0;
+}
+
+#nav-link, #nav-link-user {
+  font-size: 1rem;
 }
 
 /* this style is solely for making the navbar resizing look smooth*/
@@ -114,18 +147,18 @@ p {
     color: rgba(255, 255, 255, 0.849);
   }
   .darkmodetoggle {
-    background-color: #191516 !important;
+    background-color: #252525 !important;
   }
   label {
     color: rgba(255, 255, 255, 0.849);
   }
   .card-body {
-    background-color: #1E1E1E;
+    background-color: #252525;
   }
   .card-header {
-    background-color: #191516 !important;
+    background-color: #1E1E1E !important;
     color: rgba(255, 255, 255, 0.849) !important;
-    border-color: #191516 !important;
+    border-color: #1E1E1E !important;
   }
   input {
     background-color: #302C2D !important;
@@ -133,6 +166,56 @@ p {
   }
   .contentarea {
     background-color: #302C2D;
+  }
+  #feedhr {
+    border-top: 1px solid rgba(255, 255, 255, 0.527);
+  }
+  #dropdownmenunav {
+    background-color: #252525;
+  }
+  .dropdown-item {
+    color: rgba(255, 255, 255, 0.849);
+  }
+  .dropdown-item:hover {
+    background-color: #302C2D;
+    color: rgba(255, 255, 255, 0.849);
+  }
+  #nav-link {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+            box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    position: relative;
+    overflow: hidden;
+  }
+  #nav-link:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 51%;
+    right: 51%;
+    bottom: 0;
+    background: #5BB9FD;
+    height: 4px;
+    -webkit-transition-property: left, right;
+    transition-property: left, right;
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+  }
+  #nav-link:hover:before, #nav-link:focus:before, #nav-link:active:before {
+    left: 0;
+    right: 0;
+  }
+  #nav-link:hover {
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+    color: #5BB9FD;
   }
 }
 /*# sourceMappingURL=main.css.map */

@@ -32,7 +32,7 @@
       </div>
   </div>
 
-<hr>
+<hr id="feedhr">
 
 <div class="container">
   <div class="row" id="content2">
@@ -57,7 +57,7 @@
     <!--<img src="phone-template.png" alt="phone" class="col-xs-8" id="iphoneimage">-->
   </div>
 </div>
-<hr>
+<hr id="feedhr">
 <div class="container">
   <div class="row" id="content2">
     <!-- header of content2 -->

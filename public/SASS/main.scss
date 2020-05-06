@@ -1,8 +1,39 @@
 @import'variables';
 @import'functions';
 
-#feedhr{ 
-    border-top: 1px solid rgba(255, 255, 255, 0.3);
+/* this is a tool called hover.css which is responsible for the hover effect on navbar. Before we go online be sure to change this as this isn't allowed to be used for commercial use.*/
+#nav-link {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    position: relative;
+    overflow: hidden;
+  }
+  
+#nav-link:before {
+    position: absolute;
+    z-index: -1;
+    left: 51%;
+    right: 51%;
+    bottom: 0;
+    background: $buttoncolor;
+    height: 4px;
+    -webkit-transition-property: left, right;
+    transition-property: left, right;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+#nav-link:hover:before, #nav-link:focus:before, #nav-link:active:before {
+    left: 0;
+    right: 0;
+}
+
+#nav-link, #nav-link-user {
+    font-size: 1rem;
 }
 
 /* this style is solely for making the navbar resizing look smooth*/
@@ -97,7 +128,7 @@ p {
 /*implements dark mode */
 @media (prefers-color-scheme: dark) {
     body {
-       background-color: $darkmodecolor;
+       background-color: $darkmodecolor_dark;
    }
 
    p {
@@ -108,7 +139,7 @@ p {
         color:$darkmodetextcolor;
     }
     .darkmodetoggle {
-        background-color: $darkmodecolor_dark !important; 
+        background-color: $darkmodecolor !important; 
     }
     label {
         color: $darkmodetextcolor;
@@ -128,4 +159,59 @@ p {
     .contentarea{
         background-color: $darkmodecolor_light;
     }
+    #feedhr{ 
+        border-top: 1px solid rgba(255, 255, 255, 0.527);
+    }
+
+    #dropdownmenunav {
+        background-color: $darkmodecolor;
+        
+    }
+    .dropdown-item {
+        color: $darkmodetextcolor;
+    }
+    .dropdown-item:hover {
+        background-color: $darkmodecolor_light;
+        color: $darkmodetextcolor;
+    }
+
+    #nav-link {
+        display: inline-block;
+        vertical-align: middle;
+        -webkit-transform: perspective(1px) translateZ(0);
+        transform: perspective(1px) translateZ(0);
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+        position: relative;
+        overflow: hidden;
+      }
+      #nav-link:before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        left: 51%;
+        right: 51%;
+        bottom: 0;
+        background: $buttoncolor;
+        height: 4px;
+        -webkit-transition-property: left, right;
+        transition-property: left, right;
+        -webkit-transition-duration: 0.2s;
+        transition-duration: 0.2s;
+        -webkit-transition-timing-function: ease-out;
+        transition-timing-function: ease-out;
+      }
+      #nav-link:hover:before, #nav-link:focus:before, #nav-link:active:before {
+        left: 0;
+        right: 0;
+        
+      }
+
+      #nav-link:hover {
+        -webkit-transition-duration: 0.4s;
+        transition-duration: 0.4s;
+        -webkit-transition-timing-function: ease-out;
+         transition-timing-function: ease-out;
+        color: $buttoncolor;
+      }
+    
 }
