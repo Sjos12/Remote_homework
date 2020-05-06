@@ -107,29 +107,32 @@ p {
     background-color: #1E1E1E;
   }
   p {
-    color: #ffffff;
+    color: rgba(255, 255, 255, 0.849);
     size: 15px;
   }
-  h1, h2, h3, h4 {
-    color: #ffffff;
+  h1, h2, h3, h4, h5, h6 {
+    color: rgba(255, 255, 255, 0.849);
   }
   .darkmodetoggle {
     background-color: #191516 !important;
   }
   label {
-    color: #ffffff;
+    color: rgba(255, 255, 255, 0.849);
   }
   .card-body {
     background-color: #1E1E1E;
   }
   .card-header {
     background-color: #191516 !important;
-    color: #ffffff !important;
+    color: rgba(255, 255, 255, 0.849) !important;
     border-color: #191516 !important;
   }
   input {
     background-color: #302C2D !important;
-    color: #ffffff !important;
+    color: rgba(255, 255, 255, 0.849) !important;
+  }
+  .contentarea {
+    background-color: #302C2D;
   }
 }
 /*# sourceMappingURL=main.css.map */

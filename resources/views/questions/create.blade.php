@@ -51,7 +51,7 @@
                         {{ __('Type your question here') }}
                     </label>
                     <textarea id="content"
-                              class="form-control @error('content') is-invalid @enderror"
+                              class="form-control @error('content') is-invalid @enderror contentarea"
                               rows="5"
                               name="content"
                               aria-describedby="contentHelp"

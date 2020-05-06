@@ -20,9 +20,9 @@
                         View Question
                     </a>
                 </div>
-                <p class="col-12 pt-3 question-data text-left">
+                <h6 class="col-12 pt-3  text-left">
                     Submitted by: {{ $view_model->question()->author->name }}
-                </p>
+                </h6>
                 
                 <p class="col-6 question-data float-left">
                     Posted at: {{ $view_model->question()->created_at->toDateTimeString() }}

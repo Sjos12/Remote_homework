@@ -1,7 +1,6 @@
 @import'variables';
 @import'functions';
 
-
 #feedhr{ 
     border-top: 1px solid rgba(255, 255, 255, 0.3);
 }
@@ -105,7 +104,7 @@ p {
     color: $darkmodetextcolor;
     size: 15px; 
     }
-    h1, h2, h3, h4 {
+    h1, h2, h3, h4, h5, h6 {
         color:$darkmodetextcolor;
     }
     .darkmodetoggle {
@@ -125,5 +124,8 @@ p {
     input {
         background-color: $darkmodecolor_light !important;
         color: $darkmodetextcolor !important;
+    }
+    .contentarea{
+        background-color: $darkmodecolor_light;
     }
 }
