@@ -35,7 +35,7 @@
                            name="title"
                            aria-describedby="titleHelp"
                            placeholder="Type a title for your question"
-                           required="5"
+                           required="required"
                            value="{{ old('title') }}"
                     >
                     <small id="titleHelp" class="form-text text-muted">
