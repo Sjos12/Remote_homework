@@ -83,23 +83,23 @@ final class QuestionController
     {
         $questions = Question::where('user_id', Auth::id())
                              ->orderBy('updated_at', 'desc')
-                             ->get()                                              
-        
-                             ->map(fn(Question $question) => new QuestionViewModel($question));
+                             ->get()
+                             ->map(
+                                 fn(Question $question) => new QuestionViewModel($question)
+                             );
 
         return view('questions.overview', [
             'questions' => $questions,
         ]);
-
-
     }
 
     public function feed(): Renderable
     {
         $questions = Question::orderBy('updated_at', 'desc')
                              ->get()
-                            
-        ->map(fn(Question $question) => new QuestionViewModel($question));
+                             ->map(
+                                 fn(Question $question) => new QuestionViewModel($question)
+                             );
 
         return view('questions.feed', [
             'questions' => $questions,

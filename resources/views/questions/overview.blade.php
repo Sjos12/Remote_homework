@@ -7,40 +7,40 @@
                 <h1>Nothing here</h1>
             @endif
 
-            @foreach($questions as $question)
+            @foreach($questions as $view_model)
                 <div class="row">
-                
+
                     @if($firstImage = $view_model->firstImage())
                         <div class="col-4">
                             {{ $firstImage->img()->attributes(['class' => 'img-fluid', 'alt' => $view_model->question()->title]) }}
                         </div>
                     @endif
-                    <h3 class="col-12">{{ $question->title }}</h3>
+                    <h3 class="col-12">{{ $view_model->question()->title }}</h3>
 
                     {{-- @todo: is this shares with feed.blade.php, create single template included by both --}}
-                    <p class="col-10">{{$question->content}}</p>
+                    <p class="col-10">{{$view_model->question()->content}}</p>
 
                     <div class=" col-2">
                         <a class="btn btn-xs btn-primary float-right"
-                           href="{{ route('questions.detail', ['question' => $question->uuid]) }}"
+                           href="{{ route('questions.detail', ['question' => $view_model->question()->uuid]) }}"
                         >
                             View Question
                         </a>
                     </div>
                     <h6 class="col-12 bold author-data">
-                        Submitted by: {{ $question->author->name }}
+                        Submitted by: {{ $view_model->question()->author->name }}
                     </h6>
                     <p class="col-6 question-data">
                         Posted
-                        at: {{ $question->created_at->toDateTimeString() }}
+                        at: {{ $view_model->question()->created_at->toDateTimeString() }}
                     </p>
                     <p class="col-6 question-data text-right">
                         Last updated
-                        at: {{ $question->updated_at->toDateTimeString() }}
+                        at: {{ $view_model->question()->updated_at->toDateTimeString() }}
                     </p>
 
                 </div>
-                
+
                 <hr id="feedhr">
             @endforeach
         </div>
