@@ -28,7 +28,7 @@
             >
                 @csrf
                 <div class="form-group">
-                    <label for="title">{{ __('Your question') }}</label>
+                    <label for="title">{{ __("Your question's title") }}</label>
                     <input type="text"
                            class="form-control @error('title') is-invalid @enderror"
                            id="title"

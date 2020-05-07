@@ -5,11 +5,11 @@
         @foreach($questions as $view_model)
             <div class="row pt-4 pb-4">
                 @if($firstImage = $view_model->firstImage())
-                    <div class="col-4">
-                        {{ $firstImage->img()->attributes(['class' => 'img-fluid', 'alt' => $view_model->question()->title]) }}
+                    <div class=" col-lg-4 col-md-4 col-xs-12 col-sm-12">
+                        {{ $firstImage->img()->attributes(['class' => 'img-fluid  pt-4 pb-4', 'alt' => $view_model->question()->title]) }}
                     </div>
                 @endif
-                <div class="col-6"> 
+                <div class="pt-4 col-6"> 
                     <h3 class="">{{ $view_model->question()->title }}</h3>
                     <p class="">{{$view_model->question()->content}}</p>
 `               </div>

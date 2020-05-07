@@ -9,6 +9,12 @@
 
             @foreach($questions as $question)
                 <div class="row">
+                
+                    @if($firstImage = $view_model->firstImage())
+                        <div class="col-4">
+                            {{ $firstImage->img()->attributes(['class' => 'img-fluid', 'alt' => $view_model->question()->title]) }}
+                        </div>
+                    @endif
                     <h3 class="col-12">{{ $question->title }}</h3>
 
                     {{-- @todo: is this shares with feed.blade.php, create single template included by both --}}
