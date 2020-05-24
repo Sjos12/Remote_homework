@@ -6,7 +6,7 @@
             <div class="row ">
                 @if($firstImage = $view_model->firstImage())
                     <div class=" col-lg-4 col-md-4 col-xs-12 col-sm-12 d-flex justify-content-center">
-                        {{ $firstImage->img()->attributes(['class' => 'img-fluid d-block mx-auto mt-auto mb-auto', 'alt' => $view_model->question()->title]) }}
+                        {{ $firstImage->img()->attributes(['class' => 'img-fluid d-block mx-auto mt-auto mb-auto rounded', 'alt' => $view_model->question()->title]) }}
                     </div>
                 @endif
 

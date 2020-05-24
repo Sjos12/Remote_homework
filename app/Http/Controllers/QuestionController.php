@@ -88,7 +88,7 @@ final class QuestionController
                                  fn(Question $question) => new QuestionViewModel($question)
                              );
 
-        return view('questions.overview', [
+        return view('questions.feed', [
             'questions' => $questions,
         ]);
     }

@@ -13,6 +13,7 @@ RUN apk update && apk upgrade \
                            libjpeg-turbo-dev \
                            libzip-dev \
                            oniguruma-dev \
+    && docker-php-ext-install exif \
     && docker-php-ext-configure gd \
                            --with-freetype=/usr/include/ \
                            --with-jpeg=/usr/include/ \

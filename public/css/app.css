@@ -10882,3 +10882,249 @@ a.text-dark:focus {
   }
 }
 
+/* this is a tool called hover.css which is responsible for the hover effect on navbar. Before we go online be sure to change this as this isn't allowed to be used for commercial use.*/
+
+#nav-link {
+  display: inline-block;
+  vertical-align: middle;
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+  overflow: hidden;
+}
+
+#nav-link:before {
+  position: absolute;
+  z-index: -1;
+  left: 51%;
+  right: 51%;
+  bottom: 0;
+  background: #5BB9FD;
+  height: 4px;
+  transition-property: left, right;
+  transition-duration: 0.4s;
+  transition-timing-function: ease-out;
+}
+
+#nav-link:hover:before,
+#nav-link:focus:before,
+#nav-link:active:before {
+  left: 0;
+  right: 0;
+}
+
+#nav-link,
+#nav-link-user {
+  font-size: 1rem;
+}
+
+/* this style is solely for making the navbar resizing look smooth*/
+
+#navbar,
+#logo {
+  transition: 0.3s;
+}
+
+.question-data {
+  font-size: 90% !important;
+  font-style: italic;
+}
+
+.dropdownmenu-hr {
+  margin-top: 4% !important;
+  margin-bottom: 4% !important;
+}
+
+.content {
+  position: fixed;
+}
+
+#content1 {
+  padding-top: 3%;
+  padding-bottom: 3%;
+}
+
+#mac {
+  padding-top: 20px;
+}
+
+/* adds some padding to the first page */
+
+.startpage {
+  padding-top: 8px;
+}
+
+#content2_header {
+  text-align: center;
+  padding-bottom: 3%;
+}
+
+/* resizes image inside #content2 */
+
+#iphoneimage {
+  height: 300px;
+  width: 150px;
+}
+
+/* styling for the "Get Started" button*/
+
+.btn-primary:hover {
+  background-color: white !important;
+  color: #5BB9FD !important;
+  border-radius: 0;
+  outline: none;
+  bottom: 50%;
+}
+
+.btn-primary {
+  background-color: #5BB9FD !important;
+  border-radius: 0 !important;
+  outline: #585858 !important;
+  bottom: 50%;
+  margin-bottom: 8px;
+}
+
+.btn-white:hover {
+  border-width: 2px !important;
+  color: #5BB9FD;
+  box-shadow: 10px;
+  outline: none;
+  bottom: 50%;
+}
+
+.btn-white {
+  border-radius: 0px !important;
+  outline: #5BB9FD;
+  bottom: 50%;
+  margin-bottom: 8px;
+  margin-left: 5px;
+  color: #5BB9FD;
+}
+
+/* gives all the headers and paragraphs Montserrat font*/
+
+h4,
+h3,
+h2,
+h1 {
+  font-family: "Montserrat", sans-serif;
+  color: #585858;
+}
+
+p {
+  font-family: "Montserrat", sans-serif;
+  color: #585858;
+  size: 15px;
+}
+
+/* gives every content the margin around the text*/
+
+#content2,
+#content3,
+#content4 {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+/*implements dark mode */
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1E1E1E;
+  }
+
+  p {
+    color: rgba(255, 255, 255, 0.849);
+    size: 15px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: rgba(255, 255, 255, 0.849);
+  }
+
+  .darkmodetoggle {
+    background-color: #252525 !important;
+  }
+
+  label {
+    color: rgba(255, 255, 255, 0.849);
+  }
+
+  .card-body {
+    background-color: #252525;
+  }
+
+  .card-header {
+    background-color: #1E1E1E !important;
+    color: rgba(255, 255, 255, 0.849) !important;
+    border-color: #1E1E1E !important;
+  }
+
+  input {
+    background-color: #302C2D !important;
+    color: rgba(255, 255, 255, 0.849) !important;
+  }
+
+  .contentarea {
+    background-color: #302C2D;
+  }
+
+  #feedhr {
+    border-top: 1px solid rgba(255, 255, 255, 0.527);
+  }
+
+  #dropdownmenunav {
+    background-color: #252525;
+  }
+
+  .dropdown-item {
+    color: rgba(255, 255, 255, 0.849);
+  }
+
+  .dropdown-item:hover {
+    background-color: #302C2D;
+    color: rgba(255, 255, 255, 0.849);
+  }
+
+  #nav-link {
+    display: inline-block;
+    vertical-align: middle;
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    position: relative;
+    overflow: hidden;
+  }
+
+  #nav-link:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 51%;
+    right: 51%;
+    bottom: 0;
+    background: #5BB9FD;
+    height: 4px;
+    transition-property: left, right;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-out;
+  }
+
+  #nav-link:hover:before,
+  #nav-link:focus:before,
+  #nav-link:active:before {
+    left: 0;
+    right: 0;
+  }
+
+  #nav-link:hover {
+    transition-duration: 0.4s;
+    transition-timing-function: ease-out;
+    color: #5BB9FD;
+  }
+}
+
