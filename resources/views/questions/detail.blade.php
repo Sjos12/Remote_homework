@@ -8,7 +8,7 @@
                 <p class="col-10">{{$question->content}}</p>
             </div>
 
-            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="false">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         @if($firstImage)
