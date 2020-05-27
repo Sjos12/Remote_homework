@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-6">
                 <h3 class="col-6">{{ $question->title }}</h3>
-                <p class="col-10">{{$question->content}}</p>
+                <p class="col-10">{{ $question->content }}</p>
             </div>
 
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="false">
@@ -17,12 +17,7 @@
                             </div>
                         @endif
                     </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="..." alt="Second slide">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="..." alt="Third slide">
-                    </div>
+                    
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -49,7 +44,7 @@
             </div>
 
             <div class="col-6  my-auto ">
-                <a class="btn btn-primary btn-lg float-right ">Answer Question</a>
+                <a class="btn btn-primary btn-lg float-right" href="{{ route('questions.answer', ['question' => $question->uuid]) }}">Answer Question</a>
             </div>
         </div>
     </div>

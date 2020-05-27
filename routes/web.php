@@ -127,6 +127,8 @@ Route::get('feed', [QuestionController::class, 'feed'])
      ->name('questions.feed');
 Route::get('feed/{question}', [QuestionController::class, 'detail'])
      ->name('questions.detail');
+Route::get('feed/{question}/answer/', [QuestionController::class, 'answer'])
+     ->name('questions.answer');
 
 // Application routes
 Route::get('/', HomeController::class)

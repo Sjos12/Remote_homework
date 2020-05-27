@@ -45,4 +45,5 @@ final class QuestionViewModel extends ViewModel
         // Could do a default image placeholder here
         return null;
     }
+    
 }
