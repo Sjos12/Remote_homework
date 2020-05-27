@@ -22,7 +22,9 @@
     <!-- Stylesheet from initial build, located in public folder -->
     <link rel="stylesheet" href="{{ asset('SASS/main.css')}}" type="text/css">
 
-    
+    <!-- Fabric JS files --> 
+    <script src="fabric.js"></script>
+    <script src="fabric.min.js"></script>
 </head>
 <body onscroll="scrollFunction()" >
     <div id="app" >
