@@ -6471,7 +6471,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
- * jQuery JavaScript Library v3.5.0
+ * jQuery JavaScript Library v3.5.1
  * https://jquery.com/
  *
  * Includes Sizzle.js
@@ -6481,7 +6481,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
  * Released under the MIT license
  * https://jquery.org/license
  *
- * Date: 2020-04-10T15:07Z
+ * Date: 2020-05-04T22:49Z
  */
 ( function( global, factory ) {
 
@@ -6619,7 +6619,7 @@ function toType( obj ) {
 
 
 var
-	version = "3.5.0",
+	version = "3.5.1",
 
 	// Define a local copy of jQuery
 	jQuery = function( selector, context ) {
@@ -10716,7 +10716,7 @@ Data.prototype = {
 
 		// If not, create one
 		if ( !value ) {
-			value = Object.create( null );
+			value = {};
 
 			// We can accept data for non-element nodes in modern browsers,
 			// but we should not, see #8335.
@@ -49779,6 +49779,8 @@ module.exports = function(module) {
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ./index.js */ "./resources/js/index.js");
+
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /**
  * The following block of code may be used to automatically register your
@@ -49917,6 +49919,30 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/index.js":
+/*!*******************************!*\
+  !*** ./resources/js/index.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function scrollFunction() {
+  //this function checks if the user is scrolled to the top of the page, if so, the navbar displays in full size. When the user starts scrolling, the navbar resizes accordingly
+  if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+    document.getElementById("navbar").style.padding = "4px 10px";
+    document.getElementById("logo").style.width = "90px";
+  } else {
+    document.getElementById("navbar").style.padding = null;
+    document.getElementById("logo").style.width = " 105px";
+  }
+
+  console.log('This works!');
+}
+
+window.scrollFunction = scrollFunction;
+
+/***/ }),
+
 /***/ "./resources/sass/app.scss":
 /*!*********************************!*\
   !*** ./resources/sass/app.scss ***!
@@ -49935,8 +49961,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/jehannes/Workspace/Remote_homework/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/jehannes/Workspace/Remote_homework/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! E:\Remote_homework\Remote_homework_laravel\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! E:\Remote_homework\Remote_homework_laravel\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

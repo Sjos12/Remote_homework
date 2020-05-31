@@ -10882,6 +10882,53 @@ a.text-dark:focus {
   }
 }
 
+/* fabricjs styling */
+
+canvas {
+  border: 1px solid white !important;
+}
+
+.canvas-container {
+  margin: 0 auto;
+}
+
+.dropdownmenu {
+  max-width: 10px !important;
+}
+
+.borderright {
+  border-right: 2px solid white !important;
+}
+
+.borderright:hover {
+  border-right: 1px solid white !important;
+  position: absolute;
+}
+
+.dropdown-item {
+  margin-right: auto;
+}
+
+.colorindicator1 {
+  color: transparent !important;
+  border: 1px solid white;
+}
+
+.colorindicator2 {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: transparent !important;
+}
+
+.colorindicator3 {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  color: transparent !important;
+}
+
+.colorindicator4 {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  color: transparent !important;
+}
+
 /* this is a tool called hover.css which is responsible for the hover effect on navbar. Before we go online be sure to change this as this isn't allowed to be used for commercial use.*/
 
 #nav-link {

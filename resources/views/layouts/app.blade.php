@@ -19,14 +19,10 @@
     <!-- Bootstrap implementation -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    <!-- Stylesheet from initial build, located in public folder -->
-    <link rel="stylesheet" href="{{ asset('SASS/main.css')}}" type="text/css">
-
     <!-- Fabric JS files --> 
-    <script src="fabric.js"></script>
-    <script src="fabric.min.js"></script>
+    <script type="text/javascript" src="{{ asset('js/index.js') }}"></script>
 </head>
-<body onscroll="scrollFunction()" >
+<body onscroll="scrollFunction()">
     <div id="app" >
         <nav id="navbar" class="navbar navbar-expand-md bg-white shadow-sm sticky-top darkmodetoggle">
             <!-- Use container-fluid to arrange navbar items from edge to edge -->
@@ -49,13 +45,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link hvr-underline-from-center" href="{{ route('home') }}#content3" id="nav-link">{{ __('Contact') }}</a>
-                        </li>
-                        @auth()
-
-
-
-
-                        @endauth
+                        </li> 
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -119,6 +109,5 @@
         <!-- the footer of the page -->
         @include('pages.footer')
     </div>
-    <script src="index.js"></script>
 </body>
 </html>

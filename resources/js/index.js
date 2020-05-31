@@ -7,4 +7,7 @@ function scrollFunction() {
           document.getElementById("navbar").style.padding = null;
           document.getElementById("logo").style.width = " 105px";
         }
+        console.log('This works!');
       }
+
+window.scrollFunction = scrollFunction

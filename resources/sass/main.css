@@ -1,6 +1,6 @@
 /* fabricjs styling */
-#c {
-  border: 1px solid black;
+canvas {
+  border: 1px solid white !important;
 }
 
 .canvas-container {

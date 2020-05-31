@@ -76,7 +76,7 @@
             </div>         
         </div>
             
-        <canvas class="mt-4" id="c" width="1000" height="700" > 
+        <canvas class="mt-4 border-light" id="c" width="1000" height="700" > 
             <!-- All the objects and images get spawned here.-->
         </canvas>
     </div>
@@ -85,7 +85,7 @@
     </div>
 </div>
 
-<script>
+<script type="text/javascript">
         // reference canvas element (with id="c")
         // create a wrapper around native canvas element (with id="c")
         var canvas = new fabric.Canvas('c');
