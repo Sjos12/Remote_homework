@@ -22,7 +22,7 @@
     <!-- Stylesheet from initial build, located in public folder -->
     <link rel="stylesheet" href="{{ asset('SASS/main.css')}}" type="text/css">
 
-    
+
 </head>
 <body onscroll="scrollFunction()" >
     <div id="app" >
@@ -72,7 +72,7 @@
                         @else
                             <li class="nav-item">
                                 <!-- put the route for the 'public' questions here-->
-                                <a href="{{ route('questions.feed') }}" class="nav-link" id="nav-link">Question Feed</a>
+                                <a href="{{ route('feed.list') }}" class="nav-link" id="nav-link">Question Feed</a>
                             </li>
 
                             <li class="nav-item dropdown">
@@ -82,10 +82,10 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" id="dropdownmenunav">
 
-                                    <a class="dropdown-item" href="{{ route('questions.overview') }}">{{ __('My questions') }}</a>
+                                    <a class="dropdown-item" href="{{ route('questions.list') }}">{{ __('My questions') }}</a>
                                     <!--<a class="dropdown-item" href="{{ route('pages.dashboard') }}">{{ __('Dashboard') }}</a>-->
                                     <a class="dropdown-item" href="{{ route('questions.create') }}">{{ __('Ask a question') }}</a>
-                                    
+
                                     <a class="dropdown-item" href="{{ route('marketplace.home')}}">{{ __('Marketplace') }}</a>
 
                                     <hr class="dropdownmenu-hr">
