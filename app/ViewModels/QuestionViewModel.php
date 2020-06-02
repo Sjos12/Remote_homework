@@ -45,5 +45,12 @@ final class QuestionViewModel extends ViewModel
         // Could do a default image placeholder here
         return null;
     }
+
+    public function registerMediaConversions(Media $media = null)
+    {
+        $this->addMediaConversion('thumb')
+              ->width(150)
+              ->height(100);
+    }
     
 }

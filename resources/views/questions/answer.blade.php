@@ -1,6 +1,8 @@
 @extends ('layouts.app')
 
 @section ('content')
+ 
+
 <div class="container">
     <div class="row">
         <div class="originalquestion border border-light rounded p-3 col-12 ">

@@ -20,7 +20,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <!-- Fabric JS files --> 
-    <script type="text/javascript" src="{{ asset('js/index.js') }}"></script>
+    
+
 </head>
 <body onscroll="scrollFunction()">
     <div id="app" >
@@ -109,5 +110,9 @@
         <!-- the footer of the page -->
         @include('pages.footer')
     </div>
+
+    <script type="text/javascript" src="{{ asset('js/index.js') }}"></script>
+    <script src="{{ asset('fabric.js') }}"></script>
+    <script src="{{ asset('fabric.min.js') }}"></script>
 </body>
 </html>
