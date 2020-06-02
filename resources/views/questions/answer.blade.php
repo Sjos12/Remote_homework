@@ -31,7 +31,7 @@
         </div> 
 
         <div class="row">
-        <div class="col-11 mr-auto ml-auto pt-4">
+        <div class="col-12 mr-auto ml-auto pt-4">
                 <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Places a texbox on the middle of the image" onclick="spawntext()"><svg class="bi bi-textarea-t" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M14 9a1 1 0 100-2 1 1 0 000 2zm0 1a2 2 0 100-4 2 2 0 000 4zM2 9a1 1 0 100-2 1 1 0 000 2zm0 1a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
                     <path fill-rule="evenodd" d="M1.5 2.5A1.5 1.5 0 013 1h10a1.5 1.5 0 011.5 1.5v4h-1v-4A.5.5 0 0013 2H3a.5.5 0 00-.5.5v4h-1v-4zm1 7v4a.5.5 0 00.5.5h10a.5.5 0 00.5-.5v-4h1v4A1.5 1.5 0 0113 15H3a1.5 1.5 0 01-1.5-1.5v-4h1z" clip-rule="evenodd"/>
@@ -76,9 +76,14 @@
             </div>         
         </div>
             
-        <canvas class="mt-4 border-light" id="c" width="1000" height="700" > 
-            <!-- All the objects and images get spawned here.-->
-        </canvas>
+        <div class="col-12">
+            <div class="">
+                <canvas class="mt-4 mx-auto " id="c"> 
+                    <!-- All the objects and images get spawned here.-->
+                </canvas>
+            </div>
+        </div>   
+  
     </div>
     
         </div>
