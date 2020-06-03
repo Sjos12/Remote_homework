@@ -114,5 +114,6 @@
     <script type="text/javascript" src="{{ asset('js/index.js') }}"></script>
     <script src="{{ asset('fabric.js') }}"></script>
     <script src="{{ asset('fabric.min.js') }}"></script>
+    <script src="{{ asset('tools.js') }}"></script>
 </body>
 </html>

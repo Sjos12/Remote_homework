@@ -79,8 +79,8 @@
         </div>
             
         <div class="col-12">
-            <div class="">
-                <canvas class="mt-4 mx-auto " id="c"> 
+            <div class="row">
+                <canvas class="mt-4 mx-auto border border-light" id="c" height="600" width="1000"> 
                     <!-- All the objects and images get spawned here.-->
                 </canvas>
             </div>
@@ -92,7 +92,7 @@
     </div>
 </div>
 
-<script type="text/javascript">
+<!--<script type="text/javascript">
         // reference canvas element (with id="c")
         // create a wrapper around native canvas element (with id="c")
         var canvas = new fabric.Canvas('c');
@@ -167,6 +167,6 @@
                 }
                 canvas.renderAll();
         }
-    </script>
+    </script>-->
 
 @endsection
