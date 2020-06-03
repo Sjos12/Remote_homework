@@ -65,11 +65,11 @@
                     <!--<button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Places a texbox on the middle of the image" onclick="spawncircle()"><svg class="bi bi-check" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"/>
                         </svg></button>-->
-                    <a class="btn btn-primary pt-2 pb-2" id="color1" onclick="changetextcolor('blue')"><span class="badge  badge-pill badge-primary colorindicator1 float-right">.</span></a>
-                    <a class="btn btn-primary pt-2 pb-2" id="color2" onclick="changetextcolor('green')"><span class="badge badge-pill badge-success colorindicator4 float-right">.</span></a>
-                    <a class="btn btn-primary pt-2 pb-2" id="color3" onclick="changetextcolor('red')"><span class="badge badge-pill badge-danger colorindicator2 float-right">.</span></a>
-                    <a class="btn btn-primary pt-2 pb-2" id="color4" onclick="changetextcolor('white')"><span class="badge badge-pill badge-light colorindicator3 float-right">.</span></a>
-                    <a class="btn btn-primary pt-2 pb-2" id="color5" onclick="changetextcolor('black')"><span class="badge badge-pill badge-dark colorindicator4 float-right">.</span></a>
+                    <a class="btn btn-primary pt-2 pb-2" href="#" id="color1" onclick="changetextcolor('blue')"><span class="badge  badge-pill badge-primary colorindicator1 float-right">.</span></a>
+                    <a class="btn btn-primary pt-2 pb-2" href="#" id="color2" onclick="changetextcolor('green')"><span class="badge badge-pill badge-success colorindicator4 float-right">.</span></a>
+                    <a class="btn btn-primary pt-2 pb-2" href="#" id="color3" onclick="changetextcolor('red')"><span class="badge badge-pill badge-danger colorindicator2 float-right">.</span></a>
+                    <a class="btn btn-primary pt-2 pb-2" href="#" id="color4" onclick="changetextcolor('white')"><span class="badge badge-pill badge-light colorindicator3 float-right">.</span></a>
+                    <a class="btn btn-primary pt-2 pb-2" href="#" id="color5" onclick="changetextcolor('black')"><span class="badge badge-pill badge-dark colorindicator4 float-right">.</span></a>
                     
 
                     <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Removes selected element" onclick="removeactiveobject()"><svg class="bi bi-trash" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
