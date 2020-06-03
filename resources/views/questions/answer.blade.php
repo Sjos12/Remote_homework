@@ -4,7 +4,7 @@
  
 
 <div class="container">
-        <div class="originalquestion border border-light rounded p-3 col-12 ">
+     <div class="originalquestion border border-light rounded p-3 col-12 ">
             <div class="row">
                 <div class="col-10 my-auto">
                     <h1>{{ $question->title }}</h1>
@@ -26,7 +26,7 @@
                     </a> 
                 </div>
             </div>
-        </div> 
+        </div>
 
         <div class="row">
             <div class="col-12 mr-auto ml-auto pt-4">
@@ -72,18 +72,19 @@
                         <path fill-rule="evenodd" d="M14.5 3a1 1 0 01-1 1H13v9a2 2 0 01-2 2H5a2 2 0 01-2-2V4h-.5a1 1 0 01-1-1V2a1 1 0 011-1H6a1 1 0 011-1h2a1 1 0 011 1h3.5a1 1 0 011 1v1zM4.118 4L4 4.059V13a1 1 0 001 1h6a1 1 0 001-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" clip-rule="evenodd"/>
                         </svg></button>
                 </div>         
-            </div>
+            </div>  
         </div>
-</div>
-</div>
-</div>
 
-<div class="row">
-    <div class="col-12"> 
-        <canvas class="mt-4 mx-auto border border-light" id="canvas" height="600" width="1000"> 
-                            <!-- All the objects and images get spawned here.-->
-        </canvas>
-    </div>
+        
 </div>
+<div class="row">
+            <div class="col-12"> 
+                <canvas class="mt-4 mx-auto border border-light" id="canvas" height="600" width="1000"> 
+                                    <!-- All the objects and images get spawned here.-->
+                </canvas>
+            </div>
+        </div>      
+
+
 
 @endsection
