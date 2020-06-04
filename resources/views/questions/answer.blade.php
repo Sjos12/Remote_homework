@@ -9,21 +9,24 @@
                 <div class="col-10 my-auto">
                     <h1>{{ $question->title }}</h1>
                     <!--<p>{{ $question->content}}</p>-->
+                    
                 </div> 
                 <div class="col-2">
                     @if($firstImage)
-                        {{ $firstImage->img()->attributes(['class' => 'img-fluid rounded', 'alt' => $question->title]) }}
+                        {{ $firstImage->img()->attributes(['class' => 'img-fluid rounded', 'alt' => $question->title, 'style' => 'display: none;', 'id' => 'answerimg']) }}
                     @endif
+
+                    <a class="mx-auto my-auto">
+                        <svg class="bi bi-chevron-compact-down " width="2em" height="2em" viewBox="0 0 16 16" fill="white" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
+                        </svg>
+                    </a> 
                 </div>
             </div>
              <!--@todo: on the caret click, the question should pop down and the paragraph should preview as well as the image which should grow larger-->          
             <div class="row">
                 <div class="mx-auto text-center col-10"> 
-                    <a class="">
-                        <svg class="bi bi-chevron-compact-down mx-auto" width="2em" height="2em" viewBox="0 0 16 16" fill="white" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
-                        </svg>
-                    </a> 
+                    
                 </div>
             </div>
         </div> 
@@ -71,6 +74,9 @@
                         <path d="M5.5 5.5A.5.5 0 016 6v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm2.5 0a.5.5 0 01.5.5v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm3 .5a.5.5 0 00-1 0v6a.5.5 0 001 0V6z"/>
                         <path fill-rule="evenodd" d="M14.5 3a1 1 0 01-1 1H13v9a2 2 0 01-2 2H5a2 2 0 01-2-2V4h-.5a1 1 0 01-1-1V2a1 1 0 011-1H6a1 1 0 011-1h2a1 1 0 011 1h3.5a1 1 0 011 1v1zM4.118 4L4 4.059V13a1 1 0 001 1h6a1 1 0 001-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" clip-rule="evenodd"/>
                         </svg></button>
+
+                        <a class="btn btn-primary" onclick="saveCanvas()">Save Answer</a>
+                        <a class="btn btn-primary" onclick="spawnImg()">Spawn Image</a>
                 </div>         
             </div>
         </div>

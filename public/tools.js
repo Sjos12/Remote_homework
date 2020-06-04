@@ -1,12 +1,35 @@
         // reference canvas element (with id="c")
         // create a wrapper around native canvas element (with id="c")
         var canvas = new fabric.Canvas('canvas');
+        canvas.calcOffset();
+         
+
 
         // variable which chooses color of objects 
         var objcolor = 'white';
 
-        canvas.calcOffset();
-        console.log('tools work!');
+        function spawnImg() { 
+            var image = document.getElementById('answerimg'); 
+            var fabricImage = new fabric.Image(image, {
+                hasControls: false,
+                hasBorders: false, 
+                lockMovementX: true, 
+                lockMovementY: true, 
+            }); 
+            canvas.add(fabricImage);
+            canvas.renderAll();
+        }
+        
+        //Function which serializes canvas and should be called on button click.
+        function saveCanvas() {
+            //This should be POSTed to the database. 
+            var serialize = JSON.stringify(canvas); 
+            console.log(serialize);
+            
+            //This function is called to deserialize the JSON. 
+            canvas.loadFromJSON(); 
+        }
+
         function spawntext() {
 
             var text = new fabric.IText("Text",{
