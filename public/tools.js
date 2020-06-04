@@ -103,16 +103,22 @@
         }  
 
         function removeactiveobject() { 
-
+            var obj = canvas.getActiveObject();
+            var typecheck = obj.get('type');
             var activeObject = canvas.getActiveObjects();
                 console.log(activeObject)
-
+                console.log(typecheck)
+            if (typecheck === 'image') { 
+                return null;
+            }
+            else {
                 if (activeObject) {
                     activeObject.forEach(function(object) {
                     canvas.remove(object);
                     });
                     canvas.discardActiveObject();
                 }
+            }
                 canvas.renderAll();
         }
 
