@@ -15,6 +15,7 @@
                 hasBorders: false, 
                 lockMovementX: true, 
                 lockMovementY: true, 
+                selectable: false, 
             }); 
             canvas.add(fabricImage);
             canvas.renderAll();
