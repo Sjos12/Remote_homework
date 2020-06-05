@@ -22,16 +22,16 @@
                                 View Question
                             </a>
                     </div>
-
+                     <div class="row"></div>
                     <h6 class="col-12 text-left align-items-end">
-                        Submitted by: {{ $view_model->question()->author->name }}
+                        Asked by: {{ $view_model->question()->author->name }}
                     </h6>
-                <div class="row"></div>
+
                     <p class="col-6 text-left">
-                        Posted at: {{ $view_model->createdSince() }}
+                        Asked  {{ $view_model->createdSince() }}
                     </p>
                     <p class="text-right align-bottom">
-                        Last updated at: {{ $view_model->question()->updated_at->diffForHumans() }}
+                        Last updated {{ $view_model->createdSince() }}
                     </p>
 `               </div>
 

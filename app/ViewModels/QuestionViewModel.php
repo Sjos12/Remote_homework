@@ -50,6 +50,6 @@ final class QuestionViewModel extends ViewModel
     {
         return $this->question->created_at->diffForHumans();
     }
-    
+
 
 }
