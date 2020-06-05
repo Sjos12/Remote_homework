@@ -111,8 +111,9 @@ final class QuestionController
         return view('questions.detail', new QuestionViewModel($question));
     }
 
-    public function answer(Question $question): Renderable 
+    public function answer(Question $question): Renderable
     {
+
         return view('questions.answer', new QuestionViewModel($question));
     }
 }
