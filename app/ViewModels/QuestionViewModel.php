@@ -46,11 +46,10 @@ final class QuestionViewModel extends ViewModel
         return null;
     }
 
-    public function registerMediaConversions(Media $media = null)
+    public function createdSince()
     {
-        $this->addMediaConversion('thumb')
-              ->width(150)
-              ->height(100);
+        return $this->question->created_at->diffForHumans();
     }
     
+
 }
