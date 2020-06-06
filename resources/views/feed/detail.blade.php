@@ -36,16 +36,18 @@
 
 
             <div class="col-6">
-                <p class="col-12 question-data">
-                    Submitted by: {{ $question->author->name }}
+                <p class="col-12 question-data text-left">
+                    Question asked {{ $question->created_at->diffForHumans() }}
                 </p>
 
-                <p class="col-12 question-data text-left">
-                    Posted at: {{ $question->created_at->toDateTimeString() }}
-                </p>
                 <p class="col-12  question-data text-left">
-                    Last updated at: {{ $question->updated_at->toDateTimeString() }}
+                    Last updated {{ $question->updated_at->diffForHumans() }}
                 </p>
+
+                <p class="col-12 question-data">
+                    Asked by {{ $question->author->name }}
+                </p>
+
             </div>
 
             <div class="col-6  my-auto ">

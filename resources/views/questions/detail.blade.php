@@ -44,7 +44,7 @@
             </div>
 
             <div class="col-6 my-auto">
-                <a class="btn btn-primary btn-lg float-right" href="{{ route('feed.answer', ['question' => $question->uuid]) }}">Answer Question</a>
+                <!--<a class="btn btn-primary btn-lg float-right" href="{{ route('feed.answer', ['question' => $question->uuid]) }}">Answer Question</a>-->
                 <a class="btn btn-primary btn-lg float-right" href="{{ route('questions.edit', ['question' => $question->uuid]) }}">Edit question</a>
             </div>
         </div>

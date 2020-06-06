@@ -2,47 +2,41 @@
 
 @section('content')
     <div class="container">
-        <div>
-            @if (empty($questions))
-                <h1>Nothing here</h1>
-            @endif
+        @foreach($questions as $view_model)
+            <div class="row ">
+                @if($firstImage = $view_model->firstImage())
+                    <div class=" col-lg-4 col-md-4 col-xs-12 col-sm-12 d-flex justify-content-center">
+                        {{ $firstImage->img()->attributes(['class' => 'img-fluid d-block mx-auto mt-auto mb-auto rounded', 'alt' => $view_model->question()->title]) }}
+                    </div>
+                @endif
 
-            @foreach($questions as $view_model)
-                <div class="row">
+                <div class="ml-auto pt-4 pb-4 col-lg-8 col-md-8 col-sm-12 col-xs-12">
 
-                    @if($firstImage = $view_model->firstImage())
-                        <div class="col-4">
-                            {{ $firstImage->img()->attributes(['class' => 'img-fluid', 'alt' => $view_model->question()->title]) }}
-                        </div>
-                    @endif
                     <h3 class="col-12">{{ $view_model->question()->title }}</h3>
+                    <p class="col-12">{{$view_model->question()->content}}</p>
 
-                    {{-- @todo: is this shares with feed.blade.php, create single template included by both --}}
-                    <p class="col-10">{{$view_model->question()->content}}</p>
-
-                    <div class=" col-2">
-                        <a class="btn btn-xs btn-primary float-right"
+                    <div class="ml-auto mt-auto mb-auto">
+                        <a class="btn btn-lg btn-primary float-right"
                            href="{{ route('questions.detail', ['question' => $view_model->question()->uuid]) }}"
                         >
                             View Question
                         </a>
                     </div>
-                    <h6 class="col-12 bold author-data">
-                        Submitted by: {{ $view_model->question()->author->name }}
+                    <div class="row"></div>
+                    <h6 class="col-12 text-left align-items-end">
+                        Asked by: {{ $view_model->question()->author->name }}
                     </h6>
-                    <p class="col-6 question-data">
-                        Posted
-                        at: {{ $view_model->question()->created_at->toDateTimeString() }}
-                    </p>
-                    <p class="col-6 question-data text-right">
-                        Last updated
-                        at: {{ $view_model->question()->updated_at->toDateTimeString() }}
-                    </p>
 
-                </div>
+                    <p class="col-6 text-left">
+                        Asked  {{ $view_model->createdSince() }}
+                    </p>
+                    <p class="text-right align-bottom">
+                        Last updated {{ $view_model->createdSince() }}
+                    </p>
+                    `               </div>
 
-                <hr id="feedhr">
-            @endforeach
-        </div>
+            </div>
+            <hr class="feedhr" id="feedhr">
+        @endforeach
     </div>
 @endsection

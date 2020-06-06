@@ -24,6 +24,16 @@ final class QuestionController
         return view('questions.create');
     }
 
+    public function edit(): Renderable
+    {
+        return view('questions.edit');
+    }
+
+    public function update(): Renderable
+    {
+        return view('questions.edit');
+    }
+
     public function store(Request $request): Response
     {
         $validated_data = $this->validate(
@@ -88,7 +98,7 @@ final class QuestionController
                                  fn(Question $question) => new QuestionViewModel($question)
                              );
 
-        return view('feed.list', [
+        return view('questions.list', [
             'questions' => $questions,
         ]);
     }
