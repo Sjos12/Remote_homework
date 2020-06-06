@@ -128,7 +128,7 @@ Route::middleware([
          Route::get('feed/{question}', [FeedController::class, 'detail'])
               ->name('feed.detail');
          Route::get('feed/{question}/answer/', [FeedController::class, 'answer'])
-              ->name('questions.answer');
+              ->name('feed.answer');
 
          //Marketplace route
          Route::get('marketplace', MarketplaceController::class)

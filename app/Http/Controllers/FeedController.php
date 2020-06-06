@@ -26,4 +26,9 @@ final class FeedController
     {
         return view('feed.detail', new QuestionViewModel($question));
     }
+
+    public function answer(Question $question): Renderable
+    {
+        return view('feed.answer', new QuestionViewModel($question));
+    }
 }
