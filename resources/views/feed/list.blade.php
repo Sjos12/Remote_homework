@@ -17,7 +17,7 @@
 
                     <div class="ml-auto mt-auto mb-auto">
                             <a class="btn btn-lg btn-primary float-right"
-                               href="{{ route('questions.detail', ['question' => $view_model->question()->uuid]) }}"
+                               href="{{ route('feed.detail', ['question' => $view_model->question()->uuid]) }}"
                             >
                                 View Question
                             </a>
