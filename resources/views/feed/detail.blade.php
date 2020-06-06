@@ -51,7 +51,7 @@
             </div>
 
             <div class="col-6  my-auto ">
-                <a class="btn btn-primary btn-lg float-right ">Answer Question</a>
+                <a class="btn btn-primary btn-lg float-right " href="{{  route('feed.answer', ['question' => $question->uuid]) }}">Answer Question</a>
             </div>
         </div>
     </div>
