@@ -18,11 +18,8 @@
 
     <!-- Bootstrap implementation -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-    <!-- Fabric JS files -->
-
 </head>
-<body onscroll="scrollFunction()">
+<body onscroll="/*scrollFunction()*/">
     <div id="app" >
         <nav id="navbar" class="navbar navbar-expand-md bg-white shadow-sm sticky-top darkmodetoggle">
             <!-- Use container-fluid to arrange navbar items from edge to edge -->
@@ -111,8 +108,7 @@
     </div>
 
     <script type="text/javascript" src="{{ asset('js/index.js') }}"></script>
-    <script src="{{ asset('fabric.js') }}"></script>
-    <script src="{{ asset('fabric.min.js') }}"></script>
+    <script src="{{ asset('fabric.js') }}"></script>s
     <script src="{{ asset('tools.js') }}"></script>
 </body>
 </html>

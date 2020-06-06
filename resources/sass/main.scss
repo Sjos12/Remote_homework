@@ -2,23 +2,19 @@
 @import'functions';
 
 
-/* fabricjs styling */ 
+/* fabricjs styling */
 canvas {
     #c {
         border: 1px solid white !important;
-        padding-left: 0;
-        padding-right: 0;
         margin-left: auto;
         margin-right: auto;
-        display: block;
-        width: 800px;
     }
 }
-.canvas-container { 
+.canvas-container {
     margin:0 auto ;
 }
 
-.dropdownmenu { 
+.dropdownmenu {
     max-width: 10px !important;
 }
 
@@ -63,7 +59,7 @@ canvas {
     position: relative;
     overflow: hidden;
   }
-  
+
 #nav-link:before {
     position: absolute;
     z-index: -1;
@@ -185,13 +181,13 @@ p {
 
    p {
     color: $darkmodetextcolor;
-    size: 15px; 
+    size: 15px;
     }
     h1, h2, h3, h4, h5, h6 {
         color:$darkmodetextcolor;
     }
     .darkmodetoggle {
-        background-color: $darkmodecolor !important; 
+        background-color: $darkmodecolor !important;
     }
     label {
         color: $darkmodetextcolor;
@@ -211,13 +207,13 @@ p {
     .contentarea{
         background-color: $darkmodecolor_light;
     }
-    #feedhr{ 
+    #feedhr{
         border-top: 1px solid rgba(255, 255, 255, 0.527);
     }
 
     #dropdownmenunav {
         background-color: $darkmodecolor;
-        
+
     }
     .dropdown-item {
         color: $darkmodetextcolor;
@@ -255,7 +251,7 @@ p {
       #nav-link:hover:before, #nav-link:focus:before, #nav-link:active:before {
         left: 0;
         right: 0;
-        
+
       }
 
       #nav-link:hover {
@@ -265,5 +261,5 @@ p {
          transition-timing-function: ease-out;
         color: $buttoncolor;
       }
-    
+
 }

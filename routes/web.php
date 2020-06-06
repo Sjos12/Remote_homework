@@ -120,7 +120,7 @@ Route::middleware([
          Route::get('/user/questions/{question}/edit',
              [QuestionController::class, 'edit'])
               ->name('questions.edit');
-         Route::post('/user/questions', [QuestionController::class, 'update'])
+         Route::post('/user/questions/{question}', [QuestionController::class, 'update'])
               ->name('questions.update');
          // View own questions
          Route::get('user/questions', [QuestionController::class, 'list'])
