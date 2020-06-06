@@ -17,7 +17,7 @@
                             </div>
                         @endif
                     </div>
-                    
+
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -43,8 +43,9 @@
                 </p>
             </div>
 
-            <div class="col-6  my-auto ">
-                <a class="btn btn-primary btn-lg float-right" href="{{ route('questions.answer', ['question' => $question->uuid]) }}">Answer Question</a>
+            <div class="col-6 my-auto">
+                <a class="btn btn-primary btn-lg float-right" href="{{ route('feed.answer', ['question' => $question->uuid]) }}">Answer Question</a>
+                <a class="btn btn-primary btn-lg float-right" href="{{ route('questions.edit', ['question' => $question->uuid]) }}">Edit question</a>
             </div>
         </div>
     </div>
