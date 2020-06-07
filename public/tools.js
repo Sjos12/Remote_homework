@@ -15,8 +15,15 @@
                 selectable: false,
 
             });
-            fabricImage.scaleToHeight(1000);
-            fabricImage.scaleToWidth(600);
+
+            let canvasHeight = canvas.height;
+            let canvasWidth = canvas.width;
+
+            fabricImage.scaleToHeight(canvasHeight);
+            fabricImage.scaleToWidth(canvasWidth);
+
+            //canvas.setDimensions({width:imageWidth, height:imageHeight});
+            //canvas.loadFromJSON(//put here the JSON from backend);
             canvas.add(fabricImage);
             canvas.renderAll();
         }
