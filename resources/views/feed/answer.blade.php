@@ -13,7 +13,7 @@
                 </div>
                 <div class="col-2">
                     @if($firstImage)
-                        {{ $firstImage->img()->attributes(['class' => 'img-fluid rounded', 'alt' => $question->title, 'style' => 'display: none;', 'id' => 'answerimg']) }}
+                        {{ $firstImage->img()->attributes(['class' => 'img-fluid rounded', 'alt' => $question->title, 'style' => 'display:none;', 'id' => 'answerimg']) }}
                     @endif
 
                     <a class="mx-auto my-auto">
@@ -26,6 +26,7 @@
              <!--@todo: on the caret click, the question should pop down and the paragraph should preview as well as the image which should grow larger-->
         </div>
 
+    <div class="row">
         <div class="col-12">
             <div class="form-group col-12 pt-4">
                 <label for="content">
@@ -45,6 +46,7 @@
                 @enderror
             </div>
         </div>
+    </div>
 
         <div class="row">
             <div class="col-12 mr-auto ml-auto pt-4">
@@ -96,10 +98,12 @@
             </div>
         </div>
 </div>
+<!-- canvas doesn't work without this div because of broken DOM -->
+</div>
 
 <div class="row">
     <div class="col-12">
-        <canvas class="mt-4 mx-auto border border-light " id="canvas" width="300" height="300">
+        <canvas class="mt-4 mx-auto border border-light " id="canvas" height="600" width="1000">
                             <!-- All the objects and images get spawned here.-->
         </canvas>
     </div>
