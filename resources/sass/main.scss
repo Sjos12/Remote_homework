@@ -1,6 +1,31 @@
 @import'variables';
 @import'functions';
 
+body { 
+    padding: 0; 
+    margin: 0;
+}
+
+/* footer styling */ 
+.footercolor {
+    background-color: $darkmodefootercolor;
+}
+
+.footerdark { 
+    background-color: $darkmodefootercolor_dark;
+}
+
+.footertext { 
+    font-size: $font-size-footer;
+    color: $textcolor;
+}
+
+.footerlink { 
+    color: $buttoncolor; 
+}
+
+.footer {
+}
 
 /* fabricjs styling */
 canvas {
@@ -261,5 +286,14 @@ p {
          transition-timing-function: ease-out;
         color: $buttoncolor;
       }
+    
+    /*footerstyling*/
+    .footertext { 
+        font-size: $font-size-footer;
+        color: $textcolor_footer_dark;
+    }
 
+    .footerlink { 
+        color: $buttoncolor; 
+    }
 }

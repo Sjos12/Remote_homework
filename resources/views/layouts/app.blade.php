@@ -104,11 +104,12 @@
             @yield('content')
         </main>
         <!-- the footer of the page -->
-        @include('pages.footer')
+        
     </div>
-
+    
+    @include('pages.footer')
     <script type="text/javascript" src="{{ asset('js/index.js') }}"></script>
-    <script src="{{ asset('fabric.js') }}"></script>s
+    <script src="{{ asset('fabric.js') }}"></script>
     <script src="{{ asset('tools.js') }}"></script>
 </body>
 </html>

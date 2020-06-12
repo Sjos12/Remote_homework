@@ -2,11 +2,14 @@
 $textcolor : #585858;
 $buttoncolor: #5BB9FD;
 $navbarcolor_old: #3490dc;
+$textcolor_footer_dark : #9b9a9a;
 
 $darkmodecolor: #252525;
 $darkmodecolor_light: #302C2D;
 $darkmodecolor_dark: #1E1E1E;
 $darkmodetextcolor:rgba(255, 255, 255, 0.849);
+$darkmodefootercolor: #141414;
+$darkmodefootercolor_dark: #0A0A0A;
 
 // Body
 $body-bg: #f8fafc;
@@ -15,7 +18,7 @@ $body-bg: #f8fafc;
 $font-family-sans-serif: 'Nunito', sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
-
+$font-size-footer: 0.8rem; 
 // Colors
 $blue: #3490dc;
 $indigo: #6574cd;
