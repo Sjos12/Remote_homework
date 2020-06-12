@@ -19,7 +19,7 @@
     <!-- Bootstrap implementation -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body onscroll="/*scrollFunction()*/">
+<body onscroll="scrollFunction()">
     <div id="app" >
         <nav id="navbar" class="navbar navbar-expand-md bg-white shadow-sm sticky-top darkmodetoggle">
             <!-- Use container-fluid to arrange navbar items from edge to edge -->
