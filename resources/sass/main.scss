@@ -6,6 +6,16 @@ body {
     margin: 0;
 }
 
+#homeworkgirl { 
+    width: 700px;
+    height: auto; 
+}
+
+.title { 
+    font-family: $font-family-title;
+    font-size: $font-family-title-size;
+}
+
 /* footer styling */ 
 .footercolor {
     background-color: $darkmodefootercolor;
@@ -22,9 +32,6 @@ body {
 
 .footerlink { 
     color: $buttoncolor; 
-}
-
-.footer {
 }
 
 /* fabricjs styling */
