@@ -28,23 +28,28 @@
 
     <div class="row">
         <div class="col-12">
-            <div class="form-group col-12 pt-4">
-                <label for="content">
-                    {{ __('Type an explanation of your answer on the original question here') }}
-                </label>
-                <textarea id="content"
-                          class="form-control @error('content') is-invalid @enderror contentarea"
-                          rows="5"
-                          name="content"
-                          aria-describedby="contentHelp"
-                >{{ old('content') }}</textarea>
-                <small id="contentHelp" class="form-text text-muted">
-                    {{ __('') }}
-                </small>
-                @error('content')
-                <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-            </div>
+            <form id="answered"
+                  action=""
+                  data-question-uuid="{{ $question->uuid }}"
+            >
+                <div class="form-group col-12 pt-4">
+                    <label for="content">
+                        {{ __('Type an explanation of your answer on the original question here') }}
+                    </label>
+                    <textarea id="content"
+                              class="form-control @error('content') is-invalid @enderror contentarea"
+                              rows="5"
+                              name="content"
+                              aria-describedby="contentHelp"
+                    >{{ old('content') }}</textarea>
+                    <small id="contentHelp" class="form-text text-muted">
+                        {{ __('') }}
+                    </small>
+                    @error('content')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+            </form>
         </div>
     </div>
 
