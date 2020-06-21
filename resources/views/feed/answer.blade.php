@@ -32,6 +32,8 @@
                   action=""
                   data-question-uuid="{{ $question->uuid }}"
             >
+                <input type="hidden" name="annotations" id="annotations" value="{{ old('annotations') }}">
+
                 <div class="form-group col-12 pt-4">
                     <label for="content">
                         {{ __('Type an explanation of your answer on the original question here') }}
@@ -98,7 +100,6 @@
                         </svg></button>
 
                         <a class="btn btn-primary" onclick="saveCanvas()">Save Answer</a>
-                        <a class="btn btn-primary" onclick="spawnImg()">Spawn Image</a>
                 </div>
             </div>
         </div>

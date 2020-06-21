@@ -39,7 +39,14 @@ function saveCanvas() {
     const serialize = JSON.stringify(canvas);
     console.log(serialize);
 
-    const questionUuid = $('#answered').data('questionUuid')
+    const form = $('#answered');
+    let annotations_field = form.children('#annotations');
+
+    annotations_field.value = serialize;
+
+    form.submit();
+
+    /*const questionUuid = $('#answered').data('questionUuid')
 
     axios.post(`/feed/${questionUuid}/answer`, {
         'annotations': serialize
@@ -49,7 +56,7 @@ function saveCanvas() {
         })
         .catch(function (error) {
             console.log(error);
-        });
+        });*/
 }
 
 function spawntext() {
