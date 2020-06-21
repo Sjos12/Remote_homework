@@ -35,28 +35,17 @@ window.onload = function() {
 
 //Function which serializes canvas and should be called on button click.
 function saveCanvas() {
-    //This should be POSTed to the database.
-    const serialize = JSON.stringify(canvas);
-    console.log(serialize);
+    // Serialize the annotations
+    const serialized_annotations = JSON.stringify(canvas);
+    console.debug(serialized_annotations);
 
+    // Get the hidden input and place the annotations on the form
     const form = $('#answered');
     let annotations_field = form.children('#annotations');
+    annotations_field.value = serialized_annotations;
 
-    annotations_field.value = serialize;
-
-    form.submit();
-
-    /*const questionUuid = $('#answered').data('questionUuid')
-
-    axios.post(`/feed/${questionUuid}/answer`, {
-        'annotations': serialize
-    })
-        .then(function (response) {
-            console.log(response);
-        })
-        .catch(function (error) {
-            console.log(error);
-        });*/
+    // Return true allows the form submit event to continue
+    return true;
 }
 
 function spawntext() {

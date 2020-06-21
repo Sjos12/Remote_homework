@@ -29,9 +29,12 @@
     <div class="row">
         <div class="col-12">
             <form id="answered"
-                  action=""
-                  data-question-uuid="{{ $question->uuid }}"
+                  method="POST"
+                  action="{{ route('feed.answered', ['question' => $question->uuid]) }}"
+                  onsubmit="return saveCanvas()"
             >
+                @csrf
+
                 <input type="hidden" name="annotations" id="annotations" value="{{ old('annotations') }}">
 
                 <div class="form-group col-12 pt-4">
@@ -50,6 +53,8 @@
                     @error('content')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
+
+                    <button type="submit" class="btn btn-primary">Save Answer</button>
                 </div>
             </form>
         </div>
@@ -99,7 +104,7 @@
                         <path fill-rule="evenodd" d="M14.5 3a1 1 0 01-1 1H13v9a2 2 0 01-2 2H5a2 2 0 01-2-2V4h-.5a1 1 0 01-1-1V2a1 1 0 011-1H6a1 1 0 011-1h2a1 1 0 011 1h3.5a1 1 0 011 1v1zM4.118 4L4 4.059V13a1 1 0 001 1h6a1 1 0 001-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" clip-rule="evenodd"/>
                         </svg></button>
 
-                        <a class="btn btn-primary" onclick="saveCanvas()">Save Answer</a>
+
                 </div>
             </div>
         </div>

@@ -46,6 +46,7 @@ final class FeedController
         $validated_data = $this->validate(
             $request,
             [
+                'content'     => 'required',
                 'annotations' => 'required',
             ]
         );
@@ -55,6 +56,7 @@ final class FeedController
 
             Answer::create([
                 'user_id'     => $request->user()->id,
+                'content'     => $validated_data['content'],
                 'annotations' => $validated_data['annotations'],
             ]);
 
@@ -81,7 +83,5 @@ final class FeedController
         return redirect()->to(
             route('feed.detail', ['question' => $question->uuid])
         );
-
-
     }
 }
