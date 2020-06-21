@@ -1,13 +1,13 @@
 // reference canvas element (with id="c")
 // create a wrapper around native canvas element (with id="c")
-var canvas = new fabric.Canvas('canvas');
+const canvas = new fabric.Canvas('canvas');
 
 // variable which chooses color of objects
-var objcolor = 'white';
+const objcolor = 'white';
 
 function spawnImg() {
-    var image = document.getElementById('answerimg');
-    var fabricImage = new fabric.Image(image, {
+    const image = document.getElementById('answerimg');
+    let fabricImage = new fabric.Image(image, {
         hasControls: false,
         hasBorders: false,
         lockMovementX: true,
@@ -26,7 +26,12 @@ function spawnImg() {
     //canvas.loadFromJSON(//put here the JSON from backend);
     canvas.add(fabricImage);
     canvas.renderAll();
+
 }
+
+window.onload = function() {
+    spawnImg();
+};
 
 //Function which serializes canvas and should be called on button click.
 function saveCanvas() {

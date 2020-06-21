@@ -3,10 +3,11 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Illustration;
+use App\Answer;
 use App\Question;
 use App\ViewModels\QuestionViewModel;
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -14,12 +15,15 @@ use Throwable;
 
 final class FeedController
 {
+    use ValidatesRequests;
+
     public function list(): Renderable
     {
         $questions = Question::orderBy('updated_at', 'desc')
                              ->get()
                              ->map(
-                                 fn(Question $question) => new QuestionViewModel($question)
+                                 fn(Question $question
+                                 ) => new QuestionViewModel($question)
                              );
 
         return view('feed.list', [
@@ -42,17 +46,16 @@ final class FeedController
         $validated_data = $this->validate(
             $request,
             [
-                'annotations'        => 'required',
+                'annotations' => 'required',
             ]
         );
 
         try {
             DB::beginTransaction();
 
-            // @todo: create model
-            $question = Answer::create([
-                'user_id' => $request->user()->id,
-                'annotations' => $request->input('annotation'),
+            Answer::create([
+                'user_id'     => $request->user()->id,
+                'annotations' => $validated_data['annotations'],
             ]);
 
             DB::commit();
@@ -75,6 +78,10 @@ final class FeedController
                              ->withInput();
         }
 
-        return redirect()->back();
+        return redirect()->to(
+            route('feed.detail', ['question' => $question->uuid])
+        );
+
+
     }
 }
