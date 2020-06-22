@@ -135,6 +135,9 @@ Route::middleware([
               ->name('feed.detail');
          Route::get('feed/{question}/answer/', [FeedController::class, 'answer'])
               ->name('feed.answer');
+         // @todo: refactor to API route
+         Route::post('feed/{question}/answer/', [FeedController::class, 'answered'])
+              ->name('feed.answered');
 
          //Marketplace route
          Route::get('marketplace', MarketplaceController::class)

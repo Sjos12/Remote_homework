@@ -18,6 +18,9 @@
 
     <!-- Bootstrap implementation -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    {{-- @todo: should be loaded last in body, but that breaks `onscroll` attribute sometimes --}}
+    <script type="text/javascript" src="{{ asset('js/index.js') }}"></script>
 </head>
 <body onscroll="scrollFunction()">
     <div id="app" >
@@ -104,11 +107,11 @@
             @yield('content')
         </main>
         <!-- the footer of the page -->
-        
+
     </div>
-    
+
     @include('pages.footer')
-    <script type="text/javascript" src="{{ asset('js/index.js') }}"></script>
+
     <script src="{{ asset('fabric.js') }}"></script>
     <script src="{{ asset('tools.js') }}"></script>
 </body>

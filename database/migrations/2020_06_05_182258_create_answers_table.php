@@ -1,35 +1,26 @@
 <?php
+declare(strict_types=1);
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAnswersTable extends Migration
+final class CreateAnswersTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+    public function up(): void
     {
-        Schema::create('answers', function (Blueprint $table) {
+        Schema::create('answers', static function (Blueprint $table) {
             $table->id();
             $table->efficientUuid('uuid')->index();
             $table->unsignedBigInteger('user_id');
             $table->text('content')->nullable();
-            $table->json();
+            $table->json('annotations');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('answers');
+        throw new RuntimeException('Never rollback! Is bad practice!');
     }
 }
