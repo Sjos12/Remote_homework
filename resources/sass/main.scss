@@ -11,6 +11,13 @@ body {
     height: auto; 
 }
 
+.positioncontent { 
+    position: absolute;
+    top: 30%;
+    -ms-transform: translateY(-30%);
+    transform: translateY(-30%);
+}
+
 .title { 
     font-family: $font-family-title;
     font-size: $font-family-title-size;
