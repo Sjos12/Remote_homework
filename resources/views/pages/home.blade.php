@@ -7,10 +7,14 @@
       <div class="col-md-6">
         <div class="positioncontent">
           <h1 class="title ">Remote Homework</h1> 
-            <p class="">
-            An easy and simple online platform to
-            remotely collaborate and give feedback on (home)work.
-            </p> 
+          <p class="paragraph">
+          An easy and simple online platform to
+          remotely collaborate and give feedback on (home)work.
+          </p> 
+          <div class="wrapper pt-2">
+            <a href="{{ route('login') }}" class="shadow-lg btn btn-primary btn-lg border border-info">Get Started</a>
+            <a href="#content2" class="shadow-lg btn btn-white btn-lg border border-info">Contact us here</a>
+          </div>  
         </div>
       </div>
 
