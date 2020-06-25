@@ -268,7 +268,7 @@ p {
         color: $darkmodetextcolor;
     }
 
-    #nav-link {
+    #nav-link, #navbarDropdown{
         display: inline-block;
         vertical-align: middle;
         -webkit-transform: perspective(1px) translateZ(0);
@@ -277,7 +277,7 @@ p {
         position: relative;
         overflow: hidden;
       }
-      #nav-link:before {
+      #nav-link:before, #navbarDropdown:before {
         content: "";
         position: absolute;
         z-index: -1;
@@ -293,13 +293,13 @@ p {
         -webkit-transition-timing-function: ease-out;
         transition-timing-function: ease-out;
       }
-      #nav-link:hover:before, #nav-link:focus:before, #nav-link:active:before {
+      #nav-link:hover:before, #nav-link:focus:before, #nav-link:active:before, #navbarDropdown:hover:before, #navbarDropdown:focus:before, #navbarDropdown:active:before {
         left: 0;
         right: 0;
 
       }
 
-      #nav-link:hover {
+      #nav-link:hover, #navbarDropdown:hover {
         -webkit-transition-duration: 0.4s;
         transition-duration: 0.4s;
         -webkit-transition-timing-function: ease-out;
