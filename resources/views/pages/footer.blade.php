@@ -2,7 +2,7 @@
     <div class="footercolor">
         <div class="container pt-5 pb-5">
             <div class="row">
-                <div class="col-3">
+                <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
                     <img id="logo" src="{{ asset('images/remote_homework_logo.png') }}" alt="Logo" style="width:130px;">
 
                     <p class="pt-4 footertext">An easy and simple online platform to
@@ -10,7 +10,7 @@
                     </p>
  
                 </div>
-                <div class="col-3">
+                <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
                     <p class=" footertext footerlink pl-4" href="#">Navigation</p>
 
                     <ul> 
@@ -21,7 +21,7 @@
                         <li style="list-style-type: none;" class="footertext">Tutorials</li> 
                     </ul>
                 </div>
-                <div class="col-3">
+                <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
                     <p class="footertext footerlink pl-4" href="#">Social Media</p>
 
                     <ul> 
@@ -32,7 +32,7 @@
                         <li style="list-style-type: none;" class="footertext">Youtube</li> 
                     </ul>
                 </div>
-                <div class="col-3">
+                <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
                     <p class="footertext footerlink pl-4" href="#">Contact</p>
                     
                     <ul> 
