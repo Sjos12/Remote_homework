@@ -11,10 +11,8 @@ body {
 }
 
 #homeworkgirl { 
-    width: 700px;
-    height: auto; 
+    width: 100%
 }
-
 .positioncontent { 
     position: absolute;
     top: 30%;
@@ -225,12 +223,8 @@ p {
 }
 
 @media screen and (max-width: 540px) {
-    #homeworkgirl { 
-        width: 300px;
-        height: auto;
-    }
-}
 
+}
 @media screen and (max-width: 720px) {
     
 }
