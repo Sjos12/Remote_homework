@@ -10,6 +10,15 @@ body {
     font-size: $paragraph-text-size;
 }
 
+.phonecontainer {
+    vertical-align: bottom;
+}
+
+#collaboration  { 
+    max-width: 100%;
+    height: auto;
+}
+
 #homeworkgirl { 
     width: 100%;
     position: absolute;
