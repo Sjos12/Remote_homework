@@ -226,7 +226,12 @@ p {
 
 }
 @media screen and (max-width: 720px) {
-    
+    .positioncontent { 
+        position: static;
+        top: 0%;
+        -ms-transform: translateY(0%);
+        transform: translateY(0%);
+    }
 }
 
 @media screen and (max-width: 960px) {
