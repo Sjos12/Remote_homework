@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
- <div class="container">
+ <div class="container vh-100">
         @if ($errors->any())
             <div class="row">
                 <div class="col-12 col-md-8 offset-md-2">
