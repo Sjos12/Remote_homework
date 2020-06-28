@@ -11,7 +11,11 @@ body {
 }
 
 #homeworkgirl { 
-    width: 100%
+    width: 100%;
+    position: absolute;
+    top: 15%;
+    -ms-transform: translateY(-15%);
+    transform: translateY(-15%);
 }
 .positioncontent { 
     position: absolute;
@@ -218,14 +222,28 @@ p {
 }
 
 // responsive resizing  
+// 0 px and down will get styling
 @media screen and (max-width: 0px) {
-
+   
 }
 
+// 540 px and down will get styling
 @media screen and (max-width: 540px) {
+    
 
 }
+// 720 px and down will get styling
 @media screen and (max-width: 720px) {
+    
+    #homeworkgirl { 
+        position: static;
+        top: 0%;
+        -ms-transform: translateY(0%);
+        transform: translateY(0%);
+        padding-top: 30px;
+    }
+
+
     .positioncontent { 
         position: static;
         top: 0%;
@@ -233,11 +251,11 @@ p {
         transform: translateY(0%);
     }
 }
-
+// 960 px and down will get styling
 @media screen and (max-width: 960px) {
     
 }
-
+// 1140 px and down will get styling
 @media screen and (max-width: 1140px) {
     
 }
