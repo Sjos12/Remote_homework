@@ -234,7 +234,6 @@ p {
 }
 // 720 px and down will get styling
 @media screen and (max-width: 720px) {
-    
     #homeworkgirl { 
         position: static;
         top: 0%;
@@ -243,6 +242,14 @@ p {
         padding-top: 30px;
     }
 
+    #homebtn1, #homebtn2 { 
+        margin: 0;
+        width: 100%;
+    }
+
+    #homebtn1 { 
+        margin-bottom: 8px;
+    }
 
     .positioncontent { 
         position: static;
