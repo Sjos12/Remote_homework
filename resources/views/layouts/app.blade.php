@@ -31,7 +31,13 @@
                     <img id="logo" src="{{ asset('images/remote_homework_logo.png') }}" alt="Logo" style="width:105px;">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="27" height="19" viewBox="0 0 27 19">
+                        <g id="Group_13" data-name="Group 13" transform="translate(-311 -21)">
+                            <rect id="Rectangle_41" data-name="Rectangle 41" width="27" height="2" rx="1" transform="translate(311 21)" fill="#5bb9fd"/>
+                            <rect id="Rectangle_42" data-name="Rectangle 42" width="27" height="2" rx="1" transform="translate(311 29)" fill="#5bb9fd"/>
+                            <rect id="Rectangle_43" data-name="Rectangle 43" width="27" height="2" rx="1" transform="translate(311 37)" fill="#5bb9fd"/>
+                        </g>
+                    </svg>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
