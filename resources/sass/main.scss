@@ -8,10 +8,15 @@ body {
 
 .paragraph { 
     font-size: $paragraph-text-size;
+    line-height: $paragraph-line-height;
 }
 
 .phonecontainer {
     vertical-align: bottom;
+}
+
+#phone2, #phone3 { 
+    padding-top: 40.2px;
 }
 
 #collaboration  { 
@@ -36,6 +41,12 @@ body {
 .title { 
     font-family: $font-family-title;
     font-size: $font-family-title-size;
+}
+
+.title2 { 
+    font-family: $font-family-title;
+    font-size: $font-family-title-size-2;
+    text-align: center;
 }
 
 /* footer styling */ 

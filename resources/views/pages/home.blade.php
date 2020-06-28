@@ -53,30 +53,52 @@
   </div>
 
   <div class="row pt-5 pb-5">
-    <div class="col-12">
+    <div class="col-12 pb-4">
       <h1 class="title text-center">How do I ask a question?</h1>
-      <p class="paragraph text-center">
+      <!--<p class="paragraph text-center">
       Following these 3 steps, you will understand the very basics of how to ask homework questions privately and publicly. 
+      </p>-->
+    </div>
+
+    <div class="col-4 phonecontainer">
+      <img src="/images/phone1.svg" alt="" id="phone1" srcset="" class="d-block mt-auto mx-auto">
+      <p class="paragraph text-center">Make a picture of the assignment you're struggling with. 
       </p>
     </div>
     <div class="col-4 phonecontainer">
-      <img src="/images/phone1.svg" alt="" id="" srcset="" class="d-block mt-auto mx-auto">
+      <img src="/images/phone2.svg" alt="" id="phone2" srcset="" class="d-block my-auto mx-auto">
       <p class="paragraph text-center">Make a picture of the assignment you're struggling with. 
-     </p>
-    </div>
-    <div class="col-4 phonecontainer">
-      <img src="/images/phone2.svg" alt="" id="" srcset="" class="d-block my-auto mx-auto">
-      <p class="paragraph text-center">Make a picture of the assignment you're struggling with. 
-     </p>
+      </p>
     </div>
     <div class="col-4 ">
-      <img src="/images/phone3.svg" alt="" id="" srcset="" class="d-block mt-auto mx-auto">
+      <img src="/images/phone3.svg" alt="" id="phone3" srcset="" class="d-block mt-auto mx-auto">
       <p class="paragraph text-center">Make a picture of the assignment you're struggling with. 
-     </p>
+      </p>
     </div>
+
+    <h2 class="col-12 title2 d-block mx-auto pt-4">Easy? Isn't it? </br> For more, check out our tutorials here. 
+    </h2>
+    <a href="{{ route('login') }}" class="shadow-sm btn btn-primary btn-lg border border-info d-block mx-auto mt-4" id="homebtn2">View tutorials</a>
   </div>
 
+  <div class="row pt-5 pb-5">
+    <div class="col-6">
+      <div class="col-12">
+        <h1 class="title ">What does it cost? </h1> 
+        <p class="paragraph">
+          Remote Homework is currently completely free. We plan to add paid subscriptions in the future for extra features though. You can always donate here.  
+        </p>
+      </div>
+      <div class="col-12">
+        <a href="{{ route('login') }}" class="shadow-sm btn btn-primary btn-lg border border-info mt-4" id="homebtn3">Donate</a>
+      </div>
+      
+    </div>
 
+    <div class="col-6">
+      <img src="/images/superman.svg" alt="" id="collaboration" srcset="">
+    </div>
+  </div>
 
 
 </div>
