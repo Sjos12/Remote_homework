@@ -77,12 +77,12 @@
     </div>
     <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 phonecontainer">
       <img src="/images/phone2.svg" alt="" id="phone2" srcset="" class="d-block my-auto mx-auto">
-      <p class="paragraph text-center">Make a picture of the assignment you're struggling with. 
+      <p class="paragraph text-center">Log in or register your account <a href="{{ route('login') }}">here</a> for free.
       </p>
     </div>
     <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 ">
       <img src="/images/phone3.svg" alt="" id="phone3" srcset="" class="d-block mt-auto mx-auto">
-      <p class="paragraph text-center">Make a picture of the assignment you're struggling with. 
+      <p class="paragraph text-center">Now create your question.  Upload your picture(s) and add an explanation. Choose to ask your question publicly or privately.  
       </p>
     </div>
 
