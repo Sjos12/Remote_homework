@@ -6,6 +6,14 @@ body {
     margin: 0;
 }
 
+.desktopimg { 
+    display: inline;
+}
+
+.mobileimg { 
+    display: none;
+}
+
 .paragraph { 
     font-size: $paragraph-text-size;
     line-height: $paragraph-line-height;
@@ -13,6 +21,19 @@ body {
 
 .phonecontainer {
     vertical-align: bottom;
+}
+
+.rowspacingtop { 
+    padding-top: 100px; 
+}
+
+.rowspacingbottom { 
+    padding-bottom: 100px;
+}
+
+.homehr { 
+    //border-top: 1px solid rgba(255, 255, 255, 0.27);
+    display: none;
 }
 
 #phone2, #phone3 { 
@@ -254,6 +275,19 @@ p {
 }
 // 720 px and down will get styling
 @media screen and (max-width: 720px) {
+
+    .mobilespacingtop { 
+        padding-top: 150px;
+    }
+
+    .desktopimg { 
+        display: none;
+    }
+    
+    .mobileimg { 
+        display: inline;
+    }
+
     #homeworkgirl { 
         position: static;
         top: 0%;
