@@ -5,5 +5,7 @@ Third Party Frameworks and Software used:
 
 http://google.github.io/material-design-icons/
 
+NOTE: Since symlinks were removed in version control. It's essential to do ```php artisan storage:link``` to create symlinks. Be sure not to commit the symlinks as this will break the system
+
 Date:20/03/2020
 Contributors: Sjos & qrazi

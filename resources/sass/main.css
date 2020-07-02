@@ -1,4 +1,95 @@
-/*colors*/
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.paragraph {
+  font-size: 1.2rem;
+}
+
+#homeworkgirl {
+  width: 700px;
+  height: auto;
+}
+
+.positioncontent {
+  position: absolute;
+  top: 30%;
+  -webkit-transform: translateY(-30%);
+          transform: translateY(-30%);
+}
+
+.title {
+  font-family: "Rockwell";
+  font-size: 3.8rem;
+}
+
+/* footer styling */
+.footercolor {
+  background-color: #141414;
+}
+
+.footerdark {
+  background-color: #0A0A0A;
+}
+
+.footertext {
+  font-size: 0.8rem;
+  color: #585858;
+}
+
+.footerlink {
+  color: #5BB9FD;
+}
+
+/* fabricjs styling */
+canvas #c {
+  border: 1px solid white !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.canvas-container {
+  margin: 0 auto;
+}
+
+.dropdownmenu {
+  max-width: 10px !important;
+}
+
+.borderright {
+  border-right: 2px solid white !important;
+}
+
+.borderright:hover {
+  border-right: 1px solid white !important;
+  position: absolute;
+}
+
+.dropdown-item {
+  margin-right: auto;
+}
+
+.colorindicator1 {
+  color: transparent !important;
+  border: 1px solid white;
+}
+
+.colorindicator2 {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: transparent !important;
+}
+
+.colorindicator3 {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  color: transparent !important;
+}
+
+.colorindicator4 {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  color: transparent !important;
+}
+
 /* this is a tool called hover.css which is responsible for the hover effect on navbar. Before we go online be sure to change this as this isn't allowed to be used for commercial use.*/
 #nav-link {
   display: inline-block;
@@ -32,7 +123,7 @@
   right: 0;
 }
 
-#nav-link, #nav-link-user {
+#nav-link, #nav-link-user, #navbarDropdown {
   font-size: 1rem;
 }
 
@@ -95,24 +186,24 @@
   border-radius: 0 !important;
   outline: #585858 !important;
   bottom: 50%;
-  margin-bottom: 8px;
+  margin: 5px;
 }
 
 .btn-white:hover {
   border-width: 2px !important;
   color: #5BB9FD;
-  -webkit-box-shadow: 10px;
-          box-shadow: 10px;
+  -webkit-transition-duration: 1s;
+          transition-duration: 1s;
   outline: none;
   bottom: 50%;
+  margin: 0px;
 }
 
 .btn-white {
   border-radius: 0px !important;
   outline: #5BB9FD;
   bottom: 50%;
-  margin-bottom: 8px;
-  margin-left: 5px;
+  margin: 2px;
   color: #5BB9FD;
 }
 
@@ -132,6 +223,13 @@ p {
 #content2, #content3, #content4 {
   margin-top: 30px;
   margin-bottom: 30px;
+}
+
+@media screen and (max-width: 540px) {
+  #homeworkgirl {
+    width: 300px;
+    height: auto;
+  }
 }
 
 /*implements dark mode */
@@ -180,7 +278,7 @@ p {
     background-color: #302C2D;
     color: rgba(255, 255, 255, 0.849);
   }
-  #nav-link {
+  #nav-link, #navbarDropdown {
     display: inline-block;
     vertical-align: middle;
     -webkit-transform: perspective(1px) translateZ(0);
@@ -190,7 +288,7 @@ p {
     position: relative;
     overflow: hidden;
   }
-  #nav-link:before {
+  #nav-link:before, #navbarDropdown:before {
     content: "";
     position: absolute;
     z-index: -1;
@@ -206,15 +304,23 @@ p {
     -webkit-transition-timing-function: ease-out;
     transition-timing-function: ease-out;
   }
-  #nav-link:hover:before, #nav-link:focus:before, #nav-link:active:before {
+  #nav-link:hover:before, #nav-link:focus:before, #nav-link:active:before, #navbarDropdown:hover:before, #navbarDropdown:focus:before, #navbarDropdown:active:before {
     left: 0;
     right: 0;
   }
-  #nav-link:hover {
+  #nav-link:hover, #navbarDropdown:hover {
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
     -webkit-transition-timing-function: ease-out;
     transition-timing-function: ease-out;
+    color: #5BB9FD;
+  }
+  /*footerstyling*/
+  .footertext {
+    font-size: 0.8rem;
+    color: #9b9a9a;
+  }
+  .footerlink {
     color: #5BB9FD;
   }
 }

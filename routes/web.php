@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FeedController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\MarketplaceController;
@@ -103,30 +104,45 @@ Route::middleware([
     'auth'
 ])
      ->group(static function () {
-          //dashboard route
-          Route::get('/dashboard', DashboardController::class)
+         //dashboard route
+         Route::get('/dashboard', DashboardController::class)
               ->name('pages.dashboard');
          //
          // Question routes
          //
          // Create questions
-         Route::get('/user/questions/new', [QuestionController::class, 'create'])
+         Route::get('/user/questions/new',
+             [QuestionController::class, 'create'])
               ->name('questions.create');
          Route::post('/user/questions', [QuestionController::class, 'store'])
               ->name('questions.store');
+         // Edit questions
+         Route::get('/user/questions/{question}/edit',
+             [QuestionController::class, 'edit'])
+              ->name('questions.edit');
+         Route::post('/user/questions/{question}', [QuestionController::class, 'update'])
+              ->name('questions.update');
          // View own questions
-         Route::get('user/questions', [QuestionController::class, 'overview'])
-             ->name('questions.overview');
+         Route::get('user/questions', [QuestionController::class, 'list'])
+              ->name('questions.list');
+         Route::get('user/questions/{question}', [QuestionController::class, 'detail'])
+              ->name('questions.detail');
 
-          //Marketplace route 
-          Route::get('marketplace', MarketplaceController::class)
-             ->name('marketplace.home');
+         // Feed
+         Route::get('feed', [FeedController::class, 'list'])
+              ->name('feed.list');
+         Route::get('feed/{question}', [FeedController::class, 'detail'])
+              ->name('feed.detail');
+         Route::get('feed/{question}/answer/', [FeedController::class, 'answer'])
+              ->name('feed.answer');
+         // @todo: refactor to API route
+         Route::post('feed/{question}/answer/', [FeedController::class, 'answered'])
+              ->name('feed.answered');
+
+         //Marketplace route
+         Route::get('marketplace', MarketplaceController::class)
+              ->name('marketplace.home');
      });
-// @todo: move to another controller, the context is slightly different
-Route::get('feed', [QuestionController::class, 'feed'])
-     ->name('questions.feed');
-Route::get('feed/{question}', [QuestionController::class, 'detail'])
-     ->name('questions.detail');
 
 // Application routes
 Route::get('/', HomeController::class)

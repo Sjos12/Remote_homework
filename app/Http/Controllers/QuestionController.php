@@ -24,6 +24,16 @@ final class QuestionController
         return view('questions.create');
     }
 
+    public function edit(): Renderable
+    {
+        return view('questions.edit');
+    }
+
+    public function update(): Renderable
+    {
+        return view('questions.edit');
+    }
+
     public function store(Request $request): Response
     {
         $validated_data = $this->validate(
@@ -76,10 +86,10 @@ final class QuestionController
                 ->withInput();
         }
 
-        return redirect()->to(route('questions.overview'));
+        return redirect()->to(route('questions.list'));
     }
 
-    public function overview(): Renderable
+    public function list(): Renderable
     {
         $questions = Question::where('user_id', Auth::id())
                              ->orderBy('updated_at', 'desc')
@@ -88,20 +98,7 @@ final class QuestionController
                                  fn(Question $question) => new QuestionViewModel($question)
                              );
 
-        return view('questions.overview', [
-            'questions' => $questions,
-        ]);
-    }
-
-    public function feed(): Renderable
-    {
-        $questions = Question::orderBy('updated_at', 'desc')
-                             ->get()
-                             ->map(
-                                 fn(Question $question) => new QuestionViewModel($question)
-                             );
-
-        return view('questions.feed', [
+        return view('questions.list', [
             'questions' => $questions,
         ]);
     }
@@ -110,4 +107,5 @@ final class QuestionController
     {
         return view('questions.detail', new QuestionViewModel($question));
     }
+
 }

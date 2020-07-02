@@ -45,4 +45,11 @@ final class QuestionViewModel extends ViewModel
         // Could do a default image placeholder here
         return null;
     }
+
+    public function createdSince()
+    {
+        return $this->question->created_at->diffForHumans();
+    }
+
+
 }

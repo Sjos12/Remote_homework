@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
- <div class="container vh-100">
+ <div class="container">
         @if ($errors->any())
             <div class="row">
                 <div class="col-12 col-md-8 offset-md-2">
@@ -21,7 +21,7 @@
             </div>
         @endif
         <div class="row">
-            <form action="{{ route('questions.store') }}"
+            <form action="{{ route('questions.update') }}"
                   method="post"
                   class="col-12 col-md-8 offset-md-2"
                   enctype="multipart/form-data"
@@ -84,7 +84,7 @@
                 </div>
 
                 <button type="submit"
-                        class="btn btn-primary">{{ __('Submit your question') }}</button>
+                        class="btn btn-primary">{{ __('Update your question') }}</button>
             </form>
         </div>
     </div>

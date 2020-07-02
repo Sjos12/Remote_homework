@@ -1,6 +1,140 @@
 @import'variables';
 @import'functions';
 
+body { 
+    padding: 0; 
+    margin: 0;
+}
+
+.desktopimg { 
+    display: inline;
+}
+
+.mobileimg { 
+    display: none;
+}
+
+.paragraph { 
+    font-size: $paragraph-text-size;
+    line-height: $paragraph-line-height;
+}
+
+.phonecontainer {
+    vertical-align: bottom;
+}
+
+.rowspacingtop { 
+    padding-top: 100px; 
+}
+
+.rowspacingbottom { 
+    padding-bottom: 100px;
+}
+
+.homehr { 
+    //border-top: 1px solid rgba(255, 255, 255, 0.27);
+    display: none;
+}
+
+#phone2, #phone3 { 
+    padding-top: 40.2px;
+}
+
+#collaboration  { 
+    max-width: 100%;
+    height: auto;
+}
+
+#homeworkgirl { 
+    width: 100%;
+    position: absolute;
+    top: 15%;
+    -ms-transform: translateY(-15%);
+    transform: translateY(-15%);
+}
+.positioncontent { 
+    position: absolute;
+    top: 30%;
+    -ms-transform: translateY(-30%);
+    transform: translateY(-30%);
+}
+
+.title { 
+    font-family: $font-family-title;
+    font-size: $font-family-title-size;
+}
+
+.title2 { 
+    font-family: $font-family-title;
+    font-size: $font-family-title-size-2;
+    text-align: center;
+}
+
+/* footer styling */ 
+.footercolor {
+    background-color: $darkmodefootercolor;
+}
+
+.footerdark { 
+    background-color: $darkmodefootercolor_dark;
+}
+
+.footertext { 
+    font-size: $font-size-footer;
+    color: $textcolor;
+}
+
+.footerlink { 
+    color: $buttoncolor; 
+}
+
+/* fabricjs styling */
+canvas {
+    #c {
+        border: 1px solid white !important;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+.canvas-container {
+    margin:0 auto ;
+}
+
+.dropdownmenu {
+    max-width: 10px !important;
+}
+
+.borderright {
+    border-right:  2px solid white !important;
+}
+.borderright:hover {
+    border-right:  1px solid white !important;
+    position: absolute;
+}
+
+.dropdown-item {
+    margin-right: auto;
+}
+
+.colorindicator1 {
+    color: transparent !important;
+    border: 1px solid white;
+}
+
+.colorindicator2 {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: transparent !important;
+}
+
+.colorindicator3 {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    color: transparent !important;
+}
+.colorindicator4 {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    color: transparent !important;
+}
+
 /* this is a tool called hover.css which is responsible for the hover effect on navbar. Before we go online be sure to change this as this isn't allowed to be used for commercial use.*/
 #nav-link {
     display: inline-block;
@@ -11,7 +145,7 @@
     position: relative;
     overflow: hidden;
   }
-  
+
 #nav-link:before {
     position: absolute;
     z-index: -1;
@@ -32,7 +166,7 @@
     right: 0;
 }
 
-#nav-link, #nav-link-user {
+#nav-link, #nav-link-user, #navbarDropdown {
     font-size: 1rem;
 }
 
@@ -92,23 +226,25 @@
     border-radius: 0 !important;
     outline: #585858 !important;
     bottom: 50%;
-    margin-bottom: 8px;
+    margin: 5px; 
 }
 
 .btn-white:hover {
+    
     border-width: 2px !important;
     color: $buttoncolor;
-    box-shadow: 10px;
+    transition-duration: 1s;
     outline: none;
     bottom: 50%;
+    margin: 0px 
 }
 
 .btn-white {
     border-radius: 0px !important;
+    
     outline: $buttoncolor;
     bottom: 50%;
-    margin-bottom: 8px;
-    margin-left: 5px;
+    margin: 2px;
     color: $buttoncolor;
 }
 /* gives all the headers and paragraphs Montserrat font*/
@@ -125,6 +261,66 @@ p {
 #content2, #content3, #content4 {
     @include contentmargin();
 }
+
+// responsive resizing  
+// 0 px and down will get styling
+@media screen and (max-width: 0px) {
+   
+}
+
+// 540 px and down will get styling
+@media screen and (max-width: 540px) {
+    
+
+}
+// 720 px and down will get styling
+@media screen and (max-width: 720px) {
+
+    .mobilespacingtop { 
+        padding-top: 150px;
+    }
+
+    .desktopimg { 
+        display: none;
+    }
+    
+    .mobileimg { 
+        display: inline;
+    }
+
+    #homeworkgirl { 
+        position: static;
+        top: 0%;
+        -ms-transform: translateY(0%);
+        transform: translateY(0%);
+        padding-top: 30px;
+    }
+
+    #homebtn1, #homebtn2 { 
+        margin: 0;
+        width: 100%;
+    }
+
+    #homebtn1 { 
+        margin-bottom: 8px;
+    }
+
+    .positioncontent { 
+        position: static;
+        top: 0%;
+        -ms-transform: translateY(0%);
+        transform: translateY(0%);
+    }
+}
+// 960 px and down will get styling
+@media screen and (max-width: 960px) {
+    
+}
+// 1140 px and down will get styling
+@media screen and (max-width: 1140px) {
+    
+}
+
 /*implements dark mode */
 @media (prefers-color-scheme: dark) {
     body {
@@ -133,13 +329,13 @@ p {
 
    p {
     color: $darkmodetextcolor;
-    size: 15px; 
+    size: 15px;
     }
     h1, h2, h3, h4, h5, h6 {
         color:$darkmodetextcolor;
     }
     .darkmodetoggle {
-        background-color: $darkmodecolor !important; 
+        background-color: $darkmodecolor !important;
     }
     label {
         color: $darkmodetextcolor;
@@ -159,13 +355,13 @@ p {
     .contentarea{
         background-color: $darkmodecolor_light;
     }
-    #feedhr{ 
+    #feedhr{
         border-top: 1px solid rgba(255, 255, 255, 0.527);
     }
 
     #dropdownmenunav {
         background-color: $darkmodecolor;
-        
+
     }
     .dropdown-item {
         color: $darkmodetextcolor;
@@ -175,7 +371,7 @@ p {
         color: $darkmodetextcolor;
     }
 
-    #nav-link {
+    #nav-link, #navbarDropdown{
         display: inline-block;
         vertical-align: middle;
         -webkit-transform: perspective(1px) translateZ(0);
@@ -184,7 +380,7 @@ p {
         position: relative;
         overflow: hidden;
       }
-      #nav-link:before {
+      #nav-link:before, #navbarDropdown:before {
         content: "";
         position: absolute;
         z-index: -1;
@@ -200,13 +396,13 @@ p {
         -webkit-transition-timing-function: ease-out;
         transition-timing-function: ease-out;
       }
-      #nav-link:hover:before, #nav-link:focus:before, #nav-link:active:before {
+      #nav-link:hover:before, #nav-link:focus:before, #nav-link:active:before, #navbarDropdown:hover:before, #navbarDropdown:focus:before, #navbarDropdown:active:before {
         left: 0;
         right: 0;
-        
+
       }
 
-      #nav-link:hover {
+      #nav-link:hover, #navbarDropdown:hover {
         -webkit-transition-duration: 0.4s;
         transition-duration: 0.4s;
         -webkit-transition-timing-function: ease-out;
@@ -214,4 +410,13 @@ p {
         color: $buttoncolor;
       }
     
+    /*footerstyling*/
+    .footertext { 
+        font-size: $font-size-footer;
+        color: $textcolor_footer_dark;
+    }
+
+    .footerlink { 
+        color: $buttoncolor; 
+    }
 }

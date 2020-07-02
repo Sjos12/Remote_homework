@@ -19,21 +19,25 @@
     <!-- Bootstrap implementation -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    <!-- Stylesheet from initial build, located in public folder -->
-    <link rel="stylesheet" href="{{ asset('SASS/main.css')}}" type="text/css">
-
-    
+    {{-- @todo: should be loaded last in body, but that breaks `onscroll` attribute sometimes --}}
+    <script type="text/javascript" src="{{ asset('js/index.js') }}"></script>
 </head>
-<body onscroll="scrollFunction()" >
+<body onscroll="scrollFunction()">
     <div id="app" >
         <nav id="navbar" class="navbar navbar-expand-md bg-white shadow-sm sticky-top darkmodetoggle">
             <!-- Use container-fluid to arrange navbar items from edge to edge -->
             <div class="container">
-                <a class="navbar-brand" href="{{ route('home') }}#content1">
-                    <img id="logo" src="{{ asset('images/better_logo.png') }}" alt="Logo" style="width:105px;">
+                <a class="navbar-brand" href="{{ route('home') }}">
+                    <img id="logo" src="{{ asset('images/remote_homework_logo.png') }}" alt="Logo" style="width:105px;">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="27" height="19" viewBox="0 0 27 19">
+                        <g id="Group_13" data-name="Group 13" transform="translate(-311 -21)">
+                            <rect id="Rectangle_41" data-name="Rectangle 41" width="27" height="2" rx="1" transform="translate(311 21)" fill="#5bb9fd"/>
+                            <rect id="Rectangle_42" data-name="Rectangle 42" width="27" height="2" rx="1" transform="translate(311 29)" fill="#5bb9fd"/>
+                            <rect id="Rectangle_43" data-name="Rectangle 43" width="27" height="2" rx="1" transform="translate(311 37)" fill="#5bb9fd"/>
+                        </g>
+                    </svg>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -48,12 +52,6 @@
                         <li class="nav-item">
                             <a class="nav-link hvr-underline-from-center" href="{{ route('home') }}#content3" id="nav-link">{{ __('Contact') }}</a>
                         </li>
-                        @auth()
-
-
-
-
-                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -72,7 +70,7 @@
                         @else
                             <li class="nav-item">
                                 <!-- put the route for the 'public' questions here-->
-                                <a href="{{ route('questions.feed') }}" class="nav-link" id="nav-link">Question Feed</a>
+                                <a href="{{ route('feed.list') }}" class="nav-link" id="nav-link">Question Feed</a>
                             </li>
 
                             <li class="nav-item dropdown">
@@ -82,10 +80,10 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" id="dropdownmenunav">
 
-                                    <a class="dropdown-item" href="{{ route('questions.overview') }}">{{ __('My questions') }}</a>
+                                    <a class="dropdown-item" href="{{ route('questions.list') }}">{{ __('My questions') }}</a>
                                     <!--<a class="dropdown-item" href="{{ route('pages.dashboard') }}">{{ __('Dashboard') }}</a>-->
                                     <a class="dropdown-item" href="{{ route('questions.create') }}">{{ __('Ask a question') }}</a>
-                                    
+
                                     <a class="dropdown-item" href="{{ route('marketplace.home')}}">{{ __('Marketplace') }}</a>
 
                                     <hr class="dropdownmenu-hr">
@@ -115,8 +113,12 @@
             @yield('content')
         </main>
         <!-- the footer of the page -->
-        @include('pages.footer')
+
     </div>
-    <script src="index.js"></script>
+
+    @include('pages.footer')
+
+    <script src="{{ asset('fabric.js') }}"></script>
+    <script src="{{ asset('tools.js') }}"></script>
 </body>
 </html>
