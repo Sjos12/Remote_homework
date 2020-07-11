@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container vh-100">
+    <div class="container ">
         @foreach($questions as $view_model)
             <div class="row">
                 @if($firstImage = $view_model->firstImage())

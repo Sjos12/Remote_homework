@@ -1,20 +1,27 @@
 @import'variables';
 @import'functions';
 
-body { 
-    padding: 0; 
+body {
+    padding: 0;
     margin: 0;
+    min-height:100%;
+    position:relative;
+    padding-bottom: 303px;
 }
 
-.desktopimg { 
+html {
+    height: 100%;
+}
+
+.desktopimg {
     display: inline;
 }
 
-.mobileimg { 
+.mobileimg {
     display: none;
 }
 
-.paragraph { 
+.paragraph {
     font-size: $paragraph-text-size;
     line-height: $paragraph-line-height;
 }
@@ -23,69 +30,76 @@ body {
     vertical-align: bottom;
 }
 
-.rowspacingtop { 
-    padding-top: 100px; 
+.rowspacingtop {
+    padding-top: 100px;
 }
 
-.rowspacingbottom { 
+.rowspacingbottom {
     padding-bottom: 100px;
 }
 
-.homehr { 
+.homehr {
     //border-top: 1px solid rgba(255, 255, 255, 0.27);
     display: none;
 }
 
-#phone2, #phone3 { 
+#phone2, #phone3 {
     padding-top: 40.2px;
 }
 
-#collaboration  { 
+#collaboration  {
     max-width: 100%;
     height: auto;
 }
 
-#homeworkgirl { 
+#homeworkgirl {
     width: 100%;
     position: absolute;
     top: 15%;
     -ms-transform: translateY(-15%);
     transform: translateY(-15%);
 }
-.positioncontent { 
+.positioncontent {
     position: absolute;
     top: 30%;
     -ms-transform: translateY(-30%);
     transform: translateY(-30%);
 }
 
-.title { 
+.title {
     font-family: $font-family-title;
     font-size: $font-family-title-size;
 }
 
-.title2 { 
+.title2 {
     font-family: $font-family-title;
     font-size: $font-family-title-size-2;
     text-align: center;
 }
 
-/* footer styling */ 
+/* footer styling */
+
 .footercolor {
     background-color: $darkmodefootercolor;
 }
 
-.footerdark { 
+.footerdark {
     background-color: $darkmodefootercolor_dark;
 }
 
-.footertext { 
+.footertext {
     font-size: $font-size-footer;
     color: $textcolor;
 }
 
-.footerlink { 
-    color: $buttoncolor; 
+.footerlink {
+    color: $buttoncolor;
+}
+
+.footer {
+    position: absolute;
+    left: 0 ; right: 0; bottom: 0;
+    height: 303px;
 }
 
 /* fabricjs styling */
@@ -226,22 +240,22 @@ canvas {
     border-radius: 0 !important;
     outline: #585858 !important;
     bottom: 50%;
-    margin: 5px; 
+    margin: 5px;
 }
 
 .btn-white:hover {
-    
+
     border-width: 2px !important;
     color: $buttoncolor;
     transition-duration: 1s;
     outline: none;
     bottom: 50%;
-    margin: 0px 
+    margin: 0px
 }
 
 .btn-white {
     border-radius: 0px !important;
-    
+
     outline: $buttoncolor;
     bottom: 50%;
     margin: 2px;
@@ -262,33 +276,33 @@ p {
     @include contentmargin();
 }
 
-// responsive resizing  
+// responsive resizing
 // 0 px and down will get styling
 @media screen and (max-width: 0px) {
-   
+
 }
 
 // 540 px and down will get styling
 @media screen and (max-width: 540px) {
-    
+
 
 }
 // 720 px and down will get styling
 @media screen and (max-width: 720px) {
 
-    .mobilespacingtop { 
+    .mobilespacingtop {
         padding-top: 150px;
     }
 
-    .desktopimg { 
+    .desktopimg {
         display: none;
     }
-    
-    .mobileimg { 
+
+    .mobileimg {
         display: inline;
     }
 
-    #homeworkgirl { 
+    #homeworkgirl {
         position: static;
         top: 0%;
         -ms-transform: translateY(0%);
@@ -296,16 +310,16 @@ p {
         padding-top: 30px;
     }
 
-    #homebtn1, #homebtn2 { 
+    #homebtn1, #homebtn2 {
         margin: 0;
         width: 100%;
     }
 
-    #homebtn1 { 
+    #homebtn1 {
         margin-bottom: 8px;
     }
 
-    .positioncontent { 
+    .positioncontent {
         position: static;
         top: 0%;
         -ms-transform: translateY(0%);
@@ -314,11 +328,11 @@ p {
 }
 // 960 px and down will get styling
 @media screen and (max-width: 960px) {
-    
+
 }
 // 1140 px and down will get styling
 @media screen and (max-width: 1140px) {
-    
+
 }
 
 /*implements dark mode */
@@ -409,14 +423,14 @@ p {
          transition-timing-function: ease-out;
         color: $buttoncolor;
       }
-    
+
     /*footerstyling*/
-    .footertext { 
+    .footertext {
         font-size: $font-size-footer;
         color: $textcolor_footer_dark;
     }
 
-    .footerlink { 
-        color: $buttoncolor; 
+    .footerlink {
+        color: $buttoncolor;
     }
 }

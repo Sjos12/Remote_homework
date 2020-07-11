@@ -21,7 +21,7 @@
             </div>
         @endif
         <div class="row">
-            <form action="{{ route('questions.update') }}"
+            <form action="{{ route('questions.update', ['question' => ]) }}"
                   method="post"
                   class="col-12 col-md-8 offset-md-2"
                   enctype="multipart/form-data"
