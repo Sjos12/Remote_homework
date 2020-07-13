@@ -13,6 +13,19 @@ html {
     height: 100%;
 }
 
+.carousel-inner > .carousel-item > .box > img { height: 80vh; width: auto; }
+
+// styling for detail img to be 100 % width so small resolution img's won't display small.
+.detailimg {
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.box {
+    height: auto;
+    width: 100%;
+}
+
 .emptyimg {
     height: 300px;
     width: auto;
@@ -376,6 +389,10 @@ p {
     }
     #feedhr{
         border-top: 1px solid rgba(255, 255, 255, 0.527);
+    }
+
+    .feedhr{
+        border-top: 1px solid rgba(255, 255, 255, 0.527) !important;
     }
 
     #dropdownmenunav {

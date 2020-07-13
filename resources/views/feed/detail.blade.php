@@ -3,17 +3,17 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-6">
-                <h3 class="col-6">{{ $question->title }}</h3>
-                <p class="col-10">{{$question->content}}</p>
+            <div class="col-12">
+                <h3 class="col-12">{{ $question->title }}</h3>
+                <p class="col-12">{{$question->content}}</p>
             </div>
 
-            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div id="carouselExampleControls" class="carousel slide mx-auto" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         @if($firstImage)
-                            <div class="p-5 mx-auto col-10">
-                                {{ $firstImage->img()->attributes(['class' => 'img-fluid rounded', 'alt' => $question->title]) }}
+                            <div class="p-5 box">
+                                {{ $firstImage->img()->attributes(['class' => 'img-fluid rounded detailimg align-middle col-12', 'alt' => $question->title]) }}
                             </div>
                         @endif
                     </div>
@@ -37,7 +37,7 @@
             </div>
 
 
-            <div class="col-6">
+            <div class="col-8">
                 <p class="col-12 question-data text-left">
                     Question asked {{ $question->created_at->diffForHumans() }}
                 </p>
@@ -49,10 +49,9 @@
                 <p class="col-12 question-data">
                     Asked by {{ $question->author->name }}
                 </p>
-
             </div>
 
-            <div class="col-6  my-auto ">
+            <div class="col-4 my-auto ">
                 <a class="btn btn-primary btn-lg float-right " href="{{  route('feed.answer', ['question' => $question->uuid]) }}">Answer Question</a>
             </div>
         </div>
