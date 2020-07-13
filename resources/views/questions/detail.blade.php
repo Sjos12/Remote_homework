@@ -18,6 +18,14 @@
                         @endif
                     </div>
 
+                    <!-- When the site supports multiple images on 1 answer. Use a if else statement here to only make an extra slide if there is also a                        second image -->
+                    <!-- <div class="carousel-item">
+                        <img class="d-block w-100" src="..." alt="Second slide">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="..." alt="Third slide">
+                    </div> -->
+
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -44,7 +52,7 @@
             </div>
 
             <div class="col-6 my-auto">
-                <!-- In the future add a marked as solved--> 
+                <!-- In the future add a marked as solved-->
                 <!--<a class="btn btn-primary btn-lg float-right" href="{{ route('feed.answer', ['question' => $question->uuid]) }}">Answer Question</a>-->
                 <a class="btn btn-primary btn-lg float-right" href="{{ route('questions.edit', ['question' => $question->uuid]) }}">Edit question</a>
             </div>
