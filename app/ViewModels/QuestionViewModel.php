@@ -31,6 +31,11 @@ final class QuestionViewModel extends ViewModel
         return $this->question->illustrations;
     }
 
+    public function id(): string
+    {
+        return (string) $this->question->uuid;
+    }
+
     public function firstImage(): ?Media
     {
         $illustration = $this->illustrations()
@@ -50,6 +55,4 @@ final class QuestionViewModel extends ViewModel
     {
         return $this->question->created_at->diffForHumans();
     }
-
-
 }

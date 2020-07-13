@@ -24,16 +24,6 @@ final class QuestionController
         return view('questions.create');
     }
 
-    public function edit(): Renderable
-    {
-        return view('questions.edit');
-    }
-
-    public function update(): Renderable
-    {
-        return view('questions.edit');
-    }
-
     public function store(Request $request): Response
     {
         $validated_data = $this->validate(
@@ -78,15 +68,83 @@ final class QuestionController
             );
 
             return redirect()->back()
-                ->withErrors([
-                    'general' => [
-                        __('Could not create new Question'),
-                    ]
-                ])
-                ->withInput();
+                             ->withErrors([
+                                 'general' => [
+                                     __('Could not create new Question'),
+                                 ]
+                             ])
+                             ->withInput();
         }
 
         return redirect()->to(route('questions.list'));
+    }
+
+    public function edit(Question $question): Renderable
+    {
+        return view('questions.edit', new QuestionViewModel($question));
+    }
+
+    public function update(Request $request, Question $question): Response
+    {
+        $validated_data = $this->validate(
+            $request,
+            [
+                'title'        => 'required|unique:questions,title', // @todo: should not be forbidden, but result in a suggestion to look at existing question, if permissions allow that
+                'content'      => 'nullable',
+                'illustration' => 'sometimes|image',
+            ]
+        );
+
+        // @todo: test that this question is authored by current user.
+
+        try {
+            DB::beginTransaction();
+
+            $question->title = $validated_data['title'];
+            $question->content = $validated_data['content'] ?? null;
+            $question->save();
+
+            if ($validated_data['illustration']) {
+                $illustration = $question->illustrations()->first();
+
+                if (null === $illustration) {
+                    $illustration = new Illustration();
+
+                    $illustration->user_id = $request->user()->id;
+                    $illustration->question_id = $question->id;
+                }
+
+                $illustration->clearMediaCollection(Illustration::COLLECTION_IMAGES);
+                $illustration->addMedia($request->file('illustration'))
+                             ->withResponsiveImages()
+                             ->toMediaCollection(Illustration::COLLECTION_IMAGES);
+
+                $illustration->save();
+            }
+
+            DB::commit();
+        } catch (Throwable $exception) {
+            DB::rollBack();
+
+            Log::error(
+                $exception->getMessage(),
+                [
+                    'user_id' => $request->user()->id,
+                    'title'   => $validated_data['title'],
+                    'content' => $validated_data['content'] ?? null,
+                ]
+            );
+
+            return redirect()->back()
+                             ->withErrors([
+                                 'general' => [
+                                     __('Could not update Question'),
+                                 ]
+                             ])
+                             ->withInput();
+        }
+
+        return redirect()->to(route('questions.edit', ['question' => $question->uuid]));
     }
 
     public function list(): Renderable

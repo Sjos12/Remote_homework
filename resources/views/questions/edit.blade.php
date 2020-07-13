@@ -21,7 +21,7 @@
             </div>
         @endif
         <div class="row">
-            <form action="{{ route('questions.update', ['question' => ]) }}"
+            <form action="{{ route('questions.update', ['question' => $id]) }}"
                   method="post"
                   class="col-12 col-md-8 offset-md-2"
                   enctype="multipart/form-data"
@@ -36,7 +36,7 @@
                            aria-describedby="titleHelp"
                            placeholder="Type a title for your question"
                            required="required"
-                           value="{{ old('title') }}"
+                           value="{{ $question->title ?? old('title') }}"
                     >
                     <small id="titleHelp" class="form-text text-muted">
                         {{ __('Your question in as terse but specific way as possible') }}
@@ -55,7 +55,7 @@
                               rows="5"
                               name="content"
                               aria-describedby="contentHelp"
-                    >{{ old('content') }}</textarea>
+                    >{{ $question->content ?? old('content') }}</textarea>
                     <small id="contentHelp" class="form-text text-muted">
                         {{ __('Describe in as much detail as possible exactly the question you have') }}
                     </small>
@@ -66,7 +66,7 @@
 
                 <div class="form-group">
                     <label for="illustration">
-                        {{ __('Upload your image') }}
+                        {{ __('Change your question\s illustration') }}
                     </label>
                     <input type="file"
                            class="form-control-file @error('illustration') is-invalid @enderror"
@@ -76,15 +76,22 @@
                            required="required"
                     >
                     <small id="illustrationHelp" class="form-text text-muted">
-                        {{ __('Upload an image of the subject matter') }}
+                        {{ __('Replace the current illustration') }}
                     </small>
+                    @if($firstImage)
+                        <div class="p-5 mx-auto col-10">
+                            {{ $firstImage->img()->attributes(['class' => 'img-fluid rounded', 'alt' => $question->title]) }}
+                        </div>
+                    @endif
                     @error('illustration')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
 
                 <button type="submit"
-                        class="btn btn-primary">{{ __('Update your question') }}</button>
+                        class="btn btn-primary">
+                    {{ __('Update your question') }}
+                </button>
             </form>
         </div>
     </div>

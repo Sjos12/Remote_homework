@@ -39,5 +39,6 @@
             </div>
             <hr class="feedhr" id="feedhr">
         @endforeach
+
     </div>
 @endsection

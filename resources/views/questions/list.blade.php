@@ -38,5 +38,16 @@
             </div>
             <hr class="feedhr" id="feedhr">
         @endforeach
+
+        <div class="row">
+            <div class="col-12">
+                <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6">
+                    <img src="/images/empty.svg" alt="" class="emptyimg">
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6">
+                    <p class="paragraph text-center">That's all for now.</p>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
