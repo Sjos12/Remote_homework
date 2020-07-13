@@ -12,8 +12,8 @@
 
                 <div class="ml-auto pt-4 pb-4 col-lg-8 col-md-8 col-sm-12 col-xs-12">
 
-                    <h3 class="col-12">{{ $view_model->question()->title }}</h3>
-                    <p class="col-12 mb-auto">{{$view_model->question()->content}}</p>
+                    <h3 class="col-12 title3">{{ $view_model->question()->title }}</h3>
+                    <p class="col-12 mb-auto paragraph">{{$view_model->question()->content}}</p>
 
                     <div class="ml-auto mt-auto mb-auto">
                             <a class="btn btn-lg btn-primary float-right"
