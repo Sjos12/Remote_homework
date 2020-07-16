@@ -55,5 +55,29 @@
                 <a class="btn btn-primary btn-lg float-right " href="{{  route('feed.answer', ['question' => $question->uuid]) }}">Answer Question</a>
             </div>
         </div>
+
+        @if ($answers->isNotEmpty())
+            <hr class="feedhr ">
+            <h1 class="title pt-3">Answers</h1>
+            @foreach($answers as $answer)
+
+                <div class="row answercontainer mb-5 mt-5 p-3">
+                    <div class="col-md-6 col-lg-6">
+                        <h1 class="my-auto title3 answerauthorcontainer"> <span class="answerauthor ">{{ $answer->author->name }}</span> gave an answer</h1>
+                    </div>
+                    <div class="col-md-6 col-lg-6">
+                        <a href="" class="btn btn-primary btn-lg text-right viewanserbtn">View answer</a>
+                    </div>
+                </div>
+            @endforeach
+        @else
+            <hr class="feedhr pt-5 pb-5">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="text-center">Be the first to answer!</h1>
+                </div>
+
+            </div>
+        @endif
     </div>
 @endsection

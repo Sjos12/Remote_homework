@@ -31,6 +31,11 @@ final class QuestionViewModel extends ViewModel
         return $this->question->illustrations;
     }
 
+    public function answers(): Collection
+    {
+        return $this->question->answers;
+    }
+
     public function id(): string
     {
         return (string) $this->question->uuid;
@@ -54,5 +59,9 @@ final class QuestionViewModel extends ViewModel
     public function createdSince()
     {
         return $this->question->created_at->diffForHumans();
+    }
+
+    public function author() {
+
     }
 }

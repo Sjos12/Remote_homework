@@ -41,7 +41,7 @@ function saveCanvas() {
 
     // Get the hidden input and place the annotations on the form
     const form = $('#answered');
-    let annotations_field = form.children('#annotations');
+    let annotations_field = form.children('#annotations').get(0);
     annotations_field.value = serialized_annotations;
 
     // Return true allows the form submit event to continue
@@ -141,3 +141,5 @@ function removeactiveobject() {
 }
 
 canvas.calcOffset();
+
+

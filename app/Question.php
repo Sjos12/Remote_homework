@@ -36,4 +36,10 @@ final class Question extends Model
         return $this->hasMany(Illustration::class)
                     ->orderBy('created_at');
     }
+
+    public function answers(): HasMany
+    {
+        return $this->hasMany(Answer::class)
+                    ->orderBy('created_at');
+    }
 }

@@ -56,6 +56,7 @@ final class FeedController
 
             Answer::create([
                 'user_id'     => $request->user()->id,
+                'question_id' => $question->id,
                 'content'     => $validated_data['content'],
                 'annotations' => $validated_data['annotations'],
             ]);

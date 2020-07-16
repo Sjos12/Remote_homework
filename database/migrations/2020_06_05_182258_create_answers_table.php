@@ -13,9 +13,19 @@ final class CreateAnswersTable extends Migration
             $table->id();
             $table->efficientUuid('uuid')->index();
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('question_id');
             $table->text('content')->nullable();
             $table->json('annotations');
             $table->timestamps();
+            $table->softDeletes();
+
+            $table->foreign('user_id')
+                  ->references('id')
+                  ->on('users');
+
+            $table->foreign('question_id')
+                  ->references('id')
+                  ->on('questions');
         });
     }
 

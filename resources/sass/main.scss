@@ -13,6 +13,25 @@ html {
     height: 100%;
 }
 
+.viewanserbtn {
+    float: right;
+}
+
+.answercontainer {
+    border: 1px solid black;
+}
+
+.answerauthorcontainer {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.answerauthor {
+    color: $buttoncolor;
+    text-underline: $buttoncolor;
+}
+
+
 .carousel-inner > .carousel-item > .box > img { height: 80vh; width: auto; }
 
 // styling for detail img to be 100 % width so small resolution img's won't display small.
@@ -97,7 +116,7 @@ html {
 
 .title3 {
     font-size: $font-family-title-size-3;
-    
+
 }
 
 /* footer styling */
@@ -460,4 +479,11 @@ p {
     .footerlink {
         color: $buttoncolor;
     }
+
+    /* answer stylign */
+    .answercontainer {
+        border: 2px solid white;
+        border-radius: 10px;
+    }
+
 }
