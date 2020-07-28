@@ -4,14 +4,14 @@
 <div class="container vh-100">
     <div class="row d-flex justify-content-center">
         <div class="col-md-7 col-sm-12 col-xs-12">
-            <div class="card card-body">
+            <div class="card card-body d-flex justify-content-center">
                 <div class="card__content">
                     <h1 class="text-center">{{ __('Login') }}</h1>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
                         <div class="form-group row d-flex justify-content-center">
-                            <div class="">
+                            <div class="col-lg-7 col-md-6 col-sm-12">
                                 <label for="email" class="col-md-12 col-form-label text-left pl-0">{{ __('E-Mail Address') }}</label>
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror " name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
@@ -26,7 +26,7 @@
                         <div class="form-group row d-flex justify-content-center">
                             
 
-                            <div class="col-md-6">
+                            <div class="col-lg-7 col-md-6 col-sm-12">
                                 <label for="password" class="col-md-12 col-form-label text-left pl-0">{{ __('Password') }}</label>
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
