@@ -17,14 +17,11 @@ html {
     height: 80vh;
     border: none;
     border-radius: 6px ;
-    border: 1px solid $darkmodecolor;
 }
 
-.card-body { 
-   
-    border: 1px solid $darkmodecolor;
+.form-control { 
+    border: none;
 }
-
 
 .viewanserbtn {
     float: right;
