@@ -13,6 +13,28 @@ html {
     height: 100%;
 }
 
+.card { 
+    height: 80vh;
+    border: none;
+    border-radius: 6px ;
+    border: 1px solid $darkmodecolor;
+}
+
+.card-body { 
+   
+    border: 1px solid $darkmodecolor;
+}
+
+.card__content { 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.form-group { 
+    width: 100%;
+}
 .viewanserbtn {
     float: right;
 }
@@ -318,7 +340,7 @@ p {
     @include contentmargin();
 }
 
-// responsive resizing
+// responsive resizing mediaqueries
 // 0 px and down will get styling
 @media screen and (max-width: 0px) {
 
