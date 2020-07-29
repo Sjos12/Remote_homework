@@ -11,7 +11,7 @@
                         @csrf
 
                         <div class="form-group row d-flex justify-content-center">
-                            <div class="col-lg-7 col-md-6 col-sm-12">
+                            <div class="col-lg-7 col-md-10 col-sm-12 col-xs-12">
                                 <label for="email" class="col-md-12 col-form-label text-left pl-0">{{ __('E-Mail Address') }}</label>
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror " name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
@@ -26,7 +26,7 @@
                         <div class="form-group row d-flex justify-content-center">
                             
 
-                            <div class="col-lg-7 col-md-6 col-sm-12">
+                            <div class="col-lg-7 col-md-10 col-sm-12 col-xs-12">
                                 <label for="password" class="col-md-12 col-form-label text-left pl-0">{{ __('Password') }}</label>
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
@@ -51,7 +51,7 @@
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
+                            <div class="mx-auto">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
