@@ -20,6 +20,14 @@ html {
     border-radius: 6px;
 }
 
+.card--shadow {
+    box-shadow: 0 0 10px $darkmodecolor_dark;
+}
+
+.input--shadow { 
+    box-shadow: 0 0 15px $darkmodecolor_dark;
+}
+
 .password-forget-container--padding { 
     padding-top: 2em;
 }
