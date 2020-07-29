@@ -13,10 +13,19 @@ html {
     height: 100%;
 }
 
-.card { 
-    height: 80vh;
+.card--login { 
+    height: 70vh;
+    width: auto;
     border: none;
-    border-radius: 6px ;
+    border-radius: 6px;
+}
+
+.password-forget-container--padding { 
+    padding-top: 2em;
+}
+
+.form-group--padding { 
+    padding-right: 15em;
 }
 
 .form-control { 
