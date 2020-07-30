@@ -2,7 +2,9 @@
 The Remote homework project is an attempt to revolutionize learning from home. With our versatile app, you would be able to upload pictures of your (home)work if you're struggling with it. Then people can place comments, audio files, or video on top of your picture to try and help you. Of course this is the very base of our idea and we will try to add many more features to improve the user experience. 
 
 Adobe XD link for feedback on future designs. 
-link: https://xd.adobe.com/view/9eb58eb6-5133-42f9-79b4-430474174bff-e884/
+
+https://xd.adobe.com/view/9eb58eb6-5133-42f9-79b4-430474174bff-e884/
+
 password: Broekstukken12
 
 Third Party Frameworks and Software used: 
