@@ -1,7 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container ">
+    <div class="container">
+        <div class="row">
+            <div class="card-welcome col-12">
+                <div class="card-welcome__content col-10 offset-1">
+                    <div class="row">
+                        <div class="col-6">
+                            <h1 class="title4">Welcome, Denzel</h1>
+                            <h2>Questions answered</h2>
+                            <h2>Questions asked</h2>
+                        </div>
+                        <div class="col-6 card-welcome__button-container">
+                            <button class="btn btn-primary text-right float-right btn-lg card-welcome__button">Create question</button>
+                        </div>
+                    </div>         
+                </div>
+            </div>
+        </div>
         @foreach($questions as $view_model)
             <div class="row">
                 @if($firstImage = $view_model->firstImage())
