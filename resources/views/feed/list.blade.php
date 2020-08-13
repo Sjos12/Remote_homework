@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="card-welcome col-12">
+            <div class="card col-12">
                 <div class="card-welcome__content col-10 offset-1">
                     <div class="row">
                         <div class="col-6">
@@ -11,15 +11,19 @@
                             <h2>Questions answered</h2>
                             <h2>Questions asked</h2>
                         </div>
-                        <div class="col-6 card-welcome__button-container">
-                            <button class="btn btn-primary text-right float-right btn-lg card-welcome__button">Create question</button>
+                        <div class="col-6 card-welcome--button-container">
+                            <div class="card-welcome--button-container-centered">
+                                <button class="card-welcome--button btn btn-primary text-right float-right btn-lg">Create question</button>
+                            </div>
                         </div>
                     </div>         
                 </div>
             </div>
         </div>
         @foreach($questions as $view_model)
-            <div class="row">
+        
+        <div class="row">
+        <div class="card col-12">
                 @if($firstImage = $view_model->firstImage())
                     <div class=" col-lg-4 col-md-4 col-xs-12 col-sm-12 d-flex justify-content-center">
                         {{ $firstImage->img()->attributes(['class' => 'img-fluid d-block mx-auto mt-auto mb-auto rounded', 'alt' => $view_model->question()->title]) }}
@@ -53,7 +57,10 @@
 `               </div>
 
             </div>
+            </div>
             <hr class="feedhr" id="feedhr">
+        
+            
         @endforeach
 
     </div>

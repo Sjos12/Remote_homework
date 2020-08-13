@@ -14,7 +14,15 @@ html {
 }
 
 
-.card-welcome { 
+.card-welcome--button-container { 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}   
+
+.card-welcome--button { 
+}
+.card { 
     background-color: $darkmodecolor;
     padding-top: 5em;
     padding-bottom: 5em;
