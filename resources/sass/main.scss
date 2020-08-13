@@ -13,17 +13,25 @@ html {
     height: 100%;
 }
 
+.img-container { 
+    display: flex;
+    align-items: center;
+    padding: 0;
+}
+
 .question-img { 
     position: absolute;
     object-fit: cover;
     height: 100%;
     width: 100%;
+    
 }
 
 .img-box { 
-    height: 100px;
-    width: 100px;
+    height: 100%;
+    width: 100%;
     position: relative;
+
 }
 
 .card-welcome--button-container { 
@@ -177,6 +185,11 @@ html {
 .title4 { 
     font-family: $font-family-title;
     font-size: $font-family-title-size-4;
+}
+
+.title5 { 
+    font-family: $font-family-title;
+    font-size: $font-family-title-size-5;
 }
 
 /* footer styling */
