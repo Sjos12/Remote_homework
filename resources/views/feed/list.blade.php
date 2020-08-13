@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
+        <div class="row pb-5">
             <div class="card col-12">
                 <div class="card-welcome__content col-10 offset-1">
                     <div class="row">
@@ -23,14 +23,20 @@
         @foreach($questions as $view_model)
         
         <div class="row">
-        <div class="card col-12">
+            <div class="card col-12">
                 @if($firstImage = $view_model->firstImage())
-                    <div class=" col-lg-4 col-md-4 col-xs-12 col-sm-12 d-flex justify-content-center">
-                        {{ $firstImage->img()->attributes(['class' => 'img-fluid d-block mx-auto mt-auto mb-auto rounded', 'alt' => $view_model->question()->title]) }}
+                    <div class="img-container col-md-4 col-lg-4 col-sm-12 col-xs-12">
+                        <div class="img-box">
+                            {{ $firstImage->img()->attributes(['class' => 'question-img img-fluid d-block mx-auto mt-auto mb-auto rounded', 'alt' => $view_model->question()->title]) }}
+                        </div>
                     </div>
+
+                    <!-- <div class=" col-lg-4 col-md-4 col-xs-12 col-sm-12 d-flex justify-content-center">
+                       
+                    </div> -->
                 @endif
 
-                <div class="ml-auto pt-4 pb-4 col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <div class="content-container ml-auto pt-4 pb-4 col-lg-8 col-md-8 col-sm-12 col-xs-12">
 
                     <h3 class="col-12 title3">{{ $view_model->question()->title }}</h3>
                     <p class="col-12 mb-auto paragraph">{{$view_model->question()->content}}</p>
@@ -56,11 +62,8 @@
                     </p>
 `               </div>
 
-            </div>
-            </div>
-            <hr class="feedhr" id="feedhr">
-        
-            
+             </div>
+            </div>              
         @endforeach
 
     </div>
