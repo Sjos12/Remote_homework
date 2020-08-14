@@ -1,5 +1,5 @@
 FROM php:7.4-fpm-alpine
-ENV XDEBUG_VERSION 2.9.4
+ENV XDEBUG_VERSION 2.9.6
 # Update system
 RUN apk update && apk upgrade \
     && apk add --no-cache ${PHPIZE_DEPS} procps \
