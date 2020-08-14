@@ -13,8 +13,24 @@ html {
     height: 100%;
 }
 
+.card--question--info { 
+    position: absolute;
+    bottom: 0;
+    padding-bottom: 1em;
+}
+
+.content-container { 
+    position: relative;
+}
+
+.card--question { 
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
 .card--list { 
     width: 100%;
+    height: 100%;
 }
 .img-container { 
     display: flex;
@@ -31,10 +47,12 @@ html {
 }
 
 .img-box { 
-    height: 100%;
-    width: 100%;
+    height: 280px;
+    width: 280px;
     position: relative;
-
+    box-shadow: 15px 15px 0px 0px $darkmodecolor_dark;
+    border: 1px solid $darkmodecolor;
+    border-radius: 0.5em;
 }
 
 .card-welcome--button-container { 
@@ -43,8 +61,6 @@ html {
     justify-content: center;
 }   
 
-.card-welcome--button { 
-}
 .card { 
     background-color: $darkmodecolor;
     padding-top: 5em;
@@ -57,10 +73,6 @@ html {
     width: auto;
     border: none;
     border-radius: 6px;
-}
-
-.card--shadow {
-    box-shadow: 0 0 10px $darkmodecolor_dark;
 }
 
 .input--shadow { 
@@ -379,6 +391,11 @@ canvas {
     margin: 2px;
     color: $buttoncolor;
 }
+
+.card--question--padding { 
+    padding-top: 2.5em;
+    padding-bottom: 2.5em;
+}
 /* gives all the headers and paragraphs Montserrat font*/
 h4, h3, h2, h1 {
     @include fontstandard();
@@ -531,6 +548,8 @@ p {
         transition-duration: 0.2s;
         -webkit-transition-timing-function: ease-out;
         transition-timing-function: ease-out;
+
+
       }
       #nav-link:hover:before, #nav-link:focus:before, #nav-link:active:before, #navbarDropdown:hover:before, #navbarDropdown:focus:before, #navbarDropdown:active:before {
         left: 0;
@@ -565,6 +584,10 @@ p {
     
     .card--question { 
         background-color: $inputcolor_dark;
+    }
+
+    .card--shadow {
+        box-shadow: 0 0 10px $darkmodecolor_dark;
     }
 
 }
