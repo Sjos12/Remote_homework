@@ -32,7 +32,7 @@
                 </div>  
             @foreach($questions as $view_model)
                 <div class="row pb-5 pl-4 pr-4">
-                    <div class="card card--question card--question--padding col-12">
+                    <div class="card card--question card--shadow card--question--padding col-12">
                         <div class="row p-0 col-10 offset-1">
                             <div class="content-container ml-auto p-0 col-lg-5 col-md-5 col-sm-12 col-xs-12">
 
