@@ -13,7 +13,7 @@
                         </div>
                         <div class="col-6 card-welcome--button-container">
                             <div class="card-welcome--button-container-centered">
-                                <button class="card-welcome--button btn btn-primary text-right float-right btn-lg">Create question</button>
+                                <a class="card-welcome--button btn btn-primary text-right float-right btn-lg" href="{{ route('questions.create') }}">Create question</a>
                             </div>
                         </div>
                     </div>         
