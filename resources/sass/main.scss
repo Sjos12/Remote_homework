@@ -13,7 +13,15 @@ html {
     height: 100%;
 }
 
+
+.question-paragraph { 
+    max-height: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .card--question--info { 
+    
     position: absolute;
     bottom: 0;
     padding-bottom: 1em;
