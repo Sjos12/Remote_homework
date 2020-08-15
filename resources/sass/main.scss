@@ -15,14 +15,15 @@ html {
 
 
 .question-paragraph { 
-    max-height: 100px;
+    max-height: 140px;
+    min-height: 140px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .card--question--info { 
     
-    position: absolute;
+    position: relative;
     bottom: 0;
     padding-bottom: 1em;
 }

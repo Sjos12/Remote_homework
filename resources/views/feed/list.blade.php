@@ -44,7 +44,7 @@
                                 
                                 <div class=" card--question- mt-auto">  
                                     <div class="div1">
-                                        <h6 class="card--question--info pt-0">
+                                        <h6 class="card--question--info pt-5">
                                             Asked by {{ $view_model->question()->author->name }} <img src="/images/circle.svg" alt="circle">
                                             {{ $view_model->createdSince() }}
                                         </h6>
