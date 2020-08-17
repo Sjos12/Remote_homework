@@ -1,0 +1,8 @@
+---
+- hosts: test
+
+  vars:
+    ansistrano_deploy_to: "/var/www/test.remote-homework"
+
+  roles:
+    - ansistrano.deploy
