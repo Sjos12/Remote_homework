@@ -74,6 +74,7 @@
                            name="illustration"
                            aria-describedby="illustrationHelp"
                            required="required"
+                           onchange="document.getElementById('imgpreview').src = window.URL.createObjectURL(this.files[0])"
                     >
                     <small id="illustrationHelp" class="form-text text-muted">
                         {{ __('Upload an image of the subject matter') }}
@@ -83,9 +84,13 @@
                     @enderror
                 </div>
 
-                <button type="submit"
-                        class="btn btn-primary">{{ __('Submit your question') }}</button>
+
+                    <button type="submit" class="btn btn-primary">{{ __('Submit your question') }}</button>
+                
             </form>
+            <div class="imgpreview__container pt-3 pb-3 "> 
+                    <img id="imgpreview" class="col-12 col-md-8 offset-md-2">
+            </div>
         </div>
     </div>
 @endsection

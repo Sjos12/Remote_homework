@@ -13,7 +13,13 @@ html {
     height: 100%;
 }
 
+.imgpreview__container { 
+    width: 100%;
+}
 
+#imgpreview {    
+    object-fit: contain;
+}
 
 .question-paragraph { 
     max-height: 140px;
