@@ -150,6 +150,11 @@ html {
     line-height: $paragraph-line-height;
 }
 
+.paragraph2 { 
+    font-size: $paragraph2-text-size;
+    line-height: $paragraph-line-height;
+}
+
 .phonecontainer {
     vertical-align: bottom;
 }
@@ -214,6 +219,11 @@ html {
 .title5 { 
     font-family: $font-family-title;
     font-size: $font-family-title-size-5;
+}
+
+.title6 { 
+    font-family: $font-family-title;
+    font-size: $font-family-title-size-6;
 }
 
 /* footer styling */

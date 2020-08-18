@@ -37,14 +37,14 @@
                             <div class="content-container ml-auto p-0 col-lg-5 col-md-5 col-sm-12 col-xs-12">
 
                                 <div class="">
-                                    <h3 class="title5">{{ $view_model->question()->title }}</h3>
+                                    <h3 class="title6">{{ $view_model->question()->title }}</h3>
                                     
-                                    <p class="question-paragraph mb-auto paragraph">{{$view_model->question()->content}}</p>
+                                    <p class="question-paragraph mb-auto paragraph2">{{$view_model->question()->content}}</p>
                                 </div>
                                 
                                 <div class=" card--question- mt-auto">  
                                     <div class="div1">
-                                        <h6 class="card--question--info pt-5">
+                                        <h6 class="card--question--info pt-4">
                                             Asked by {{ $view_model->question()->author->name }} <img src="/images/circle.svg" alt="circle">
                                             {{ $view_model->createdSince() }}
                                         </h6>
