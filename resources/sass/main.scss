@@ -14,6 +14,7 @@ html {
 }
 
 
+
 .question-paragraph { 
     max-height: 140px;
     min-height: 140px;
@@ -226,6 +227,23 @@ html {
     font-size: $font-family-title-size-6;
 }
 
+.link {
+    font-family: $font-family-title;
+    margin-bottom: 30px; 
+    margin-right: 20px;
+}
+
+.link--active { 
+    color: white;
+    font-size: $font-family-title-size-4;
+    border-bottom: 5px solid white;
+}
+
+.link--inactive { 
+    color: $link--inactive-color;
+    font-size: $font-family-title-size-4;
+}
+
 /* footer styling */
 
 .footercolor {
@@ -412,8 +430,8 @@ canvas {
 }
 
 .card--question--padding { 
-    padding-top: 2.5em;
-    padding-bottom: 2.5em;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
 }
 /* gives all the headers and paragraphs Montserrat font*/
 h4, h3, h2, h1 {

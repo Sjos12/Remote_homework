@@ -26,12 +26,12 @@
             <div class="card card--list col-12"> 
                 <div class="row">
                     <div class="row col-10 offset-1">
-                        <a href="" class="title">Public</a>
-                        <a href="" class="title5">Private</a>
+                        <a href="" class="link link--active">Public</a>
+                        <a href="" class="link link--inactive">Private</a>
                     </div>
                 </div>  
             @foreach($questions as $view_model)
-                <div class="row pb-5 pl-4 pr-4">
+                <div class="row row-height pb-5 pl-4 pr-4">
                     <div class="card card--question card--shadow card--question--padding col-12">
                         <div class="row p-0 col-10 offset-1">
                             <div class="content-container ml-auto p-0 col-lg-5 col-md-5 col-sm-12 col-xs-12">
