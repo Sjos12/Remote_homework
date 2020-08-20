@@ -70,18 +70,17 @@
                         @else
                             <li class="nav-item">
                                 <!-- put the route for the 'public' questions here-->
-                                <a href="{{ route('feed.list') }}" class="nav-link" id="nav-link">Question Feed</a>
+                                <a href="{{ route('feed.list') }}" class="nav-link" id="nav-link">{{ __('Question Feed') }}</a>
                             </li>
 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="nav-link" v-pre>
-                                   Hello, {{ Auth::user()->name }} <span class="caret"></span>
+                                   {{ __('Hello, :Name', ['name' => \Illuminate\Support\Facades\Auth::user()->name]) }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" id="dropdownmenunav">
 
                                     <a class="dropdown-item" href="{{ route('questions.list') }}">{{ __('My questions') }}</a>
-                                    <!--<a class="dropdown-item" href="{{ route('pages.dashboard') }}">{{ __('Dashboard') }}</a>-->
                                     <a class="dropdown-item" href="{{ route('questions.create') }}">{{ __('Ask a question') }}</a>
 
                                     <a class="dropdown-item" href="{{ route('marketplace.home')}}">{{ __('Marketplace') }}</a>

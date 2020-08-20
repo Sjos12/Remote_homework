@@ -5,6 +5,8 @@ server {
     root /app/public;
     index index.php;
 
+    client_max_body_size 128m;
+
     location ~ \.(ttf|ttc|otf|eot|woff|font.css|css)$ {
         add_header Access-Control-Allow-Origin "*";
     }

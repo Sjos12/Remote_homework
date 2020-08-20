@@ -17,44 +17,33 @@
                             </div>
                         @endif
                     </div>
-
-                    <!-- When the site supports multiple images on 1 answer. Use a if else statement here to only make an extra slide if there is also a                        second image -->
-                    <!-- <div class="carousel-item">
-                        <img class="d-block w-100" src="..." alt="Second slide">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="..." alt="Third slide">
-                    </div> -->
-
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
+                    <span class="sr-only">{{ __('Previous') }}</span>
                 </a>
                 <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
+                    <span class="sr-only">{{ __('Next') }}</span>
                 </a>
             </div>
 
 
             <div class="col-8">
                 <p class="col-12 question-data">
-                    Submitted by: {{ $question->author->name }}
+                    {{ __('Asked by :Author', ['author' => $question->author->name]) }}
                 </p>
-
                 <p class="col-12 question-data text-left">
-                    Posted at: {{ $question->created_at->toDateTimeString() }}
+                    {{ __('Question asked :date', ['date' => $question->created_at->diffForHumans()]) }}
                 </p>
                 <p class="col-12  question-data text-left">
-                    Last updated at: {{ $question->updated_at->toDateTimeString() }}
+                    {{ __('Last updated :date', ['date' => $question->updated_at->diffForHumans()]) }}
                 </p>
+
             </div>
 
             <div class="col-4 my-auto">
-                <!-- In the future add a marked as solved-->
-                <!--<a class="btn btn-primary btn-lg float-right" href="{{ route('feed.answer', ['question' => $question->uuid]) }}">Answer Question</a>-->
-                <a class="btn btn-primary btn-lg float-right" href="{{ route('questions.edit', ['question' => $question->uuid]) }}">Edit question</a>
+                <a class="btn btn-primary btn-lg float-right" href="{{ route('questions.edit', ['question' => $question->uuid]) }}">{{ __('Edit question') }}</a>
             </div>
         </div>
     </div>

@@ -8,39 +8,39 @@
                     <p class="pt-4 footertext">An easy and simple online platform to
                         remotely collaborate and give feedback on (home)work.
                     </p>
- 
+
                 </div>
                 <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
-                    <p class=" footertext footerlink pl-4" href="#">Navigation</p>
+                    <p class=" footertext footerlink pl-4" href="#">{{ __('Navigation') }}</p>
 
-                    <ul> 
-                        <li style="list-style-type: none;" class="footertext">Home</li>
-                        <li style="list-style-type: none;" class="footertext">Info</li> 
-                        <li style="list-style-type: none;" class="footertext">What we offer</li>  
-                        <li style="list-style-type: none;" class="footertext">How it works</li> 
-                        <li style="list-style-type: none;" class="footertext">Tutorials</li> 
+                    <ul>
+                        <li style="list-style-type: none;" class="footertext">{{ __('Home') }}</li>
+                        <li style="list-style-type: none;" class="footertext">{{ __('Info') }}</li>
+                        <li style="list-style-type: none;" class="footertext">{{ __('What we offer') }}</li>
+                        <li style="list-style-type: none;" class="footertext">{{ __('How it works') }}</li>
+                        <li style="list-style-type: none;" class="footertext">{{ __('Tutorials') }}</li>
                     </ul>
                 </div>
                 <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
-                    <p class="footertext footerlink pl-4" href="#">Social Media</p>
+                    <p class="footertext footerlink pl-4" href="#">{{ __('Social Media') }}</p>
 
-                    <ul> 
+                    <ul>
                         <li style="list-style-type: none;" class="footertext">Facebook</li>
-                        <li style="list-style-type: none;" class="footertext">Instagram</li> 
-                        <li style="list-style-type: none;" class="footertext">Twitter</li>  
-                        <li style="list-style-type: none;" class="footertext">Reddit</li> 
-                        <li style="list-style-type: none;" class="footertext">Youtube</li> 
+                        <li style="list-style-type: none;" class="footertext">Instagram</li>
+                        <li style="list-style-type: none;" class="footertext">Twitter</li>
+                        <li style="list-style-type: none;" class="footertext">Reddit</li>
+                        <li style="list-style-type: none;" class="footertext">Youtube</li>
                     </ul>
                 </div>
                 <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
-                    <p class="footertext footerlink pl-4" href="#">Contact</p>
-                    
-                    <ul> 
+                    <p class="footertext footerlink pl-4" href="#">{{ __('Contact') }}</p>
+
+                    <ul>
                         <li style="list-style-type: none;" class="footertext">+31 26560800</li>
-                        <li style="list-style-type: none;" class="footertext">Da Costastraat 13</li> 
-                        <li style="list-style-type: none;" class="footertext">9721RA</li>  
-                        <li style="list-style-type: none;" class="footertext">Groningen</li> 
-                        <li style="list-style-type: none;" class="footertext">info@remotehomework.com</li> 
+                        <li style="list-style-type: none;" class="footertext">Da Costastraat 13</li>
+                        <li style="list-style-type: none;" class="footertext">9721RA</li>
+                        <li style="list-style-type: none;" class="footertext">Groningen</li>
+                        <li style="list-style-type: none;" class="footertext">info@remotehomework.com</li>
                     </ul>
                 </div>
             </div>
@@ -49,7 +49,7 @@
     <div class="footerdark">
         <div class="container">
             <div class="text-center pt-3 pb-3">
-                <p class="my-auto footertext">Copyright 2020 Remote Homework</p> 
+                <p class="my-auto footertext">{{ __('Copyright :year :name', ['year' => Carbon\Carbon::now()->format('Y'), 'name' => config('app.name', 'Remote Homework')]) }}</p>
             </div>
         </div>
     </div>
