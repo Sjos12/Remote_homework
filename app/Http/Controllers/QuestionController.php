@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Validation\Rule;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
@@ -89,7 +90,10 @@ final class QuestionController
         $validated_data = $this->validate(
             $request,
             [
-                'title'        => 'required|unique:questions,title', // @todo: should not be forbidden, but result in a suggestion to look at existing question, if permissions allow that
+                'title'        => [
+                    'required',
+                    Rule::unique('questions')->ignore($question->id),
+                ],
                 'content'      => 'nullable',
                 'illustration' => 'sometimes|image',
             ]
@@ -104,7 +108,7 @@ final class QuestionController
             $question->content = $validated_data['content'] ?? null;
             $question->save();
 
-            if ($validated_data['illustration']) {
+            if (isset($validated_data['illustration'])) {
                 $illustration = $question->illustrations()->first();
 
                 if (null === $illustration) {

@@ -36,7 +36,7 @@
                            aria-describedby="titleHelp"
                            placeholder="Type a title for your question"
                            required="required"
-                           value="{{ $question->title ?? old('title') }}"
+                           value="{{ old('title') ?: $question->title }}"
                     >
                     <small id="titleHelp" class="form-text text-muted">
                         {{ __('Your question in as terse but specific way as possible') }}
@@ -55,7 +55,7 @@
                               rows="5"
                               name="content"
                               aria-describedby="contentHelp"
-                    >{{ $question->content ?? old('content') }}</textarea>
+                    >{{ old('content') ?: $question->content }}</textarea>
                     <small id="contentHelp" class="form-text text-muted">
                         {{ __('Describe in as much detail as possible exactly the question you have') }}
                     </small>
@@ -73,7 +73,6 @@
                            id="illustration"
                            name="illustration"
                            aria-describedby="illustrationHelp"
-                           required="required"
                     >
                     <small id="illustrationHelp" class="form-text text-muted">
                         {{ __('Replace the current illustration') }}
