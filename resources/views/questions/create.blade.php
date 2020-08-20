@@ -84,11 +84,10 @@
                     @enderror
                 </div>
 
+                <button type="submit" class="btn btn-primary">{{ __('Submit your question') }}</button>
 
-                    <button type="submit" class="btn btn-primary">{{ __('Submit your question') }}</button>
-                
             </form>
-            <div class="imgpreview__container pt-3 pb-3 "> 
+            <div class="imgpreview__container pt-3 pb-3 ">
                     <img id="imgpreview" class="col-12 col-md-8 offset-md-2">
             </div>
         </div>

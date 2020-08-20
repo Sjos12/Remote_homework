@@ -40,7 +40,8 @@ serve: services-dev vendor
 services-dev:	## Serve a local development environment through Docker services
 services-dev:
 	$(info Starting local development environment...)
-	./dkr up -d
+	./dkr stop test_db
+	./dkr up -d php webserver db
 
 .PHONY: services-testing
 services-testing:	## Serve a testing environment through Docker services
