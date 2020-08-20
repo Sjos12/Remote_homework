@@ -73,13 +73,18 @@
                            id="illustration"
                            name="illustration"
                            aria-describedby="illustrationHelp"
+                           onchange="document.getElementById('imgpreview').srcset = window.URL.createObjectURL(this.files[0])"
                     >
                     <small id="illustrationHelp" class="form-text text-muted">
                         {{ __('Replace the current illustration') }}
                     </small>
                     @if($firstImage)
                         <div class="p-5 mx-auto col-10">
-                            {{ $firstImage->img()->attributes(['class' => 'img-fluid rounded', 'alt' => $question->title]) }}
+                            {{ $firstImage->img()->attributes([
+                                'id' => 'imgpreview',
+                                'class' => 'img-fluid rounded',
+                                'alt' => $question->title,
+                            ]) }}
                         </div>
                     @endif
                     @error('illustration')
