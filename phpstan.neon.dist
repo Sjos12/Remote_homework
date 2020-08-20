@@ -1,9 +1,7 @@
 includes:
-    - ./vendor/nunomaduro/larastan/extension.neon
+    - /composer/vendor/nunomaduro/larastan/extension.neon
 
 parameters:
-    bootstrap: %currentWorkingDirectory%/vendor/nunomaduro/larastan/bootstrap.php
-
     paths:
         - app
         - tests
@@ -11,13 +9,5 @@ parameters:
 
     # The level 8 is the highest level
     level: 8
-
-    ignoreErrors:
-        - '#Unsafe usage of new static#'
-        # Should not be necesssary anymore when Milestone static reflection is release, @see https://github.com/phpstan/phpstan/issues/2883 gets
-        - '#Access to undefined constant PDO::MYSQL_ATTR_SSL_CA.#'
-
-    excludes_analyse:
-        - ./*/*/FileToBeExcluded.php
 
     checkMissingIterableValueType: false

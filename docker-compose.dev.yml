@@ -2,9 +2,14 @@ version: "3.7"
 
 services:
   phpstan:
-    image: phpstan/phpstan
+    build:
+      dockerfile: Dockerfile
+      context: ./.docker/larastan
+    container_name: "${PROJECT_NAME}_larastan"
     volumes:
-      - code:/app
+      - "./:/app:delegated"
+    networks:
+      - remote_homework_network
 
   # @todo: should not always start. Should start when test suite is started and stopped if test suite ended without error
   test_db:
@@ -22,3 +27,7 @@ services:
     networks:
       - remote_homework_network
       - ssh
+
+volumes:
+  test_db:
+    driver: local

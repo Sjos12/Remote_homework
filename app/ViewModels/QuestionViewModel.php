@@ -56,12 +56,8 @@ final class QuestionViewModel extends ViewModel
         return null;
     }
 
-    public function createdSince()
+    public function createdSince(): string
     {
         return $this->question->created_at->diffForHumans();
-    }
-
-    public function author() {
-
     }
 }

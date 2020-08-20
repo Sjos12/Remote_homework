@@ -9,6 +9,7 @@ use App\ViewModels\QuestionViewModel;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -49,7 +50,10 @@ final class QuestionController
 
             $illustration->user_id = $request->user()->id;
             $illustration->question_id = $question->id;
-            $illustration->addMedia($request->file('illustration'))
+
+            /** @var UploadedFile $uploaded_file */
+            $uploaded_file = $request->file('illustration');
+            $illustration->addMedia($uploaded_file)
                          ->withResponsiveImages()
                          ->toMediaCollection(Illustration::COLLECTION_IMAGES);
 
@@ -119,7 +123,9 @@ final class QuestionController
                 }
 
                 $illustration->clearMediaCollection(Illustration::COLLECTION_IMAGES);
-                $illustration->addMedia($request->file('illustration'))
+                /** @var UploadedFile $uploaded_file */
+                $uploaded_file = $request->file('illustration');
+                $illustration->addMedia($uploaded_file)
                              ->withResponsiveImages()
                              ->toMediaCollection(Illustration::COLLECTION_IMAGES);
 
