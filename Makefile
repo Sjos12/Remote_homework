@@ -63,11 +63,12 @@ test-acceptance:	## Run all acceptance test suites
 test-acceptance:	vendor services-testing
 	$(info NOT YET IMPLEMENTED IN MAKE Running all acceptance test suites...)
 
-.PHONY: phpstan
-phpstan:	## Run PHPStan static code analysis
-phpstan:	vendor
-	$(info Running PHPStan static analysis...)
+.PHONY: qa
+qa:	## Run PHPStan static code analysis
+qa:	vendor
+	$(info Running quality assurance (QA) analysis...)
 	./dkr run --rm phpstan analyze --memory-limit=2G
+	./dkr art blade:lint
 
 #
 # Rules from files (non-phony targets)

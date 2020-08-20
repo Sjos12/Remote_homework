@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "daf60c5031842046b5f5dd1e8e8a973f",
+    "content-hash": "8a0bb0e48c31f620b42a58092580f260",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5215,6 +5215,63 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "bdelespierre/laravel-blade-linter",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bdelespierre/laravel-blade-linter.git",
+                "reference": "e59a8f9107d60fdc384bfd1770b076bb786eb5db"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bdelespierre/laravel-blade-linter/zipball/e59a8f9107d60fdc384bfd1770b076bb786eb5db",
+                "reference": "e59a8f9107d60fdc384bfd1770b076bb786eb5db",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^7.25",
+                "php": "^7.2"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^5.4",
+                "phpunit/phpunit": "^9.3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Bdelespierre\\LaravelBladeLinter\\BladeLinterServiceProvider"
+                    ],
+                    "aliases": {
+                        "LaravelBladeLinter": "Bdelespierre\\LaravelBladeLinter\\BladeLinterFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Bdelespierre\\LaravelBladeLinter\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Benjamin Delespierre",
+                    "email": "benjamin.delespierre@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple Blade template syntax checker for Laravel",
+            "homepage": "https://github.com/bdelespierre/laravel-blade-linter",
+            "keywords": [
+                "bdelespierre",
+                "laravel-blade-linter"
+            ],
+            "time": "2020-08-18T14:03:04+00:00"
+        },
         {
             "name": "behat/behat",
             "version": "v3.7.0",
