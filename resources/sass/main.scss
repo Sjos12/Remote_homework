@@ -13,6 +13,10 @@ html {
     height: 100%;
 }
 
+.phonesizeinfo  {
+    display: none;
+}
+
 .imgpreview__container { 
     width: 100%;
 }
@@ -467,6 +471,25 @@ p {
 }
 // 720 px and down will get styling
 @media screen and (max-width: 720px) {
+
+
+    /* for changing the order of elements based on screen size */ 
+    .desktopinfo { 
+        display: none;
+    }
+
+    .question-paragraph {
+        display: none;
+    }
+
+    .dashboardstat h1{ 
+        text-align: center;
+    }
+
+    .card-welcome--button {    
+        margin: 0 auto;
+        display:block;
+    }
 
     .mobilespacingtop {
         padding-top: 150px;

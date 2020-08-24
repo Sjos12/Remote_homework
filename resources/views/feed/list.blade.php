@@ -6,14 +6,14 @@
             <div class="card col-12">
                 <div class="card-welcome__content col-10 offset-1">
                     <div class="row">
-                        <div class="col-6">
-                            <h1 class="title4">Welcome, Denzel</h1>
-                            <h2>Questions answered</h2>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 dashboardstat">
+                            <h1 class="title4 ">Welcome, Denzel</h1>
+                            <h2 class="">Questions answered</h2>
                             <h2>Questions asked</h2>
                         </div>
-                        <div class="col-6 card-welcome--button-container">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 card-welcome--button-container">
                             <div class="card-welcome--button-container-centered">
-                                <a class="card-welcome--button btn btn-primary text-right float-right btn-lg" href="{{ route('questions.create') }}">Create question</a>
+                                <a class="card-welcome--button btn btn-primary btn-lg mt-4" href="{{ route('questions.create') }}">Create question</a>
                             </div>
                         </div>
                     </div>         
@@ -36,13 +36,13 @@
                         <div class="row p-0 col-10 offset-1">
                             <div class="content-container ml-auto p-0 col-lg-5 col-md-5 col-sm-12 col-xs-12">
 
-                                <div class="">
+                                <div class="col-sm-12 col-xs-12 ">
                                     <h3 class="title6">{{ $view_model->question()->title }}</h3>
                                     
                                     <p class="question-paragraph mb-auto paragraph2">{{$view_model->question()->content}}</p>
                                 </div>
                                 
-                                <div class=" card--question- mt-auto">  
+                                <div class=" card--question- mt-auto desktopinfo">  
                                     <div class="div1">
                                         <h6 class="card--question--info pt-4">
                                             Asked by {{ $view_model->question()->author->name }} <img src="/images/circle.svg" alt="circle">
@@ -53,8 +53,8 @@
                            
                             </div>
 
-                            <div class="col-3 d-flex justify-content-center mt-auto mb-auto">
-                                <a class="btn btn-lg btn-primary float-right pl-5 pr-5"
+                            <div class="col-3 d-flex justify-content-center mt-auto mb-auto ">
+                                <a class="desktopinfo btn btn-lg btn-primary float-right pl-5 pr-5"
                                 href="{{ route('feed.detail', ['question' => $view_model->question()->uuid]) }}"
                                 >
                                     View
@@ -72,6 +72,7 @@
                                 
                                 </div> -->
                             @endif
+                            
                             </div>
                         </div>
                     </div>
