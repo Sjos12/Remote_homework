@@ -9,6 +9,7 @@ function scrollFunction() {
         document.getElementById("logo").style.width = " 105px";
     }
     console.log('This works!');
+
     console.log(document.documentElement.scrollTop)
 }
 

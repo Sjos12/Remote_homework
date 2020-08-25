@@ -9,9 +9,11 @@ use App\ViewModels\QuestionViewModel;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Validation\Rule;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
@@ -48,7 +50,10 @@ final class QuestionController
 
             $illustration->user_id = $request->user()->id;
             $illustration->question_id = $question->id;
-            $illustration->addMedia($request->file('illustration'))
+
+            /** @var UploadedFile $uploaded_file */
+            $uploaded_file = $request->file('illustration');
+            $illustration->addMedia($uploaded_file)
                          ->withResponsiveImages()
                          ->toMediaCollection(Illustration::COLLECTION_IMAGES);
 
@@ -89,7 +94,10 @@ final class QuestionController
         $validated_data = $this->validate(
             $request,
             [
-                'title'        => 'required|unique:questions,title', // @todo: should not be forbidden, but result in a suggestion to look at existing question, if permissions allow that
+                'title'        => [
+                    'required',
+                    Rule::unique('questions')->ignore($question->id),
+                ],
                 'content'      => 'nullable',
                 'illustration' => 'sometimes|image',
             ]
@@ -104,7 +112,7 @@ final class QuestionController
             $question->content = $validated_data['content'] ?? null;
             $question->save();
 
-            if ($validated_data['illustration']) {
+            if (isset($validated_data['illustration'])) {
                 $illustration = $question->illustrations()->first();
 
                 if (null === $illustration) {
@@ -115,7 +123,9 @@ final class QuestionController
                 }
 
                 $illustration->clearMediaCollection(Illustration::COLLECTION_IMAGES);
-                $illustration->addMedia($request->file('illustration'))
+                /** @var UploadedFile $uploaded_file */
+                $uploaded_file = $request->file('illustration');
+                $illustration->addMedia($uploaded_file)
                              ->withResponsiveImages()
                              ->toMediaCollection(Illustration::COLLECTION_IMAGES);
 

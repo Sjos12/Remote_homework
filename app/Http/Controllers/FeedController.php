@@ -11,6 +11,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
 final class FeedController
@@ -41,7 +42,7 @@ final class FeedController
         return view('feed.answer', new QuestionViewModel($question));
     }
 
-    public function answered(Request $request, Question $question)
+    public function answered(Request $request, Question $question): Response
     {
         $validated_data = $this->validate(
             $request,

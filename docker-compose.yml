@@ -5,7 +5,7 @@ services:
     image: nginx
     container_name: "${PROJECT_NAME}_webserver"
     volumes:
-      - code:/app
+      - "./:/app:delegated"
       - ./.docker/nginx/default.template:/etc/nginx/conf.d/default.template:ro
     environment:
       PHP_SERVICE: ${PROJECT_NAME}_php # Pass the variable on to the container
@@ -31,7 +31,7 @@ services:
       context: ./.docker/php
     container_name: "${PROJECT_NAME}_php"
     volumes:
-      - code:/app
+      - "./:/app:delegated"
     networks:
       - default # necessary for XDEBUG
       - remote_homework_network
@@ -62,13 +62,5 @@ networks:
     internal: true
 
 volumes:
-  code:
-    driver: local
-    driver_opts:
-      type: nfs
-      o: addr=host.docker.internal,rw,nolock,hard,nointr,nfsvers=3
-      device: ":${PWD}"
   db:
-    driver: local
-  test_db:
     driver: local
