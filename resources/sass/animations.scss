@@ -1,0 +1,53 @@
+/* variables for animations */ 
+
+$animation-duration-1: 0.7s ;
+
+/* Animations given to elements*/ 
+
+.slide-in-left { 
+    animation: slide-in-left $animation-duration-1 ease-in-out;
+}
+
+.slide-in-right { 
+    animation: slide-in-right $animation-duration-1 ease-in-out;
+}
+
+.slide-in-top { 
+    animation: slide-in-top $animation-duration-1 ease-in-out;
+    animation-delay: calc(var(--scroll) > 0.2);
+}
+
+/* animations */ 
+
+@keyframes slide-in-left {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 100%;
+    }
+  }
+
+@keyframes slide-in-right {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 100%;
+    }
+  }
+
+@keyframes slide-in-top {
+    0% {
+      transform: translateY(20vh);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0vh);
+      opacity: 100%;
+    }
+  }

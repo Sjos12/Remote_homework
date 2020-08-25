@@ -6,19 +6,19 @@
     <div class="row vh-100">
       <div class="col-md-6">
         <div class="positioncontent">
-          <h1 class="title ">Remote Homework</h1> 
-          <p class="paragraph">
+          <h1 class="title slide-in-left">Remote Homework</h1> 
+          <p class="paragraph slide-in-left">
           An easy and simple online platform to
           remotely collaborate and give feedback on (home)work.
           </p> 
           <div class="wrapper pt-2">
-            <a href="{{ route('login') }}" class="shadow-sm btn btn-primary btn-lg border border-info" id="homebtn1">Get Started</a>
-            <a href="#content2" class="shadow-sm btn btn-white btn-lg border border-info" id="homebtn2">Contact us here</a>
+            <a href="{{ route('login') }}" class="shadow-sm btn btn-primary btn-lg border border-info slide-in-top" id="homebtn1">Get Started</a>
+            <a href="#content2" class="shadow-sm btn btn-white btn-lg border border-info slide-in-top" id="homebtn2">Contact us here</a>
           </div>  
         </div>
       </div>
 
-      <div class="col-md-6 col-sm-12">
+      <div class="col-md-6 col-sm-12 slide-in-right">
         <img src="/images/homeworkgirl.svg" class="" id="homeworkgirl" alt="Homework girl">
       </div>
     </div>
@@ -32,7 +32,7 @@
     </div>
     
     <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
-      <h1 class="title ">Help each other</h1> 
+      <h1 class="title slide-in-top ">Help each other</h1> 
       <p class="paragraph">
       Remote Homework makes helping each other with homework a piece of cake. You can reach out to our community as well as to your teacher or parents and ask them questions on your homework remotely. 
 

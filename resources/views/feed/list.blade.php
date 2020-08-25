@@ -53,7 +53,7 @@
                            
                             </div>
 
-                            <div class="col-3 d-flex justify-content-center mt-auto mb-auto ">
+                            <div class="col-3 d-flex justify-content-center mt-auto mb-auto">
                                 <a class="desktopinfo btn btn-lg btn-primary float-right pl-5 pr-5"
                                 href="{{ route('feed.detail', ['question' => $view_model->question()->uuid]) }}"
                                 >
