@@ -6,27 +6,19 @@
             <div class="card col-12">
                 <div class="card-welcome__content col-10 offset-1">
                     <div class="row">
-<<<<<<< HEAD
+
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 dashboardstat">
-                            <h1 class="title4 ">Welcome, Denzel</h1>
-                            <h2 class="">Questions answered</h2>
-                            <h2>Questions asked</h2>
-=======
-                        <div class="col-6">
                             <h1 class="title4">{{ __('Welcome, :Name', ['name' => \Illuminate\Support\Facades\Auth::user()->name,]) }}</h1>
                             <h2>
                                 {{ __('Questions answered') }} <br>
                                 {{ __('Questions asked') }}
                             </h2>
->>>>>>> 41a28c5ec546a4b8898b896d93bcc0d808bce5ed
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 card-welcome--button-container">
                             <div class="card-welcome--button-container-centered">
-<<<<<<< HEAD
-                                <a class="card-welcome--button btn btn-primary btn-lg mt-4" href="{{ route('questions.create') }}">Create question</a>
-=======
-                                <a class="card-welcome--button btn btn-primary text-right float-right btn-lg" href="{{ route('questions.create') }}">{{ __('Create question') }}</a>
->>>>>>> 41a28c5ec546a4b8898b896d93bcc0d808bce5ed
+
+                                <a class="card-welcome--button btn btn-primary btn-lg mt-4" href="{{ route('questions.create') }}">{{ __('Create question') }}</a>
+
                             </div>
                         </div>
                     </div>
@@ -54,13 +46,9 @@
 
                                     <p class="question-paragraph mb-auto paragraph2">{{$view_model->question()->content}}</p>
                                 </div>
-<<<<<<< HEAD
-                                
-                                <div class=" card--question- mt-auto desktopinfo">  
-=======
 
-                                <div class=" card--question- mt-auto">
->>>>>>> 41a28c5ec546a4b8898b896d93bcc0d808bce5ed
+                                <div class=" card--question- mt-auto desktopinfo">
+
                                     <div class="div1">
                                         <h6 class="card--question--info pt-4">
                                             {{ __('Asked by :Author', ['author' => $view_model->question()->author->name]) }} <img src="/images/circle.svg" alt="circle">
@@ -86,7 +74,7 @@
                                     </div>
                                 </div>
                             @endif
-                            
+
                             </div>
                         </div>
                     </div>
