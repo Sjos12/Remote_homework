@@ -41,7 +41,7 @@
                         <div class="row p-0 col-10 offset-1">
                             <div class="content-container ml-auto p-0 col-lg-5 col-md-5 col-sm-12 col-xs-12">
 
-                                <div class="col-sm-12 col-xs-12 ">
+                                <div class="">
                                     <h3 class="title6">{{ $view_model->question()->title }}</h3>
 
                                     <p class="question-paragraph mb-auto paragraph2">{{$view_model->question()->content}}</p>
