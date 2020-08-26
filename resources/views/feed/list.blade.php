@@ -73,27 +73,27 @@
                                     </div>
                                 </div>
                             @endif
+                            </div>
 
                             <div class="row">
-                            <div class="col-10 card--question- mt-auto mobileinfo">
-                                    <div class="div1">
-                                        <h6 class="card--question--info pt-4">
-                                            {{ __('Asked by :Author', ['author' => $view_model->question()->author->name]) }} <img src="/images/circle.svg" alt="circle">
-                                            {{ $view_model->createdSince() }}
-                                        </h6>
-                                    </div>
+                                <div class="col-8 card--question- mt-auto mobileinfo">
+                                        <div class="div1">
+                                            <h6 class="card--question--info pt-4">
+                                                {{ __('Asked by :Author', ['author' => $view_model->question()->author->name]) }} <br class="pt-0">
+                                                {{ $view_model->createdSince() }}
+                                            </h6>
+                                        </div>
+                                </div>
+
+                                <div class="col-4 mt-auto mb-auto">
+                                    <a class="mobileinfo btn btn-lg btn-primary float-right pl-5 pr-5"
+                                    href="{{ route('feed.detail', ['question' => $view_model->question()->uuid]) }}"
+                                    >
+                                        {{ __('View') }}
+                                    </a>
                                 </div>
                             </div>
-
-                            <div class="col-2 d-flex justify-content-center mt-auto mb-auto">
-                                <a class="mobileinfo btn btn-lg btn-primary float-right pl-5 pr-5"
-                                href="{{ route('feed.detail', ['question' => $view_model->question()->uuid]) }}"
-                                >
-                                    {{ __('View') }}
-                                </a>
-                            </div>
-                            </div>
-                            
+                                
 
                         </div>
                     </div>

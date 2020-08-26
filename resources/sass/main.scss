@@ -470,9 +470,24 @@ p {
 
 }
 
+
+// 540 px and down will get styling
+@media screen and (max-width: 350px) {
+
+}
+
 // 540 px and down will get styling
 @media screen and (max-width: 540px) {
 
+    
+.img-box { 
+    height: 280px;
+    width: 100%;
+    position: relative;
+    box-shadow: 15px 15px 0px 0px $darkmodecolor_dark;
+    border: 1px solid $darkmodecolor;
+    border-radius: 0.5em;
+    }
 
 }
 // 720 px and down will get styling
