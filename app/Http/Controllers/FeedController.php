@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Answer;
 use App\Question;
 use App\ViewModels\QuestionViewModel;
+use App\ViewModels\UserViewModel;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
@@ -18,16 +19,16 @@ final class FeedController
 {
     use ValidatesRequests;
 
-    public function list(): Renderable
+    public function list(Request $request): Renderable
     {
         $questions = Question::orderBy('updated_at', 'desc')
                              ->get()
                              ->map(
-                                 fn(Question $question
-                                 ) => new QuestionViewModel($question)
+                                 fn(Question $question) => new QuestionViewModel($question)
                              );
 
         return view('feed.list', [
+            'user' => (new UserViewModel($request->user()))->toArray(),
             'questions' => $questions,
         ]);
     }
