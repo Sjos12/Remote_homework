@@ -8,7 +8,7 @@
                     <div class="row">
                         <h3 class="col-12">{{ $question->title }}</h3>
                         <p class="col-12 card__paragraph">{{$question->content}}</p>
-                    </div>  
+                    </div>
                     <div class="row info-container">
                         <div class="col-6">
                             <p class="question-data text-left">
@@ -23,16 +23,16 @@
                                 {{ __('Asked by :Author', ['author' => $question->author->name]) }}
                             </p>
                         </div>
-                        
+
                         <div class="col-6">
                             <a class="btn btn-primary btn-lg float-right " href="{{  route('feed.answer', ['question' => $question->uuid]) }}">
                                 {{ __('Answer Question') }}
                             </a>
                         </div>
-                        
+
                     </div>
                 </div>
-                
+
                 <div class="col-md-7">
                     <div id="carouselExampleControls" class="carousel slide mx-auto " data-ride="carousel">
                         <div class="carousel-inner">
@@ -67,7 +67,7 @@
                             <span class="answerauthor ">{{ $answer->author->name }}</span> {{ __('gave an answer') }}</h1>
                     </div>
                     <div class="col-md-6 col-lg-6">
-                        <a href="" class="btn btn-primary btn-lg text-right viewanserbtn">{{ __('View answer') }}</a>
+                        <a href="{{ route('feed.answer', ['question' => $question->uuid]) }}" class="btn btn-primary btn-lg text-right viewanserbtn">{{ __('View answer') }}</a>
                     </div>
                 </div>
             @endforeach
