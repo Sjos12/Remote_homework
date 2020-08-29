@@ -1,23 +1,23 @@
-/* variables for animations */ 
+/* variables for animations */
 
 $animation-duration-1: 0.7s ;
 
-/* Animations given to elements*/ 
+/* Animations given to elements*/
 
-.slide-in-left { 
+.slide-in-left {
     animation: slide-in-left $animation-duration-1 ease-in-out;
 }
 
-.slide-in-right { 
+.slide-in-right {
     animation: slide-in-right $animation-duration-1 ease-in-out;
 }
 
-.slide-in-top { 
+.slide-in-top {
     animation: slide-in-top $animation-duration-1 ease-in-out;
-    animation-delay: calc(var(--scroll) > 0.2);
+    animation-delay: calc(var(--scroll));
 }
 
-/* animations */ 
+/* animations */
 
 @keyframes slide-in-left {
     0% {

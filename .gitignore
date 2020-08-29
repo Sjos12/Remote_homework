@@ -1,6 +1,7 @@
 # ###############################
 # #  Resources / Assets files   #
 # ###############################
+/public/mix-manifest.json
 /public/hot
 /public/js
 /public/css
