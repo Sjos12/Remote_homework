@@ -70,7 +70,7 @@
                         @else
                             <li class="nav-item">
                                 <!-- put the route for the 'public' questions here-->
-                                <a href="{{ route('feed.list') }}" class="nav-link" id="nav-link">{{ __('Question Feed') }}</a>
+                                <a href="{{ route('feed.list') }}" class="nav-link" id="nav-link">{{ __('Dashboard') }}</a>
                             </li>
 
                             <li class="nav-item dropdown">

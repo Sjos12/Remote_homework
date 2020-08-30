@@ -14,16 +14,20 @@ html {
     height: 100%;
 }
 
-.info-container { 
+.statistic--color {
+    color: $buttoncolor;
+}
+
+.info-container {
     position: absolute;
     bottom: 0;
 }
 
-.card--relative { 
+.card--relative {
     position: relative;
 }
 
-.mobileinfo { 
+.mobileinfo {
     display: none;
 }
 
@@ -31,57 +35,57 @@ html {
     display: none;
 }
 
-.imgpreview__container { 
+.imgpreview__container {
     width: 100%;
 }
 
-#imgpreview {    
+#imgpreview {
     object-fit: contain;
 }
 
-.question-paragraph { 
+.question-paragraph {
     max-height: 140px;
     min-height: 140px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.card--question--info { 
-    
+.card--question--info {
+
     position: relative;
     bottom: 0;
     padding-bottom: 1em;
 }
 
-.content-container { 
+.content-container {
     position: relative;
 }
 
-.card--question { 
+.card--question {
     padding-top: 0px;
     padding-bottom: 0px;
 }
 
-.card--list { 
+.card--list {
     width: 100%;
     height: 100%;
 }
-.img-box { 
+.img-box {
     margin-left: auto;
     margin-right: auto;
     margin-top: 1em;
     margin-bottom: 1em;
 }
 
-.question-img { 
+.question-img {
     position: absolute;
     object-fit: cover;
     height: 100%;
     width: 100%;
-    
+
 }
 
-.img-box { 
+.img-box {
     height: 280px;
     width: 280px;
     position: relative;
@@ -90,47 +94,47 @@ html {
     border-radius: 0.5em;
 }
 
-.card-welcome--button-container { 
+.card-welcome--button-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
-}   
+}
 
-.card { 
+.card {
     background-color: $darkmodecolor;
     padding-top: 4em;
     padding-bottom: 4em;
     border-radius: 10px;
 }
 
-.card--color-2 { 
+.card--color-2 {
     background-color: $inputcolor_dark;
 }
 
-.card--no-padding { 
+.card--no-padding {
     padding: 0em;
 }
 
-.card--login { 
+.card--login {
     height: 70vh;
     width: auto;
     border: none;
     border-radius: 6px;
 }
 
-.input--shadow { 
+.input--shadow {
     box-shadow: 0 0 15px $darkmodecolor_dark;
 }
 
-.password-forget-container--padding { 
+.password-forget-container--padding {
     padding-top: 2em;
 }
 
-.form-group--padding { 
+.form-group--padding {
     padding-right: 15em;
 }
 
-.form-control { 
+.form-control {
     border: none;
 }
 
@@ -184,7 +188,7 @@ html {
     line-height: $paragraph-line-height;
 }
 
-.paragraph2 { 
+.paragraph2 {
     font-size: $paragraph2-text-size;
     line-height: $paragraph-line-height;
 }
@@ -245,34 +249,34 @@ html {
 
 }
 
-.title4 { 
+.title4 {
     font-family: $font-family-title;
     font-size: $font-family-title-size-4;
 }
 
-.title5 { 
+.title5 {
     font-family: $font-family-title;
     font-size: $font-family-title-size-5;
 }
 
-.title6 { 
+.title6 {
     font-family: $font-family-title;
     font-size: $font-family-title-size-6;
 }
 
 .link {
     font-family: $font-family-title;
-    margin-bottom: 30px; 
+    margin-bottom: 30px;
     margin-right: 20px;
 }
 
-.link--active { 
+.link--active {
     color: white;
     font-size: $font-family-title-size-4;
     border-bottom: 5px solid white;
 }
 
-.link--inactive { 
+.link--inactive {
     color: $link--inactive-color;
     font-size: $font-family-title-size-4;
 }
@@ -462,7 +466,7 @@ canvas {
     color: $buttoncolor;
 }
 
-.card--question--padding { 
+.card--question--padding {
     padding-top: 1.5em;
     padding-bottom: 1.5em;
 }
@@ -496,8 +500,8 @@ p {
 // 540 px and down will get styling
 @media screen and (max-width: 540px) {
 
-    
-.img-box { 
+
+.img-box {
     height: 280px;
     width: 100%;
     position: relative;
@@ -511,12 +515,12 @@ p {
 @media screen and (max-width: 720px) {
 
 
-    /* for changing the order of elements based on screen size */ 
-    .desktopinfo { 
+    /* for changing the order of elements based on screen size */
+    .desktopinfo {
         display: none;
     }
 
-    .mobileinfo { 
+    .mobileinfo {
         display: block;
     }
 
@@ -524,11 +528,11 @@ p {
         display: none;
     }
 
-    .dashboardstat h1{ 
+    .dashboardstat h1{
         text-align: center;
     }
 
-    .card-welcome--button {    
+    .card-welcome--button {
         margin: 0 auto;
         display:block;
     }
@@ -689,8 +693,8 @@ p {
         border-radius: 10px;
     }
 
-    
-    .card--question { 
+
+    .card--question {
         background-color: $inputcolor_dark;
     }
 

@@ -10,8 +10,8 @@
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 dashboardstat">
                             <h1 class="title4">{{ __('Welcome, :Name', ['name' => $user['name'],]) }}</h1>
                             <h2>
-                                <span>{{ $user['answered'] }}</span> {{ __('questions answered') }} <br>
-                                <span>{{ $user['asked'] }}</span> {{ __('questions asked') }}
+                                <span class="statistic--color">{{ $user['answered'] }}</span> {{ __('questions answered') }} <br>
+                                <span class="statistic--color">{{ $user['asked'] }}</span> {{ __('questions asked') }}
                             </h2>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 card-welcome--button-container">
