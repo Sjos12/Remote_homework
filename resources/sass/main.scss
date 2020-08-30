@@ -14,6 +14,9 @@ html {
     height: 100%;
 }
 
+
+
+
 .statistic--color {
     color: $buttoncolor;
 }
@@ -161,12 +164,13 @@ html {
 
 // styling for detail img to be 100 % width so small resolution img's won't display small.
 .detailimg {
-    min-width: 100%;
-    min-height: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .box {
-    height: auto;
+    height: 100%;
     width: 100%;
 }
 
@@ -469,6 +473,11 @@ canvas {
 .card--question--padding {
     padding-top: 1.5em;
     padding-bottom: 1.5em;
+}
+
+.card--border-radius {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
 }
 /* gives all the headers and paragraphs Montserrat font*/
 h4, h3, h2, h1 {

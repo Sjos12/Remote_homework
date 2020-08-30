@@ -4,7 +4,7 @@
     <div class="container">
         <div class="card card--no-padding">
             <div class="row">
-                <div class="card card card--color-2 card--relative pr-5 pl-5 col-md-5 col-lg-5 ">
+                <div class="card card card--color-2 card--relative pr-5 pl-5 col-md-5 col-lg-5 card--border-radius">
                     <div class="row">
                         <h3 class="col-12">{{ $question->title }}</h3>
                         <p class="col-12 card__paragraph">{{$question->content}}</p>
