@@ -15,7 +15,10 @@ html {
 }
 
 
-
+.toolbar {
+    background-color:  white;
+    box-shadow: $darkmodeboxshadow;
+}
 
 .statistic--color {
     color: $buttoncolor;
@@ -596,6 +599,21 @@ p {
     body {
        background-color: $darkmodecolor_dark;
    }
+
+    .toolbar {
+        background-color:  $inputcolor_dark;
+        box-shadow: $darkmodeboxshadow;
+        border-radius: 1em;
+    }
+
+    .toolbar button {
+        background-color:  $inputcolor_dark;
+        color: white;
+    }
+    .toolbar button:hover {
+        background-color:  $inputcolor_dark;
+        color: white;
+    }
 
    p {
     color: $darkmodetextcolor;
