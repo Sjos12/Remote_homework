@@ -11,12 +11,14 @@ RUN apk update && apk upgrade \
                            freetype-dev \
                            libpng-dev \
                            libjpeg-turbo-dev \
+                           libwebp-dev \
                            libzip-dev \
                            oniguruma-dev \
     && docker-php-ext-install exif \
     && docker-php-ext-configure gd \
                            --with-freetype=/usr/include/ \
                            --with-jpeg=/usr/include/ \
+                           --with-webp=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd \
     && pecl install xdebug-${XDEBUG_VERSION} \
     && docker-php-ext-enable xdebug \
