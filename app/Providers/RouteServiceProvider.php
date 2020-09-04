@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use App\Answer;
 use App\Question;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +29,10 @@ final class RouteServiceProvider extends ServiceProvider
     {
         Route::bind('question', static function ($question) {
             return Question::whereUuid($question)->first();
+        });
+
+        Route::bind('answer', static function ($answer) {
+            return Answer::whereUuid($answer)->first();
         });
 
         parent::boot();

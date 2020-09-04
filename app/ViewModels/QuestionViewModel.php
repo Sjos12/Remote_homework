@@ -5,6 +5,7 @@ namespace App\ViewModels;
 
 use App\Illustration;
 use App\Question;
+use App\User;
 use Illuminate\Support\Collection;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\ViewModels\ViewModel;
@@ -36,9 +37,19 @@ final class QuestionViewModel extends ViewModel
         return $this->question->answers;
     }
 
+    public function author(): User
+    {
+        return $this->question->author;
+    }
+
     public function id(): string
     {
         return (string) $this->question->uuid;
+    }
+
+    public function title(): string
+    {
+        return $this->question->title;
     }
 
     public function firstImage(): ?Media

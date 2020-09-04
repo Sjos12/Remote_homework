@@ -67,7 +67,11 @@
                             <span class="answerauthor ">{{ $answer->author->name }}</span> {{ __('gave an answer') }}</h1>
                     </div>
                     <div class="col-md-6 col-lg-6">
-                        <a href="{{ route('feed.answer', ['question' => $question->uuid]) }}" class="btn btn-primary btn-lg text-right viewanserbtn">{{ __('View answer') }}</a>
+                        <a href="{{ route('feed.answer.show', ['question' => $question->uuid, 'answer' => $answer->uuid]) }}"
+                           class="btn btn-primary btn-lg text-right viewanserbtn"
+                        >
+                            {{ __('View answer') }}
+                        </a>
                     </div>
                 </div>
             @endforeach
