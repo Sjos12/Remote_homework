@@ -7,6 +7,7 @@ const objcolor = 'white';
 
 function spawnImg() {
     const image = document.getElementById('answerimg');
+
     let fabricImage = new fabric.Image(image, {
         hasControls: false,
         hasBorders: false,

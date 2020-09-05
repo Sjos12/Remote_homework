@@ -92,37 +92,37 @@
                     </button>
 
                 <div class="float-right">
-                    <a class="btn pt-2 pb-2"
+                    <button class="btn pt-2 pb-2"
                        href="#"
                        id="color1"
                        onclick="changetextcolor('blue')"
                     >
                         <span class="badge badge-pill badge-primary colorindicator1 float-right">.</span>
-                    </a>
-                    <a class="btn  pt-2 pb-2"
+                    </button>
+                    <button class="btn  pt-2 pb-2"
                        href="#"
                        id="color2"
                        onclick="changetextcolor('green')"
                     >
                         <span class="badge badge-pill badge-success colorindicator4 float-right">.</span>
-                    </a>
-                    <a class="btn pt-2 pb-2"
+                    </button>
+                    <button class="btn pt-2 pb-2"
                        href="#"
                        id="color3"
                        onclick="changetextcolor('red')"
                     >
                         <span class="badge badge-pill badge-danger colorindicator2 float-right">.</span>
-                    </a>
-                    <a class="btn pt-2 pb-2"
+                    </button>
+                    <button class="btn pt-2 pb-2"
                        href="#"
                        id="color4"
                        onclick="changetextcolor('white')"
                     >
                         <span class="badge badge-pill badge-light colorindicator3 float-right">.</span>
-                    </a>
-                    <a class="btn pt-2 pb-2"
-                       href="#"
-                       id="color5"
+                    </button>
+                    <button class="btn pt-2 pb-2"
+                       
+                        id="color5"
                        onclick="changetextcolor('black')"
                     >
                         <span class="badge badge-pill badge-dark colorindicator4 float-right">.</span>
@@ -137,15 +137,19 @@
 
                 </div>
             </div>
+            
         </div>
-
+        <canvas class="mt-4 mx-auto border border-light " id="canvas" height="600" width="1000">
+        <!-- All the objects and images get spawned here.-->
+        </canvas>
+   </div>     
 </div>
 {{-- canvas doesn't work without this div because of broken DOM --}}
+
 </div>
-<div class="card container">
-    <canvas class="mt-4 mx-auto border border-light " id="canvas" height="600" width="1000">
-        <!-- All the objects and images get spawned here.-->
-    </canvas>
+
+<div class="card container pb-5">
+       
 </div>
 
 @endsection
