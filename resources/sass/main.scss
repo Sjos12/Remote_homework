@@ -314,13 +314,6 @@ html {
 }
 
 /* fabricjs styling */
-canvas {
-    #c {
-        border: 1px solid white !important;
-        margin-left: auto;
-        margin-right: auto;
-    }
-}
 .canvas-container {
     margin:0 auto ;
 }
@@ -641,7 +634,12 @@ p {
         color: $darkmodetextcolor !important;
     }
     .contentarea{
-        background-color: $darkmodecolor_light;
+        background-color: $inputcolor_dark;
+    }
+    
+    .contentarea:focus{
+        background-color: $inputcolor_dark;
+        color: white;
     }
     #feedhr{
         border-top: 1px solid rgba(255, 255, 255, 0.527);
