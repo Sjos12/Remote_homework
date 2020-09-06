@@ -11,19 +11,26 @@
         <!--@todo: on the caret click, the question should pop down and the paragraph should preview as well as the image which should grow larger-->
             <div class="col-10 offset-1">
                 <div class="row">
-                    <div class="col-10 my-auto">
-                        <h1 class="title6 font-size">{{ $question->title }}</h1>
+                    <div class="col-10 centerY">
+                        <h1 class="title6 font-size" id="questiontitle">{{ $question->title }}</h1>
+                        <div class="fulloriginalquestion" id="fulloriginalquestion"> 
+                                 <!--Original question goes here--> 
+                                <h1>Question go here lol</h1>
+                        </div>
                     </div>
                     <div class="col-2">
                         @if($firstImage)
                             {{ $firstImage->img()->attributes(['class' => 'img-fluid rounded', 'alt' => $question->title, 'style' => 'display:none;', 'id' => 'answerimg']) }}
                         @endif
 
-                        <a class="float-right" href="#">
+                        <a class="float-right" class="collapsible" type="button"  href="#">
+                            
+                        </a>
+                        <button type="button" class="btn collapsible" style="backgroundcolor: transparent;">
                             <svg class="bi bi-chevron-compact-down " width="4em" height="4em" viewBox="0 0 16 16" fill="white" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
                             </svg>
-                        </a>
+                        </button>
                     </div>
                 </div>        
             </div>

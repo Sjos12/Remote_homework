@@ -5,6 +5,26 @@ const canvas = new fabric.Canvas('canvas');
 // variable which chooses color of objects
 const objcolor = 'white';
 
+
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    let title = document.getElementById("questiontitle");
+    let content = document.getElementById("fulloriginalquestion");
+    if (content.style.display === "block") {
+      content.style.display = "none";
+      title.style.display = "block";
+      title.style.margin = "";
+    } else {
+      content.style.display = "block";
+      title.style.margin = "0";
+    }
+  });
+}
+
 function spawnImg() {
     const image = document.getElementById('answerimg');
 
