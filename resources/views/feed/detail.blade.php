@@ -3,29 +3,29 @@
 @section('content')
     <div class="container">
         <div class="card card--no-padding">
-            <div class="row">
+            <div class="row ">
                 <div class="card card card--color-2 card--relative pr-5 pl-5 col-md-5 col-lg-5 card--border-radius">
                     <div class="row">
-                        <h3 class="col-12">{{ $question->title }}</h3>
-                        <p class="col-12 card__paragraph">{{$question->content}}</p>
+                        <h3 class="col-12 title6">{{ $question->title }}</h3>
+                        <p class="col-12 paragraph2">{{$question->content}}</p>
                     </div>
-                    <div class="row info-container">
+                    <div class="row info-container pb-5">
                         <div class="col-6">
-                            <p class="question-data text-left">
-                                {{ __('Question asked :date', ['date' => $question->created_at->diffForHumans()]) }}
-                            </p>
+                            <h6 class="question-data text-left">
+                                {{ __('Asked :date', ['date' => $question->created_at->diffForHumans()]) }}
+                            </h6>
 
-                            <p class="question-data text-left">
-                                {{ __('Last updated :date', ['date' => $question->updated_at->diffForHumans()]) }}
-                            </p>
+                            <h6 class="question-data text-left">
+                                {{ __('Updated :date', ['date' => $question->updated_at->diffForHumans()]) }}
+                            </h6>
 
-                            <p class="question-data">
+                            <h6 class="question-data">
                                 {{ __('Asked by :Author', ['author' => $question->author->name]) }}
-                            </p>
+                            </h6>
                         </div>
 
                         <div class="col-6">
-                            <a class="btn btn-primary btn-lg float-right " href="{{  route('feed.answer', ['question' => $question->uuid]) }}">
+                            <a class="btn btn-primary btn-lg text-right nowrap" href="{{  route('feed.answer', ['question' => $question->uuid]) }}">
                                 {{ __('Answer Question') }}
                             </a>
                         </div>
@@ -55,9 +55,32 @@
                     </div>
                 </div>
             </div>
-        </div>
+            @if ($answers->isNotEmpty())
+            <h1 class="title pt-3">{{ __('Answers') }}</h1>
+            @foreach($answers as $answer)
 
-        @if ($answers->isNotEmpty())
+                <div class="row answercontainer mb-5 mt-5 p-3">
+                    <div class="col-md-6 col-lg-6">
+                        <h1 class="my-auto title3 answerauthorcontainer">
+                            <span class="answerauthor ">{{ $answer->author->name }}</span> {{ __('gave an answer') }}</h1>
+                    </div>
+                    <div class="col-md-6 col-lg-6">
+                        <a href="{{ route('feed.answer.show', ['question' => $question->uuid, 'answer' => $answer->uuid]) }}"
+                           class="btn btn-primary btn-lg text-right viewanserbtn"
+                        >
+                            {{ __('View answer') }}
+                        </a>
+                    </div>
+                </div>
+            @endforeach
+        @else
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="text-center pt-5">{{ __('Be the first to answer!') }}</h1>
+                </div>
+
+            </div>
+        @endif @if ($answers->isNotEmpty())
             <h1 class="title pt-3">{{ __('Answers') }}</h1>
             @foreach($answers as $answer)
 
@@ -83,5 +106,9 @@
 
             </div>
         @endif
+            
+        </div>
+
+       
     </div>
 @endsection

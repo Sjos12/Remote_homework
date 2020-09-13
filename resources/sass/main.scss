@@ -14,6 +14,12 @@ html {
     height: 100%;
 }
 
+
+// prevent text line breaks
+.nowrap { 
+    white-space: nowrap;
+}
+
 #questiontitle {
     padding-top: auto;
     padding-bottom: auto;
@@ -404,10 +410,6 @@ html {
     transition: 0.3s;
 }
 
-.question-data{
-    font-size: 90% !important;
-    font-style: italic;
-}
 
 .dropdownmenu-hr {
     margin-top: 4% !important;
