@@ -11,9 +11,15 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         @if($firstImage = $question->firstImage())
-                            <div class="p-5 box">
-                                {{ $firstImage->img()->attributes(['class' => 'img-fluid rounded align-middle col-12', 'alt' => $question->title()]) }}
-                            </div>
+                            <canvas class="mt-4 mx-auto border border-light "
+                                    id="staticCanvas"
+                                    height="600"
+                                    width="1000"
+                                    data-image-url="{{ $firstImage->getUrl() }}"
+                                    data-image-annotations="{{ $answer->annotations }}"
+                            >
+                                <!-- All the objects and images get spawned here.-->
+                            </canvas>
                         @endif
                     </div>
                 </div>
@@ -26,7 +32,6 @@
                     <span class="sr-only">{{ __('Next') }}</span>
                 </a>
             </div>
-
 
             <div class="col-8">
                 <p class="col-12 question-data">
