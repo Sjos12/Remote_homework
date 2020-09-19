@@ -56,59 +56,31 @@
                 </div>
             </div>
             @if ($answers->isNotEmpty())
-            <h1 class="title pt-3">{{ __('Answers') }}</h1>
-            @foreach($answers as $answer)
+                <h1 class="title pt-3">{{ __('Answers') }}</h1>
+                @foreach($answers as $answer)
 
-                <div class="row answercontainer mb-5 mt-5 p-3">
-                    <div class="col-md-6 col-lg-6">
-                        <h1 class="my-auto title3 answerauthorcontainer">
-                            <span class="answerauthor ">{{ $answer->author->name }}</span> {{ __('gave an answer') }}</h1>
+                    <div class="row answercontainer mb-5 mt-5 p-3">
+                        <div class="col-md-6 col-lg-6">
+                            <h1 class="my-auto title3 answerauthorcontainer">
+                                <span class="answerauthor ">{{ $answer->author->name }}</span> {{ __('gave an answer') }}</h1>
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                            <a href="{{ route('feed.answer.show', ['question' => $question->uuid, 'answer' => $answer->uuid]) }}"
+                               class="btn btn-primary btn-lg text-right viewanserbtn"
+                            >
+                                {{ __('View answer') }}
+                            </a>
+                        </div>
                     </div>
-                    <div class="col-md-6 col-lg-6">
-                        <a href="{{ route('feed.answer.show', ['question' => $question->uuid, 'answer' => $answer->uuid]) }}"
-                           class="btn btn-primary btn-lg text-right viewanserbtn"
-                        >
-                            {{ __('View answer') }}
-                        </a>
+                @endforeach
+            @else
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="text-center pt-5">{{ __('Be the first to answer!') }}</h1>
                     </div>
-                </div>
-            @endforeach
-        @else
-            <div class="row">
-                <div class="col-12">
-                    <h1 class="text-center pt-5">{{ __('Be the first to answer!') }}</h1>
-                </div>
 
-            </div>
-        @endif @if ($answers->isNotEmpty())
-            <h1 class="title pt-3">{{ __('Answers') }}</h1>
-            @foreach($answers as $answer)
-
-                <div class="row answercontainer mb-5 mt-5 p-3">
-                    <div class="col-md-6 col-lg-6">
-                        <h1 class="my-auto title3 answerauthorcontainer">
-                            <span class="answerauthor ">{{ $answer->author->name }}</span> {{ __('gave an answer') }}</h1>
-                    </div>
-                    <div class="col-md-6 col-lg-6">
-                        <a href="{{ route('feed.answer.show', ['question' => $question->uuid, 'answer' => $answer->uuid]) }}"
-                           class="btn btn-primary btn-lg text-right viewanserbtn"
-                        >
-                            {{ __('View answer') }}
-                        </a>
-                    </div>
                 </div>
-            @endforeach
-        @else
-            <div class="row">
-                <div class="col-12">
-                    <h1 class="text-center pt-5">{{ __('Be the first to answer!') }}</h1>
-                </div>
-
-            </div>
-        @endif
-            
+            @endif
         </div>
-
-       
     </div>
 @endsection

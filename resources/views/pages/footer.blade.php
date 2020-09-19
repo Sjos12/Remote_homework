@@ -33,14 +33,14 @@
                     </ul>
                 </div>
                 <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
-                    <p class="footertext footerlink pl-4" href="#">{{ __('Contact') }}</p>
+                    <p class="footertext footerlink pl-4">{{ __('Contact') }}</p>
 
                     <ul>
-                        <li style="list-style-type: none;" class="footertext">+31 26560800</li>
-                        <li style="list-style-type: none;" class="footertext">Da Costastraat 13</li>
-                        <li style="list-style-type: none;" class="footertext">9721RA</li>
-                        <li style="list-style-type: none;" class="footertext">Groningen</li>
-                        <li style="list-style-type: none;" class="footertext">info@remotehomework.com</li>
+                        <li style="list-style-type: none;" class="footertext">+31 612345678</li>
+                        <li style="list-style-type: none;" class="footertext">Dorpsstraat 1a</li>
+                        <li style="list-style-type: none;" class="footertext">1234AB</li>
+                        <li style="list-style-type: none;" class="footertext">Ons Dorp</li>
+                        <li style="list-style-type: none;" class="footertext">info@example.com</li>
                     </ul>
                 </div>
             </div>

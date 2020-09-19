@@ -48,37 +48,34 @@ $( document ).ready(function() {
         return;
     }
 
-    // @todo: cleanup JSON on insert already. Perhaps should actually use: http://fabricjs.com/docs/fabric.Canvas.html#toDatalessJSON / http://fabricjs.com/docs/fabric.Canvas.html#loadFromDatalessJSON
+    // @todo: cleanup / add Media ID to JSON on insert already? Perhaps should actually use: http://fabricjs.com/docs/fabric.Canvas.html#toDatalessJSON ? / http://fabricjs.com/docs/fabric.Canvas.html#loadFromDatalessJSON
     let imgAnnotations = canvasElement.data('imageAnnotations')
-    if (typeof imgAnnotations.objects === 'undefined') {
-        imgAnnotations.objects = []
-    }
-    imgAnnotations = imgAnnotations.objects
-        .filter(el => typeof el.src === 'undefined')
 
     console.log(imgAnnotations)
 
-    fabric.Image.fromURL(imgUrl, (imgInstance) => {
-        imgInstance.set({
-            hasControls: false,
-            hasBorders: false,
-            lockMovementX: true,
-            lockMovementY: true,
-            selectable: false,
-        })
+    staticCanvas.loadFromJSON(imgAnnotations)
 
-        const canvasHeight = staticCanvas.height
-        const canvasWidth = staticCanvas.width
-        imgInstance.scaleToHeight(canvasHeight)
-        imgInstance.scaleToWidth(canvasWidth)
-
-        imgAnnotations.forEach(annotation => {
-            // @todo: they have subtypes, not all are paths at all. Check the export and import functions
-            console.log(annotation)
-            //staticCanvas.add(fabric.Path.fromObject(annotation))
-        })
-
-        staticCanvas.add(imgInstance)
-        staticCanvas.renderAll()
-    })
+//    fabric.Image.fromURL(imgUrl, (imgInstance) => {
+//        imgInstance.set({
+//            hasControls: false,
+//            hasBorders: false,
+//            lockMovementX: true,
+//            lockMovementY: true,
+//            selectable: false,
+//        })
+//
+//        const canvasHeight = staticCanvas.height
+//        const canvasWidth = staticCanvas.width
+//        imgInstance.scaleToHeight(canvasHeight)
+//        imgInstance.scaleToWidth(canvasWidth)
+//
+//        imgAnnotations.forEach(annotation => {
+//            // @todo: they have subtypes, not all are paths at all. Check the export and import functions
+//            console.log(annotation)
+//            //staticCanvas.add(fabric.Path.fromObject(annotation))
+//        })
+//
+//        staticCanvas.add(imgInstance)
+//        staticCanvas.renderAll()
+//    })
 });
