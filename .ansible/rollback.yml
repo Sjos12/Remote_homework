@@ -1,0 +1,28 @@
+# @todo: Definitely needs something for the DB, since project config does not revertible changes
+# NOTE: NOT TESTED!!!!
+---
+- name: Rollback deploy
+
+  hosts: test
+
+#  vars_files:
+#    - ./vars/deploy_vault.yml
+#    - ./vars/deploy_vars.yml
+#
+#  environment:
+#    TMPDIR: "{{ ansible_env.HOME }}/tmp"
+#    TMP: "{{ ansible_env.HOME }}/tmp"
+
+  vars:
+    ##########
+    # Ansistrano vars
+    ##########
+
+    ansistrano_deploy_to: "{{ deploy_dir }}"
+    ansistrano_rollback_to_release: "" # If specified, the application will be rolled back to this release version; previous release otherwise.
+
+    # Ansible vars
+    ansible_ssh_user: accenture
+
+  roles:
+    - ansistrano.rollback

@@ -1,0 +1,24 @@
+---
+- name: Set up environmental variables
+  template:
+    src: '{{ playbook_dir }}/templates/.env.template'
+    dest: '{{ ansistrano_release_path.stdout }}/.env'
+
+- name: Install Composer dependencies
+  composer:
+    command: install
+    working_dir: '{{ ansistrano_release_path.stdout }}'
+
+- name: Run migrations
+  command: "{{ artisan_path }} migrate"
+
+#- name: Set permissions and ownership
+#  become: yes
+#  file:
+#    path: '{{ ansistrano_release_path.stdout }}/{{ item }}'
+#    owner: 'www-data'
+#    group: 'www-data'
+#    state: 'directory'
+#    recurse: 'yes'
+#  with_items:
+#    - storage

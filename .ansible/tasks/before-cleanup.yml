@@ -1,0 +1,16 @@
+---
+# COPIED FROM ANSISTRANO! SO BRITTLE AND KIND OF POINTLESS!
+# But Ansistrano assumes that all files can be deleted by the same user
+# that was used for the deploy. For instance `./storage/runtime` is created
+# by the CMS with a 755 permission, so no rights on the group. This effectively
+# means only `www-data` can delete that dir, or need to use `sudo` / root-user.
+#
+# This is not the cleanest way though.
+#
+# @todo: look into: - perhaps those folders should be shared?
+#                   - perhaps those folders need to be git committed with correct permissions?
+#
+- name: Clean up releases
+  shell: ls -1dt {{ ansistrano_releases_path }}/* | tail -n +{{ ansistrano_keep_releases | int + 1 }} | xargs rm -rf
+  when: ansistrano_keep_releases | int > 0
+  become: true
