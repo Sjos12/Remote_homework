@@ -15,6 +15,14 @@ html {
 }
 
 
+.imgheight { 
+    height: 50vh;
+}
+
+.card--no-border { 
+    border: none;
+}
+
 // prevent text line breaks
 .nowrap { 
     white-space: nowrap;
@@ -165,9 +173,6 @@ html {
     float: right;
 }
 
-.answercontainer {
-    border: 1px solid black;
-}
 
 .answerauthorcontainer {
     display: table-cell;
@@ -180,7 +185,8 @@ html {
 }
 
 
-.carousel-inner > .carousel-item > .box > img { height: 80vh; width: auto; }
+//detailimg size control
+.carousel-inner > .carousel-item > .box > img { height: 50vh; width: auto; }
 
 // styling for detail img to be 100 % width so small resolution img's won't display small.
 .detailimg {
@@ -484,9 +490,29 @@ html {
     padding-bottom: 1.5em;
 }
 
+
+/*border-radius for cards in detail views to align correctly*/
+
 .card--border-radius {
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
+}
+
+.card__answer--border { 
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.card__text--border { 
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.card__img--border { 
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 0;
 }
 /* gives all the headers and paragraphs Montserrat font*/
 h4, h3, h2, h1 {
@@ -725,13 +751,15 @@ p {
         color: $buttoncolor;
     }
 
-    /* answer stylign */
+
     .answercontainer {
-        border: 2px solid white;
+        background-color: $inputcolor_dark;
         border-radius: 10px;
+        margin-left: 1em;
+        margin-right: 1em;
+        margin-bottom: 2em;
     }
-
-
+    
     .card--question {
         background-color: $inputcolor_dark;
     }
