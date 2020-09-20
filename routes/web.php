@@ -13,6 +13,7 @@ use App\Http\Controllers\FeedController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\MarketplaceController;
+use App\Http\Controllers\OwnQuestions\Delete as DeleteOwnQuestion;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\ShowAnswer;
 use Illuminate\Support\Facades\Route;
@@ -128,6 +129,8 @@ Route::middleware([
               ->name('questions.list');
          Route::get('user/questions/{question}', [QuestionController::class, 'detail'])
               ->name('questions.detail');
+         // Delete own question
+         Route::delete('user/questions/{question}', DeleteOwnQuestion::class);
 
          // Feed
          Route::get('feed', [FeedController::class, 'list'])

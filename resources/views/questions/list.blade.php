@@ -16,11 +16,20 @@
                     <p class="col-12">{{$view_model->question()->content}}</p>
 
                     <div class="ml-auto mt-auto mb-auto">
-                        <a class="btn btn-lg btn-primary float-right"
-                           href="{{ route('questions.detail', ['question' => $view_model->question()->uuid]) }}"
-                        >
-                            View Question
-                        </a>
+                        <div class="btn-group" role="group" aria-label="Manage this question">
+                            <a class="btn btn-lg btn-info"
+                               href="{{ route('questions.detail', ['question' => $view_model->question()->uuid]) }}"
+                            >
+                                {{ __('View Question') }}
+                            </a>
+                            {{-- Leverage Vue JS by start adding comonents --}}
+                            <button-confirm-delete
+                                confirmation-message="{{ __('Are you sure you want to delete this question?') }}"
+                                endpoint="{{ route('questions.detail', ['question' => $view_model->question()->uuid]) }}"
+                            >
+                                {{ __('Delete Question') }}
+                            </button-confirm-delete>
+                        </div>
                     </div>
                     <div class="row"></div>
                     <h6 class="col-12 text-left align-items-end">
@@ -33,8 +42,7 @@
                     <p class="text-right align-bottom">
                         Last updated {{ $view_model->createdSince() }}
                     </p>
-                    `               </div>
-
+                </div>
             </div>
             <hr class="feedhr" id="feedhr">
         @empty
