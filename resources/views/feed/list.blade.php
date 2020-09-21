@@ -50,7 +50,7 @@
                                 <div class=" card--question- mt-auto desktopinfo">
                                     <div class="div1">
                                         <h6 class="card--question--info pt-4">
-                                            {{ __('Asked by :Author', ['author' => $view_model->question()->author->name]) }} <img src="/images/circle.svg" alt="circle">
+                                        Asked by <span class="answerauthor">{{ __(':Author', ['author' => $view_model->question()->author->name]) }}</span>  <img src="/images/circle.svg" alt="circle">
                                             {{ $view_model->createdSince() }}
                                         </h6>
                                     </div>

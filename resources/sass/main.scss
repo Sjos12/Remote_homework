@@ -14,6 +14,12 @@ html {
     height: 100%;
 }
 
+//delete question button styling 
+.btn-delete { 
+    color: $btn-delete-color !important;
+    font-size: $paragraph2-text-size;
+}
+
 //image styling for the image when there are no answers
 .img--empty { 
     display: block;

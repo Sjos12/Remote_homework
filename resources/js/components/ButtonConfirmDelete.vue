@@ -1,11 +1,11 @@
 <template>
-    <button
-        class="btn btn-lg btn-danger"
+    <a
+        class="btn btn-lg float-right btn-delete pt-3 pl-5 pr-5 desktopinfo"
         :endpoint="endpoint"
         v-on:click="confirmAndDelete(confirmationMessage)"
     >
         <slot></slot>
-    </button>
+    </a>
 </template>
 
 <script>

@@ -2,60 +2,88 @@
 
 @section('content')
     <div class="container">
-        @forelse($questions as $view_model)
-            <div class="row ">
-                @if($firstImage = $view_model->firstImage())
-                    <div class=" col-lg-4 col-md-4 col-xs-12 col-sm-12 d-flex justify-content-center">
-                        {{ $firstImage->img()->attributes(['class' => 'img-fluid d-block mx-auto mt-auto mb-auto rounded', 'alt' => $view_model->question()->title]) }}
+        <div class="row">
+            <div class="card card--list col-12">
+                <div class="row">
+                    <div class="row col-10 offset-1">
+                        <h1 class="title4 pb-4">{{__('Your questions')}}</h1>
                     </div>
-                @endif
+                </div>
+            @foreach($questions as $view_model)
+                <div class="row row-height pb-5 pl-4 pr-4">
+                    <div class="card card--question card--shadow card--question--padding col-12">
+                        <div class="row p-0 col-10 offset-1">
+                            <div class="content-container ml-auto p-0 col-lg-5 col-md-5 col-sm-12 col-xs-12">
 
-                <div class="ml-auto pt-4 pb-4 col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                                <div class="">
+                                    <h3 class="title6">{{ $view_model->question()->title }}</h3>
 
-                    <h3 class="col-12">{{ $view_model->question()->title }}</h3>
-                    <p class="col-12">{{$view_model->question()->content}}</p>
+                                    <p class="question-paragraph mb-auto paragraph2">{{$view_model->question()->content}}</p>
+                                </div>
 
-                    <div class="ml-auto mt-auto mb-auto">
-                        <div class="btn-group" role="group" aria-label="Manage this question">
-                            <a class="btn btn-lg btn-info"
-                               href="{{ route('questions.detail', ['question' => $view_model->question()->uuid]) }}"
-                            >
-                                {{ __('View Question') }}
-                            </a>
-                            {{-- Leverage Vue JS by start adding comonents --}}
-                            <button-confirm-delete
-                                confirmation-message="{{ __('Are you sure you want to delete this question?') }}"
-                                endpoint="{{ route('questions.detail', ['question' => $view_model->question()->uuid]) }}"
-                            >
-                                {{ __('Delete Question') }}
-                            </button-confirm-delete>
+                                <div class=" card--question- mt-auto desktopinfo">
+                                    <div class="div1">
+                                        <h6 class="card--question--info pt-4">
+                                            {{ $view_model->createdSince() }}
+                                        </h6>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-3  mt-auto mb-auto">
+                                <a class="desktopinfo btn btn-lg btn-primary float-right pl-5 pr-5"
+                                href="{{ route('questions.detail', ['question' => $view_model->question()->uuid]) }}"
+                                >
+                                    {{ __('View') }}
+                                </a>
+                                {{-- Leverage Vue JS by start adding components --}}
+                                    <button-confirm-delete
+                                        confirmation-message="{{ __('Are you sure you want to delete this question?') }}"
+                                        endpoint="{{ route('questions.detail', ['question' => $view_model->question()->uuid]) }}"
+                                    >
+                                        {{ __('Delete') }}
+                                    </button-confirm-delete>
+                            </div>
+
+                            @if($firstImage = $view_model->firstImage())
+                                <div class="img-container col-md-4 col-lg-4 col-sm-12 col-xs-12">
+                                    <div class="img-box">
+                                        {{ $firstImage->img()->attributes(['class' => 'question-img img-fluid d-block mx-auto mt-auto mb-auto rounded', 'alt' => $view_model->question()->title]) }}
+                                    </div>
+                                </div>
+                            @endif
+                            </div>
+
+                            <div class="row">
+                                <div class="col-8 card--question- mt-auto mobileinfo">
+                                        <div class="div1">
+                                            <h6 class="card--question--info pt-4">
+                                                {{ $view_model->createdSince() }}
+                                            </h6>
+                                        </div>
+                                </div>
+
+                                <div class="col-4 mt-auto mb-auto">
+                                    <a class="mobileinfo btn btn-lg btn-primary float-right pl-5 pr-5"
+                                    href="{{ route('feed.detail', ['question' => $view_model->question()->uuid]) }}"
+                                    >
+                                        {{ __('View') }}
+                                    </a>
+                                    {{-- Leverage Vue JS by start adding components --}}
+                                    <button-confirm-delete
+                                        confirmation-message="{{ __('Are you sure you want to delete this question?') }}"
+                                        endpoint="{{ route('questions.detail', ['question' => $view_model->question()->uuid]) }}"
+                                        class="mobileinfo float-right"
+                                    >
+                                        {{ __('Delete') }}
+                                    </button-confirm-delete>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="row"></div>
-                    <h6 class="col-12 text-left align-items-end">
-                        Asked by: {{ $view_model->question()->author->name }}
-                    </h6>
-
-                    <p class="col-6 text-left">
-                        Asked  {{ $view_model->createdSince() }}
-                    </p>
-                    <p class="text-right align-bottom">
-                        Last updated {{ $view_model->createdSince() }}
-                    </p>
-                </div>
+                @endforeach
             </div>
-            <hr class="feedhr" id="feedhr">
-        @empty
-            <div class="row">
-                <div class="col-12">
-                    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6">
-                        <img src="/images/empty.svg" alt="" class="emptyimg">
-                    </div>
-                    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6">
-                        <p class="paragraph text-center">That's all for now.</p>
-                    </div>
-                </div>
-            </div>
-        @endforelse
+        </div>
     </div>
 @endsection
