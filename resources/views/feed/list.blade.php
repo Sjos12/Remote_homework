@@ -7,17 +7,17 @@
                 <div class="card-welcome__content col-10 offset-1">
                     <div class="row">
 
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 dashboardstat">
+                        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 dashboardstat">
                             <h1 class="title4">{{ __('Welcome, :Name', ['name' => $user['name'],]) }}</h1>
                             <h2>
                                 <span class="statistic--color">{{ $user['answered'] }}</span> {{ __('questions answered') }} <br>
                                 <span class="statistic--color">{{ $user['asked'] }}</span> {{ __('questions asked') }}
                             </h2>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 card-welcome--button-container">
+                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 card-welcome--button-container">
                             <div class="card-welcome--button-container-centered">
 
-                                <a class="card-welcome--button btn btn-primary btn-lg mt-4" href="{{ route('questions.create') }}">{{ __('Create question') }}</a>
+                                <a class="card-welcome--button btn btn-primary btn-lg mt-4 float-right" href="{{ route('questions.create') }}">{{ __('Create question') }}</a>
 
                             </div>
                         </div>
