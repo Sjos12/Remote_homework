@@ -14,6 +14,14 @@ html {
     height: 100%;
 }
 
+//image styling for the image when there are no answers
+.img--empty { 
+    display: block;
+    height: 200px;
+    width: auto;
+    margin-right: auto;
+    margin-left: auto;
+}
 
 .imgheight { 
     height: 50vh;
@@ -186,7 +194,9 @@ html {
 
 
 //detailimg size control
-.carousel-inner > .carousel-item > .box > img { height: 50vh; width: auto; }
+.carousel-inner > .carousel-item > .box > img { 
+    height: 50vh; width: auto; 
+}
 
 // styling for detail img to be 100 % width so small resolution img's won't display small.
 .detailimg {

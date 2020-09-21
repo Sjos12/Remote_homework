@@ -3,7 +3,7 @@
 @section ('content')
 <div class="container">
     <div class="row ">
-        <div class="col-5 card card__text--border card--color-2 d-block">
+        <div class="col-md-5 col-lg-5 col-sm-12 col-xs-12 card card__text--border card--color-2 d-block">
                 <h3 class="col-12 title6">{{ $question->title }}</h3>
                 <p class="col-12 paragraph2">{{$question->content}}</p>
                 <div class="row container info-container pb-5">
@@ -28,7 +28,7 @@
                     </div>
             </div> 
         </div>
-        <div class="col-7 card card__img--border card--no-border ">
+        <div class="col-md-7 col-lg-7 col-sm-12 col-xs-12 card card__img--border card--no-border ">
             <div id="carouselExampleControls" class="carousel slide mx-auto " data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -57,8 +57,8 @@
 
                     <div class="row answercontainer p-3">
                         <div class="col-md-6 col-lg-6">
-                            <h1 class="my-auto title3 answerauthorcontainer">
-                                <span class="answerauthor ">{{ $answer->author->name }}</span> {{ __('gave an answer') }}</h1>
+                            <h1 class="my-auto title5 answerauthorcontainer">
+                                <span class="answerauthor">{{ $answer->author->name }}</span> {{ __('gave an answer') }}</h1>
                         </div>
                         <div class="col-md-6 col-lg-6">
                             <a href="{{ route('feed.answer.show', ['question' => $question->uuid, 'answer' => $answer->uuid]) }}"
@@ -72,7 +72,8 @@
             @else
                 <div class="row">
                     <div class="col-12">
-                        <h1 class="text-center pt-5">{{ __('Be the first to answer!') }}</h1>
+                        <img src="/images/empty.svg" alt="" srcset="" class="img--empty">
+                        <h1 class="text-center title5 pt-4 pb-4">{{ __('No answers yet!') }}</h1>
                     </div>
 
                 </div>
