@@ -181,11 +181,10 @@
                 </div>
             </div>
         </div>
-            <canvas class="mt-4 mx-auto border border-light " id="canvas" height="600" width="1000">
-            <!-- All the objects and images get spawned here.-->
-            </canvas>
     </div>
-
+    <canvas class="mt-4  border border-light " id="canvas" width=onresize()>
+            <!-- All the objects and images get spawned here.-->
+    </canvas>
 </div>
 
 @endsection

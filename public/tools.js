@@ -2,6 +2,9 @@
 // create a wrapper around native canvas element (with id="c")
 const canvas = new fabric.Canvas('canvas');
 
+
+
+
 // variable which chooses color of objects
 const objcolor = 'white';
 
@@ -28,24 +31,40 @@ for (i = 0; i < coll.length; i++) {
 function spawnImg() {
     const image = document.getElementById('answerimg');
 
+    //creates fabricjs image object
     let fabricImage = new fabric.Image(image, {
         hasControls: false,
         hasBorders: false,
         lockMovementX: true,
         lockMovementY: true,
         selectable: false,
-
     });
 
+    //takes image height and width and puts it in variable
+    let imageHeight = fabricImage.height; 
+    let imageWidth = fabricImage.width;
+    let minimizeFactor = 2;  
+
+    let smallImageHeight = imageHeight / minimizeFactor; 
+    let smallImageWidth = imageWidth / minimizeFactor;
+
+    //sets canvas size.
+    canvas.setDimensions({width:(smallImageWidth), height:(smallImageHeight)});
+
+    //canvas height and width in variable
     let canvasHeight = canvas.height;
     let canvasWidth = canvas.width;
 
+    //sets image to fit the canvas size. 
     fabricImage.scaleToHeight(canvasHeight);
     fabricImage.scaleToWidth(canvasWidth);
 
+    console.log(imageHeight);
     //canvas.setDimensions({width:imageWidth, height:imageHeight});
     //canvas.loadFromJSON(//put here the JSON from backend);
     canvas.add(fabricImage);
+
+    //renders everything
     canvas.renderAll();
 
 }
