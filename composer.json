@@ -6,7 +6,9 @@
     "license": "proprietary",
     "require": {
         "php": "^7.4.8",
+        "ext-dom": "*",
         "ext-exif": "*",
+        "ext-mbstring": "*",
         "ext-pdo": "*",
         "dyrynda/laravel-efficient-uuid": "^4.0",
         "dyrynda/laravel-model-uuid": "^6.1",
@@ -37,7 +39,9 @@
         "optimize-autoloader": true,
         "platform": {
             "php": "7.4.8",
+            "ext-dom": "7.4.8",
             "ext-exif": "7.4.8",
+            "ext-mbstring": "7.4.8",
             "ext-pdo": "7.4.8"
         },
         "preferred-install": "dist",
