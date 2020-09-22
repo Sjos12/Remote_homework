@@ -13,7 +13,7 @@
 
   vars:
     # App vars
-    artisan_path: "{{ ansistrano_release_path.stdout }}/craft"
+    artisan_path: "{{ ansistrano_release_path.stdout }}/artisan"
 
     ##########
     # Ansistrano vars
