@@ -83,6 +83,16 @@
                         </div>
                     </div>
                 @endforeach
+
+                @if($questions->isEmpty())
+                    <div class="row my-5">
+                        <div class="col-12 ">
+                            <img src="/images/empty.svg" alt="" srcset="" class="img--empty">
+                            <h1 class="text-center title5 pt-4 pb-4">{{ __('No answers yet!') }}</h1>
+                        </div>
+
+                    </div>
+                @endif
             </div>
         </div>
     </div>

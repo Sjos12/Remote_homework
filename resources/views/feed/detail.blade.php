@@ -33,8 +33,8 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         @if($firstImage)
-                            <div class="p-5 box">
-                                {{ $firstImage->img()->attributes(['class' => 'img-fluid rounded detailimg align-middle col-12 imgheight', 'alt' => $question->title]) }}
+                            <div class="px-5 box">
+                                {{ $firstImage->img()->attributes(['class' => ' rounded detailimg align-middle col-12 imgheight', 'alt' => $question->title]) }}
                             </div>
                         @endif
                     </div>

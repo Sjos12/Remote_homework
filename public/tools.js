@@ -1,14 +1,9 @@
 // reference canvas element (with id="c")
 // create a wrapper around native canvas element (with id="c")
-const canvas = new fabric.Canvas('canvas');
-
-
-
+const canvas = new fabric.Canvas('canvas'); 
 
 // variable which chooses color of objects
 const objcolor = 'white';
-
-
 var coll = document.getElementsByClassName("collapsible");
 var i;
 
@@ -50,10 +45,6 @@ function spawnImg() {
 
     //sets canvas size.
     canvas.setDimensions({width:(smallImageWidth), height:(smallImageHeight)});
-
-    //canvas height and width in variable
-    let canvasHeight = canvas.height;
-    let canvasWidth = canvas.width;
 
     //sets image to fit the canvas size. 
     fabricImage.scaleToHeight(canvasHeight);
