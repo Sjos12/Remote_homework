@@ -17,7 +17,7 @@
                         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 card-welcome--button-container">
                             <div class="card-welcome--button-container-centered">
 
-                                <a class="card-welcome--button btn btn-primary btn-lg mt-4 float-right" href="{{ route('questions.create') }}">{{ __('Create question') }}</a>
+                                <a class="card-welcome--button btn btn-primary btn-lg mt-4 float-right widebutton" href="{{ route('questions.create') }}">{{ __('Create question') }}</a>
 
                             </div>
                         </div>

@@ -11,8 +11,8 @@
           An easy and simple online platform to remotely collaborate and give feedback on (home)work.
           </p>
           <div class="wrapper pt-2">
-            <a href="{{ route('login') }}" class="shadow-sm btn btn-primary btn-lg border border-info slide-in-top" id="homebtn1">{{ __('Get Started') }}</a>
-            <a href="#content2" class="shadow-sm btn btn-white btn-lg border border-info slide-in-top" id="homebtn2">{{ __('Contact us here') }}</a>
+            <a href="{{ route('login') }}" class="shadow-sm btn btn-primary btn-lg border border-info slide-in-top widebutton" id="homebtn1">{{ __('Get Started') }}</a>
+            <a href="#content2" class="shadow-sm btn btn-white btn-lg border border-info slide-in-top widebutton" id="homebtn2">{{ __('Contact us here') }}</a>
           </div>
         </div>
       </div>

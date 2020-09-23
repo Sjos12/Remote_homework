@@ -47,10 +47,10 @@
                             <a class="nav-link hvr-underline-from-center" href="{{ route('home') }}#content1" id="nav-link">{{ __('Home') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link hvr-underline-from-center" href="{{ route('home') }}#content2" id="nav-link">{{ __('Info') }}</a>
+                            <a class="nav-link hvr-underline-from-center" href="{{ route('home') }}#content2" id="nav-link">{{ __('Tutorials') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link hvr-underline-from-center" href="{{ route('home') }}#content3" id="nav-link">{{ __('Contact') }}</a>
+                            <a class="nav-link hvr-underline-from-center" href="{{ route('home') }}#content3" id="nav-link">{{ __('Rules') }}</a>
                         </li>
                     </ul>
 
