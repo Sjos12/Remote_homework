@@ -12,13 +12,13 @@
 - name: Run migrations
   command: "{{ artisan_path }} migrate"
 
-#- name: Set permissions and ownership
-#  become: yes
-#  file:
-#    path: '{{ ansistrano_release_path.stdout }}/{{ item }}'
-#    owner: 'www-data'
-#    group: 'www-data'
-#    state: 'directory'
-#    recurse: 'yes'
-#  with_items:
-#    - storage
+- name: Install Node dependencies
+  command: npm install
+  args:
+    chdir: '{{ ansistrano_release_path.stdout }}'
+
+- name: Run WebPack
+  command: npm run production
+  args:
+    chdir: '{{ ansistrano_release_path.stdout }}'
+
