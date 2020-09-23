@@ -37,21 +37,27 @@ html {
     font-size: 2rem;
 }
 
-.active { 
-    background-color: $buttoncolor;
+.activestep { 
+   background-color: $buttoncolor;
 }
 
 .font-white  {
     color: white;
 }
 
-.font-white:hover, :active  {
+.font-white:hover, .font-white:active  {
     color: $buttoncolor;
-    font-size: 3rem;
-    transition: 0.8s;
+    transition: 0.3s ease-in-out;
     
 }
 
+.btn-transparent { 
+    background-color: transparent ; 
+    color: $buttoncolor;
+    border: 1px solid $buttoncolor;
+    border-radius: 0;
+    margin: 5px;
+}
 .activebtn { 
     color: $buttoncolor;
     border-bottom: 4px solid $buttoncolor;   
