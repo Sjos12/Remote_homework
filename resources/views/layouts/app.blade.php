@@ -119,5 +119,6 @@
 
     <script src="{{ asset('fabric.js') }}"></script>
     <script src="{{ asset('tools.js') }}"></script>
+    <script src="{{ asset('steppedform.js') }}"></script>
 </body>
 </html>
