@@ -61,3 +61,31 @@ function validateForm() {
   // If the valid status is true, mark the step as finished and valid
   return valid; // return the valid status
 }
+
+function fixStepIndicator(n) {
+  // This function removes the "active" class of all steps...
+  var i, x = document.getElementsByClassName("circle");
+  for (i = 0; i < x.length; i++) {
+    x[i].className = x[i].className.replace(" active", "");
+  }
+  //... and adds the "active" class to the current step:
+  x[n].className += " active";
+}
+
+function questionType(n) {
+  let x = document.getElementsByClassName('type'); 
+  let y = document.getElementsByClassName("typebtn");
+  if (n == 1) { 
+      x[0].style.display = 'block';  
+      y[0].className += " activebtn";
+      x[1].style.display = 'none';  
+      y[1].classList.remove("activebtn");
+      
+  }
+  if (n == 2) { 
+    x[1].style.display = 'block';  
+    y[1].className += " activebtn";
+    x[0].style.display = 'none';  
+    y[0].classList.remove("activebtn");
+}
+}

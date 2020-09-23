@@ -14,12 +14,57 @@ html {
     height: 100%;
 }
 
+
 //styling for stepped form 
 .tab { 
     display: none;
 }
 
+.circle { 
+    height: 50px;
+    width: 50px;
+    border: 2px solid $buttoncolor;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    margin-right: 1em;
+    margin-left: 1em;
+    color: white;
+}
 
+.circle > h1 { 
+    margin: auto;
+    font-size: 2rem;
+}
+
+.active { 
+    background-color: $buttoncolor;
+}
+
+.font-white  {
+    color: white;
+}
+
+.font-white:hover, :active  {
+    color: $buttoncolor;
+    font-size: 3rem;
+    transition: 0.8s;
+    
+}
+
+.activebtn { 
+    color: $buttoncolor;
+    border-bottom: 4px solid $buttoncolor;   
+}
+
+.typebtn { 
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+.type { 
+    display: none;
+}
 //delete question button styling 
 .btn-delete { 
     color: $btn-delete-color !important;

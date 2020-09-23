@@ -21,6 +21,10 @@
             </div>
         @endif
 
+        <div class="d-flex justify-content-center mb-4">
+            <span class="circle"><h1>1</h1></span>
+            <span class="circle"><h1>2</h1></span>
+        </div>
         <div class="card">
             <form action="{{ route('questions.store') }}"
                             method="post"
@@ -31,9 +35,16 @@
                     <div class="row">
                         <div class="form-group col-12 col-md-8 offset-md-2">
                             <h4 class="text-center">Choose your question type</h4>
-                            <button>Public</button> 
-                            <button>Private</button>
-                            <input type="text" class="form-control">
+                            <div class="d-flex justify-content-center">
+                                <h1 type="button" class="title6 font-white typebtn" onclick="questionType(1)">Public</h1> 
+                                <h1 type="button" class="title6 font-white typebtn" onclick="questionType(2)">Private</h1>
+                            </div>
+                            <div class="type">
+                               <h1>type1</h1> 
+                            </div>
+                            <div class="type">
+                                <h1>type2</h1>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -105,8 +116,8 @@
         </div>
         <div class="form-group col-12 col-md-8 offset-md-2">
             
-            <button class="btn btn-primary float-right" id="nextBtn" onclick="nextPrev(1)">{{ __('') }}</button>
-            <button class="btn btn-primary float-right" id="prevBtn" onclick="nextPrev(-1)">{{ __('Previous') }}</button>
+            <button class="btn btn-lg btn-primary float-right" id="nextBtn" onclick="nextPrev(1)">{{ __('') }}</button>
+            <button class="btn bnt-lg btn-primary float-right" id="prevBtn" onclick="nextPrev(-1)">{{ __('Previous') }}</button>
         </div>
         </form>
     </div>
