@@ -1,5 +1,7 @@
 const mix = require('laravel-mix');
 
+const env = process.env.NODE_ENV
+
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -11,9 +13,14 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.disableNotifications()
-    .js('resources/js/app.js', 'public/js')
+mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/index.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
     .version()
     .sourceMaps(true, 'inline-source-map')
+
+if (env === 'production') {
+    // Don't do system notifications, as production can be run on production
+    // server and CI/CD
+    mix.disableNotifications();
+}
