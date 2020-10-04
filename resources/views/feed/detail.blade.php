@@ -5,8 +5,8 @@
     <div class="row ">
         <div class="col-md-5 col-lg-5 col-sm-12 col-xs-12 card card__text--border card--color-2 d-block">
                 <h3 class="col-12 title6">{{ $question->title }}</h3>
-                <p class="col-12 paragraph2">{{$question->content}}</p>
-                <div class="row container info-container pb-5">
+                <p class="col-12 paragraph--padding paragraph2">{{$question->content}}</p>
+                <div class="row container info-container  pb-5">
                     <div class="col-6">
                         <h6 class="question-data text-left">
                             {{ __('Asked :date', ['date' => $question->created_at->diffForHumans()]) }}
@@ -21,7 +21,7 @@
                         </h6>
                     </div>
 
-                    <div class="col-6">
+                    <div class="col-6 ">
                         <a class="btn btn-primary btn-lg text-right nowrap" href="{{  route('feed.answer', ['question' => $question->uuid]) }}">
                             {{ __('Answer Question') }}
                         </a>
