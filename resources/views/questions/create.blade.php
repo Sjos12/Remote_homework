@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
- <div class="container vh-100">
+ <div class="container card vh-150">
         @if ($errors->any())
             <div class="row">
-                <div class="col-12 col-md-8 offset-md-2">
+                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 col-sm-offset-md-2">
                     <div class="alert alert-danger" role="alert">
                         @if($errors->has('general'))
                             {{ __('Error occurred while saving:') }}
@@ -25,7 +25,7 @@
             <span class="circle"><h1>1</h1></span>
             <span class="circle"><h1>2</h1></span>
         </div>
-        <div class="card">
+        <div class="">
             <form action="{{ route('questions.store') }}"
                             method="post"
                             class=""
