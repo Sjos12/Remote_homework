@@ -6,6 +6,11 @@ function showTab(n) {
   // This function will display the specified tab of the form ... this is list
   var x = document.getElementsByClassName("tab");
   console.log(x);
+
+  if (0 === x.length) {
+      return
+  }
+
   x[n].style.display = "block";
   // ... and fix the Previous/Next buttons:
   if (n == 0) {
@@ -73,19 +78,19 @@ function fixStepIndicator(n) {
 }
 
 function questionType(n) {
-  let x = document.getElementsByClassName('type'); 
+  let x = document.getElementsByClassName('type');
   let y = document.getElementsByClassName("typebtn");
-  if (n == 1) { 
-      x[0].style.display = 'block';  
+  if (n == 1) {
+      x[0].style.display = 'block';
       y[0].className += " activebtn";
-      x[1].style.display = 'none';  
+      x[1].style.display = 'none';
       y[1].classList.remove("activebtn");
-      
+
   }
-  if (n == 2) { 
-    x[1].style.display = 'block';  
+  if (n == 2) {
+    x[1].style.display = 'block';
     y[1].className += " activebtn";
-    x[0].style.display = 'none';  
+    x[0].style.display = 'none';
     y[0].classList.remove("activebtn");
 }
 }
