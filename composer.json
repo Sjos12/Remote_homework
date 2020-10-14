@@ -9,6 +9,7 @@
         "ext-dom": "*",
         "ext-exif": "*",
         "ext-gd": "*",
+        "ext-json": "*",
         "ext-mbstring": "*",
         "ext-pdo": "*",
         "dyrynda/laravel-efficient-uuid": "^4.0",
@@ -38,6 +39,7 @@
             "ext-dom": "7.4.8",
             "ext-exif": "7.4.8",
             "ext-gd": "7.4.8",
+            "ext-json": "7.4.8",
             "ext-mbstring": "7.4.8",
             "ext-pdo": "7.4.8"
         },

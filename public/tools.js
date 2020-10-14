@@ -1,6 +1,8 @@
 // reference canvas element (with id="c")
 // create a wrapper around native canvas element (with id="c")
-const canvas = new fabric.Canvas('canvas'); 
+let canvasEl = document.getElementById('canvas')
+const canvas = new fabric.Canvas('canvas')
+canvasEl.fabric = canvas;
 
 // variable which chooses color of objects
 const objcolor = 'white';
@@ -24,44 +26,76 @@ for (i = 0; i < coll.length; i++) {
 }
 
 function spawnImg() {
-    const image = document.getElementById('answerimg');
+    const imageInfo = JSON.parse(canvasEl.dataset.imageInfo);
 
     //creates fabricjs image object
-    let fabricImage = new fabric.Image(image, {
-        hasControls: false,
-        hasBorders: false,
-        lockMovementX: true,
-        lockMovementY: true,
-        selectable: false,
+    fabric.Image.fromURL(imageInfo.url, function (fabricImage) {
+        fabricImage.set({
+            hasControls: false,
+            hasBorders: false,
+            lockMovementX: true,
+            lockMovementY: true,
+            selectable: false,
+        });
+
+        //temporary
+        const minimizeFactor = 2;
+
+        const smallImageHeight = imageInfo.height / minimizeFactor;
+        const smallImageWidth = imageInfo.width / minimizeFactor;
+
+        //sets canvas size.
+        canvas.setDimensions({width:(smallImageWidth), height:(smallImageHeight)});
+
+        //canvas height and width in variable
+        let canvasHeight = canvas.height;
+        let canvasWidth = canvas.width;
+
+        //sets image to fit the canvas size.
+        fabricImage.scaleToHeight(canvasHeight);
+        fabricImage.scaleToWidth(canvasWidth);
+
+        canvas.add(fabricImage);
+
+        //renders everything
+        //canvas.renderAll();
     });
 
-    //takes image height and width and puts it in variable
-    let imageHeight = fabricImage.height; 
-    let imageWidth = fabricImage.width;
-    let minimizeFactor = 2;  
+//    let fabricImage = new fabric.Image(imageInfo.url, {
+//        hasControls: false,
+//        hasBorders: false,
+//        lockMovementX: true,
+//        lockMovementY: true,
+//        selectable: false,
+//    });
 
-    let smallImageHeight = imageHeight / minimizeFactor; 
-    let smallImageWidth = imageWidth / minimizeFactor;
+//    //takes image height and width and puts it in variable
+//    let imageHeight = imageInfo.height;
+//    let imageWidth = imageInfo.width;
+////    console.log
+//    let minimizeFactor = 2;
+//
+//    let smallImageHeight = imageHeight / minimizeFactor;
+//    let smallImageWidth = imageWidth / minimizeFactor;
 
     //sets canvas size.
-    canvas.setDimensions({width:(smallImageWidth), height:(smallImageHeight)});
-    
-    //canvas height and width in variable
-    let canvasHeight = canvas.height;
-    let canvasWidth = canvas.width;
-    
-    //sets image to fit the canvas size. 
-    fabricImage.scaleToHeight(canvasHeight);
-    fabricImage.scaleToWidth(canvasWidth);
+//    canvas.setDimensions({width:(smallImageWidth), height:(smallImageHeight)});
 
-    console.log(imageHeight);
+    //canvas height and width in variable
+//    let canvasHeight = canvas.height;
+//    let canvasWidth = canvas.width;
+
+    //sets image to fit the canvas size.
+//    fabricImage.scaleToHeight(canvasHeight);
+//    fabricImage.scaleToWidth(canvasWidth);
+
+    //console.log(imageHeight);
     //canvas.setDimensions({width:imageWidth, height:imageHeight});
     //canvas.loadFromJSON(//put here the JSON from backend);
-    canvas.add(fabricImage);
+    //canvas.add(fabricImage);
 
     //renders everything
-    canvas.renderAll();
-
+    //canvas.renderAll();
 }
 
 window.onload = function() {

@@ -7,6 +7,7 @@ use App\Illustration;
 use App\Question;
 use App\User;
 use Illuminate\Support\Collection;
+use Spatie\Image\Image;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\ViewModels\ViewModel;
 
@@ -59,12 +60,29 @@ final class QuestionViewModel extends ViewModel
                         return $illustration->hasMedia(Illustration::COLLECTION_IMAGES);
                     });
 
-        if (null !== $illustration) {
-            return $illustration->getFirstMedia(Illustration::COLLECTION_IMAGES);
+        if (null === $illustration) {
+            // Could do a default image placeholder here
+            return null;
         }
 
-        // Could do a default image placeholder here
-        return null;
+        return $illustration->getFirstMedia(Illustration::COLLECTION_IMAGES);
+    }
+
+    public function firstImageInfo(): ?array
+    {
+        $media = $this->firstImage();
+
+        if (null === $media) {
+            return null;
+        }
+
+        $image = Image::load($media->getPath());
+
+        return [
+            'height' => $image->getHeight(),
+            'width' => $image->getWidth(),
+            'url' => $media->getUrl(),
+        ];
     }
 
     public function createdSince(): string
