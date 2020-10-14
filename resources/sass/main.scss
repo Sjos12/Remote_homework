@@ -14,16 +14,24 @@ html {
     height: 100%;
 }
 
-.vh150 { 
+
+
+
+.card {
+    padding-top: 4em;
+    padding-bottom: 4em;
+}
+
+.vh150 {
     height: 150vh;
 }
 
-//styling for stepped form 
-.tab { 
+//styling for stepped form
+.tab {
     display: none;
 }
 
-.circle { 
+.circle {
     height: 50px;
     width: 50px;
     border: 2px solid $buttoncolor;
@@ -35,12 +43,12 @@ html {
     color: white;
 }
 
-.circle > h1 { 
+.circle > h1 {
     margin: auto;
     font-size: 2rem;
 }
 
-.activestep { 
+.activestep {
    background-color: $buttoncolor;
 }
 
@@ -51,37 +59,37 @@ html {
 .font-white:hover, .font-white:active  {
     color: $buttoncolor;
     transition: 0.3s ease-in-out;
-    
+
 }
 
-.btn-transparent { 
-    background-color: transparent ; 
+.btn-transparent {
+    background-color: transparent ;
     color: $buttoncolor;
     border: 1px solid $buttoncolor;
     border-radius: 0;
     margin: 5px;
 }
-.activebtn { 
+.activebtn {
     color: $buttoncolor;
-    border-bottom: 4px solid $buttoncolor;   
+    border-bottom: 4px solid $buttoncolor;
 }
 
-.typebtn { 
+.typebtn {
     margin-left: 0.5em;
     margin-right: 0.5em;
 }
 
-.type { 
+.type {
     display: none;
 }
-//delete question button styling 
-.btn-delete { 
+//delete question button styling
+.btn-delete {
     color: $btn-delete-color !important;
     font-size: $paragraph2-text-size;
 }
 
 //image styling for the image when there are no answers
-.img--empty { 
+.img--empty {
     display: block;
     height: 200px;
     width: auto;
@@ -89,12 +97,12 @@ html {
     margin-left: auto;
 }
 
-.card--no-border { 
+.card--no-border {
     border: none;
 }
 
 // prevent text line breaks
-.nowrap { 
+.nowrap {
     white-space: nowrap;
 }
 
@@ -103,7 +111,7 @@ html {
     padding-bottom: auto;
 }
 
-.fulloriginalquestion { 
+.fulloriginalquestion {
     padding: 0 18px;
     display: none;
     overflow: hidden;
@@ -119,7 +127,7 @@ html {
     color: $buttoncolor;
 }
 
-.paragraph--padding { 
+.paragraph--padding {
     margin-bottom: 100px;
 }
 
@@ -205,17 +213,6 @@ html {
     justify-content: center;
 }
 
-.card {
-    background-color: $darkmodecolor;
-    padding-top: 4em;
-    padding-bottom: 4em;
-    border-radius: 10px;
-}
-
-.card--color-2 {
-    background-color: $inputcolor_dark;
-}
-
 .card--no-padding {
     padding: 0em;
 }
@@ -260,8 +257,8 @@ html {
 
 
 //detailimg size control
-.carousel-inner > .carousel-item > .box > img { 
-    height: 60vh; width: auto; 
+.carousel-inner > .carousel-item > .box > img {
+    height: 60vh; width: auto;
 }
 
 // styling for detail img to be 100 % width so small resolution img's won't display small.
@@ -377,7 +374,6 @@ html {
 }
 
 .link--active {
-    color: white;
     font-size: $font-family-title-size-4;
     border-bottom: 5px solid white;
 }
@@ -389,13 +385,6 @@ html {
 
 /* footer styling */
 
-.footercolor {
-    background-color: $darkmodefootercolor;
-}
-
-.footerdark {
-    background-color: $darkmodefootercolor_dark;
-}
 
 .footertext {
     font-size: $font-size-footer;
@@ -404,6 +393,10 @@ html {
 
 .footerlink {
     color: $buttoncolor;
+}
+
+.footercolor {
+    background-color: $buttoncolorlight;
 }
 
 .footer {
@@ -574,18 +567,18 @@ html {
     border-top-right-radius: 0;
 }
 
-.card__answer--border { 
+.card__answer--border {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
 
-.card__text--border { 
+.card__text--border {
     border-top-right-radius: 0;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
 
-.card__img--border { 
+.card__img--border {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     border-top-left-radius: 0;
@@ -704,9 +697,31 @@ p {
 
 /*implements dark mode */
 @media (prefers-color-scheme: dark) {
+
+    .link--active {
+        color: white;
+    }
+
     body {
        background-color: $darkmodecolor_dark;
    }
+
+
+    .footercolor {
+        background-color: $darkmodefootercolor;
+    }
+
+    .footerdark {
+        background-color: $darkmodefootercolor_dark;
+    }
+
+    .card {
+        background-color: $darkmodecolor;
+    }
+
+    .card--color-2 {
+        background-color: $inputcolor_dark;
+    }
 
     .toolbar {
         background-color:  $inputcolor_dark;
@@ -751,7 +766,7 @@ p {
     .contentarea{
         background-color: $inputcolor_dark;
     }
-    
+
     .contentarea:focus{
         background-color: $inputcolor_dark;
         color: white;
@@ -835,7 +850,7 @@ p {
         margin-right: 1em;
         margin-bottom: 2em;
     }
-    
+
     .card--question {
         background-color: $inputcolor_dark;
     }
