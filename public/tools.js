@@ -39,14 +39,14 @@ function spawnImg() {
         });
 
         //temporary
-        const minimizeFactor = 2;
+        const minimizeFactor = 1;
 
         const smallImageHeight = imageInfo.height / minimizeFactor;
         const smallImageWidth = imageInfo.width / minimizeFactor;
 
-        //sets canvas size.
-        canvas.setDimensions({width:(smallImageWidth), height:(smallImageHeight)});
-
+        console.log("Image Height", smallImageHeight);
+        console.log("Image Width", smallImageWidth);
+        
         //canvas height and width in variable
         let canvasHeight = canvas.height;
         let canvasWidth = canvas.width;
@@ -57,8 +57,29 @@ function spawnImg() {
 
         canvas.add(fabricImage);
 
+        function gcd (a, b) {
+            return (b == 0) ? a : gcd (b, a%b);
+        }
+        
+        let image_gcd = gcd (smallImageWidth, smallImageHeight);
+        console.log("gcd", image_gcd);
+
+        image_ratio_height = smallImageHeight/image_gcd;
+        image_ratio_width = smallImageWidth/image_gcd; 
+        console.log(image_ratio_height, ":" , image_ratio_width);
+
+        let image_multiplier = 100; 
+        
+        let image_height = image_ratio_height * image_multiplier; 
+        let image_width = image_ratio_width * image_multiplier; 
+        
+
+        //sets canvas size.
+        canvas.setDimensions({width:(image_width), height:(image_height)});
+        console.log(canvas.height, canvas.width);
+
         //renders everything
-        //canvas.renderAll();
+        canvas.renderAll();
     });
 
 //    let fabricImage = new fabric.Image(imageInfo.url, {
