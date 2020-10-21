@@ -27,7 +27,9 @@ for (i = 0; i < coll.length; i++) {
 
 function spawnImg() {
     const imageInfo = JSON.parse(canvasEl.dataset.imageInfo);
-
+    //the slider for changing canvas size
+    let slider = document.getElementById('rangeSlider');
+    
     //creates fabricjs image object
     fabric.Image.fromURL(imageInfo.url, function (fabricImage) {
         fabricImage.set({
@@ -38,15 +40,26 @@ function spawnImg() {
             selectable: false,
         });
 
-        //temporary
-        const minimizeFactor = 1;
+        const imageHeight = imageInfo.height;
+        const imageWidth = imageInfo.width ;
 
-        const smallImageHeight = imageInfo.height / minimizeFactor;
-        const smallImageWidth = imageInfo.width / minimizeFactor;
+        console.log("Image Height", imageHeight);
+        console.log("Image Width", imageWidth);
 
-        console.log("Image Height", smallImageHeight);
-        console.log("Image Width", smallImageWidth);
+        image_ratio_height = imageHeight/imageHeight;
+        image_ratio_width = imageWidth/imageHeight; 
+        console.log(image_ratio_height, ":" , image_ratio_width); 
+
+
+        let image_multiplier = 500; 
         
+        let image_height = image_ratio_height * image_multiplier; 
+        let image_width = image_ratio_width * image_multiplier; 
+            
+
+        //sets standard canvas size.
+        canvas.setDimensions({width:(image_width), height:(image_height)});
+
         //canvas height and width in variable
         let canvasHeight = canvas.height;
         let canvasWidth = canvas.width;
@@ -57,29 +70,30 @@ function spawnImg() {
 
         canvas.add(fabricImage);
 
-        function gcd (a, b) {
-            return (b == 0) ? a : gcd (b, a%b);
+        slider.oninput = function sliderChange() { 
+            let sliderValue = slider.value; 
+            let image_multiplier = sliderValue;
+
+            let image_height = image_ratio_height * image_multiplier; 
+            let image_width = image_ratio_width * image_multiplier; 
+            
+            //canvas height and width in variable
+            let canvasHeight = canvas.height;
+            let canvasWidth = canvas.width;
+
+            //sets image to fit the canvas size.
+            fabricImage.scaleToHeight(canvasHeight);
+            fabricImage.scaleToWidth(canvasWidth);
+
+
+            //sets canvas size based on slider input.
+            canvas.setDimensions({width:(image_width), height:(image_height)});
         }
-        
-        let image_gcd = gcd (smallImageWidth, smallImageHeight);
-        console.log("gcd", image_gcd);
 
-        image_ratio_height = smallImageHeight/image_gcd;
-        image_ratio_width = smallImageWidth/image_gcd; 
-        console.log(image_ratio_height, ":" , image_ratio_width);
-
-        let image_multiplier = 100; 
         
-        let image_height = image_ratio_height * image_multiplier; 
-        let image_width = image_ratio_width * image_multiplier; 
-        
-
-        //sets canvas size.
-        canvas.setDimensions({width:(image_width), height:(image_height)});
         console.log(canvas.height, canvas.width);
-
         //renders everything
-        canvas.renderAll();
+        //canvas.renderAll();
     });
 
 //    let fabricImage = new fabric.Image(imageInfo.url, {
@@ -96,11 +110,11 @@ function spawnImg() {
 ////    console.log
 //    let minimizeFactor = 2;
 //
-//    let smallImageHeight = imageHeight / minimizeFactor;
-//    let smallImageWidth = imageWidth / minimizeFactor;
+//    let imageHeight = imageHeight / minimizeFactor;
+//    let imageWidth = imageWidth / minimizeFactor;
 
     //sets canvas size.
-//    canvas.setDimensions({width:(smallImageWidth), height:(smallImageHeight)});
+//    canvas.setDimensions({width:(imageWidth), height:(imageHeight)});
 
     //canvas height and width in variable
 //    let canvasHeight = canvas.height;

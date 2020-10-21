@@ -165,6 +165,7 @@
                             </svg>
                         </button>
 
+                        <input type="range" min="500" max="1500" value="500" class="slider" id="rangeSlider">
 
                 </div>
             </div>
