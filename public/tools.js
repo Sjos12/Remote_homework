@@ -25,11 +25,74 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 
+// Canvas zooming.
+
+function resetZoom() {
+    canvas.setViewportTransform([1,0,0,1,0,0]);
+}
+
+canvas.on('mouse:wheel', function(opt) {
+    var delta = opt.e.deltaY;
+    var zoom = canvas.getZoom();
+    zoom *= 0.999 ** delta;
+    if (zoom > 20) zoom = 20;
+    if (zoom < 0.01) zoom = 0.01;
+    canvas.setZoom(zoom);
+    opt.e.preventDefault();
+    opt.e.stopPropagation();
+
+    console.log(this.viewportTransform);
+})
+
+canvas.on('mouse:down', function(opt) {
+    var evt = opt.e;
+    if (evt.altKey === true) {
+        this.isDragging = true;
+        this.selection = false;
+        this.lastPosX = evt.clientX;
+        this.lastPosY = evt.clientY;
+    }
+});
+canvas.on('mouse:move', function(opt) {
+    if (this.isDragging) {
+        var e = opt.e;
+        var vpt = this.viewportTransform;
+        vpt[4] += e.clientX - this.lastPosX;
+        vpt[5] += e.clientY - this.lastPosY;
+        this.requestRenderAll();
+        this.lastPosX = e.clientX;
+        this.lastPosY = e.clientY;
+    }
+});
+canvas.on('mouse:up', function(opt) {
+    // on mouse up we want to recalculate new interaction
+    // for all objects, so we call setViewportTransform
+    this.setViewportTransform(this.viewportTransform);
+    this.isDragging = false;
+    this.selection = true;
+});
+
+canvas.on('mouse:wheel', function(opt) {
+    var delta = opt.e.deltaY;
+    var zoom = canvas.getZoom();
+    zoom *= 0.999 ** delta;
+    if (zoom > 20) zoom = 20;
+    if (zoom < 0.01) zoom = 0.01;
+    canvas.zoomToPoint({ x: opt.e.offsetX, y: opt.e.offsetY }, zoom);
+    opt.e.preventDefault();
+    opt.e.stopPropagation();
+});
+
+//resets all zoom and panning
+
+
+
+
 function spawnImg() {
     const imageInfo = JSON.parse(canvasEl.dataset.imageInfo);
     //the slider for changing canvas size
-    let slider = document.getElementById('rangeSlider');
-    
+    //let slider = document.getElementById('rangeSlider');
+
     //creates fabricjs image object
     fabric.Image.fromURL(imageInfo.url, function (fabricImage) {
         fabricImage.set({
@@ -47,15 +110,15 @@ function spawnImg() {
         console.log("Image Width", imageWidth);
 
         image_ratio_height = imageHeight/imageHeight;
-        image_ratio_width = imageWidth/imageHeight; 
-        console.log(image_ratio_height, ":" , image_ratio_width); 
+        image_ratio_width = imageWidth/imageHeight;
+        console.log(image_ratio_height, ":" , image_ratio_width);
 
 
-        let image_multiplier = 500; 
-        
-        let image_height = image_ratio_height * image_multiplier; 
-        let image_width = image_ratio_width * image_multiplier; 
-            
+        let image_multiplier = 500;
+
+        let image_height = image_ratio_height * image_multiplier;
+        let image_width = image_ratio_width * image_multiplier;
+
 
         //sets standard canvas size.
         canvas.setDimensions({width:(image_width), height:(image_height)});
@@ -70,27 +133,6 @@ function spawnImg() {
 
         canvas.add(fabricImage);
 
-        slider.oninput = function sliderChange() { 
-            let sliderValue = slider.value; 
-            let image_multiplier = sliderValue;
-
-            let image_height = image_ratio_height * image_multiplier; 
-            let image_width = image_ratio_width * image_multiplier; 
-            
-            //canvas height and width in variable
-            let canvasHeight = canvas.height;
-            let canvasWidth = canvas.width;
-
-            //sets image to fit the canvas size.
-            fabricImage.scaleToHeight(canvasHeight);
-            fabricImage.scaleToWidth(canvasWidth);
-
-
-            //sets canvas size based on slider input.
-            canvas.setDimensions({width:(image_width), height:(image_height)});
-        }
-
-        
         console.log(canvas.height, canvas.width);
         //renders everything
         //canvas.renderAll();

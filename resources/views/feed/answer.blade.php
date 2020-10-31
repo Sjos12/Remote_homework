@@ -165,7 +165,7 @@
                             </svg>
                         </button>
 
-                        <input type="range" min="500" max="1500" value="500" class="slider" id="rangeSlider">
+                        <button class="btn" onclick="resetZoom()" ">Reset Zoom</button>
 
                 </div>
             </div>
