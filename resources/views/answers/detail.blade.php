@@ -13,10 +13,9 @@
                         @if($firstImage = $question->firstImage())
                             <canvas class="mt-4 mx-auto border border-light "
                                     id="staticCanvas"
-                                    height="600"
-                                    width="1000"
                                     data-image-url="{{ $firstImage->getUrl() }}"
                                     data-image-annotations="{{ $answer->annotations }}"
+                                    data-image-info="{{ json_encode($question->firstImageInfo(), JSON_THROW_ON_ERROR) }}"
                             >
                                 <!-- All the objects and images get spawned here.-->
                             </canvas>
