@@ -15,7 +15,7 @@
 
 - name: Deploy to server
 
-  hosts: test
+  hosts: droplet
 
   vars_files:
     - ./vars/deploy_vars.yml
