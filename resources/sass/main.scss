@@ -695,7 +695,7 @@ p {
 }
 
 /*implements dark mode */
-@media (prefers-color-scheme: dark) {
+//@media (prefers-color-scheme: dark) {
 
     .link--active {
         color: white;
@@ -858,7 +858,7 @@ p {
         box-shadow: 0 0 10px $darkmodecolor_dark;
     }
 
-}
+//}
 
 button.activedrawbtn, button.activedrawbtn:hover {
     background-color: $buttoncolor;
