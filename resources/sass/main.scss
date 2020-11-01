@@ -8,14 +8,12 @@ body {
     min-height:100%;
     position:relative;
     padding-bottom: 303px;
+
 }
 
 html {
     height: 100%;
 }
-
-
-
 
 .card {
     padding-top: 4em;
@@ -109,6 +107,7 @@ html {
 #questiontitle {
     padding-top: auto;
     padding-bottom: auto;
+
 }
 
 .fulloriginalquestion {
@@ -859,4 +858,8 @@ p {
         box-shadow: 0 0 10px $darkmodecolor_dark;
     }
 
+}
+
+button.activedrawbtn, button.activedrawbtn:hover {
+    background-color: $buttoncolor;
 }
