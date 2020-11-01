@@ -1,0 +1,10 @@
+---
+deploy_dir: "/var/www/prod.remotehomework"
+
+app_environment: prod
+app_key: "{{ vault_app_key }}"
+app_url: "https://samenhuiswerken.nl"
+
+db_database: "remote_homework_prod"
+db_username: "remote_homework_prod"
+db_password: "{{ vault_db_password }}"

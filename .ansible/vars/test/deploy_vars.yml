@@ -1,0 +1,10 @@
+---
+deploy_dir: "/var/www/test.remotehomework"
+
+app_environment: test
+app_key: "{{ vault_app_key }}"
+app_url: "https://test.samenhuiswerken.nl"
+
+db_database: "remote_homework_test"
+db_username: "remote_homework_test"
+db_password: "{{ vault_db_password }}"

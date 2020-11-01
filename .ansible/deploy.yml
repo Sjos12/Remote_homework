@@ -1,11 +1,26 @@
 ---
+- name: Pre-compile locally
+
+  hosts: localhost
+
+  connection: local
+
+  vars_files:
+    - ./vars/deploy_vars.yml
+    - ./vars/{{ target_env }}/deploy_vars.yml
+
+  tasks:
+    - name: Include precompile tasks
+      include: "{{ playbook_dir }}/tasks/compile-frontend.yml"
+
 - name: Deploy to server
 
   hosts: test
 
   vars_files:
-    - ./vars/deploy_vault.yml
     - ./vars/deploy_vars.yml
+    - ./vars/{{ target_env }}/deploy_vars.yml
+    - ./vars/{{ target_env }}/deploy_vault.yml
 
 #  environment:
 #    TMPDIR: "{{ ansible_env.HOME }}/tmp"

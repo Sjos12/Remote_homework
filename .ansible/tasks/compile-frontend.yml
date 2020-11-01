@@ -1,0 +1,39 @@
+---
+- name: Check build directory exists
+  stat:
+    path: '{{ project_local_path }}'
+  register: project_local_path_stats
+
+- name: Delete {{ project_local_path }}
+  file:
+    state: absent
+    path: '{{ project_local_path }}'
+  when: project_local_path_stats.stat.exists and project_local_path_stats.stat.isdir
+
+- name: Create build directory #again
+  file:
+    state: directory
+    path: '{{ project_local_path }}'
+  when: project_local_path_stats is defined or project_local_path_stats.stat.exist == False
+
+- name: Do a git checkout to allow tasks to run against the codebase
+  git:
+    repo: git@github.com:Sjos12/Remote_homework.git
+    version: "{{ deploy_branch }}"
+    dest: "{{ project_local_path }}"
+    depth: 1
+
+- name: Delete .git directory of checkout for good measure (these are tmp files)
+  file:
+    path: "{{ project_local_path }}/.git"
+    state: absent
+
+- name: Install npm dependencies
+  command: npm ci
+  args:
+    chdir: "{{ project_local_path }}"
+
+- name: Compile assets using production profile
+  command: npm run production
+  args:
+    chdir: "{{ project_local_path }}"
