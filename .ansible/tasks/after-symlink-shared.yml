@@ -12,6 +12,31 @@
 - name: Run migrations
   command: "{{ artisan_path }} migrate"
 
+- name: Synchronize production frontend CSS
+  synchronize:
+    src: "{{ project_local_path }}/public/css/"
+    dest: "{{ ansistrano_release_path.stdout }}/public/css/"
+    group: no
+    owner: no
+    rsync_opts: --chmod=Du=rwx,--chmod=Dg=rx,--chmod=Do=rx,--chmod=Fu=rw,--chmod=Fg=r,--chmod=Fo=r
+
+- name: Synchronize production frontend JS
+  synchronize:
+    src: "{{ project_local_path }}/public/js/"
+    dest: "{{ ansistrano_release_path.stdout }}/public/js/"
+    group: no
+    owner: no
+    rsync_opts: --chmod=Du=rwx,--chmod=Dg=rx,--chmod=Do=rx,--chmod=Fu=rw,--chmod=Fg=r,--chmod=Fo=r
+
+# @todo: merge with previous task by iterating over multiple paths? `with_items`?
+- name: Synchronize production mix-manifest
+  synchronize:
+    src: "{{ project_local_path }}/public/mix-manifest.json"
+    dest: "{{ ansistrano_release_path.stdout }}/public/mix-manifest.json"
+    group: no
+    owner: no
+    rsync_opts: --chmod=Du=rwx,--chmod=Dg=rx,--chmod=Do=rx,--chmod=Fu=rw,--chmod=Fg=r,--chmod=Fo=r
+
 - name: Set permissions and ownership
   become: yes
   file:
@@ -24,6 +49,7 @@
     - storage/app
     - storage/framework/cache
     - storage/framework/sessions
+    - storage/framework/views
     - storage/logs
     - web/cpresources
     - web/uploads
