@@ -22,7 +22,8 @@
     recurse: 'yes'
   with_items:
     - storage/app
-    - storage/framework
+    - storage/framework/cache
+    - storage/framework/sessions
     - storage/logs
     - web/cpresources
     - web/uploads
