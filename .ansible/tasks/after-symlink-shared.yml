@@ -12,33 +12,18 @@
 - name: Run migrations
   command: "{{ artisan_path }} migrate"
 
-#- name: Install Node dependencies
-#  community.general.npm:
-#    path: '{{ ansistrano_release_path.stdout }}'
-#    executable: '/home/qrazi/.nvm/versions/node/v12.18.4/bin/npm'
-#    production: yes
-#
-#- name: Install Node dependencies
-#  command: /home/qrazi/.nvm/versions/node/v12.18.4/bin/npm install
-#  args:
-#    chdir: '{{ ansistrano_release_path.stdout }}'
-#
-#
-#- name: Run WebPack
-#  command: /home/qrazi/.nvm/versions/node/v12.18.4/bin/npm run production
-#  args:
-#    chdir: '{{ ansistrano_release_path.stdout }}'
-
-#- name: Set permissions and ownership
-#  become: yes
-#  file:
-#    path: '{{ ansistrano_release_path.stdout }}/{{ item }}'
-#    owner: 'www-data'
-#    group: 'www-data'
-#    state: 'directory'
-#    recurse: 'yes'
-#  with_items:
-#    - storage
-#    - web/cpresources
-#    - web/uploads
+- name: Set permissions and ownership
+  become: yes
+  file:
+    path: '{{ ansistrano_release_path.stdout }}/{{ item }}'
+    owner: 'www-data'
+    group: 'www-data'
+    state: 'directory'
+    recurse: 'yes'
+  with_items:
+    - storage/app
+    - storage/framework
+    - storage/logs
+    - web/cpresources
+    - web/uploads
 
