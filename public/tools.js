@@ -1,5 +1,6 @@
 let coll = document.getElementsByClassName("collapsible");
 let i;
+var lineMode = true;
 
 for (i = 0; i < coll.length; i++) {
   coll[i].addEventListener("click", function() {
@@ -80,6 +81,41 @@ if (canvasEl) {
     });
 
 
+    function drawLine() {
+        if (lineMode) {
+            canvas.on('mouse:down', function (o) {
+                lineMode = true;
+                var pointer = canvas.getPointer(o.e);
+                var points = [pointer.x, pointer.y, pointer.x, pointer.y];
+    
+                line = new fabric.Line(points, {
+                    strokeWidth: 3,
+                    stroke: 'black'
+                });
+                canvas.add(line);
+            });
+    
+    
+            canvas.on('mouse:move', function (o) {
+                if (lineMode) {
+                    var pointer = canvas.getPointer(o.e);
+                    line.set({ x2: pointer.x, y2: pointer.y });
+                    
+                    canvas.renderAll();
+                }
+            });
+    
+            canvas.on('mouse:up', function (o) {
+                lineMode = false;
+            });
+        }
+
+       else { 
+           lineMode = true;
+        }
+        console.log(lineMode)
+    }
+
     //resets all zoom and panning -
     function resetZoom() {
         canvas.setViewportTransform([1,0,0,1,0,0]);
@@ -88,12 +124,12 @@ if (canvasEl) {
     function freeDrawing() {
         let drawBtn = document.getElementById("drawBtn");
         console.log(drawBtn);
-        if (canvas.isDrawingMode) {
-            canvas.isDrawingMode = false;
+        if (canvas.lineModeMode) {
+            canvas.lineModeMode = false;
             drawBtn.classList.remove("activedrawbtn");
         }
-        else if (!canvas.isDrawingMode) {
-            canvas.isDrawingMode = true;
+        else if (!canvas.lineModeMode) {
+            canvas.lineModeMode = true;
             drawBtn.classList.add("activedrawbtn");
         }
 
