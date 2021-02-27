@@ -133,41 +133,41 @@
                             <button class="btn dropdown-toggle border-none" type="button" id="dropdownMenuButton" data-toggle="dropdown"                               aria-haspopup="true" aria-expanded="false">
                                 Color
                             </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <div id="colordropdown" class="dropdown-menu dropdown-menu-right pt-0 pr-0" aria-labelledby="dropdownMenuButton">
                                 <button class="btn pt-2 pb-2 dropdown-item"
                                         id="color1"
                                         onclick="changetextcolor('blue')"
                                         type="button"
                                 >
-                                    <span class="badge badge-pill badge-primary colorindicator1 float-right">.</span>
+                                    <span class="badge badge-pill badge-primary colorindicator1">.</span>
                                 </button>
-                                <button class="btn  pt-2 pb-2 dropdown-item"
+                                <button class="btn pt-2 pb-2 dropdown-item"
                                         id="color2"
                                         onclick="changetextcolor('green')"
                                         type="button"
                                 >
-                                    <span class="badge badge-pill badge-success colorindicator4 float-right">.</span>
+                                    <span class="badge badge-pill badge-success colorindicator4 ">.</span>
                                 </button>
                                 <button class="btn pt-2 pb-2 dropdown-item"
                                         id="color3"
                                         onclick="changetextcolor('red')"
                                         type="button"
                                 >
-                                    <span class="badge badge-pill badge-danger colorindicator2 float-right">.</span>
+                                    <span class="badge badge-pill badge-danger colorindicator2 ">.</span>
                                 </button>
                                 <button class="btn pt-2 pb-2 dropdown-item"
                                         id="color4"
                                         onclick="changetextcolor('white')"
                                         type="button"
                                 >
-                                    <span class="badge badge-pill badge-light colorindicator3 float-right">.</span>
+                                    <span class="badge badge-pill badge-light colorindicator3 ">.</span>
                                 </button>
                                 <button class="btn pt-2 pb-2 dropdown-item"
                                         id="color5"
                                         onclick="changetextcolor('black')"
                                         type="button"
                                 >
-                                    <span class="badge badge-pill badge-dark colorindicator4 float-right">.</span>
+                                    <span class="badge badge-pill badge-dark colorindicator4">.</span>
                                 </button>
                             </div>
 
