@@ -66,7 +66,11 @@
                 </div>
             </div>
 
+            
             <div class="row">
+            <p class="w-100 col-11 mx-auto">Scroll to zoom 
+                Alt + hold = move around 
+            </p>
                 <div class="toolbar  mx-auto">
                     <button class="btn " onclick="freeDrawing()" id="drawBtn" type="button">Draw</button>
 
