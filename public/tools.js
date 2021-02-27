@@ -1,6 +1,7 @@
 let coll = document.getElementsByClassName("collapsible");
 let i;
 var lineMode = true;
+var isDown;
 
 for (i = 0; i < coll.length; i++) {
   coll[i].addEventListener("click", function() {
@@ -84,36 +85,41 @@ if (canvasEl) {
     function drawLine() {
         if (lineMode) {
             canvas.on('mouse:down', function (o) {
-                lineMode = true;
-                var pointer = canvas.getPointer(o.e);
-                var points = [pointer.x, pointer.y, pointer.x, pointer.y];
-    
-                line = new fabric.Line(points, {
-                    strokeWidth: 3,
-                    stroke: 'black'
-                });
-                canvas.add(line);
+                if (lineMode) {
+                    canvas.selection = false;
+                    isDown = true;
+                    var pointer = canvas.getPointer(o.e);
+                    var points = [pointer.x, pointer.y, pointer.x, pointer.y];
+        
+                    line = new fabric.Line(points, {
+                        strokeWidth: 3,
+                        stroke: objcolor
+                    });
+                    canvas.add(line);
+                }  
             });
     
     
             canvas.on('mouse:move', function (o) {
-                if (lineMode) {
+                if (lineMode && isDown) {
                     var pointer = canvas.getPointer(o.e);
                     line.set({ x2: pointer.x, y2: pointer.y });
-                    
                     canvas.renderAll();
                 }
             });
     
             canvas.on('mouse:up', function (o) {
+                canvas.selection = true;
                 lineMode = false;
+                isDown = false; 
+                line.setCoords();
             });
+            
         }
-
        else { 
            lineMode = true;
         }
-        console.log(lineMode)
+        
     }
 
     //resets all zoom and panning -
