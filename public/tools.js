@@ -3,6 +3,9 @@ let i;
 var lineMode = true;
 var isDown;
 
+// variable which chooses color of objects
+let objColor;
+
 for (i = 0; i < coll.length; i++) {
   coll[i].addEventListener("click", function() {
     this.classList.toggle("active");
@@ -28,7 +31,7 @@ if (canvasEl) {
     canvasEl.fabric = canvas;
 
     // variable which chooses color of objects
-    const objcolor = 'white';
+    objColor = 'white';
 
     // Canvas zooming.
     canvas.on('mouse:wheel', function(opt) {
@@ -93,7 +96,7 @@ if (canvasEl) {
         
                     line = new fabric.Line(points, {
                         strokeWidth: 3,
-                        stroke: objcolor
+                        stroke: objColor
                     });
                     canvas.add(line);
                 }  
@@ -220,7 +223,7 @@ if (canvasEl) {
 
         // this if statement should be used to check if dark mode is enabled or disabled and based on that choose text color.
         if (2 > 1) {
-            text.setColor(objcolor);
+            text.setColor(objColor);
         }
         canvas.add(text);
         canvas.centerObject(text);
@@ -230,7 +233,7 @@ if (canvasEl) {
     function spawncube() {
         // create a rectangle object
         var rect = new fabric.Rect({
-            stroke: objcolor,
+            stroke: objColor,
             strokeWidth: 2,
             strokeUniform: true,
             fill: 'rgba(0,0,0,0)',
@@ -240,7 +243,7 @@ if (canvasEl) {
 
         // this if statement should be used to check if dark mode is enabled or disabled and based on that choose text color.
         if (2 > 1) {
-            rect.set('stroke', objcolor);
+            rect.set('stroke', objColor);
         }
 
         canvas.add(rect);
@@ -259,7 +262,7 @@ if (canvasEl) {
 
         // this if statement should be used to check if dark mode is enabled or disabled and based on that choose text color.
         if (2 > 1) {
-            circle.set('stroke', objcolor);
+            circle.set('stroke', objColor);
         }
 
         canvas.add(circle);
@@ -271,11 +274,11 @@ if (canvasEl) {
         let color = clr;
         let obj = canvas.getActiveObject();
         let typecheck = obj.get('type');
-
+        objColor = clr;
         console.log(typecheck);
-        if (typecheck == 'circle' || typecheck == 'rect') {
+        if (typecheck == 'circle' || typecheck == 'rect' || typecheck == 'line') {
             obj.set('stroke', (color));
-            console.log('hey');
+            
         }
         else if (typecheck == 'i-text') {
             obj.set('fill', (color));
