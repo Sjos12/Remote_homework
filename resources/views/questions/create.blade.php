@@ -44,7 +44,7 @@
                                     <!-- list category records here -->
                                     <ul>
                                         @foreach ($categories as $category)
-                                            <li class="d-flex my-4"><input type="checkbox" name="category{{$category->id}}" id=""><p class="m-0 ml-2 ">{{ $category->category }}</p></li>
+                                            <li class="d-flex my-4"><input type="checkbox" name="categories[]" value="{{$category->id}}"><p class="m-0 ml-2 ">{{ $category->category }}</p></li>
                                         @endforeach
                                     </ul>
                                     

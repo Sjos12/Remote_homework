@@ -33,7 +33,7 @@ final class Question extends Model
     public function category() 
     {
         //define eloquent hasMany relationship, for multiple categories, with category-questions table.
-        return $this->hasMany(Category::class);
+        return $this->belongsToMany(Category::class);
 
     }
 
