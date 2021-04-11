@@ -3,8 +3,10 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Illustration;
 use App\Question;
+use App\User;
 use App\ViewModels\QuestionViewModel;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -23,11 +25,16 @@ final class QuestionController
 
     public function create(): Renderable
     {
-        return view('questions.create');
+        $categoriemodel = new Category(); 
+        $categories = $categoriemodel::all();
+        return view('questions.create')->with('categories', $categories);
+
+       
     }
 
     public function store(Request $request): Response
     {
+        dd($request->category1);
         $validated_data = $this->validate(
             $request,
             [
@@ -44,6 +51,11 @@ final class QuestionController
                 'user_id' => $request->user()->id,
                 'title'   => $validated_data['title'],
                 'content' => $validated_data['content'] ?? null,
+            ]);
+
+            $category = Category::create([
+                'question_id' => $question->id,
+                'category_id' => $request->category1
             ]);
 
             $illustration = new Illustration();
