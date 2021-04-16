@@ -3,8 +3,10 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Illustration;
 use App\Question;
+use App\User;
 use App\ViewModels\QuestionViewModel;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -23,7 +25,9 @@ final class QuestionController
 
     public function create(): Renderable
     {
-        return view('questions.create');
+        $categories = Category::all();
+        
+        return view('questions.create')->with('categories', $categories);
     }
 
     public function store(Request $request): Response
@@ -34,6 +38,7 @@ final class QuestionController
                 'title'        => 'required|unique:questions,title', // @todo: should not be forbidden, but result in a suggestion to look at existing question, if permissions allow that
                 'content'      => 'nullable',
                 'illustration' => 'required|image',
+                'categories'   => 'nullable|exists:categories,id',
             ]
         );
 
@@ -58,6 +63,8 @@ final class QuestionController
                          ->toMediaCollection(Illustration::COLLECTION_IMAGES);
 
             $illustration->save();
+
+            $question->category()->attach($validated_data['categories']);
 
             DB::commit();
         } catch (Throwable $exception) {
@@ -159,15 +166,20 @@ final class QuestionController
 
     public function list(): Renderable
     {
+
+        $categories = Question::where('user_id', Auth::id())
+                            ->category
+                            ->get();
         $questions = Question::where('user_id', Auth::id())
                              ->orderBy('updated_at', 'desc')
                              ->get()
                              ->map(
                                  fn(Question $question) => new QuestionViewModel($question)
                              );
-
+        
         return view('questions.list', [
             'questions' => $questions,
+            'categories' => $categories
         ]);
     }
 

@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h3 class="col-12">{{ $question->title }}</h3>
+                <h3 class="col-12">{{ $question->title }} and {{$question->category }}</h3>
                 <p class="col-12">{{ $question->content }}</p>
             </div>
 
