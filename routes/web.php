@@ -16,6 +16,7 @@ use App\Http\Controllers\MarketplaceController;
 use App\Http\Controllers\OwnQuestions\Delete as DeleteOwnQuestion;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\ShowAnswer;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -148,6 +149,22 @@ Route::middleware([
          //Marketplace route
          Route::get('marketplace', MarketplaceController::class)
               ->name('marketplace.home');
+          
+          //Profile routes.
+          //
+          // View profile of specific user. 
+          Route::get('profiles/{user}', [UserController::class, 'view'])
+              ->name('profiles.view');
+          //Account routes. 
+          //
+          //View currently logged in user account 
+          Route::get('account', [AccountController::class, 'view'])
+               ->name('account.view');
+          //Change default account values.
+          Route::put('account/edit', [AccountController::class, 'edit'])
+               ->name('account.edit');
+          
+          
      });
 
 // Application routes
