@@ -25,6 +25,7 @@ final class QuestionController
 
     public function create(): Renderable
     {
+        // Return all categories to
         $categories = Category::all();
         
         return view('questions.create')->with('categories', $categories);
@@ -32,6 +33,7 @@ final class QuestionController
 
     public function store(Request $request): Response
     {
+        
         $validated_data = $this->validate(
             $request,
             [
@@ -41,7 +43,7 @@ final class QuestionController
                 'categories'   => 'nullable|exists:categories,id',
             ]
         );
-
+        //dd($validated_data['categories']);
         try {
             DB::beginTransaction();
 
@@ -64,7 +66,11 @@ final class QuestionController
 
             $illustration->save();
 
-            $question->category()->attach($validated_data['categories']);
+            foreach($validated_data['categories'] as $category) {
+                $question->category()->attach($category);
+            }
+            // Creates DB record in the category_question table
+            
 
             DB::commit();
         } catch (Throwable $exception) {
