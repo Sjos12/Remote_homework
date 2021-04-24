@@ -14,6 +14,10 @@ body {
 html {
     height: 100%;
 }
+//makes navbar bigger than bootstrap preset
+#app nav {
+    padding: 1rem 2rem;
+}
 
 // Category blocks styling. 
 .category { 
@@ -491,7 +495,7 @@ html {
 }
 
 #nav-link, #nav-link-user, #navbarDropdown {
-    font-size: 1rem;
+    font-size: 1.05rem;
 }
 
 /* this style is solely for making the navbar resizing look smooth*/
@@ -875,6 +879,10 @@ p {
 
     .card--shadow {
         box-shadow: 0 0 10px $darkmodecolor_dark;
+    }
+    
+    .dashboard { 
+        color: white;   
     }
 
 //}
