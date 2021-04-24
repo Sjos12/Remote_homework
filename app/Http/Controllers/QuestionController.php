@@ -167,9 +167,6 @@ final class QuestionController
     public function list(): Renderable
     {
 
-        $categories = Question::where('user_id', Auth::id())
-                            ->category
-                            ->get();
         $questions = Question::where('user_id', Auth::id())
                              ->orderBy('updated_at', 'desc')
                              ->get()
@@ -179,7 +176,6 @@ final class QuestionController
         
         return view('questions.list', [
             'questions' => $questions,
-            'categories' => $categories
         ]);
     }
 

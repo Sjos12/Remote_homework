@@ -19,7 +19,10 @@
                                     <h3 class="title6">{{ $view_model->question()->title }}</h3>
 
                                     <p class="question-paragraph mb-auto paragraph2">{{$view_model->question()->content}}</p>
-                                    <p>{{ $categories }}</p>
+                                    
+                                    @foreach ($view_model->categories() as $category)
+                                        <p class="category">{{$category->category}}</p>
+                                    @endforeach
                                 </div>
 
                                 <div class=" card--question- mt-auto desktopinfo">
