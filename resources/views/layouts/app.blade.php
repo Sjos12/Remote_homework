@@ -87,7 +87,7 @@
                                     <a class="dropdown-item" href="{{ route('marketplace.home')}}">{{ __('Marketplace') }}</a>
 
                                     <hr class="dropdownmenu-hr">
-
+                                    <a class="dropdown-item" href="{{ route('account.view') }}">Account</a>
                                     <a class="dropdown-item"
                                        href="{{ route('logout') }}"
                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"

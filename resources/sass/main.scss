@@ -18,7 +18,14 @@ html {
 #app nav {
     padding: 1rem 2rem;
 }
-
+// Profile styling. 
+.profilepicture-container { 
+    border-radius: 100%;
+    overflow: hidden;
+    border: 1px solid $buttoncolor;
+    height: 200px;
+    width: 200px;
+}
 // Category blocks styling. 
 .category { 
     border: 1px solid $categorycolor;
