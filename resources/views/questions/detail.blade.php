@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h3 class="col-12">{{ $question->title }} and {{$question->category }}</h3>
+                <h3 class="col-12">{{ $question->title }}</h3>
                 <p class="col-12">{{ $question->content }}</p>
             </div>
 
@@ -39,7 +39,11 @@
                 <p class="col-12  question-data text-left">
                     {{ __('Last updated :date', ['date' => $question->updated_at->diffForHumans()]) }}
                 </p>
-
+                <div class="col-12">
+                    @foreach ($question->category as $category)
+                        <h6 class="category">{{$category->category }}</h6>
+                    @endforeach
+                </div>   
             </div>
 
             <div class="col-4 my-auto">
