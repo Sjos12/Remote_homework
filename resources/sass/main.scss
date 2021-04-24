@@ -15,6 +15,17 @@ html {
     height: 100%;
 }
 
+// Category blocks styling. 
+.category { 
+    border: 1px solid $categorycolor;
+    color: $categorycolor;
+    border-radius: 1rem;
+    padding: 0.35rem 0.8rem;
+    margin-right: 0.5rem;
+    font-weight: bold;
+    display: inline-block;
+}
+
 .card {
     padding-top: 4em;
     padding-bottom: 4em;

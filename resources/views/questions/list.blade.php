@@ -20,16 +20,19 @@
 
                                     <p class="question-paragraph mb-auto paragraph2">{{$view_model->question()->content}}</p>
                                     
-                                    @foreach ($view_model->categories() as $category)
-                                        <p class="category">{{$category->category}}</p>
-                                    @endforeach
+                                    
                                 </div>
 
                                 <div class=" card--question- mt-auto desktopinfo">
                                     <div class="div1">
                                         <h6 class="card--question--info pt-4">
-                                            {{ $view_model->createdSince() }}
+                                            {{ $view_model->createdSince()}}
                                         </h6>
+                                        <div>
+                                            @foreach ($view_model->categories() as $category)
+                                                <h6 class="category">{{$category->category}}</h6>
+                                            @endforeach
+                                        </div>
                                     </div>
                                 </div>
 
