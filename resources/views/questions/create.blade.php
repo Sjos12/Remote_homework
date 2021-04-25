@@ -36,12 +36,16 @@
                             <div class="form-group col-12 col-md-8 offset-md-2">
                                 <h4 class="text-center">Choose your question type</h4>
                                 <div class="d-flex justify-content-center">
-                                    <h1 type="button" class="title6 font-white typebtn" onclick="questionType(1)">Public</h1> 
+                                    <h1 type="button" class="title6 font-white typebtn activebtn" onclick="questionType(1)">Public</h1> 
                                     <h1 type="button" class="title6 font-white typebtn" onclick="questionType(2)">Private</h1>
                                 </div>
                                 <div class="type">
                                     <h4>Choose a category</h4>
-                                    <!-- list category records here -->
+                                    <form action="{{ route('categories.create') }}">
+                                        <!-- list category records here -->
+                                        <input type="text" class="form-control" name="category" placeholder="Add a new category..">
+                                        <button type="submit" class="btn btn-primary">Add</button>
+                                    </form>
                                     <ul>
                                         @foreach ($categories as $category)
                                             <li class="d-flex my-4"><input type="checkbox" name="categories[]" value="{{$category->id}}"><p class="m-0 ml-2 ">{{ $category->category }}</p></li>

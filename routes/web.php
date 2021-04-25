@@ -121,8 +121,7 @@ Route::middleware([
          Route::post('/user/questions', [QuestionController::class, 'store'])
               ->name('questions.store');
          // Edit questions
-         Route::get('/user/questions/{question}/edit',
-             [QuestionController::class, 'edit'])
+         Route::get('/user/questions/{question}/edit', [QuestionController::class, 'edit'])
               ->name('questions.edit');
          Route::post('/user/questions/{question}', [QuestionController::class, 'update'])
               ->name('questions.update');
@@ -164,8 +163,10 @@ Route::middleware([
           //Gets called on form submit.
           Route::put('account/edit', [AccountController::class, 'edit'])
                ->name('account.edit');
-          
-     });
+          //Categories routes.
+          Route::post('categories/create', [CategoryController::class, 'create'])
+               ->name('categories.create');
+          });
 
 // Application routes
 Route::get('/', HomeController::class)
