@@ -6,18 +6,20 @@ namespace App;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-final class User extends Authenticatable
+final class User extends Authenticatable implements HasMedia
 {
     use Notifiable;
-
+    use InteractsWithMedia;
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'description', 'password',
     ];
 
     /**

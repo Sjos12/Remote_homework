@@ -13,13 +13,16 @@
                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                         <div class="d-flex justify-content-between">
                             <div class="w-100 pr-5">
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+                                
                                
                                 <label for="name">Your username</label>
                                 <input class="form-control" type="text" name="name" value="{{ $account->name }}">
@@ -28,7 +31,7 @@
                                 <input class="form-control" type="text" name="email" value="{{ $account->email }}">
 
                                 <label for="description">Your description</label>
-                                <textarea class="form-control contentarea" type="text" name="description">{{ $account->name }}</textarea>   
+                                <textarea class="form-control contentarea" type="text" name="description" placeholder="Type your description here...">{{ $account->description }}</textarea>   
 
                                 
                                 <button type="submit" class="btn btn-primary btn-lg my-4 mx-0 float-right">Save changes</button>
