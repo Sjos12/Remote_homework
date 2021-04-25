@@ -14,6 +14,9 @@ class AccountController extends Controller
 {
     use ValidatesRequests;
 
+    
+    
+    
     public function view() {
         $account = Auth::user();
 
@@ -41,15 +44,12 @@ class AccountController extends Controller
             //'password' => Hash::make('password') ?? $request->user()->password,
         ])->save();
         
+       
         if (isset($validated_data['image'])) {
             $request->user()->clearMediaCollection('profiles');
             $request->user()->addMedia($validated_data['image'])->toMediaCollection('profiles');
         }
-        else { 
-            $request->user()->clearMediaCollection('profiles');
-            $request->user()->addMedia('images/default_profile_2.svg')->toMediaCollection('profiles');
-        }
+
         return redirect()->route('feed.list');
-        
         }
 }

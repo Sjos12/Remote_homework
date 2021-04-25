@@ -54,5 +54,4 @@ final class User extends Authenticatable implements HasMedia
     {
         $this->addMediaCollection('profiles')->useFallbackUrl('images/default_profile_2.svg');
     }
-    
 }
