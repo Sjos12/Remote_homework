@@ -6,7 +6,7 @@
             <div class="card card--list">
                 <div class="container px-5 d-flex justify-content-center flex-column">
                     <h1 class="mx-auto">Your Account</h1>
-                    <form method="POST" action="{{ route('account.edit') }}">
+                    <form method="POST" action="{{ route('account.edit') }}" enctype='multipart/form-data'>
                         @csrf
                         @method('PUT')
                         <!-- Equivalent to... -->
@@ -38,11 +38,11 @@
                             </div>
                             <div class="">
                                 <div class="profilepicture-container shadow mx-auto mb-4">
-                                    <img src="/images/homeworkgirl.svg" class="h-100" alt="">
+                                    <img src="{{ $account->getFirstMediaUrl('profiles') }}" class="h-100" alt="">
                                    
                                 </div>
                                 <label for="image">Change profile picture</label>
-                                <input type="file" src="" name="image">
+                                <input type="file" name="image">
                             </div>
                         </div>
                     </form>   
