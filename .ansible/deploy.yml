@@ -19,12 +19,13 @@
 
   vars_files:
     - ./vars/deploy_vars.yml
+    - ./vars/deploy_vault.yml
     - ./vars/{{ target_env }}/deploy_vars.yml
     - ./vars/{{ target_env }}/deploy_vault.yml
 
-#  environment:
-#    TMPDIR: "{{ ansible_env.HOME }}/tmp"
-#    TMP: "{{ ansible_env.HOME }}/tmp"
+  environment:
+    TMPDIR: "{{ ansible_env.HOME }}/tmp"
+    TMP: "{{ ansible_env.HOME }}/tmp"
 
   vars:
     # App vars
@@ -58,8 +59,10 @@
     ansistrano_keep_releases: 3
 
     # Hooks: custom tasks if you need them
+    ansistrano_before_setup_tasks_file: "{{ playbook_dir }}/tasks/before-setup-tasks.yml"
     ansistrano_after_symlink_shared_tasks_file: "{{ playbook_dir }}/tasks/after-symlink-shared.yml"
     ansistrano_before_cleanup_tasks_file: "{{ playbook_dir }}/tasks/before-cleanup.yml"
+    ansistrano_after_cleanup_tasks_file: "{{ playbook_dir }}/tasks/after-cleanup.yml"
 
     # Ansible vars
     ansible_ssh_user: qrazi

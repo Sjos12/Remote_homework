@@ -46,11 +46,5 @@
     state: 'directory'
     recurse: 'yes'
   with_items:
-    - storage/app
-    - storage/framework/cache
-    - storage/framework/sessions
-    - storage/framework/views
-    - storage/logs
-    - web/cpresources
-    - web/uploads
+    - storage
 

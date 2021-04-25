@@ -4,3 +4,5 @@ target_env: "{{ target_env | default('test') }}"
 deploy_branch: "{{ deploy_branch | default('develop') }}"
 
 project_local_path: "{{ playbook_dir }}/build_{{ target_env }}"
+
+slack_token: "{{ vault_slack_token }}"

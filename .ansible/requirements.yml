@@ -1,5 +1,7 @@
-#collections:
-#  - name: community.general
+#
+# Describe all the dependencies of the Ansible setup.
+# Install all dependencies in one go with
+# `ansible-galaxy install -r requirements.yml`
 #
 - src: ansistrano.deploy
   version: 3.6.0

@@ -2,5 +2,5 @@
 # Fill in the required secrets and encrypt using `mv deploy_vault.dist.yml vars/deploy_vault.yml && ansible-vault encrypt vars/deploy_vault.yml`
 # After setting the password create the `.vault_pass`: `echo "some-secret-password" > .vault_pass` and verify that file exists, has the password in plain text, and is ignored by git
 vault_ansible_become_password: ""
-vault_app_key: ""
-vault_db_password: ""
+
+vault_slack_token: ""

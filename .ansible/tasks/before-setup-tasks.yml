@@ -1,0 +1,6 @@
+---
+- name: Slack notification start deploy
+  community.general.slack:
+    token: '{{ slack_token }}'
+    msg: '*Starting* deploy of project "{{ ansistrano_git_repo }}", branche "{{ deploy_branch }}", to "{{ target_env }}"'
+  delegate_to: localhost
