@@ -36,7 +36,7 @@ class AccountController extends Controller
                 'name' => ['nullable', 'string', 'max:255', 'unique:users,name,'.$request->user()->id.''],
                 'email' => ['nullable', 'string', 'email', 'max:255', 'unique:users,email,'.$request->user()->id.''],
                 'description' => ['nullable', 'string', 'max:255'],
-                'image' => ['required', 'image']
+                'image' => ['nullable', 'image']
             ]);
         
         $request->user()->fill([
@@ -46,11 +46,14 @@ class AccountController extends Controller
             //'password' => Hash::make('password') ?? $request->user()->password,
         ])->save();
         
-        if ($validated_data['image']) {
+        if (isset($validated_data['image'])) {
             $request->user()->clearMediaCollection('profiles');
             $request->user()->addMedia($validated_data['image'])->toMediaCollection('profiles');
         }
-        
+        else { 
+            $request->user()->clearMediaCollection('profiles');
+            $request->user()->addMedia('images/default_profile_2.svg')->toMediaCollection('profiles');
+        }
         return redirect()->route('feed.list');
         
         }
