@@ -158,13 +158,12 @@ Route::middleware([
               ->name('profiles.view');
           //Account routes. 
           //
-          //View currently logged in user account 
+          // View currently logged in user values and Change default account values.
           Route::get('account', [AccountController::class, 'view'])
                ->name('account.view');
-          //Change default account values.
+          //Gets called on form submit.
           Route::put('account/edit', [AccountController::class, 'edit'])
                ->name('account.edit');
-          
           
      });
 

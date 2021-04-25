@@ -6,11 +6,23 @@
             <div class="card card--list">
                 <div class="container px-5 d-flex justify-content-center flex-column">
                     <h1 class="mx-auto">Your Account</h1>
-                    <form action="{{ route('account.edit')}}">
+                    <form method="POST" action="{{ route('account.edit') }}">
+                        @csrf
+                        @method('PUT')
+                        <!-- Equivalent to... -->
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                         <div class="d-flex justify-content-between">
                             <div class="w-100 pr-5">
-                                <label for="username">Your username</label>
-                                <input class="form-control" type="text" name="username" value="{{ $account->name }}">
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                               
+                                <label for="name">Your username</label>
+                                <input class="form-control" type="text" name="name" value="{{ $account->name }}">
 
                                 <label for="email">Your E-mail</label>
                                 <input class="form-control" type="text" name="email" value="{{ $account->email }}">
