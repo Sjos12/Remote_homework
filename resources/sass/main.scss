@@ -18,11 +18,16 @@ html {
 #app nav {
     padding: 1rem 2rem;
 }
+
+.profilepicture-container--nav {
+    max-height: 3rem;
+    max-width: 3rem;
+}
 // Profile styling. 
 .profilepicture-container { 
     border-radius: 100%;
     overflow: hidden;
-    border: 1px solid $buttoncolor;
+    //border: 1px solid $buttoncolor;
     height: 200px;
     width: 200px;
 }

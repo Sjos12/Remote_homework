@@ -47,6 +47,7 @@ class AccountController extends Controller
         ])->save();
         
         if ($validated_data['image']) {
+            $request->user()->clearMediaCollection('profiles');
             $request->user()->addMedia($validated_data['image'])->toMediaCollection('profiles');
         }
         

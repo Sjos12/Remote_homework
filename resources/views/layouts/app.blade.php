@@ -73,10 +73,13 @@
                                 <!-- put the route for the 'public' questions here-->
                                 <a href="{{ route('feed.list') }}" class="nav-link navlinkfont" id="nav-link">{{ __('Dashboard') }}</a>
                             </li>
-                            <li class="nav-item dropdown">
-                                
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="nav-link" v-pre>
-                                   {{ __('Hello, :Name', ['name' => \Illuminate\Support\Facades\Auth::user()->name]) }} <span class="caret"></span>
+                            <li class="nav-item dropdown d-flex">
+                                <div class="profilepicture-container profilepicture-container--nav shadow ml-4">
+                                    <img src="{{ \Illuminate\Support\Facades\Auth::user()->getFirstMediaUrl('profiles') }}" class="h-100" alt=""> 
+                                </div>
+                                <a id="navbarDropdown" class="d-flex align-items-center justify-content-center nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="nav-link" v-pre>
+                                    
+                                    {{ __('Hello, :Name', ['name' => \Illuminate\Support\Facades\Auth::user()->name]) }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" id="dropdownmenunav">
