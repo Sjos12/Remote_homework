@@ -49,4 +49,10 @@ final class User extends Authenticatable implements HasMedia
     {
         return $this->hasMany(Answer::class);
     }
+    
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('profiles')->useFallbackUrl('images/default_profile_2.svg');
+    }
+    
 }

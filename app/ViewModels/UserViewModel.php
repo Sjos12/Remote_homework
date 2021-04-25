@@ -32,4 +32,11 @@ final class UserViewModel extends ViewModel
     {
         return $this->user->questions()->count();
     }
+
+    public function profileImage(): string
+    {
+        $url = $this->user->getFirstMediaUrl('profiles');
+        
+        return $url;
+    }
 }

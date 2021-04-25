@@ -14,11 +14,6 @@ class AccountController extends Controller
 {
     use ValidatesRequests;
 
-    public function registerMediaCollections(): void
-    {
-        $this->addMediaCollection('profiles');
-    }
-
     public function view() {
         $account = Auth::user();
 
