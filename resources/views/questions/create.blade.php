@@ -26,7 +26,11 @@
             <span class="circle"><h1>2</h1></span>
         </div>
         <div class="">
-           
+            <form action="{{ route('questions.store') }}"
+            method="post"
+            class=""
+            enctype="multipart/form-data"
+            > @csrf
                 <div class="tab">
                     <div class="row">
                             <div class="form-group col-12 col-md-8 offset-md-2">
