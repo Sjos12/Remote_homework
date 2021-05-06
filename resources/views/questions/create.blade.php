@@ -26,11 +26,7 @@
             <span class="circle"><h1>2</h1></span>
         </div>
         <div class="">
-            <form action="{{ route('questions.store') }}"
-                            method="post"
-                            class=""
-                            enctype="multipart/form-data"
-                    >
+           
                 <div class="tab">
                     <div class="row">
                             <div class="form-group col-12 col-md-8 offset-md-2">
@@ -41,11 +37,18 @@
                                 </div>
                                 <div class="type">
                                     <h4>Choose a category</h4>
-                                    <form action="{{ route('categories.create') }}">
+                                    <form method="POST" action="{{ route('categories.create') }}">
+                                        @csrf
                                         <!-- list category records here -->
                                         <input type="text" class="form-control" name="category" placeholder="Add a new category..">
                                         <button type="submit" class="btn btn-primary">Add</button>
                                     </form>
+                                    <form action="{{ route('questions.store') }}"
+                                    method="post"
+                                    class=""
+                                    enctype="multipart/form-data"
+                                    > @csrf
+                                    
                                     <ul>
                                         @foreach ($categories as $category)
                                             <li class="d-flex my-4"><input type="checkbox" name="categories[]" value="{{$category->id}}"><p class="m-0 ml-2 ">{{ $category->category }}</p></li>
@@ -53,6 +56,7 @@
                                     </ul>
                                     
                                 </div>
+
                                 <div class="type">
                                     <h4>Choose a receiver</h4>
                                     <input type="text" class="form-control" name="receiver">
@@ -120,14 +124,15 @@
                         <div class="imgpreview__container pt-3 pb-3 ">
                                 <img id="imgpreview" class="col-12 col-md-8 offset-md-2">
                         </div>
-                </div>    
+                </div>  
+            </form>  
         </div>
         <div class="button-group col-12 col-md-8 offset-md-2">
             
-            <button class="btn btn-lg  btn-primary float-right" id="nextBtn" onclick="nextPrev(1)">{{ __('') }}</button>
+            <button class="btn btn-lg  btn-primary float-right" id="nextBtn" onclick="nextPrev(1)">{{ __('Next') }}</button>
             <button class="btn btn-lg  btn-transparent float-right" id="prevBtn" onclick="nextPrev(-1)">{{ __('Previous') }}</button>
         </div>
-        </form>
+        
     </div>
 </div>
 @endsection

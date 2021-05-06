@@ -8,13 +8,13 @@ use Illuminate\Routing\Controller;
 
 class CategoryController extends Controller
 {
-    //
+    // Create a new category.
     public function create(Request $request) {
-        $category = new Category();
 
-        $category->fill([
-            'category' => $request->category,
-        ]);
-        return;
+        $category = new Category();
+        $category->category = $request->category;
+        $category->save();
+
+        return redirect()->route('questions.create');
     }
 }

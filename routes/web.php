@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\VerificationController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FeedController;
@@ -163,7 +164,7 @@ Route::middleware([
           //Gets called on form submit.
           Route::put('account/edit', [AccountController::class, 'edit'])
                ->name('account.edit');
-          //Categories routes.
+          //`Categories routes.
           Route::post('categories/create', [CategoryController::class, 'create'])
                ->name('categories.create');
           });
