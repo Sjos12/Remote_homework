@@ -57,6 +57,4 @@ $response = tap($kernel->handle(
     $request = Illuminate\Http\Request::capture()
 ))->send();
 
-$response->send();
-
 $kernel->terminate($request, $response);

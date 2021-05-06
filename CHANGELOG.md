@@ -4,6 +4,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/Sjos12/Remote_homework/compare/1.1.2...develop)
 
+### Fixed
+- Remove double sending response, broke during upgrade from 7.x to 8.x
+
 ## [1.1.2](https://github.com/Sjos12/Remote_homework/compare/1.1.1...1.1.2) 2020-11-02
 ### Changed
 - Make sure necessary shared dirs exist with correct permissions
