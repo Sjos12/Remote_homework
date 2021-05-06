@@ -19,6 +19,9 @@
                         <h6 class="question-data">
                             {{ __('Asked by :Author', ['author' => $question->author->name]) }}
                         </h6>
+                        @foreach ($question->category as $category)
+                            <h6 class="category">{{$category->category }}</h6>
+                        @endforeach  
                     </div>
 
                     <div class="col-6 ">

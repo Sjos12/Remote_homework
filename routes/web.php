@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\Auth\ConfirmPasswordController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\MarketplaceController;
 use App\Http\Controllers\OwnQuestions\Delete as DeleteOwnQuestion;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\ShowAnswer;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -119,8 +121,7 @@ Route::middleware([
          Route::post('/user/questions', [QuestionController::class, 'store'])
               ->name('questions.store');
          // Edit questions
-         Route::get('/user/questions/{question}/edit',
-             [QuestionController::class, 'edit'])
+         Route::get('/user/questions/{question}/edit', [QuestionController::class, 'edit'])
               ->name('questions.edit');
          Route::post('/user/questions/{question}', [QuestionController::class, 'update'])
               ->name('questions.update');
@@ -148,7 +149,24 @@ Route::middleware([
          //Marketplace route
          Route::get('marketplace', MarketplaceController::class)
               ->name('marketplace.home');
-     });
+          
+          //Profile routes.
+          //
+          // View profile of specific user. 
+          Route::get('profiles/{user}', [UserController::class, 'view'])
+              ->name('profiles.view');
+          //Account routes. 
+          //
+          // View currently logged in user values and Change default account values.
+          Route::get('account', [AccountController::class, 'view'])
+               ->name('account.view');
+          //Gets called on form submit.
+          Route::put('account/edit', [AccountController::class, 'edit'])
+               ->name('account.edit');
+          //Categories routes.
+          Route::post('categories/create', [CategoryController::class, 'create'])
+               ->name('categories.create');
+          });
 
 // Application routes
 Route::get('/', HomeController::class)

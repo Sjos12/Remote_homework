@@ -66,7 +66,11 @@
                 </div>
             </div>
 
+            
             <div class="row">
+            <p class="w-100 col-11 mx-auto">Scroll to zoom 
+                Alt + hold = move around 
+            </p>
                 <div class="toolbar  mx-auto">
                     <button class="btn " onclick="freeDrawing()" id="drawBtn" type="button">Draw</button>
 
@@ -101,7 +105,7 @@
                             data-toggle="tooltip"
                             data-placement="top"
                             title="Places a straight line on the middle of the image"
-                            onclick="spawncircle()"
+                            onclick="drawLine()"
                     >
                         <svg class="bi bi-slash" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"/>
@@ -133,41 +137,41 @@
                             <button class="btn dropdown-toggle border-none" type="button" id="dropdownMenuButton" data-toggle="dropdown"                               aria-haspopup="true" aria-expanded="false">
                                 Color
                             </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <div id="colordropdown" class="dropdown-menu dropdown-menu-right pt-0 pr-0" aria-labelledby="dropdownMenuButton">
                                 <button class="btn pt-2 pb-2 dropdown-item"
                                         id="color1"
                                         onclick="changetextcolor('blue')"
                                         type="button"
                                 >
-                                    <span class="badge badge-pill badge-primary colorindicator1 float-right">.</span>
+                                    <span class="badge badge-pill badge-primary colorindicator1">.</span>
                                 </button>
-                                <button class="btn  pt-2 pb-2 dropdown-item"
+                                <button class="btn pt-2 pb-2 dropdown-item"
                                         id="color2"
                                         onclick="changetextcolor('green')"
                                         type="button"
                                 >
-                                    <span class="badge badge-pill badge-success colorindicator4 float-right">.</span>
+                                    <span class="badge badge-pill badge-success colorindicator4 ">.</span>
                                 </button>
                                 <button class="btn pt-2 pb-2 dropdown-item"
                                         id="color3"
                                         onclick="changetextcolor('red')"
                                         type="button"
                                 >
-                                    <span class="badge badge-pill badge-danger colorindicator2 float-right">.</span>
+                                    <span class="badge badge-pill badge-danger colorindicator2 ">.</span>
                                 </button>
                                 <button class="btn pt-2 pb-2 dropdown-item"
                                         id="color4"
                                         onclick="changetextcolor('white')"
                                         type="button"
                                 >
-                                    <span class="badge badge-pill badge-light colorindicator3 float-right">.</span>
+                                    <span class="badge badge-pill badge-light colorindicator3 ">.</span>
                                 </button>
                                 <button class="btn pt-2 pb-2 dropdown-item"
                                         id="color5"
                                         onclick="changetextcolor('black')"
                                         type="button"
                                 >
-                                    <span class="badge badge-pill badge-dark colorindicator4 float-right">.</span>
+                                    <span class="badge badge-pill badge-dark colorindicator4">.</span>
                                 </button>
                             </div>
 
@@ -193,7 +197,7 @@
             <!-- All the objects and images get spawned here.-->
     </canvas>
     <div class="w-100 pt-5 d-flex justify-content-center">
-        <button type="submit" class="btn btn-primary btn-lg">{{ __('Save Answer') }}</button
+        <button type="submit" class="btn btn-primary btn-lg">{{ __('Save Answer') }}</button>
     </div>
 
     </form>

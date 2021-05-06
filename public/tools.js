@@ -1,5 +1,10 @@
 let coll = document.getElementsByClassName("collapsible");
 let i;
+var lineMode = true;
+var isDown;
+
+// variable which chooses color of objects
+let objColor;
 
 for (i = 0; i < coll.length; i++) {
   coll[i].addEventListener("click", function() {
@@ -26,7 +31,7 @@ if (canvasEl) {
     canvasEl.fabric = canvas;
 
     // variable which chooses color of objects
-    const objcolor = 'white';
+    objColor = 'white';
 
     // Canvas zooming.
     canvas.on('mouse:wheel', function(opt) {
@@ -80,6 +85,46 @@ if (canvasEl) {
     });
 
 
+    function drawLine() {
+        if (lineMode) {
+            canvas.on('mouse:down', function (o) {
+                if (lineMode) {
+                    canvas.selection = false;
+                    isDown = true;
+                    var pointer = canvas.getPointer(o.e);
+                    var points = [pointer.x, pointer.y, pointer.x, pointer.y];
+        
+                    line = new fabric.Line(points, {
+                        strokeWidth: 3,
+                        stroke: objColor
+                    });
+                    canvas.add(line);
+                }  
+            });
+    
+    
+            canvas.on('mouse:move', function (o) {
+                if (lineMode && isDown) {
+                    var pointer = canvas.getPointer(o.e);
+                    line.set({ x2: pointer.x, y2: pointer.y });
+                    canvas.renderAll();
+                }
+            });
+    
+            canvas.on('mouse:up', function (o) {
+                canvas.selection = true;
+                lineMode = false;
+                isDown = false; 
+                line.setCoords();
+            });
+            
+        }
+       else { 
+           lineMode = true;
+        }
+        
+    }
+
     //resets all zoom and panning -
     function resetZoom() {
         canvas.setViewportTransform([1,0,0,1,0,0]);
@@ -88,12 +133,12 @@ if (canvasEl) {
     function freeDrawing() {
         let drawBtn = document.getElementById("drawBtn");
         console.log(drawBtn);
-        if (canvas.isDrawingMode) {
-            canvas.isDrawingMode = false;
+        if (canvas.lineModeMode) {
+            canvas.lineModeMode = false;
             drawBtn.classList.remove("activedrawbtn");
         }
-        else if (!canvas.isDrawingMode) {
-            canvas.isDrawingMode = true;
+        else if (!canvas.lineModeMode) {
+            canvas.lineModeMode = true;
             drawBtn.classList.add("activedrawbtn");
         }
 
@@ -178,7 +223,7 @@ if (canvasEl) {
 
         // this if statement should be used to check if dark mode is enabled or disabled and based on that choose text color.
         if (2 > 1) {
-            text.setColor(objcolor);
+            text.setColor(objColor);
         }
         canvas.add(text);
         canvas.centerObject(text);
@@ -188,7 +233,7 @@ if (canvasEl) {
     function spawncube() {
         // create a rectangle object
         var rect = new fabric.Rect({
-            stroke: objcolor,
+            stroke: objColor,
             strokeWidth: 2,
             strokeUniform: true,
             fill: 'rgba(0,0,0,0)',
@@ -198,7 +243,7 @@ if (canvasEl) {
 
         // this if statement should be used to check if dark mode is enabled or disabled and based on that choose text color.
         if (2 > 1) {
-            rect.set('stroke', objcolor);
+            rect.set('stroke', objColor);
         }
 
         canvas.add(rect);
@@ -217,7 +262,7 @@ if (canvasEl) {
 
         // this if statement should be used to check if dark mode is enabled or disabled and based on that choose text color.
         if (2 > 1) {
-            circle.set('stroke', objcolor);
+            circle.set('stroke', objColor);
         }
 
         canvas.add(circle);
@@ -229,11 +274,11 @@ if (canvasEl) {
         let color = clr;
         let obj = canvas.getActiveObject();
         let typecheck = obj.get('type');
-
+        objColor = clr;
         console.log(typecheck);
-        if (typecheck == 'circle' || typecheck == 'rect') {
+        if (typecheck == 'circle' || typecheck == 'rect' || typecheck == 'line') {
             obj.set('stroke', (color));
-            console.log('hey');
+            
         }
         else if (typecheck == 'i-text') {
             obj.set('fill', (color));

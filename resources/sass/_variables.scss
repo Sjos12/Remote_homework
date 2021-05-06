@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 // Self made colors
 $textcolor : #585858;
 
 $buttoncolorlight: #D7EEFF;
 $buttoncolor: #5BB9FD;
+$categorycolor: #70C3FE;
 $navbarcolor_old: #3490dc;
 $textcolor_footer_dark : #9b9a9a;
 $btn-delete-color: #F94343;
@@ -24,7 +27,8 @@ $body-bg: #f8fafc;
 
 // Typography
 $font-family-sans-serif: 'Nunito', sans-serif;
-$font-family-title: 'Rockwell';
+$font-family-title: 'Roboto', sans-serif;
+$font-family-roboto:'Roboto', sans-serif;
 $font-family-title-size: 3.8rem;
 $font-family-title-size-2: 2.3rem;
 $font-family-title-size-3: 2rem;

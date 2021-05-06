@@ -30,6 +30,13 @@ final class Question extends Model
      */
     protected $guarded = [];
 
+    public function category() 
+    {
+        //define eloquent hasMany relationship, for multiple categories, with category-questions table.
+        return $this->belongsToMany(Category::class);
+
+    }
+
     public function author(): HasOne
     {
         return $this->hasOne(User::class, 'id', 'user_id');

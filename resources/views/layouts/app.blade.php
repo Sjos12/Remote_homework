@@ -14,7 +14,8 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet"> 
 
     <!-- Bootstrap implementation -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
@@ -28,7 +29,7 @@
             <!-- Use container-fluid to arrange navbar items from edge to edge -->
             <div class="container">
                 <a class="navbar-brand" href="{{ route('home') }}">
-                    <img id="logo" src="{{ asset('images/remote_homework_logo.png') }}" alt="Logo" style="width:105px;">
+                    <img id="logo" src="{{ asset('images/remote_homework_logo.png') }}" alt="Logo" style="width:130px;">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="27" height="19" viewBox="0 0 27 19">
@@ -42,7 +43,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+                    <!--<ul class="navbar-nav mr-auto">
                         <li class="nav-item">
                             <a class="nav-link hvr-underline-from-center" href="{{ route('home') }}#content1" id="nav-link">{{ __('Home') }}</a>
                         </li>
@@ -52,7 +53,7 @@
                         <li class="nav-item">
                             <a class="nav-link hvr-underline-from-center" href="{{ route('home') }}#content3" id="nav-link">{{ __('Rules') }}</a>
                         </li>
-                    </ul>
+                    </ul>-->
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -70,12 +71,15 @@
                         @else
                             <li class="nav-item">
                                 <!-- put the route for the 'public' questions here-->
-                                <a href="{{ route('feed.list') }}" class="nav-link" id="nav-link">{{ __('Dashboard') }}</a>
+                                <a href="{{ route('feed.list') }}" class="nav-link navlinkfont" id="nav-link">{{ __('Dashboard') }}</a>
                             </li>
-
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="nav-link" v-pre>
-                                   {{ __('Hello, :Name', ['name' => \Illuminate\Support\Facades\Auth::user()->name]) }} <span class="caret"></span>
+                            <li class="nav-item dropdown d-flex">
+                                <div class="profilepicture-container profilepicture-container--nav shadow ml-4">
+                                    <img src="{{ \Illuminate\Support\Facades\Auth::user()->getFirstMediaUrl('profiles') }}" class="h-100" alt=""> 
+                                </div>
+                                <a id="navbarDropdown" class="d-flex align-items-center justify-content-center nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="nav-link" v-pre>
+                                    
+                                    {{ __('Hello, :Name', ['name' => \Illuminate\Support\Facades\Auth::user()->name]) }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" id="dropdownmenunav">
@@ -86,7 +90,7 @@
                                     <a class="dropdown-item" href="{{ route('marketplace.home')}}">{{ __('Marketplace') }}</a>
 
                                     <hr class="dropdownmenu-hr">
-
+                                    <a class="dropdown-item" href="{{ route('account.view') }}">Account</a>
                                     <a class="dropdown-item"
                                        href="{{ route('logout') }}"
                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"

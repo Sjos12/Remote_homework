@@ -7,8 +7,8 @@
                 <div class="card-welcome__content col-10 offset-1">
                     <div class="row">
 
-                        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 dashboardstat">
-                            <h1 class="title4">{{ __('Welcome, :Name', ['name' => $user['name'],]) }}</h1>
+                        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 dashboardstat">
+                            <h1 class="title4">{{ __('Welcome, :Name!', ['name' => $user['name'],]) }}</h1>
                             <h2>
                                 <span class="statistic--color">{{ $user['answered'] }}</span> {{ __('questions answered') }} <br>
                                 <span class="statistic--color">{{ $user['asked'] }}</span> {{ __('questions asked') }}
@@ -21,6 +21,11 @@
 
                             </div>
                         </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 d-flex justify-content-center my-4">
+                            <div class="profilepicture-container shadow ml-4">
+                                <a href=""><img src="{{ \Illuminate\Support\Facades\Auth::user()->getFirstMediaUrl('profiles') }}" class="h-100" alt=""></a>                
+                            </div>
+                        </div>               
                     </div>
                 </div>
             </div>
@@ -45,6 +50,9 @@
                                     <h3 class="title6">{{ $view_model->question()->title }}</h3>
 
                                     <p class="question-paragraph mb-auto paragraph2">{{$view_model->question()->content}}</p>
+                                    @foreach ($view_model->categories() as $category)
+                                        <h6 class="category">{{$category->category}}</h6>
+                                    @endforeach 
                                 </div>
 
                                 <div class=" card--question- mt-auto desktopinfo">

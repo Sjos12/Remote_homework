@@ -14,6 +14,33 @@ body {
 html {
     height: 100%;
 }
+//makes navbar bigger than bootstrap preset
+#app nav {
+    padding: 1rem 2rem;
+}
+
+.profilepicture-container--nav {
+    max-height: 3rem;
+    max-width: 3rem;
+}
+// Profile styling. 
+.profilepicture-container { 
+    border-radius: 100%;
+    overflow: hidden;
+    //border: 1px solid $buttoncolor;
+    height: 200px;
+    width: 200px;
+}
+// Category blocks styling. 
+.category { 
+    border: 1px solid $categorycolor;
+    color: $categorycolor;
+    border-radius: 1rem;
+    padding: 0.35rem 0.8rem;
+    margin-right: 0.5rem;
+    font-weight: bold;
+    display: inline-block;
+}
 
 .card {
     padding-top: 4em;
@@ -409,6 +436,10 @@ html {
     margin:0 auto ;
 }
 
+#colordropdown { 
+    min-width: 0 !important;
+    padding: 0;
+}
 .dropdownmenu {
     max-width: 10px !important;
 }
@@ -427,7 +458,7 @@ html {
 
 .colorindicator1 {
     color: transparent !important;
-    border: 1px solid white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .colorindicator2 {
@@ -476,7 +507,7 @@ html {
 }
 
 #nav-link, #nav-link-user, #navbarDropdown {
-    font-size: 1rem;
+    font-size: 1.05rem;
 }
 
 /* this style is solely for making the navbar resizing look smooth*/
@@ -732,6 +763,10 @@ p {
         background-color:  $inputcolor_dark;
         color: white;
     }
+
+    #colordropdown { 
+        background-color: $inputcolor_dark;
+    }
     .toolbar button:hover {
         background-color:  $inputcolor_dark;
         color: white;
@@ -764,6 +799,7 @@ p {
     }
     .contentarea{
         background-color: $inputcolor_dark;
+        color: white;
     }
 
     .contentarea:focus{
@@ -856,6 +892,10 @@ p {
 
     .card--shadow {
         box-shadow: 0 0 10px $darkmodecolor_dark;
+    }
+    
+    .dashboard { 
+        color: white;   
     }
 
 //}

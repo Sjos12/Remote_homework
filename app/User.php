@@ -6,18 +6,20 @@ namespace App;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-final class User extends Authenticatable
+final class User extends Authenticatable implements HasMedia
 {
     use Notifiable;
-
+    use InteractsWithMedia;
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'description', 'password',
     ];
 
     /**
@@ -46,5 +48,10 @@ final class User extends Authenticatable
     public function answers(): HasMany
     {
         return $this->hasMany(Answer::class);
+    }
+    
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('profiles')->useFallbackUrl('images/default_profile_2.svg');
     }
 }

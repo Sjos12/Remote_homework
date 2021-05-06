@@ -23,6 +23,10 @@ final class QuestionViewModel extends ViewModel
         $this->question = $question;
     }
 
+    public function categories() {
+        return $this->question->category;
+    }
+
     public function question(): Question
     {
         return $this->question;

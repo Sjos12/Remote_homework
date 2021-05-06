@@ -3,8 +3,10 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Illustration;
 use App\Question;
+use App\User;
 use App\ViewModels\QuestionViewModel;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -23,20 +25,25 @@ final class QuestionController
 
     public function create(): Renderable
     {
-        return view('questions.create');
+        // Return all categories to
+        $categories = Category::all();
+        
+        return view('questions.create')->with('categories', $categories);
     }
 
     public function store(Request $request): Response
     {
+        
         $validated_data = $this->validate(
             $request,
             [
                 'title'        => 'required|unique:questions,title', // @todo: should not be forbidden, but result in a suggestion to look at existing question, if permissions allow that
                 'content'      => 'nullable',
                 'illustration' => 'required|image',
+                'categories'   => 'nullable|exists:categories,id',
             ]
         );
-
+        //dd($validated_data['categories']);
         try {
             DB::beginTransaction();
 
@@ -58,6 +65,12 @@ final class QuestionController
                          ->toMediaCollection(Illustration::COLLECTION_IMAGES);
 
             $illustration->save();
+
+            foreach($validated_data['categories'] as $category) {
+                $question->category()->attach($category);
+            }
+            // Creates DB record in the category_question table
+            
 
             DB::commit();
         } catch (Throwable $exception) {
@@ -159,13 +172,14 @@ final class QuestionController
 
     public function list(): Renderable
     {
+
         $questions = Question::where('user_id', Auth::id())
                              ->orderBy('updated_at', 'desc')
                              ->get()
                              ->map(
                                  fn(Question $question) => new QuestionViewModel($question)
                              );
-
+        
         return view('questions.list', [
             'questions' => $questions,
         ]);
