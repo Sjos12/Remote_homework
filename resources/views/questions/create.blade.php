@@ -25,12 +25,12 @@
             <span class="circle"><h1>1</h1></span>
             <span class="circle"><h1>2</h1></span>
         </div>
-        <div class="">
-            <form action="{{ route('questions.store') }}"
+        <form action="{{ route('questions.store') }}"
             method="post"
             class=""
             enctype="multipart/form-data"
             > @csrf
+            <div class="">
                 <div class="tab">
                     <div class="row">
                             <div class="form-group col-12 col-md-8 offset-md-2">
@@ -41,17 +41,6 @@
                                 </div>
                                 <div class="type">
                                     <h4>Choose a category</h4>
-                                    <form method="POST" action="{{ route('categories.create') }}">
-                                        @csrf
-                                        <!-- list category records here -->
-                                        <input type="text" class="form-control" name="category" placeholder="Add a new category..">
-                                        <button type="submit" class="btn btn-primary">Add</button>
-                                    </form>
-                                    <form action="{{ route('questions.store') }}"
-                                    method="post"
-                                    class=""
-                                    enctype="multipart/form-data"
-                                    > @csrf
                                     
                                     <ul>
                                         @foreach ($categories as $category)
@@ -71,7 +60,6 @@
 
                 <div class="tab">
                     <div class="row">
-                        @csrf
                         <div class="form-group col-12 col-md-8 offset-md-2">
                             <label for="title">{{ __("Question title") }}</label>
                             <input type="text"
@@ -129,8 +117,8 @@
                                 <img id="imgpreview" class="col-12 col-md-8 offset-md-2">
                         </div>
                 </div>  
-            </form>  
-        </div>
+            </div>
+        </form>
         <div class="button-group col-12 col-md-8 offset-md-2">
             
             <button class="btn btn-lg  btn-primary float-right" id="nextBtn" onclick="nextPrev(1)">{{ __('Next') }}</button>
