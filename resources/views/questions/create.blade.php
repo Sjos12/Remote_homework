@@ -25,6 +25,7 @@
             <span class="circle"><h1>1</h1></span>
             <span class="circle"><h1>2</h1></span>
         </div>
+        
         <form action="{{ route('questions.store') }}"
             method="post"
             class=""
@@ -93,6 +94,18 @@
                             @enderror
                         </div>
 
+                        <div class="p-1 form-group col-12 col-md-8 offset-md-2">
+                            <div class="imagedrop d-flex flex-column">
+                                <div class="imgpreview__container pt-3 pb-3 ">
+                                    <img id="imgpreview" class="col-12 col-md-8 offset-md-2">
+                                </div>
+                                <img src="/images/camera.svg" alt="Camera" class="imageicon">
+                                <p>Drag and drop your image here.</p>
+                            </div>
+                            
+                        
+                        </div>
+
                         <div class="form-group col-12 col-md-8 offset-md-2">
                             <label for="illustration">
                                 {{ __('Upload your image') }}
@@ -113,9 +126,7 @@
                             @enderror
                         </div>                 
                     
-                        <div class="imgpreview__container pt-3 pb-3 ">
-                                <img id="imgpreview" class="col-12 col-md-8 offset-md-2">
-                        </div>
+                        
                 </div>  
             </div>
         </form>

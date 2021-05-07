@@ -14,6 +14,20 @@ body {
 html {
     height: 100%;
 }
+
+.imagedrop { 
+    width: 100%;
+    height: 100%;
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+    background-color: #f1f1f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.imageicon {
+    color: $inputcolor_dark;
+}
 //makes navbar bigger than bootstrap preset
 #app nav {
     padding: 1rem 2rem;
@@ -727,6 +741,13 @@ p {
 
 /*implements dark mode */
 //@media (prefers-color-scheme: dark) {
+
+    .imagedrop { 
+        background-color: $inputcolor_dark;
+    }
+    .imageicon {
+        color:rgb(255, 255, 255);
+    }
 
     .link--active {
         color: white;
