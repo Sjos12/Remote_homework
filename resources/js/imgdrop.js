@@ -1,8 +1,17 @@
 "use strict";
 
+let activeSlide;
+
+window.next = function() { 
+    console.log('next');
+}
+//
+// Drag and drop logic. 
+//
+
 window.dragndrop = function(event) {
     var fileName = URL.createObjectURL(event.target.files[0]);
-    var preview = document.getElementById("preview");
+    var preview = document.getElementById("preview" );
     preview.setAttribute("src", fileName);
 }
 window.drag = function() {
@@ -17,6 +26,11 @@ window.drop = function() {
     document.getElementById("imgpreview__container").classList.add("imgpreview__container--zhigh");
 }
 
+
+//
+//Carousel logic.
+//
+
 //Default value is one slide. 
 let imgSlides = 1; 
 
@@ -30,6 +44,7 @@ window.removeImage = function() {
 }
 
 let parentdiv = document.getElementById("carousel-inner"); 
+
 for (let i = 0; i < imgSlides; i++) {
     parentdiv.innerHTML += `
     <div class="carousel-item">
@@ -47,7 +62,7 @@ for (let i = 0; i < imgSlides; i++) {
             />
             
             <div id="imgpreview__container" class="imgpreview__container pt-3 pb-3">
-                <img id="preview" class="d-block w-100">
+                <img id="preview${i}" class="d-block w-100">
             </div>
 
             <img src="/images/camera.svg" alt="Camera" class="imageicon imgdrop__markup">
