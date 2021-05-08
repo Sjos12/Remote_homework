@@ -39,8 +39,9 @@ window.drop = function() {
 
 //Default value is one slide. 
 
-let itemclassname = "carousel__slide";
-items = document.getElementsByClassName(itemclassname);
+let itemClassName = "carousel__slide";
+let items = document.getElementsByClassName(itemClassName);
+console.log(items)
 let totalItems = items.length;
 let slide = 0;
 let moving = true;
@@ -53,15 +54,10 @@ window.setInitialClasses = function() {
     items[1].classList.add("next");
 }
 
-// Set event listeners
-window.setEventListeners = function() {
-    var next = d.getElementsByClassName('carousel__button--next')[0],
-        prev = d.getElementsByClassName('carousel__button--prev')[0];
-    next.addEventListener('click', moveNext);
-    prev.addEventListener('click', movePrev);
-}
+
 
 window.moveNext = function() {
+    console.log('next')
     // Check if moving
     if (!moving) {
       // If it's the last slide, reset to 0, else +1
@@ -76,6 +72,7 @@ window.moveNext = function() {
 }
 
 window.movePrev = function() {
+  console.log('prev')
     // Check if moving
     if (!moving) {
       // If it's the first slide, set as the last slide, else -1
@@ -89,6 +86,11 @@ window.movePrev = function() {
       moveCarouselTo(slide);
     }
   }
+
+
+  
+// Set event listener
+
 window.disableInteraction = function() {
     // Set 'moving' to true for the same duration as our transition.
     // (0.5s = 500ms)
@@ -101,8 +103,10 @@ window.disableInteraction = function() {
   }
   
 window.moveCarouselTo = function(slide) {
+
     // Check if carousel is moving, if not, allow interaction
     if(!moving) {
+      
       // temporarily disable interactivity
       disableInteraction();
       // Update the "old" adjacent slides with "new" ones
@@ -143,7 +147,6 @@ window.moveCarouselTo = function(slide) {
 
   window.initCarousel = function() {
     setInitialClasses();
-    setEventListeners();
     // Set moving to false so that the carousel becomes interactive
     moving = false;
   }
@@ -159,12 +162,12 @@ window.removeImage = function() {
     imgSlides-- 
 }
 
-let parentdiv = document.getElementById("carousel-inner"); 
+let parentdiv = document.getElementById("carousel"); 
 
 for (let i = 0; i < imgSlides; i++) {
     parentdiv.innerHTML += `
     <div class="carousel-item">
-        <div class="imagedrop d-flex flex-column">
+        <div class="imagedrop document-flex flex-column">
 
             <input 
             name="illustration"
@@ -178,7 +181,7 @@ for (let i = 0; i < imgSlides; i++) {
             />
             
             <div id="imgpreview__container" class="imgpreview__container pt-3 pb-3">
-                <img id="preview${i}" class="d-block w-100">
+                <img id="preview${i}" class="document-block w-100">
             </div>
 
             <img src="/images/camera.svg" alt="Camera" class="imageicon imgdrop__markup">

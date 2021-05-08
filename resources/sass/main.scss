@@ -61,6 +61,7 @@ html {
 .carousel__button--previous, .carousel__button--next {
     position: absolute;
     top: 50%;
+    z-index: 1000;
 }
 
 .carousel__button--next {
