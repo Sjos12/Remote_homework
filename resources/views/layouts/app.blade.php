@@ -120,10 +120,12 @@
     </div>
 
     @include('pages.footer')
-
+    <!-- public scripts -->
     <script src="{{ asset('fabric.js') }}"></script>
     <script src="{{ asset('tools.js') }}"></script>
     <script src="{{ asset('steppedform.js') }}"></script>
     <script src="{{ asset('dropzone.js') }}"></script>
+    <!-- Compiled scripts -->
+    <script src="{{ asset('/js/imgdrop.js') }}"></script>
 </body>
 </html>

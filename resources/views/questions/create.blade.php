@@ -28,8 +28,8 @@
         
         <form action="{{ route('questions.store') }}"
             method="post"
-            class=""
             enctype="multipart/form-data"
+            id="myDropzone"
             > @csrf
             <div class="">
                 <div class="tab">
@@ -96,11 +96,16 @@
 
                         <div class="p-1 form-group col-12 col-md-8 offset-md-2">
                             <div class="imagedrop d-flex flex-column">
-                                <div class="imgpreview__container pt-3 pb-3 ">
-                                    <img id="imgpreview" class="col-12 col-md-8 offset-md-2">
+                                <input class="imgdrop__input" type="file" onChange="dragndrop(event)"  ondragover="drag()" ondrop="drop()" id="uploadFile"  />
+                                
+                                <div id="imgpreview__container" class="imgpreview__container pt-3 pb-3">
+                                    <img id="preview" class="w-100">
                                 </div>
-                                <img src="/images/camera.svg" alt="Camera" class="imageicon">
-                                <p>Drag and drop your image here.</p>
+                                
+                                <div id="imagedrop__markup">
+                                    <img src="/images/camera.svg" alt="Camera" class="imageicon">
+                                    <p>Drag and drop your image here.</p>
+                                </div>
                             </div>
                             
                         
@@ -125,8 +130,6 @@
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>                 
-                    
-                        
                 </div>  
             </div>
         </form>

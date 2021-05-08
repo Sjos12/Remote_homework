@@ -24,6 +24,33 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+}
+
+.imgpreview__container {
+    position: absolute;
+    top: 0; 
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+}
+
+.imgpreview__container--zhigh {
+    z-index: 1 !important;
+}
+
+.imagedrop--dragging {
+    background-color: white;
+}
+
+.imgdrop__input {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    top: 0;
+    left: 0;
 }
 .imageicon {
     color: $inputcolor_dark;
@@ -745,6 +772,11 @@ p {
     .imagedrop { 
         background-color: $inputcolor_dark;
     }
+
+    .imagedrop--dragging {
+        background-color: $darkmodecolor_dark;
+    }
+
     .imageicon {
         color:rgb(255, 255, 255);
     }
