@@ -11,6 +11,9 @@ window.drag = function() {
 }
 window.drop = function() {
     document.getElementById('uploadFile').parentNode.className = 'imagedrop';
-    document.getElementById("imagedrop__markup").style.display = "none";
+    let markup = document.getElementsByClassName("imgdrop__markup")
+    for (let i = 0; i < markup.length; i++ ) {
+        markup[i].style.display = "none";
+    }
     document.getElementById("imgpreview__container").classList.add("imgpreview__container--zhigh");
 }

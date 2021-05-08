@@ -94,42 +94,34 @@
                             @enderror
                         </div>
 
-                        <div class="p-1 form-group col-12 col-md-8 offset-md-2">
-                            <div class="imagedrop d-flex flex-column">
-                                <input class="imgdrop__input" type="file" onChange="dragndrop(event)"  ondragover="drag()" ondrop="drop()" id="uploadFile"  />
-                                
-                                <div id="imgpreview__container" class="imgpreview__container pt-3 pb-3">
-                                    <img id="preview" class="w-100">
-                                </div>
-                                
-                                <div id="imagedrop__markup">
-                                    <img src="/images/camera.svg" alt="Camera" class="imageicon">
-                                    <p>Drag and drop your image here.</p>
-                                </div>
-                            </div>
-                            
-                        
-                        </div>
-
                         <div class="form-group col-12 col-md-8 offset-md-2">
-                            <label for="illustration">
-                                {{ __('Upload your image') }}
-                            </label>
-                            <input type="file"
-                                    class="form-control-file @error('illustration') is-invalid @enderror"
-                                    id="illustration"
-                                    name="illustration"
-                                    aria-describedby="illustrationHelp"
-                                    required="required"
-                                    onchange="document.getElementById('imgpreview').src = window.URL.createObjectURL(this.files[0])"
-                            >
-                            <small id="illustrationHelp" class="form-text text-muted">
-                                {{ __('Upload an image of the subject matter') }}
-                            </small>
                             @error('illustration')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
-                        </div>                 
+                            <div class="imagedrop d-flex flex-column">
+
+                                <input 
+                                name="illustration"
+                                class="imgdrop__input" 
+                                type="file" 
+                                onChange="dragndrop(event)"  
+                                ondragover="drag()" 
+                                ondrop="drop()" 
+                                id="uploadFile" 
+                                required="required"
+                                 />
+                                
+                                <div id="imgpreview__container" class="imgpreview__container pt-3 pb-3">
+                                    <img id="preview" class="h-100">
+                                </div>
+
+                                <img src="/images/camera.svg" alt="Camera" class="imageicon imgdrop__markup">
+                                <p class="imgdrop__markup">Drag and drop your image here.</p>
+                            </div>
+                            <small id="illustrationHelp" class="form-text text-muted">
+                                {{ __('Upload an image of the subject matter') }}
+                            </small>
+                        </div>
                 </div>  
             </div>
         </form>
