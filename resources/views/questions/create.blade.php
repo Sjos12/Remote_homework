@@ -93,34 +93,53 @@
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
-
-                        <div class="form-group col-12 col-md-8 offset-md-2">
-                            @error('illustration')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
-                            <div class="imagedrop d-flex flex-column">
-
-                                <input 
-                                name="illustration"
-                                class="imgdrop__input" 
-                                type="file" 
-                                onChange="dragndrop(event)"  
-                                ondragover="drag()" 
-                                ondrop="drop()" 
-                                id="uploadFile" 
-                                required="required"
-                                 />
-                                
-                                <div id="imgpreview__container" class="imgpreview__container pt-3 pb-3">
-                                    <img id="preview" class="h-100">
+                        
+                        <div class="form-group form-group col-12 col-md-8 offset-md-2" id="form-group__imagedrop">
+                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                </ol>
+                                <div class="carousel-inner" id="carousel-inner">
+                                  <div class="carousel-item active">
+                                    @error('illustration')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                    <div class="imagedrop d-flex flex-column">
+        
+                                        <input 
+                                        name="illustration"
+                                        class="imgdrop__input" 
+                                        type="file" 
+                                        onChange="dragndrop(event)"  
+                                        ondragover="drag()" 
+                                        ondrop="drop()" 
+                                        id="uploadFile" 
+                                        required="required"
+                                         />
+                                        
+                                        <div id="imgpreview__container" class="imgpreview__container pt-3 pb-3">
+                                            <img id="preview" class="h-100">
+                                        </div>
+        
+                                        <img src="/images/camera.svg" alt="Camera" class="imageicon imgdrop__markup">
+                                        <p class="imgdrop__markup">Drag and drop your image here.</p>
+                                    </div>
+                                    <small id="illustrationHelp" class="form-text text-muted">
+                                        {{ __('Upload an image of the subject matter') }}
+                                    </small>
+                                  </div>
                                 </div>
-
-                                <img src="/images/camera.svg" alt="Camera" class="imageicon imgdrop__markup">
-                                <p class="imgdrop__markup">Drag and drop your image here.</p>
-                            </div>
-                            <small id="illustrationHelp" class="form-text text-muted">
-                                {{ __('Upload an image of the subject matter') }}
-                            </small>
+                                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                  <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                  <span class="sr-only">Next</span>
+                                </a>
+                              </div>
                         </div>
                 </div>  
             </div>
