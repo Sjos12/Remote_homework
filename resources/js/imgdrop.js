@@ -9,15 +9,13 @@ window.next = function() {
     activeSlide--
 }
 
-
-
 //
 // Drag and drop logic. 
 //
 
 window.dragndrop = function(event) {
     var fileName = URL.createObjectURL(event.target.files[0]);
-    var preview = document.getElementById("preview" );
+    var preview = document.getElementById("preview" + activeSlide);
     preview.setAttribute("src", fileName);
 }
 
@@ -44,7 +42,7 @@ let itemClassName = "carousel__slide";
 
 let slide = 0;
 let moving = true;
-
+let items = document.getElementsByClassName("carousel__slide");
 let activeSlide;
 var parentdiv = document.getElementById("carousel"); 
 let imgSlides = 3; 
@@ -73,6 +71,7 @@ for (let i = 0; i < imgSlides; i++) {
 
           <img src="/images/camera.svg" alt="Camera" class="imageicon imgdrop__markup">
           <p class="imgdrop__markup">Drag and drop your image here.</p>
+          <p>Slide ${i+2}</p>
       </div>
   </div>`;
 };
@@ -99,6 +98,7 @@ window.loadHTML = function() {
 
                                 <img src="/images/camera.svg" alt="Camera" class="imageicon imgdrop__markup">
                                 <p class="imgdrop__markup">Drag and drop your image here.</p>
+                                <p>Slide ${items.length + 1}</p>
                             </div>
                           </div>`;
 

@@ -123,6 +123,7 @@
                                 
                                             <img src="/images/camera.svg" alt="Camera" class="imageicon imgdrop__markup">
                                             <p class="imgdrop__markup">Drag and drop your image here.</p>
+                                            <p>Slide: 1</p>
                                         </div>
                                     </div>
                                     
