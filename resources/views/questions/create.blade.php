@@ -93,10 +93,16 @@
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        
+                        <div class="form-group">
+                            <button onclick="addSlide()" type="button">
+                                Add slide.
+                            </button>
+                            <button onclick="removeSlide()" type="button">Remove slide</button>
+                        </div>
                         <div class="form-group form-group col-12 col-md-8 offset-md-2" id="form-group__imagedrop">
                             <div class="carousel-wrapper">
                                 <div class="carousel" id="carousel">
+                                    
                                     <div class="carousel__slide active">
                                         <div class="imagedrop d-flex flex-column">
                                 
@@ -119,51 +125,7 @@
                                             <p class="imgdrop__markup">Drag and drop your image here.</p>
                                         </div>
                                     </div>
-                                    <div class="carousel__slide">
-                                        <div class="imagedrop d-flex flex-column">
-                                
-                                            <input 
-                                            name="illustration"
-                                            class="imgdrop__input" 
-                                            type="file" 
-                                            onChange="dragndrop(event)"  
-                                            ondragover="drag()" 
-                                            ondrop="drop()" 
-                                            id="uploadFile" 
-                                            required="required"
-                                            />
-                                            
-                                            <div id="imgpreview__container" class="imgpreview__container pt-3 pb-3">
-                                                <img id="preview" class="d-block w-100">
-                                            </div>
-                                
-                                            <img src="/images/camera.svg" alt="Camera" class="imageicon imgdrop__markup">
-                                            <p class="imgdrop__markup">Drag and drop your image here.</p>
-                                        </div>
-                                    </div>
-                                    <div class="carousel__slide ">
-                                        <div class="imagedrop d-flex flex-column">
-                                
-                                            <input 
-                                            name="illustration"
-                                            class="imgdrop__input" 
-                                            type="file" 
-                                            onChange="dragndrop(event)"  
-                                            ondragover="drag()" 
-                                            ondrop="drop()" 
-                                            id="uploadFile" 
-                                            required="required"
-                                            />
-                                            
-                                            <div id="imgpreview__container" class="imgpreview__container pt-3 pb-3">
-                                                <img id="preview" class="d-block w-100">
-                                            </div>
-                                
-                                            <img src="/images/camera.svg" alt="Camera" class="imageicon imgdrop__markup">
-                                            <p class="imgdrop__markup">Drag and drop your image here.</p>
-                                        </div>
-                                    </div>
-
+                                    
                                     <button type="button" onclick="movePrev()" class="carousel__button--previous">
                                         Previous
                                     </button>
