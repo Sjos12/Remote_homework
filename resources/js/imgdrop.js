@@ -1,37 +1,6 @@
 "use strict";
 
 
-window.next = function() { 
-    activeSlide++
-}
-
-window.next = function() { 
-    activeSlide--
-}
-
-//
-// Drag and drop logic. 
-//
-
-window.dragndrop = function(event) {
-    var fileName = URL.createObjectURL(event.target.files[0]);
-    var preview = document.getElementById("preview" + activeSlide);
-    preview.setAttribute("src", fileName);
-}
-
-window.drag = function() {
-    document.getElementById('uploadFile').parentNode.className = 'imagedrop--dragging imagedrop';
-}
-window.drop = function() {
-    document.getElementById('uploadFile').parentNode.className = 'imagedrop';
-    let markup = document.getElementsByClassName("imgdrop__markup")
-    for (let i = 0; i < markup.length; i++ ) {
-        markup[i].style.display = "none";
-    }
-    document.getElementById("imgpreview__container").classList.add("imgpreview__container--zhigh");
-}
-
-
 //
 //Carousel logic.
 //
@@ -144,6 +113,8 @@ window.moveNext = function() {
       } else {
         slide++;
       }
+
+      window.activeSlide = slide
       // Move carousel to updated slide
       moveCarouselTo(slide);
     }
@@ -163,7 +134,7 @@ window.movePrev = function() {
       } else {
         slide--;
       }
-            
+      window.activeSlide = slide
       // Move carousel to updated slide
       moveCarouselTo(slide);
     }
@@ -259,3 +230,27 @@ window.moveCarouselTo = function(slide) {
     };
 
 initCarousel();
+
+
+//
+// Drag and drop logic. 
+//
+
+
+window.dragndrop = function(event) {
+  var fileName = URL.createObjectURL(event.target.files[0]);
+  var preview = document.getElementById("preview" + activeSlide);
+  preview.setAttribute("src", fileName);
+}
+
+window.drag = function() {
+  document.getElementById('uploadFile').parentNode.className = 'imagedrop--dragging imagedrop';
+}
+window.drop = function() {
+  document.getElementById('uploadFile').parentNode.className = 'imagedrop';
+  let markup = document.getElementsByClassName("imgdrop__markup")
+  for (let i = 0; i < markup.length; i++ ) {
+      markup[i].style.display = "none";
+  }
+  document.getElementById("imgpreview__container").classList.add("imgpreview__container--zhigh");
+}

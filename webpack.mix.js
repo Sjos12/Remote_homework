@@ -1,14 +1,12 @@
 const mix = require('laravel-mix');
 
-const env = process.env.NODE_ENV
-
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
  |--------------------------------------------------------------------------
  |
  | Mix provides a clean, fluent API for defining some Webpack build steps
- | for your Laravel applications. By default, we are compiling the CSS
+ | for your Laravel application. By default, we are compiling the Sass
  | file for the application as well as bundling up all the JS files.
  |
  */
@@ -16,12 +14,8 @@ const env = process.env.NODE_ENV
 mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/index.js', 'public/js') 
     .js('resources/js/imgdrop.js', 'public/js')     
-    .sass('resources/sass/app.scss', 'public/css')
     .version()
     .sourceMaps(true, 'inline-source-map')
-
-if (env === 'production') {
-    // Don't do system notifications, as production can be run on production
-    // server and CI/CD
-    mix.disableNotifications();
-}
+    .vue()
+    .sass('resources/sass/app.scss', 'public/css')
+    .sass('resources/sass/main.scss', 'public/css');
