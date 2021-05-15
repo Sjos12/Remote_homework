@@ -9,7 +9,7 @@ require('./bootstrap');
 import DragDropComponent from './components/drag-drop-component.vue';
 window.Vue = require('vue').default;
 
-Vue.component('app', DragDropComponent);
+Vue.component('drag-drop-component', DragDropComponent);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -28,7 +28,4 @@ Vue.component('app', DragDropComponent);
 
  const app = new Vue({
     el: '#app',
-    data: {
-        message: "Hello world!"
-    }
 });
