@@ -99,6 +99,11 @@
                             </button>
                             <button onclick="removeSlide()" type="button" class="btn btn-secondary">Remove slide</button>
                         </div>
+                        <div class="form-group col-12 col-md-8 offset-md-2">
+                            <div id="app">
+                                @{{message}}
+                            </div>
+                        </div>
                         <div class="form-group col-12 col-md-8 offset-md-2" id="form-group__imagedrop">
                             <div class="carousel-wrapper">
                                 <div class="carousel" id="carousel">

@@ -9,9 +9,7 @@
 
     <title>{{ config('app.name', 'Remote Homework') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ mix('js/app.js') }}" defer></script>
-
+    
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -127,5 +125,8 @@
     <script src="{{ asset('dropzone.js') }}"></script>
     <!-- Compiled scripts -->
     <script src="{{ asset('/js/imgdrop.js') }}"></script>
+    <!-- Scripts -->
+    <script src="{{ mix('js/app.js') }}"></script>
+
 </body>
 </html>
