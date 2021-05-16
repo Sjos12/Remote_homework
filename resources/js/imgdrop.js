@@ -176,21 +176,12 @@ window.moveCarouselTo = function(slide) {
 
       // Test if carousel has more than three items
       if (totalItems >= 3) {
-        // Checks and updates if the new slides are out of bounds
-        if (newPrevious <= 0) {
-         // oldPrevious = (totalItems - 1);
-        } else if (newNext >= (totalItems - 1)){
-          //oldNext = 0;
-        }
         // Checks and updates if slide is at the beginning/end
         if (slide === 0) {
           newPrevious = (totalItems - 1);
-          //oldPrevious = (totalItems - 2);
-          //oldNext = (slide + 1);
         } else if (slide === (totalItems -1)) {
           newPrevious = (slide - 1);
           newNext = 0;
-          //oldNext = 1;
         }
         // Now we've worked out where we are and where we're going, 
         // by adding/removing classes we'll trigger the transitions.
@@ -202,9 +193,21 @@ window.moveCarouselTo = function(slide) {
         }
         
         // Add 'special' classes to the right items. 
-        items[newPrevious].className = itemClassName + " prev";
+        if (items[newPrevious]) {
+          items[newPrevious].className = itemClassName + " prev";
+        }
+        else { 
+          console.log('no prev')
+        }
+
+        if (items[newNext]) {
+          items[newNext].className = itemClassName + " next";
+        }
+        else { 
+          console.log('no next')
+        }
         items[slide].className = itemClassName + " active";
-        items[newNext].className = itemClassName + " next";
+       
       }
     }
   }

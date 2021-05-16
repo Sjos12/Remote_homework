@@ -4,7 +4,7 @@
     <button @click="removeSlide()" type="button" class="btn btn-secondary">Remove slide</button>
     <div class="carousel-wrapper">
         <div class="carousel" id="carousel">
-            <div class="carousel__slide active">
+            <!--<div class="carousel__slide active">
                 <div class="imagedrop d-flex flex-column">
         
                     <input 
@@ -26,18 +26,18 @@
                     <p class="imgdrop__markup">Drag and drop your image here.</p>
                     <p>Slide: 1</p>
                 </div>
-            </div>
+            </div>-->
             
-            <div v-for="slide in slidesArray" :key="slide.slide">
+            <div v-for="slide in slidesArray" :key="slide.slide" class="carousel__slide " :class="slide.class">
                 <h1>Slide {{slide.slide}} </h1>
             </div>
             
             <button type="button" v-on:click="movePrev()" class="carousel__button--previous">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48"><path fill="none" d="M0 0h24v24H0z"/><path d="M10.828 12l4.95 4.95-1.414 1.414L8 12l6.364-6.364 1.414 1.414z" fill="rgba(255,255,255,1)"/></svg>
                 
+                <img src="/images/chevron-left.svg" alt="chevron-left" class="enabled" :class="prevBtnClass">
             </button>
-            <button type="button" v-on:click="moveNext()"  class="carousel__button--next">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48"><path fill="none" d="M0 0h24v24H0z"/><path d="M13.172 12l-4.95-4.95 1.414-1.414L16 12l-6.364 6.364-1.414-1.414z" fill="rgba(255,255,255,1)"/></svg>
+            <button type="button" v-on:click="moveNext()"  class="carousel__button--next" >
+                <img src="/images/chevron-right.svg" alt="chevron-right" class="enabled" :class="nextBtnClass">
             </button>
         </div>                          
     </div>
@@ -48,11 +48,13 @@
 export default {
     data() {
         return {
-            slides: 0,
+            slides: 2,
             slidesArray: [
-                { slide: 0 },
+                { slide: 0, class: ' active' },
             ],
-            activeSlide: 0, 
+            activeSlide: 1, 
+            prevBtnClass: '', 
+            nextBtnClass: ''
         }
     },
     methods: {
@@ -60,18 +62,21 @@ export default {
             // If active slide is less than the amount of slides there are.
             if (this.activeSlide < this.slidesArray.length) { 
                 this.activeSlide++
+                this.moveCarouselTo(this.activeSlide)
             }
             console.log(this.activeSlide);
         },
         movePrev: function() {
+            console.log(this.activeSlide)
             if (this.activeSlide >= 0) {
                 this.activeSlide--
+                this.moveCarouselTo(this.activeSlide)
             }      
         },
         addSlide: function() {
             this.slides++
             this.slidesArray.push(
-                { slide: this.slidesArray.length }
+                { slide: this.slidesArray.length, class: ''}
                 )
             console.log(this.slidesArray);
         }, 
@@ -89,7 +94,26 @@ export default {
 
         }, 
         moveCarouselTo: function (slide) {
+            let total = this.slidesArray.length;
+            document.getEl
+            let newPrev = slide - 1; 
+            let newNext = slide + 1; 
 
+            if (slide === 0) {
+                newPrev = null;
+            } 
+            else if (slide === (total-1)) {
+                newNext = null;
+            }
+
+            for (let i = 0; i < total; i++) {
+                this.slidesArray[i].class = '';
+            }
+            console.log(this.slidesArray[newPrev])
+            this.slidesArray[newPrev] != undefined ? this.slidesArray[newPrev] = ' prev' : this.prevBtnClass = 'disabled';
+            this.slidesArray[slide].class= 'active';
+            this.slidesArray[newNext] != undefined ? this.slidesArray[newNext] = ' next' : this.nextBtnClass = 'disabled';
+            console.log(this.prevBtnClass, this.nextBtnClass)
         }, 
         dragndrop: function(event) {
             var fileName = URL.createObjectURL(event.target.files[0]);

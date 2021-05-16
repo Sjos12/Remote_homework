@@ -14,6 +14,14 @@ body {
 html {
     height: 100%;
 }
+.enabled {
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(250deg) brightness(107%) contrast(101%);
+}
+
+.disabled { 
+    filter: invert(12%) sepia(3%) saturate(0%) hue-rotate(154deg) brightness(106%) contrast(86%);
+}
+
 
 //Carousel 
 .carousel-wrapper {
