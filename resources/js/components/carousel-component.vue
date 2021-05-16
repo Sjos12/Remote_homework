@@ -28,8 +28,8 @@
                 </div>
             </div>
             
-            <div class="carousel__slide" v-for"slide in slidesArray" >
-                <h1>Slide {{slide}}</h1>
+            <div v-for="slide in slidesArray" :key="slide.slide">
+                <h1>Slide {{slide.slide}} </h1>
             </div>
             
             <button type="button" v-on:click="movePrev()" class="carousel__button--previous">
@@ -50,9 +50,7 @@ export default {
         return {
             slides: 0,
             slidesArray: [
-                0,
-                1, 
-                2,
+                { slide: 0 },
             ],
             activeSlide: 0, 
         }
@@ -72,7 +70,9 @@ export default {
         },
         addSlide: function() {
             this.slides++
-            this.slidesArray.push(this.slidesArray.length)
+            this.slidesArray.push(
+                { slide: this.slidesArray.length }
+                )
             console.log(this.slidesArray);
         }, 
         removeSlide: function() { 
@@ -80,7 +80,8 @@ export default {
                 this.slides--
                 let index = this.slidesArray.indexOf(this.activeSlide);
                 this.slidesArray.splice(index, 1)
-                this.activeSlide = this.slidesArray[0];
+                
+                this.activeSlide = this.slidesArray[0].slide;
             }
             
         },
