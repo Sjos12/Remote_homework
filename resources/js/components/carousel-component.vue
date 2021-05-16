@@ -1,6 +1,7 @@
 <template>
 <div>
-    <h1>Hi {{counter }}</h1>
+    <button @click="addSlide()" type="button" class="btn btn-primary">Add slide.</button>
+    <button @click="removeSlide()" type="button" class="btn btn-secondary">Remove slide</button>
     <div class="carousel-wrapper">
         <div class="carousel" id="carousel">
             <div class="carousel__slide active">
@@ -27,6 +28,10 @@
                 </div>
             </div>
             
+            <div class="carousel__slide" v-for"slide in slidesArray" >
+                <h1>Slide {{slide}}</h1>
+            </div>
+            
             <button type="button" v-on:click="movePrev()" class="carousel__button--previous">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48"><path fill="none" d="M0 0h24v24H0z"/><path d="M10.828 12l4.95 4.95-1.414 1.414L8 12l6.364-6.364 1.414 1.414z" fill="rgba(255,255,255,1)"/></svg>
                 
@@ -35,21 +40,49 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48"><path fill="none" d="M0 0h24v24H0z"/><path d="M13.172 12l-4.95-4.95 1.414-1.414L16 12l-6.364 6.364-1.414-1.414z" fill="rgba(255,255,255,1)"/></svg>
             </button>
         </div>                          
-  </div>
+    </div>
 </div>
   
 </template>
 <script>
 export default {
- data: { 
-
+    data() {
+        return {
+            slides: 0,
+            slidesArray: [
+                0,
+                1, 
+                2,
+            ],
+            activeSlide: 0, 
+        }
     },
     methods: {
         moveNext: function() {
-            console.log('dosomething');
+            // If active slide is less than the amount of slides there are.
+            if (this.activeSlide < this.slidesArray.length) { 
+                this.activeSlide++
+            }
+            console.log(this.activeSlide);
         },
         movePrev: function() {
-
+            if (this.activeSlide >= 0) {
+                this.activeSlide--
+            }      
+        },
+        addSlide: function() {
+            this.slides++
+            this.slidesArray.push(this.slidesArray.length)
+            console.log(this.slidesArray);
+        }, 
+        removeSlide: function() { 
+            if (this.slidesArray.length > 0) {
+                this.slides--
+                let index = this.slidesArray.indexOf(this.activeSlide);
+                this.slidesArray.splice(index, 1)
+                this.activeSlide = this.slidesArray[0];
+            }
+            
         },
         disableInteraction: function () {
 
@@ -58,10 +91,12 @@ export default {
 
         }, 
         dragndrop: function(event) {
-            console.log('Change')
+            var fileName = URL.createObjectURL(event.target.files[0]);
+            var preview = document.getElementById("preview");
+            preview.setAttribute("src", fileName);
         }, 
         drag: function() {
-            console.log('drag');
+            document.getElementById('uploadFile').parentNode.className = 'imagedrop--dragging imagedrop';
         }, 
         drop: function() { 
             console.log('drop')
@@ -72,8 +107,6 @@ export default {
             }
                 document.getElementById("imgpreview__container").classList.add("imgpreview__container--zhigh");
         }, 
-
-        
     }
 }
 </script>

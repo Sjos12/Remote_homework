@@ -94,14 +94,8 @@
                             @enderror
                         </div>
                         <div class="form-group col-12 col-md-8 offset-md-2">
-                            <button onclick="addSlide()" type="button" class="btn btn-primary">
-                                Add slide.
-                            </button>
-                            <button onclick="removeSlide()" type="button" class="btn btn-secondary">Remove slide</button>
-                        </div>
-                        <div class="form-group col-12 col-md-8 offset-md-2">
                             <div id="app">
-                                <drag-drop-component></drag-drop-component>
+                                <carousel-component></carousel-component>
                             </div>
                         </div>
                 </div>  

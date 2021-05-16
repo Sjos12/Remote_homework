@@ -6,10 +6,10 @@
 
 require('./bootstrap');
 
-import DragDropComponent from './components/drag-drop-component.vue';
+import CarouselComponent from './components/carousel-component.vue';
 window.Vue = require('vue').default;
 
-Vue.component('drag-drop-component', DragDropComponent);
+Vue.component('carousel-component', CarouselComponent);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
