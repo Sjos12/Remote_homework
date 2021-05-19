@@ -32,12 +32,12 @@
                 <h1>Slide {{slide.slide}} </h1>
             </div>
             
-            <button type="button" v-on:click="movePrev()" class="carousel__button--previous">
+            <button type="button" v-on:click="movePrev()" class="carousel__button--previous"  :disabled="isButtonDisabled()[0]">
                 
-                <img src="/images/chevron-left.svg" alt="chevron-left" class="enabled" :class="prevBtnClass">
+                <img src="/images/chevron-left.svg" alt="chevron-left" class="">
             </button>
-            <button type="button" v-on:click="moveNext()"  class="carousel__button--next" >
-                <img src="/images/chevron-right.svg" alt="chevron-right" class="enabled" :class="nextBtnClass">
+            <button type="button" v-on:click="moveNext()"  class="carousel__button--next" :disabled="isButtonDisabled()[1]" >
+                <img src="/images/chevron-right.svg" alt="chevron-right" class="">
             </button>
         </div>                          
     </div>
@@ -58,19 +58,29 @@ export default {
         }
     },
     methods: {
+        isButtonDisabled: function() {
+            let prevBtnState = this.prevBtnClass == 'disabled' ? true : false;
+            let nextBtnState = this.nextBtnClass == 'disabled' ? true : false;   
+            console.log(prevBtnState, nextBtnState)
+            return [prevBtnState, nextBtnState];
+        },
+
         moveNext: function() {
             // If active slide is less than the amount of slides there are.
             if (this.activeSlide < this.slidesArray.length) { 
                 this.activeSlide++
+                // 1 based
                 this.moveCarouselTo(this.activeSlide)
             }
-            console.log(this.activeSlide);
+            console.log(this.activeSlide, 'slidesarray', this.slidesArray);
         },
         movePrev: function() {
             console.log(this.activeSlide)
             if (this.activeSlide >= 0) {
                 this.activeSlide--
+                // 1 based.
                 this.moveCarouselTo(this.activeSlide)
+                console.log(this.activeSlide, 'slidesarray', this.slidesArray);
             }      
         },
         addSlide: function() {
@@ -78,13 +88,16 @@ export default {
             this.slidesArray.push(
                 { slide: this.slidesArray.length, class: ''}
                 )
-            console.log(this.slidesArray);
+            // Move carousel to the new slide and disable the buttons.
+            this.activeSlide++
+            this.moveCarouselTo(this.slidesArray.length-1);           
+            console.log('slidesarray', this.slidesArray);
         }, 
         removeSlide: function() { 
             if (this.slidesArray.length > 0) {
                 this.slides--
-                let index = this.slidesArray.indexOf(this.activeSlide);
-                this.slidesArray.splice(index, 1)
+                let slide = this.slidesArray.indexOf(this.activeSlide);
+                this.slidesArray.splice(slide, 1)
                 
                 this.activeSlide = this.slidesArray[0].slide;
             }
@@ -95,25 +108,39 @@ export default {
         }, 
         moveCarouselTo: function (slide) {
             let total = this.slidesArray.length;
+            // Set slideIndex to 0 based instead of 1 based.
             document.getEl
             let newPrev = slide - 1; 
             let newNext = slide + 1; 
 
-            if (slide === 0) {
-                newPrev = null;
-            } 
-            else if (slide === (total-1)) {
-                newNext = null;
-            }
 
-            for (let i = 0; i < total; i++) {
+            // Set all classes to nothing.
+            for (let i = 0; i < this.slidesArray.length; i++) {
                 this.slidesArray[i].class = '';
             }
-            console.log(this.slidesArray[newPrev])
-            this.slidesArray[newPrev] != undefined ? this.slidesArray[newPrev] = ' prev' : this.prevBtnClass = 'disabled';
-            this.slidesArray[slide].class= 'active';
-            this.slidesArray[newNext] != undefined ? this.slidesArray[newNext] = ' next' : this.nextBtnClass = 'disabled';
-            console.log(this.prevBtnClass, this.nextBtnClass)
+            console.log('slide', slide)
+            
+            if (this.slidesArray[newPrev] != undefined) {
+                // When newPrev is defined
+                this.slidesArray[newPrev].class = ' prev'; 
+                this.prevBtnClass = 'enabled'
+                
+            }
+            else { 
+                this.prevBtnClass = 'disabled';
+                console.log('undefined newPrev', newPrev)
+            }
+            this.slidesArray[slide].class = 'active';
+
+            if (this.slidesArray[newNext] != undefined) {
+                // When newPrev is defined
+                this.slidesArray[newNext].class = ' next'; 
+                this.nextBtnClass = 'enabled'
+            }
+            else { 
+                this.nextBtnClass = 'disabled';
+                console.log('undefined newNext', newNext)
+            }
         }, 
         dragndrop: function(event) {
             var fileName = URL.createObjectURL(event.target.files[0]);
@@ -132,6 +159,11 @@ export default {
             }
                 document.getElementById("imgpreview__container").classList.add("imgpreview__container--zhigh");
         }, 
+    }, 
+    mounted: function() {
+        // Set both buttons to disabled since when this function is called there can only be one slide.
+        this.prevBtnClass = 'disabled';
+        this.nextBtnClass = 'disabled'
     }
 }
 </script>
