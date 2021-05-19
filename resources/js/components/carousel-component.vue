@@ -29,7 +29,28 @@
             </div>-->
             
             <div v-for="slide in slidesArray" :key="slide.slide" class="carousel__slide " :class="slide.class">
-                <h1>Slide {{slide.slide}} </h1>
+                <h1>Slide {{slide.slide+1}}. Total slides: {{slidesArray.length}}</h1>
+                <div class="imagedrop d-flex flex-column">
+        
+                    <input 
+                    name="illustration"
+                    class="imgdrop__input" 
+                    type="file" 
+                    @change="dragndrop($event)"  
+                    @dragover="drag()" 
+                    @drop="drop()" 
+                    id="uploadFile" 
+                    required="required"
+                    />
+                    
+                    <div id="imgpreview__container" class="imgpreview__container pt-3 pb-3">
+                        <img id="preview" class="d-block w-100">
+                    </div>
+        
+                    <img src="/images/camera.svg" alt="Camera" class="imageicon imgdrop__markup">
+                    <p class="imgdrop__markup">Drag and drop your image here.</p>
+                    <p>Slide: {{slide.slide+1 }}</p>
+                </div>
             </div>
             
             <button type="button" v-on:click="movePrev()" class="carousel__button--previous"  :disabled="isButtonDisabled()[0]">
