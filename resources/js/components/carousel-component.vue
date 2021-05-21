@@ -1,7 +1,7 @@
 <template>
 <div>
     <button @click="addSlide()" type="button" class="btn btn-primary">Add slide.</button>
-    <button @click="removeSlide()" type="button" class="btn btn-secondary">Remove slide</button>
+    
     <div class="carousel-wrapper">
         <div class="carousel" id="carousel">
             <div v-for="slide in slidesArray" :key="slide.slide" class="carousel__slide " :class="slide.class">
@@ -26,15 +26,20 @@
                     <img src="/images/camera.svg" alt="Camera" class="imageicon imgdrop__markup">
                     <p class="imgdrop__markup">Drag and drop your image here.</p>
                     <p>Slide: {{slide.slide+1 }}</p>
+                    
                 </div>
+                <button @click="removeSlide(slide.slide)" type="button" class="btn btn-secondary">Remove slide</button>
             </div>
             
             <button type="button" v-on:click="movePrev()" class="carousel__button--previous"  :class="prevBtnClass"  :disabled="isButtonDisabled()[0]">
                 
                 <i class="fa fa-chevron-left fa-2x"></i>
             </button>
-            <button type="button" v-on:click="moveNext()"  class="carousel__button--next" :class="nextBtnClass"  :disabled="isButtonDisabled()[1]" >
-                <i class="fa fa-chevron-right fa-2x"></i>
+            <button v-if="!isButtonDisabled()[1]" type="button" v-on:click="moveNext()"  class="carousel__button--next enabled">
+                <i class="fa fa-chevron-right fa-2x" ></i>
+            </button>
+            <button v-if="isButtonDisabled()[1]" type="button" v-on:click="addSlide()"  class="carousel__button--next enabled">
+                <i class="fa fa-plus fa-2x"></i>
             </button>
         </div>                          
     </div>
@@ -45,7 +50,6 @@
 export default {
     data() {
         return {
-            slides: 2,
             slidesArray: [
                 { slide: 0, class: ' active' },
             ],
@@ -67,6 +71,7 @@ export default {
             if (this.activeSlide < this.slidesArray.length) { 
                 this.activeSlide++
                 // 1 based
+                console.log('this.activeslidemovenext', this.activeSlide)
                 this.moveCarouselTo(this.activeSlide)
             }
             console.log(this.activeSlide, 'slidesarray', this.slidesArray);
@@ -81,7 +86,6 @@ export default {
             }      
         },
         addSlide: function() {
-            this.slides++
             this.slidesArray.push(
                 { slide: this.slidesArray.length, class: ''}
                 )
@@ -90,13 +94,15 @@ export default {
             console.log('activeslide', this.activeSlide);
             this.moveCarouselTo(this.activeSlide);           
         }, 
-        removeSlide: function() { 
+        removeSlide: function(slide) { 
+            console.log('removeSlidArg', this.slidesArray[slide]);
+            // When there are more than 0 slides. 
             if (this.slidesArray.length > 0) {
-                this.slides--
-                let slide = this.slidesArray.indexOf(this.activeSlide);
+                // Set the new activeSlide
+                this.activeSlide = slide-1;
+                this.moveCarouselTo(this.activeSlide)
+                // Remove the slide. 
                 this.slidesArray.splice(slide, 1)
-                
-                this.activeSlide = this.slidesArray[0].slide;
             }
             
         },
