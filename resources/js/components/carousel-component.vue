@@ -1,11 +1,9 @@
 <template>
 <div>
-    <button @click="addSlide()" type="button" class="btn btn-primary">Add slide.</button>
-    
     <div class="carousel-wrapper">
         <div class="carousel" id="carousel">
-            <div v-for="slide in slidesArray" :key="slide.slide" class="carousel__slide " :class="slide.class">
-                <h1>Slide {{slide.slide+1}}. Total slides: {{slidesArray.length}}</h1>
+            <div v-for="slide in slidesArray" :key="slide.slide" class="w-100 carousel__slide " :class="slide.class">
+                <!--<h1>Slide {{slide.slide+1}}. Total slides: {{slidesArray.length}}</h1>-->
                 <div class="imagedrop d-flex flex-column">
         
                     <input 
@@ -26,25 +24,29 @@
                     <img src="/images/camera.svg" alt="Camera" class="imageicon imgdrop__markup">
                     <p class="imgdrop__markup">Drag and drop your image here.</p>
                     <p>Slide: {{slide.slide+1 }}</p>
-                    
+                    <button @click="removeSlide(slide.slide)" type="button" class="btn z-high"><i class="fa fa-trash fa-2x blue"></i></button>
                 </div>
-                <button @click="removeSlide(slide.slide)" type="button" class="btn btn-secondary">Remove slide</button>
+                
             </div>
             
-            <button type="button" v-on:click="movePrev()" class="carousel__button--previous"  :class="prevBtnClass"  :disabled="isButtonDisabled()[0]">
+                <button type="button" v-on:click="movePrev()" class="carousel__button--previous mx-4"  :class="prevBtnClass"  :disabled="isButtonDisabled()[0]">
+                    <i class="fa fa-chevron-left fa-2x"></i>
+                </button>
+                <button type="button" v-on:click="moveNext()"  class="carousel__button--next mx-4   " :class="nextBtnClass" :disabled="isButtonDisabled()[1]">
+                    <i class="fa fa-chevron-right fa-2x" ></i>
+                </button>
                 
-                <i class="fa fa-chevron-left fa-2x"></i>
-            </button>
-            <button v-if="!isButtonDisabled()[1]" type="button" v-on:click="moveNext()"  class="carousel__button--next enabled">
-                <i class="fa fa-chevron-right fa-2x" ></i>
-            </button>
-            <button v-if="isButtonDisabled()[1]" type="button" v-on:click="addSlide()"  class="carousel__button--next enabled">
-                <i class="fa fa-plus fa-2x"></i>
-            </button>
-        </div>                          
+            <div class="d-flex justify-content-center align-items-center w-100">
+                <div v-for="slide in slidesArray" :key="slide.slide" class="mr-1">
+                    <i class="fa fa-circle" v-bind:class="{ 'blue fa-lg' : isActiveSlide(slide.slide), 'white fa-sm' : !isActiveSlide(slide.slide) }"></i>
+                </div> 
+                <button type="button" v-on:click="addSlide()"  class="btn enabled z-high">
+                    <i class="fa fa-plus fa-sm"></i>
+                </button>
+            </div>
+        </div>                
     </div>
 </div>
-  
 </template>
 <script>
 export default {
@@ -55,10 +57,17 @@ export default {
             ],
             activeSlide: 0, 
             prevBtnClass: '', 
-            nextBtnClass: ''
+            nextBtnClass: '', 
+            maxSlides: 10,
         }
     },
     methods: {
+        isActiveSlide: function(slideIndex) {
+            if (slideIndex == this.activeSlide) {
+                return true;
+            }
+            return false;
+        },
         isButtonDisabled: function() {
             let prevBtnState = this.prevBtnClass == 'disabled' ? true : false;
             let nextBtnState = this.nextBtnClass == 'disabled' ? true : false;   
@@ -86,18 +95,21 @@ export default {
             }      
         },
         addSlide: function() {
-            this.slidesArray.push(
-                { slide: this.slidesArray.length, class: ''}
+            if (this.slidesArray.length < this.maxSlides) {
+                this.slidesArray.push(
+                    { slide: this.slidesArray.length, class: ''}
                 )
             // Move carousel to the new slide and disable the buttons.
             
             console.log('activeslide', this.activeSlide);
-            this.moveCarouselTo(this.activeSlide);           
+            this.moveCarouselTo(this.activeSlide);   
+            }
+                    
         }, 
         removeSlide: function(slide) { 
             console.log('removeSlidArg', this.slidesArray[slide]);
             // When there are more than 0 slides. 
-            if (this.slidesArray.length > 0) {
+            if (this.slidesArray.length > 1) {
                 // Set the new activeSlide
                 this.activeSlide = slide-1;
                 this.moveCarouselTo(this.activeSlide)
