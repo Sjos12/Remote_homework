@@ -53,12 +53,12 @@
                 </div>
             </div>
             
-            <button type="button" v-on:click="movePrev()" class="carousel__button--previous"  :disabled="isButtonDisabled()[0]">
+            <button type="button" v-on:click="movePrev()" class="carousel__button--previous"  :class="prevBtnClass"  :disabled="isButtonDisabled()[0]">
                 
-                <img src="/images/chevron-left.svg" alt="chevron-left" class="">
+                <i class="fa fa-chevron-left fa-2x"></i>
             </button>
-            <button type="button" v-on:click="moveNext()"  class="carousel__button--next" :disabled="isButtonDisabled()[1]" >
-                <img src="/images/chevron-right.svg" alt="chevron-right" class="">
+            <button type="button" v-on:click="moveNext()"  class="carousel__button--next" :class="nextBtnClass"  :disabled="isButtonDisabled()[1]" >
+                <i class="fa fa-chevron-right fa-2x"></i>
             </button>
         </div>                          
     </div>

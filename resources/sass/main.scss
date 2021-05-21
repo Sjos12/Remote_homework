@@ -15,7 +15,12 @@ html {
     height: 100%;
 }
 
-
+.disabled {
+    color: black;
+}
+.enabled {
+    color: white;
+}
 //Carousel 
 .carousel-wrapper {
     overflow: hidden;
