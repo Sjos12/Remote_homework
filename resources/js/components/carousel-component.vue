@@ -18,7 +18,7 @@
                     />
                     
                     <div id="imgpreview__container" class="imgpreview__container pt-3 pb-3">
-                        <img id="preview" class="d-block w-100">
+                        <img v-bind:id="'preview' + slide.slide" class="d-block w-100" :src="slidesArray[activeSlide].url">
                     </div>
         
                     <img src="/images/camera.svg" alt="Camera" class="imageicon imgdrop__markup">
@@ -53,12 +53,13 @@ export default {
     data() {
         return {
             slidesArray: [
-                { slide: 0, class: ' active' },
+                { slide: 0, class: ' active', url: '' },
             ],
             activeSlide: 0, 
             prevBtnClass: '', 
             nextBtnClass: '', 
             maxSlides: 10,
+            previewUrl: [],
         }
     },
     methods: {
@@ -97,7 +98,7 @@ export default {
         addSlide: function() {
             if (this.slidesArray.length < this.maxSlides) {
                 this.slidesArray.push(
-                    { slide: this.slidesArray.length, class: ''}
+                    { slide: this.slidesArray.length, class: '', url: ''}
                 )
             // Move carousel to the new slide and disable the buttons.
             
@@ -158,9 +159,7 @@ export default {
             }
         }, 
         dragndrop: function(event) {
-            var fileName = URL.createObjectURL(event.target.files[0]);
-            var preview = document.getElementById("preview");
-            preview.setAttribute("src", fileName);
+            this.slidesArray[this.activeSlide].url = URL.createObjectURL(event.target.files[0]);
         }, 
         drag: function() {
             document.getElementById('uploadFile').parentNode.className = 'imagedrop--dragging imagedrop';
