@@ -3,10 +3,8 @@
     <div class="carousel-wrapper">
         <div class="carousel" id="carousel">
             <div v-for="slide in slidesArray" :key="slide.slide" class="w-100 carousel__slide " :class="slide.class">
-                <!--<h1>Slide {{slide.slide+1}}. Total slides: {{slidesArray.length}}</h1>-->
-                <div class="imagedrop d-flex flex-column">
-        
-                    <input 
+                <div class="imagedrop d-flex flex-column" >
+                     <input 
                     name="illustration"
                     class="imgdrop__input" 
                     type="file" 
@@ -16,17 +14,17 @@
                     id="uploadFile" 
                     required="required"
                     />
-                    
                     <div id="imgpreview__container" class="imgpreview__container pt-3 pb-3">
                         <img v-bind:id="'preview' + slide.slide" class="d-block w-100" :src="slidesArray[activeSlide].url">
                     </div>
-        
-                    <img src="/images/camera.svg" alt="Camera" class="imageicon imgdrop__markup">
-                    <p class="imgdrop__markup">Drag and drop your image here.</p>
-                    <p>Slide: {{slide.slide+1 }}</p>
-                    <button @click="removeSlide(slide.slide)" type="button" class="btn z-high"><i class="fa fa-trash fa-2x blue"></i></button>
+                    <!-- image markup -->
+                    <div class="d-flex justify-content-center align-items-center flex-column" v-if="!isImageUrlSet()">
+                        <img src="/images/camera.svg" alt="Camera" class="imageicon imgdrop__markup">
+                        <p class="imgdrop__markup">Drag and drop your image here.</p>
+                        <p>Slide: {{slide.slide+1 }}</p>
+                        <button @click="removeSlide(slide.slide)" type="button" class="btn z-high"><i class="fa fa-trash fa-2x blue"></i></button>
+                    </div>
                 </div>
-                
             </div>
             
                 <button type="button" v-on:click="movePrev()" class="carousel__button--previous mx-4"  :class="prevBtnClass"  :disabled="isButtonDisabled()[0]">
@@ -63,6 +61,12 @@ export default {
         }
     },
     methods: {
+        isImageUrlSet: function() {
+            if (this.slidesArray[this.activeSlide].url == '') {
+                return false;
+            }
+            return true;
+        },
         isActiveSlide: function(slideIndex) {
             if (slideIndex == this.activeSlide) {
                 return true;
@@ -159,6 +163,7 @@ export default {
             }
         }, 
         dragndrop: function(event) {
+            console.log('change')
             this.slidesArray[this.activeSlide].url = URL.createObjectURL(event.target.files[0]);
         }, 
         drag: function() {
@@ -167,11 +172,6 @@ export default {
         drop: function() { 
             console.log('drop')
             document.getElementById('uploadFile').parentNode.className = 'imagedrop';
-            let markup = document.getElementsByClassName("imgdrop__markup")
-            for (let i = 0; i < markup.length; i++ ) {
-                markup[i].style.display = "none";
-            }
-                document.getElementById("imgpreview__container").classList.add("imgpreview__container--zhigh");
         }, 
     }, 
     mounted: function() {
