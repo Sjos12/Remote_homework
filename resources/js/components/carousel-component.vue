@@ -1,6 +1,6 @@
 <template>
 <div>
-    <div class="carousel-wrapper">
+    <div class="carousel-wrapper"  v-on:keyup.left="movePrev()" v-on:keyup.right="moveNext()">
         <div class="carousel" id="carousel">
             <div v-for="slide in slidesArray" :key="slide.slide" class="w-100 carousel__slide " :class="slide.class">
                 
@@ -16,7 +16,7 @@
                     required="required"
                     />
                     <div id="imgpreview__container" class="imgpreview__container pt-3 pb-3 d-flex align-self-center justify-self-center">
-                        <img v-bind:id="'preview' + slide.slide" class="d-block w-100" :src="slidesArray[activeSlide].url">
+                        <img v-bind:id="'preview' + slide.slide" class="d-block h-100" :src="slidesArray[activeSlide].url">
                     </div>
                     <!-- image markup -->
                     <div class="d-flex justify-content-center align-items-center flex-column" v-if="!isImageUrlSet()">
