@@ -4,30 +4,6 @@
     <button @click="removeSlide()" type="button" class="btn btn-secondary">Remove slide</button>
     <div class="carousel-wrapper">
         <div class="carousel" id="carousel">
-            <!--<div class="carousel__slide active">
-                <div class="imagedrop d-flex flex-column">
-        
-                    <input 
-                    name="illustration"
-                    class="imgdrop__input" 
-                    type="file" 
-                    @change="dragndrop($event)"  
-                    @dragover="drag()" 
-                    @drop="drop()" 
-                    id="uploadFile" 
-                    required="required"
-                    />
-                    
-                    <div id="imgpreview__container" class="imgpreview__container pt-3 pb-3">
-                        <img id="preview" class="d-block w-100">
-                    </div>
-        
-                    <img src="/images/camera.svg" alt="Camera" class="imageicon imgdrop__markup">
-                    <p class="imgdrop__markup">Drag and drop your image here.</p>
-                    <p>Slide: 1</p>
-                </div>
-            </div>-->
-            
             <div v-for="slide in slidesArray" :key="slide.slide" class="carousel__slide " :class="slide.class">
                 <h1>Slide {{slide.slide+1}}. Total slides: {{slidesArray.length}}</h1>
                 <div class="imagedrop d-flex flex-column">
@@ -73,7 +49,7 @@ export default {
             slidesArray: [
                 { slide: 0, class: ' active' },
             ],
-            activeSlide: 1, 
+            activeSlide: 0, 
             prevBtnClass: '', 
             nextBtnClass: ''
         }
@@ -110,9 +86,9 @@ export default {
                 { slide: this.slidesArray.length, class: ''}
                 )
             // Move carousel to the new slide and disable the buttons.
-            this.activeSlide++
-            this.moveCarouselTo(this.slidesArray.length-1);           
-            console.log('slidesarray', this.slidesArray);
+            
+            console.log('activeslide', this.activeSlide);
+            this.moveCarouselTo(this.activeSlide);           
         }, 
         removeSlide: function() { 
             if (this.slidesArray.length > 0) {
