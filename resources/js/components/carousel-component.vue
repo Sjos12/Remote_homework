@@ -43,7 +43,10 @@
                     <i class="fa fa-plus fa-lg"></i>
                 </button>
             </div>
-        </div>                
+        </div>              
+        <small class="form-text text-muted">
+            Click the camera field to add images, use the left right keys to navigate and add more images to your question.
+        </small>  
     </div>
 </div>
 </template>
