@@ -19,17 +19,17 @@
                         <img v-bind:id="'preview' + slide.slide" class="d-block h-100" :src="slidesArray[activeSlide].url">
                     </div>
                     <!-- image markup -->
-                    <div class="d-flex justify-content-center align-items-center flex-column" v-if="!isImageUrlSet()">
+                    <div class="imagedrop__markup" v-if="!isImageUrlSet()">
                         <i class="fa fa-camera fa-5x imgdrop__markup" alt="Camera Icon"></i>
                         <!--<p class="imgdrop__markup">Drag and drop your image here.</p>
                         <button @click="removeSlide(slide.slide)" type="button" class="btn z-high"><i class="fa fa-trash fa-2x blue"></i></button>-->
                     </div>
                 </div>
                 <button type="button" v-on:click="movePrev()" class="carousel__button--previous mx-4"  :class="prevBtnClass"  :disabled="isButtonDisabled()[0]">
-                    <i class="fa fa-chevron-left fa-2x"></i>
+                    <i class="fa fa-chevron-left fa-2x "></i>
                 </button>
                 <button type="button" v-on:click="moveNext()"  class="carousel__button--next mx-4   " :class="nextBtnClass" :disabled="isButtonDisabled()[1]">
-                    <i class="fa fa-chevron-right fa-2x" ></i>
+                    <i class="fa fa-chevron-right fa-2x " ></i>
                 </button>
             </div>
             
@@ -39,8 +39,8 @@
                 <div v-for="slide in slidesArray" :key="slide.slide" class="mr-1">
                     <i class="fa fa-circle" v-bind:class="{ 'blue fa-lg' : isActiveSlide(slide.slide), 'white fa-sm' : !isActiveSlide(slide.slide) }"></i>
                 </div> 
-                <button type="button" v-on:click="addSlide()"  class="btn enabled z-high">
-                    <i class="fa fa-plus fa-lg"></i>
+                <button type="button" v-on:click="addSlide()"  class="btn shadow-none enabled z-high">
+                    <i class="fa fa-plus fa-2x"></i>
                 </button>
             </div>
         </div>              

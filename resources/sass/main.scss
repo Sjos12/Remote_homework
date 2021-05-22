@@ -29,6 +29,7 @@ html {
 }
 .disabled {
     color: $darkmodecolor_verylight;
+    cursor: not-allowed;
 }
 .enabled {
     color: white;
@@ -39,9 +40,7 @@ html {
     width: 100%;
     box-sizing: border-box;
   }
-.carousel { 
-    
-}
+
 
 .carousel__slide { 
     opacity: 0;
@@ -83,10 +82,6 @@ html {
     border: none;
     text-decoration: none;
     background-color: transparent;
-    img {
-        color: white;
-    }
-    
 }
 
 .carousel__button--next {
@@ -846,6 +841,9 @@ p {
 /*implements dark mode */
 //@media (prefers-color-scheme: dark) {
 
+    .btn:hover, .btn:active, .btn:focus { 
+        color: white;
+    }
     .imagedrop { 
         background-color: $inputcolor_dark;
     }
