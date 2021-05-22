@@ -64,7 +64,7 @@
                         <div class="form-group col-12 col-md-8 offset-md-2">
                             <label for="title">{{ __("Question title") }}</label>
                             <input type="text"
-                                    class="form-control @error('title') is-invalid @enderror"
+                                    class="title6 form-control @error('title') is-invalid @enderror"
                                     id="title"
                                     name="title"
                                     aria-describedby="titleHelp"
