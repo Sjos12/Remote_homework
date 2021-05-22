@@ -9,11 +9,11 @@
 
     <title>{{ config('app.name', 'Remote Homework') }}</title>
 
-    
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
     <!-- Bootstrap implementation -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
@@ -73,10 +73,10 @@
                             </li>
                             <li class="nav-item dropdown d-flex">
                                 <div class="profilepicture-container profilepicture-container--nav shadow ml-4">
-                                    <img src="{{ \Illuminate\Support\Facades\Auth::user()->getFirstMediaUrl('profiles') }}" class="h-100" alt=""> 
+                                    <img src="{{ \Illuminate\Support\Facades\Auth::user()->getFirstMediaUrl('profiles') }}" class="h-100" alt="">
                                 </div>
                                 <a id="navbarDropdown" class="d-flex align-items-center justify-content-center nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="nav-link" v-pre>
-                                    
+
                                     {{ __('Hello, :Name', ['name' => \Illuminate\Support\Facades\Auth::user()->name]) }} <span class="caret"></span>
                                 </a>
 
@@ -123,8 +123,6 @@
     <script src="{{ asset('tools.js') }}"></script>
     <script src="{{ asset('steppedform.js') }}"></script>
     <script src="{{ asset('dropzone.js') }}"></script>
-    <!-- Compiled scripts -->
-    <script src="{{ asset('/js/imgdrop.js') }}"></script>
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}"></script>
 
