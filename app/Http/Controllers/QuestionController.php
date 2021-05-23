@@ -39,11 +39,10 @@ final class QuestionController
             [
                 'title'        => 'required|unique:questions,title', // @todo: should not be forbidden, but result in a suggestion to look at existing question, if permissions allow that
                 'content'      => 'nullable',
-                'illustration' => 'required|image',
+                'illustration.*' => 'required|image',
                 'categories'   => 'nullable|exists:categories,id',
             ]
         );
-        //dd($validated_data['categories']);
         try {
             DB::beginTransaction();
 
@@ -59,10 +58,13 @@ final class QuestionController
             $illustration->question_id = $question->id;
 
             /** @var UploadedFile $uploaded_file */
-            $uploaded_file = $request->file('illustration');
-            $illustration->addMedia($uploaded_file)
-                         ->withResponsiveImages()
-                         ->toMediaCollection(Illustration::COLLECTION_IMAGES);
+            $uploaded_file = $validated_data['illustration'];
+
+            $illustration->addAllMediaFromRequest()
+                        ->each(function ($fileAdder) {
+                            $fileAdder->withResponsiveImages();
+                            $fileAdder->toMediaCollection(Illustration::COLLECTION_IMAGES);
+                        });
 
             $illustration->save();
 
@@ -187,6 +189,8 @@ final class QuestionController
 
     public function detail(Question $question): Renderable
     {
+        $vm = new QuestionViewModel($question);
+        
         return view('questions.detail', new QuestionViewModel($question));
     }
 

@@ -2,38 +2,21 @@
 <div>
     <div class="carousel-wrapper"  v-on:keyup.left="movePrev()" v-on:keyup.right="moveNext()">
         <div class="carousel" id="carousel">
-            <div v-for="slide in slidesArray" :key="slide.slide" class="w-100 carousel__slide " :class="slide.class">
-                
-                <div class="imagedrop d-flex flex-column align-items-center" >
-                     <input 
-                    :name="`illustration[${slide.slide}]`"
-                    class="imgdrop__input" 
-                    type="file" 
-                    @change="dragndrop($event)"  
-                    @dragover="drag()" 
-                    @drop="drop()" 
-                    id="uploadFile" 
-                    required="required"
-                    />
-                    <div id="imgpreview__container" class="imgpreview__container pt-3 pb-3 d-flex align-self-center justify-self-center">
+            <div v-for="medium in media" :key="medium.id" class="w-100 carousel__slide " :class="slide.class">  
+
+                <div id="imgpreview__container" class="imgpreview__container pt-3 pb-3 d-flex align-self-center justify-self-center">
                         <img v-bind:id="'preview' + slide.slide" class="d-block h-100" :src="slidesArray[activeSlide].url">
-                    </div>
-                    <!-- image markup -->
-                    <div class="imagedrop__markup" v-if="!isImageUrlSet()">
-                        <i class="fa fa-camera fa-5x imgdrop__markup" alt="Camera Icon"></i>
-                        <!--<p class="imgdrop__markup">Drag and drop your image here.</p>
-                        <button @click="removeSlide(slide.slide)" type="button" class="btn z-high"><i class="fa fa-trash fa-2x blue"></i></button>-->
-                    </div>
                 </div>
-                <button type="button" v-on:click="movePrev()" class="carousel__button--previous mx-4"  :class="prevBtnClass"  :disabled="isButtonDisabled()[0]">
-                    <i class="fa fa-chevron-left fa-2x "></i>
-                </button>
-                <button type="button" v-on:click="moveNext()"  class="carousel__button--next mx-4   " :class="nextBtnClass" :disabled="isButtonDisabled()[1]">
-                    <i class="fa fa-chevron-right fa-2x " ></i>
-                </button>
+                
+               
             </div>
             
-                
+             <button type="button" v-on:click="movePrev()" class="carousel__button--previous mx-4"  :class="prevBtnClass"  :disabled="isButtonDisabled()[0]">
+                    <i class="fa fa-chevron-left fa-2x "></i>
+            </button>
+            <button type="button" v-on:click="moveNext()"  class="carousel__button--next mx-4   " :class="nextBtnClass" :disabled="isButtonDisabled()[1]">
+                <i class="fa fa-chevron-right fa-2x " ></i>
+            </button>
                 
             <div class="d-flex justify-content-center align-items-center w-100">
                 <div v-for="slide in slidesArray" :key="slide.slide" class="mr-1">
@@ -44,9 +27,6 @@
                 </button>
             </div>
         </div>              
-        <small class="form-text text-muted">
-            Click the camera field to add images, use the left right keys to navigate and add more images to your question.
-        </small>  
     </div>
 </div>
 </template>
@@ -60,7 +40,6 @@ export default {
             activeSlide: 0, 
             prevBtnClass: '', 
             nextBtnClass: '', 
-            maxSlides: 10,
             previewUrl: [],
         }
     },

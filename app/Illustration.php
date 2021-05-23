@@ -24,6 +24,14 @@ final class Illustration extends Model implements HasMedia
         'uuid' => EfficientUuid::class,
     ];
 
+    public function getMediaUrlArray($media) {
+        $arr = [];
+        foreach($media as $medium) {
+            array_push($arr, $medium->getUrl());
+        }
+        return $arr;
+    }
+
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection(self::COLLECTION_IMAGES)

@@ -35,6 +35,8 @@ final class FeedController
 
     public function detail(Question $question): Renderable
     {
+        $vm = new QuestionViewModel($question);
+ //       dd($vm->illustrations()[0]->getMedia('images')[0]->getUrl());
         return view('feed.detail', new QuestionViewModel($question));
     }
 

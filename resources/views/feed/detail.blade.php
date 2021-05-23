@@ -31,15 +31,35 @@
                     </div>
             </div> 
         </div>
-        <div class="col-md-7 col-lg-7 col-sm-12 col-xs-12 card card__img--border card--no-border ">
+        <div class="col-md-7 col-lg-7 col-sm-12 col-xs-12 card card__img--border card--no-border">
+            <div id="carouselExampleControls" class="carousel slide my-auto" data-ride="carousel">
+                <div class="carousel-inner">
+                    @for ($i = 0; $i < count($question->illustrations()->first()->getMedia('images')); $i++)
+                        @if ($i === 0 )
+                            <div class="carousel-item active">
+                                <img src="{{$question->illustrations()->first()->getMedia('images')[$i]->getUrl()}}" class="rounded detailimg align-middle col-12 imgheight" alt="Image">
+                            </div>    
+                        @else
+                        <div class="carousel-item">
+                            <img src="{{$question->illustrations()->first()->getMedia('images')[$i]->getUrl()}}" class="rounded detailimg align-middle col-12 imgheight" alt="Image">
+                        </div>
+                        @endif
+                    @endfor
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
             <div id="carouselExampleControls" class="carousel slide mx-auto " data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        @if($firstImage)
-                            <div class="px-5 box">
-                                {{ $firstImage->img()->attributes(['class' => ' rounded detailimg align-middle col-12 imgheight', 'alt' => $question->title]) }}
-                            </div>
-                        @endif
+                        
+                        
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
