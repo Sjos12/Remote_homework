@@ -19,7 +19,11 @@
                     <div class="col-10 centerY">
                         <h1 class="title6 font-size" id="questiontitle">{{ $question->title }}</h1>
                         <div class="fulloriginalquestion" id="fulloriginalquestion">
-                            {{--{{ $question->content }}--}}
+                            <div class="form-group col-12 col-md-8 offset-md-2">
+                                <div id="app">
+                                    <carousel-component></carousel-component>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-2">
