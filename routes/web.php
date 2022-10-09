@@ -21,6 +21,7 @@ use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\ShowAnswer;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,12 +37,15 @@ use Illuminate\Support\Facades\Route;
 Route::post('logout', [LoginController::class, 'logout'])
      ->name('logout');
 
+Route::get('/answers/create', function () {
+     return Inertia::render('Answers/Create', []);
+});
 
 Route::middleware(['guest'])->group(function () {
      // Authentication Routes...
      Route::get('login', [LoginController::class, 'showLoginForm'])
-
           ->name('login');
+
      Route::post('login', [LoginController::class, 'login']);
 
      // Registration Routes...
