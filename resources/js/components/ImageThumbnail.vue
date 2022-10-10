@@ -54,12 +54,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.imagetile {
-    transition: all 500ms ease-in-out;
-
-    width: 100px;
-}
-
 .closed {
     width: 100px;
     visibility: hidden;

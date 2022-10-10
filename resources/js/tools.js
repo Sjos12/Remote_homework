@@ -1,153 +1,141 @@
-let coll = document.getElementsByClassName("collapsible");
-let i;
-var lineMode = true;
-var isDown;
+export class CanvasTools {
+    constructor() {
+        let i;
+        var lineMode = true;
+        var isDown;
 
-// variable which chooses color of objects
-let objColor;
+        // variable which chooses color of objects
+        let objColor;
 
-for (i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    let title = document.getElementById("questiontitle");
-    let content = document.getElementById("fulloriginalquestion");
-    if (content.style.display === "block") {
-      content.style.display = "none";
-      title.style.display = "block";
-      title.style.margin = "";
-    } else {
-      content.style.display = "block";
-      title.style.margin = "0";
+        // create a wrapper around native canvas element (with id="c")
+        let canvasEl = document.getElementById("canvas");
+
+        if (!canvasEl) return;
+        const canvas = new fabric.Canvas("canvas");
+        canvasEl.fabric = canvas;
+
+        // variable which chooses color of objects
+        objColor = "white";
+
+        this.setFunctionListeners();
+
+        canvas.calcOffset();
+
+        window.onload = function () {
+            this.spawnImg();
+        };
     }
-  });
-}
 
-// reference canvas element (with id="c")
-// create a wrapper around native canvas element (with id="c")
-let canvasEl = document.getElementById('canvas')
+    setFunctionListeners() {
+        // Canvas zooming.
+        canvas.on("mouse:wheel", function (opt) {
+            var delta = opt.e.deltaY;
+            var zoom = canvas.getZoom();
+            zoom *= 0.999 ** delta;
+            if (zoom > 20) zoom = 20;
+            if (zoom < 0.01) zoom = 0.01;
+            canvas.setZoom(zoom);
+            opt.e.preventDefault();
+            opt.e.stopPropagation();
+        });
 
-if (canvasEl) {
-    const canvas = new fabric.Canvas('canvas')
-    canvasEl.fabric = canvas;
+        canvas.on("mouse:down", function (opt) {
+            var evt = opt.e;
+            if (evt.altKey === true) {
+                this.isDragging = true;
+                this.selection = false;
+                this.lastPosX = evt.clientX;
+                this.lastPosY = evt.clientY;
+            }
+        });
+        canvas.on("mouse:move", function (opt) {
+            if (this.isDragging) {
+                var e = opt.e;
+                var vpt = this.viewportTransform;
+                vpt[4] += e.clientX - this.lastPosX;
+                vpt[5] += e.clientY - this.lastPosY;
+                this.requestRenderAll();
+                this.lastPosX = e.clientX;
+                this.lastPosY = e.clientY;
+            }
+        });
+        canvas.on("mouse:up", function (opt) {
+            // on mouse up we want to recalculate new interaction
+            // for all objects, so we call setViewportTransform
+            this.setViewportTransform(this.viewportTransform);
+            this.isDragging = false;
+            this.selection = true;
+        });
 
-    // variable which chooses color of objects
-    objColor = 'white';
-
-    // Canvas zooming.
-    canvas.on('mouse:wheel', function(opt) {
-        var delta = opt.e.deltaY;
-        var zoom = canvas.getZoom();
-        zoom *= 0.999 ** delta;
-        if (zoom > 20) zoom = 20;
-        if (zoom < 0.01) zoom = 0.01;
-        canvas.setZoom(zoom);
-        opt.e.preventDefault();
-        opt.e.stopPropagation();
-    })
-
-    canvas.on('mouse:down', function(opt) {
-        var evt = opt.e;
-        if (evt.altKey === true) {
-            this.isDragging = true;
-            this.selection = false;
-            this.lastPosX = evt.clientX;
-            this.lastPosY = evt.clientY;
-        }
-    });
-    canvas.on('mouse:move', function(opt) {
-        if (this.isDragging) {
-            var e = opt.e;
-            var vpt = this.viewportTransform;
-            vpt[4] += e.clientX - this.lastPosX;
-            vpt[5] += e.clientY - this.lastPosY;
-            this.requestRenderAll();
-            this.lastPosX = e.clientX;
-            this.lastPosY = e.clientY;
-        }
-    });
-    canvas.on('mouse:up', function(opt) {
-        // on mouse up we want to recalculate new interaction
-        // for all objects, so we call setViewportTransform
-        this.setViewportTransform(this.viewportTransform);
-        this.isDragging = false;
-        this.selection = true;
-    });
-
-    canvas.on('mouse:wheel', function(opt) {
-        var delta = opt.e.deltaY;
-        var zoom = canvas.getZoom();
-        zoom *= 0.999 ** delta;
-        if (zoom > 20) zoom = 20;
-        if (zoom < 0.01) zoom = 0.01;
-        canvas.zoomToPoint({ x: opt.e.offsetX, y: opt.e.offsetY }, zoom);
-        opt.e.preventDefault();
-        opt.e.stopPropagation();
-    });
-
-
-    function drawLine() {
+        canvas.on("mouse:wheel", function (opt) {
+            var delta = opt.e.deltaY;
+            var zoom = canvas.getZoom();
+            zoom *= 0.999 ** delta;
+            if (zoom > 20) zoom = 20;
+            if (zoom < 0.01) zoom = 0.01;
+            canvas.zoomToPoint({ x: opt.e.offsetX, y: opt.e.offsetY }, zoom);
+            opt.e.preventDefault();
+            opt.e.stopPropagation();
+        });
+    }
+    drawLine() {
         if (lineMode) {
-            canvas.on('mouse:down', function (o) {
+            canvas.on("mouse:down", function (o) {
                 if (lineMode) {
                     canvas.selection = false;
                     isDown = true;
                     var pointer = canvas.getPointer(o.e);
                     var points = [pointer.x, pointer.y, pointer.x, pointer.y];
-        
+
                     line = new fabric.Line(points, {
                         strokeWidth: 3,
-                        stroke: objColor
+                        stroke: objColor,
                     });
                     canvas.add(line);
-                }  
+                }
             });
-    
-    
-            canvas.on('mouse:move', function (o) {
+
+            canvas.on("mouse:move", function (o) {
                 if (lineMode && isDown) {
                     var pointer = canvas.getPointer(o.e);
                     line.set({ x2: pointer.x, y2: pointer.y });
                     canvas.renderAll();
                 }
             });
-    
-            canvas.on('mouse:up', function (o) {
+
+            canvas.on("mouse:up", function (o) {
                 canvas.selection = true;
                 lineMode = false;
-                isDown = false; 
+                isDown = false;
                 line.setCoords();
             });
-            
+        } else {
+            lineMode = true;
         }
-       else { 
-           lineMode = true;
-        }
-        
     }
 
     //resets all zoom and panning -
-    function resetZoom() {
-        canvas.setViewportTransform([1,0,0,1,0,0]);
+    resetZoom() {
+        canvas.setViewportTransform([1, 0, 0, 1, 0, 0]);
     }
 
-    function freeDrawing() {
+    freeDrawing() {
         let drawBtn = document.getElementById("drawBtn");
         console.log(drawBtn);
         if (canvas.lineModeMode) {
             canvas.lineModeMode = false;
             drawBtn.classList.remove("activedrawbtn");
-        }
-        else if (!canvas.lineModeMode) {
+        } else if (!canvas.lineModeMode) {
             canvas.lineModeMode = true;
             drawBtn.classList.add("activedrawbtn");
         }
 
-        canvas.freeDrawingBrush = new fabric['PencilBrush'](canvas);
+        canvas.freeDrawingBrush = new fabric["PencilBrush"](canvas);
     }
 
-    function spawnImg() {
+    spawnImg() {
         if (!canvasEl) {
-            return
+            return;
         }
 
         const imageInfo = JSON.parse(canvasEl.dataset.imageInfo);
@@ -169,9 +157,9 @@ if (canvasEl) {
             console.log("Image Width", imageWidth);
 
             // image ratio
-            image_ratio_height = imageHeight/imageHeight;
-            image_ratio_width = imageWidth/imageHeight;
-            console.log(image_ratio_height, ":" , image_ratio_width);
+            image_ratio_height = imageHeight / imageHeight;
+            image_ratio_width = imageWidth / imageHeight;
+            console.log(image_ratio_height, ":", image_ratio_width);
 
             //determines 'standard' canvas size.
             let image_multiplier = 500;
@@ -180,7 +168,7 @@ if (canvasEl) {
             let image_width = image_ratio_width * image_multiplier;
 
             //sets standard canvas size.
-            canvas.setDimensions({width:(image_width), height:(image_height)});
+            canvas.setDimensions({ width: image_width, height: image_height });
 
             //canvas height and width in variable
             let canvasHeight = canvas.height;
@@ -196,29 +184,24 @@ if (canvasEl) {
         });
     }
 
-    window.onload = function() {
-        spawnImg();
-    };
-
     //Function which serializes canvas and should be called on button click.
-    function saveCanvas() {
+    saveCanvas() {
         // Serialize the annotations
         const serialized_annotations = JSON.stringify(canvas);
         console.debug(serialized_annotations);
 
         // Get the hidden input and place the annotations on the form
-        const form = $('#answered');
-        let annotations_field = form.find('#annotations').get(0);
+        const form = $("#answered");
+        let annotations_field = form.find("#annotations").get(0);
         annotations_field.value = serialized_annotations;
 
         // Return true allows the form submit event to continue
         return true;
     }
 
-    function spawntext() {
-
+    spawntext() {
         var text = new fabric.IText("Text", {
-            fontFamily: 'montserrat',
+            fontFamily: "montserrat",
         });
 
         // this if statement should be used to check if dark mode is enabled or disabled and based on that choose text color.
@@ -230,20 +213,20 @@ if (canvasEl) {
         canvas.renderAll();
     }
 
-    function spawncube() {
+    spawncube() {
         // create a rectangle object
         var rect = new fabric.Rect({
             stroke: objColor,
             strokeWidth: 2,
             strokeUniform: true,
-            fill: 'rgba(0,0,0,0)',
+            fill: "rgba(0,0,0,0)",
             width: 400,
-            height: 200
+            height: 200,
         });
 
         // this if statement should be used to check if dark mode is enabled or disabled and based on that choose text color.
         if (2 > 1) {
-            rect.set('stroke', objColor);
+            rect.set("stroke", objColor);
         }
 
         canvas.add(rect);
@@ -251,18 +234,18 @@ if (canvasEl) {
         canvas.renderAll();
     }
 
-    function spawncircle() {
+    spawncircle() {
         // create a rectangle object
         let circle = new fabric.Circle({
             radius: 100,
-            fill: '',
-            stroke: 'black',
+            fill: "",
+            stroke: "black",
             strokeWidth: 3,
         });
 
         // this if statement should be used to check if dark mode is enabled or disabled and based on that choose text color.
         if (2 > 1) {
-            circle.set('stroke', objColor);
+            circle.set("stroke", objColor);
         }
 
         canvas.add(circle);
@@ -270,33 +253,34 @@ if (canvasEl) {
         canvas.renderAll();
     }
 
-    function changetextcolor(clr) {
+    changetextcolor(clr) {
         let color = clr;
         let obj = canvas.getActiveObject();
-        let typecheck = obj.get('type');
+        let typecheck = obj.get("type");
         objColor = clr;
         console.log(typecheck);
-        if (typecheck == 'circle' || typecheck == 'rect' || typecheck == 'line') {
-            obj.set('stroke', (color));
-            
-        }
-        else if (typecheck == 'i-text') {
-            obj.set('fill', (color));
+        if (
+            typecheck == "circle" ||
+            typecheck == "rect" ||
+            typecheck == "line"
+        ) {
+            obj.set("stroke", color);
+        } else if (typecheck == "i-text") {
+            obj.set("fill", color);
         }
 
         canvas.renderAll();
     }
 
-    function removeactiveobject() {
+    removeactiveobject() {
         var obj = canvas.getActiveObject();
-        var typecheck = obj.get('type');
+        var typecheck = obj.get("type");
         var activeObject = canvas.getActiveObjects();
-        console.log(activeObject)
-        console.log(typecheck)
-        if (typecheck === 'image') {
+        console.log(activeObject);
+        console.log(typecheck);
+        if (typecheck === "image") {
             return null;
-        }
-        else {
+        } else {
             if (activeObject) {
                 activeObject.forEach(function (object) {
                     canvas.remove(object);
@@ -306,7 +290,4 @@ if (canvasEl) {
         }
         canvas.renderAll();
     }
-
-    canvas.calcOffset();
-
 }
