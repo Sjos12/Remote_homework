@@ -18,4 +18,6 @@ mix.js("resources/js/app.js", "public/js")
     .vue()
     .sass("resources/sass/app.scss", "public/css")
     .sass("resources/sass/main.scss", "public/css")
-    .postCss("resources/css/app.css", "public/css", [require("tailwindcss")]);
+    .postCss("resources/css/tailwind.css", "public/css/tailwind.css", [
+        require("tailwindcss"),
+    ]);
