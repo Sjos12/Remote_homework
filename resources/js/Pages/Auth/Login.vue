@@ -10,9 +10,7 @@
         >
             <div class="card__content">
                 <h1 class="title2 pb-4">Login</h1>
-                <form method="POST" action="{{ route('login') }}">
-                    @csrf
-
+                <form>
                     <div class="form-group row d-flex justify-content-center">
                         <div class="col-lg-7 col-md-10 col-sm-12 col-xs-12">
                             <label
@@ -21,26 +19,19 @@
                                 >Email address</label
                             >
                             <input
-                                id="email"
                                 type="email"
-                                class="
-                                    form-control
-                                    @error('email')
-                                    is-invalid
-                                    @enderror
-                                    input--shadow
-                                "
-                                name="email"
+                                class="form-control input--shadow"
+                                v-model="loginForm.email"
                                 required
                                 autocomplete="email"
                                 autofocus
                             />
-
+                            <!-- 
                             @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>Error</strong>
                             </span>
-                            @enderror
+                            @enderror -->
                         </div>
                     </div>
 
@@ -52,25 +43,18 @@
                                 >Password</label
                             >
                             <input
-                                id="password"
                                 type="password"
-                                class="
-                                    form-control
-                                    @error('password')
-                                    is-invalid
-                                    @enderror
-                                    input--shadow
-                                "
-                                name="password"
+                                class="form-control input--shadow"
                                 required
+                                v-model="loginForm.password"
                                 autocomplete="current-password"
                             />
-
+                            <!-- 
                             @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>Error</strong>
                             </span>
-                            @enderror
+                            @enderror -->
                         </div>
                     </div>
 
@@ -87,8 +71,7 @@
                                 <input
                                     class="form-check-input"
                                     type="checkbox"
-                                    name="remember"
-                                    id="remember"
+                                    v-model="loginForm.remember_me"
                                 />
 
                                 <label class="form-check-label" for="remember">
@@ -101,7 +84,8 @@
                     <div class="form-group row mb-0 pt-3">
                         <div class="mx-auto">
                             <button
-                                type="submit"
+                                type="button"
+                                @click="submit"
                                 class="btn btn-primary btn-lg pl-5 pr-5"
                             >
                                 Login
@@ -134,7 +118,25 @@
 </template>
 
 <script>
+import { useForm } from "@inertiajs/inertia-vue3";
 export default {
-    
-}
+    data() {
+        return {
+            loginForm: useForm({
+                email: null,
+                password: null,
+                remember_me: false,
+            }),
+        };
+    },
+    methods: {
+        submit() {
+            console.log("click");
+            let url = route("login.post");
+            this.loginForm.post(url, {
+                // Options...
+            });
+        },
+    },
+};
 </script>

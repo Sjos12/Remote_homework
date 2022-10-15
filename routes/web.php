@@ -44,9 +44,9 @@ Route::get('/answers/create', function () {
 Route::middleware(['guest'])->group(function () {
      // Authentication Routes...
      Route::get('login', [LoginController::class, 'showLoginForm'])
-          ->name('login');
+          ->name('login')->name('login.detail');
 
-     Route::post('login', [LoginController::class, 'login']);
+     Route::post('login', [LoginController::class, 'login'])->name('login.post');
 
      // Registration Routes...
      Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register.detail');
