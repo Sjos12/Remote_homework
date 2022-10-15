@@ -11,6 +11,6 @@ final class HomeController
 {
     public function __invoke()
     {
-        return Inertia::render('Layouts/Layout');
+        return Inertia::render('Home');
     }
 }
