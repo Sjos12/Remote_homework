@@ -32,15 +32,17 @@ require("./bootstrap");
 
 import { createInertiaApp } from "@inertiajs/inertia-vue3";
 import { InertiaProgress } from "@inertiajs/progress";
-import { createApp, h } from 'vue'
-
+import { createApp, h } from "vue";
+import { app } from "vue";
+// Create Inertia/Vue3 app.
 createInertiaApp({
-    resolve: name => require(`./Pages/${name}`),
+    resolve: (name) => require(`./Pages/${name}`),
     setup({ el, App, props, plugin }) {
-        createApp({ render: () => h(App, props) })
-            .use(plugin)
-            .mount(el);
-    }
+        let app = createApp({ render: () => h(App, props) });
+        app.config.globalProperties.$route = route;
+        app.use(plugin).mount(el);
+    },
 });
 
+// Initialize progressbar plugin
 InertiaProgress.init();

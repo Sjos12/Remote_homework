@@ -21,6 +21,7 @@
     {{-- @todo: should be loaded last in body, but that breaks `onscroll` attribute sometimes --}}
     {{-- <script type="text/javascript" src="{{ mix('js/index.js') }}"></script> --}}
 
+    @routes
     <script src="{{ mix('/js/app.js') }}" defer></script>
     @inertiaHead
 </head>
