@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Http\Controllers;
@@ -16,6 +17,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rule;
+use Inertia\Inertia;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
@@ -23,17 +25,19 @@ final class QuestionController
 {
     use ValidatesRequests;
 
-    public function create(): Renderable
+    public function create()
     {
         // Return all categories to
         $categories = Category::all();
-        
-        return view('questions.create')->with('categories', $categories);
+
+        return Inertia::render('Pages/CreateQuestion', [
+            'categories' => $categories
+        ]);
     }
 
     public function store(Request $request): Response
     {
-        
+
         $validated_data = $this->validate(
             $request,
             [
@@ -61,18 +65,18 @@ final class QuestionController
             $uploaded_file = $validated_data['illustration'];
 
             $illustration->addAllMediaFromRequest()
-                        ->each(function ($fileAdder) {
-                            $fileAdder->withResponsiveImages();
-                            $fileAdder->toMediaCollection(Illustration::COLLECTION_IMAGES);
-                        });
+                ->each(function ($fileAdder) {
+                    $fileAdder->withResponsiveImages();
+                    $fileAdder->toMediaCollection(Illustration::COLLECTION_IMAGES);
+                });
 
             $illustration->save();
 
-            foreach($validated_data['categories'] as $category) {
+            foreach ($validated_data['categories'] as $category) {
                 $question->category()->attach($category);
             }
             // Creates DB record in the category_question table
-            
+
 
             DB::commit();
         } catch (Throwable $exception) {
@@ -88,12 +92,12 @@ final class QuestionController
             );
 
             return redirect()->back()
-                             ->withErrors([
-                                 'general' => [
-                                     __('Could not create new Question'),
-                                 ]
-                             ])
-                             ->withInput();
+                ->withErrors([
+                    'general' => [
+                        __('Could not create new Question'),
+                    ]
+                ])
+                ->withInput();
         }
 
         return redirect()->to(route('questions.list'));
@@ -141,8 +145,8 @@ final class QuestionController
                 /** @var UploadedFile $uploaded_file */
                 $uploaded_file = $request->file('illustration');
                 $illustration->addMedia($uploaded_file)
-                             ->withResponsiveImages()
-                             ->toMediaCollection(Illustration::COLLECTION_IMAGES);
+                    ->withResponsiveImages()
+                    ->toMediaCollection(Illustration::COLLECTION_IMAGES);
 
                 $illustration->save();
             }
@@ -161,12 +165,12 @@ final class QuestionController
             );
 
             return redirect()->back()
-                             ->withErrors([
-                                 'general' => [
-                                     __('Could not update Question'),
-                                 ]
-                             ])
-                             ->withInput();
+                ->withErrors([
+                    'general' => [
+                        __('Could not update Question'),
+                    ]
+                ])
+                ->withInput();
         }
 
         return redirect()->to(route('questions.edit', ['question' => $question->uuid]));
@@ -176,12 +180,12 @@ final class QuestionController
     {
 
         $questions = Question::where('user_id', Auth::id())
-                             ->orderBy('updated_at', 'desc')
-                             ->get()
-                             ->map(
-                                 fn(Question $question) => new QuestionViewModel($question)
-                             );
-        
+            ->orderBy('updated_at', 'desc')
+            ->get()
+            ->map(
+                fn (Question $question) => new QuestionViewModel($question)
+            );
+
         return view('questions.list', [
             'questions' => $questions,
         ]);
@@ -190,8 +194,7 @@ final class QuestionController
     public function detail(Question $question): Renderable
     {
         $vm = new QuestionViewModel($question);
-        
+
         return view('questions.detail', new QuestionViewModel($question));
     }
-
 }

@@ -1,6 +1,6 @@
-@extends('layouts.app')
 
-@section('content')
+
+
  <div class="container card vh-150">
         @if ($errors->any())
             <div class="row">
@@ -26,7 +26,7 @@
             <span class="circle"><h1>2</h1></span>
         </div>
         
-        <form action="{{ route('questions.store') }}"
+        <form action="{{ route('questions.create') }}"
             method="post"
             enctype="multipart/form-data"
             id="myDropzone"
@@ -109,4 +109,4 @@
         
     </div>
 </div>
-@endsection
+

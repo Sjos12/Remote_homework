@@ -113,7 +113,7 @@ Route::middleware([
      ->group(static function () {
           //dashboard route
           Route::get('/dashboard', DashboardController::class)
-               ->name('pages.dashboard');
+               ->name('dashboard');
           //
           // Question routes
           //
@@ -122,9 +122,10 @@ Route::middleware([
                '/user/questions/new',
                [QuestionController::class, 'create']
           )
-               ->name('questions.create');
+               ->name('questions.create.index');
+
           Route::post('/user/questions', [QuestionController::class, 'store'])
-               ->name('questions.store');
+               ->name('questions.create');
           // Edit questions
           Route::get('/user/questions/{question}/edit', [QuestionController::class, 'edit'])
                ->name('questions.edit');

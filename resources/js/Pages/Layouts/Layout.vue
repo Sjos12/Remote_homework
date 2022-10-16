@@ -16,7 +16,7 @@
                 Logout
             </button>
         </nav>
-        <div class="container mx-auto">
+        <div class="container my-10 mx-auto">
             <slot></slot>
         </div>
     </div>

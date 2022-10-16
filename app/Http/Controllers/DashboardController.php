@@ -1,14 +1,16 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
+use Inertia\Inertia;
 
 final class DashboardController
 {
-    public function __invoke(): Renderable
+    public function __invoke()
     {
-        return view('pages.dashboard');
+        return Inertia::render('Pages/Dashboard');
     }
 }

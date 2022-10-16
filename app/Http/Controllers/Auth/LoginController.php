@@ -25,7 +25,7 @@ final class LoginController
 
     public function redirectTo(): string
     {
-        return route('home');
+        return route('dashboard');
     }
     /**
      * Show the application registration form.
