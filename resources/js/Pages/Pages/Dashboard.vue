@@ -3,6 +3,9 @@
     <Link class="btn btn-primary" :href="$route('questions.create.index')"
         >Create question</Link
     >
+    <Link class="btn btn-primary" :href="$route('group.create.index')"
+        >Create group</Link
+    >
 </template>
 <script>
 import LayoutVue from "../Layouts/Layout.vue";

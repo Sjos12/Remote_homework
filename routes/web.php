@@ -13,6 +13,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FeedController;
+use App\Http\Controllers\GroupController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\MarketplaceController;
@@ -44,7 +45,7 @@ Route::get('/answers/create', function () {
 Route::middleware(['guest'])->group(function () {
      // Authentication Routes...
      Route::get('login', [LoginController::class, 'showLoginForm'])
-          ->name('login')->name('login.detail');
+          ->name('login.detail');
 
      Route::post('login', [LoginController::class, 'login'])->name('login.post');
 
@@ -156,6 +157,10 @@ Route::middleware([
           Route::get('marketplace', MarketplaceController::class)
                ->name('marketplace.home');
 
+          // Group Routes
+          // 
+          Route::get('group/new', [GroupController::class, 'new'])->name('group.create.index');
+          Route::post('group/create', [GroupController::class, 'create'])->name('group.create');
           //Profile routes.
           //
           // View profile of specific user. 
