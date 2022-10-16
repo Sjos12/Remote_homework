@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGroupsTable extends Migration
+class CreateInvitesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateGroupsTable extends Migration
      */
     public function up()
     {
-        Schema::create('groups', function (Blueprint $table) {
+        Schema::create('invites', function (Blueprint $table) {
             $table->id();
-            $table->efficientUuid('uuid')->index();
-            $table->string('name');
-            $table->string('description')->nullable();
-            $table->string('subject'); // TODO: reference to tag 
+            $table->string('invite_code');
+            $table->foreignId('group_id');
+            $table->dateTime('expires_at');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateGroupsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('groups');
+        Schema::dropIfExists('invites');
     }
 }

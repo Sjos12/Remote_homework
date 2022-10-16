@@ -159,8 +159,9 @@ Route::middleware([
 
           // Group Routes
           // 
-          Route::get('group/new', [GroupController::class, 'new'])->name('group.create.index');
-          Route::post('group/create', [GroupController::class, 'create'])->name('group.create');
+          Route::get('groups/new', [GroupController::class, 'new'])->name('group.create.index');
+          Route::post('groups/create', [GroupController::class, 'create'])->name('group.create');
+          Route::get('groups/{group}', [GroupController::class, 'group_detail'])->name('group.detail');
           //Profile routes.
           //
           // View profile of specific user. 
@@ -177,6 +178,14 @@ Route::middleware([
           //`Categories routes.
           Route::post('categories/create', [CategoryController::class, 'create'])
                ->name('categories.create');
+
+          // Invite routes
+          // 
+
+          Route::get('groups/{group}/invite', [GroupController::class, 'invite_generate'])->name('invite.generate');
+
+          // TEMP
+          Route::get('invite/join', [GroupController::class, 'join'])->name('group.join.index');
      });
 
 // Application routes
