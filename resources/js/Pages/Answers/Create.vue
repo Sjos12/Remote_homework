@@ -8,6 +8,7 @@
                 @edit-image="editImage"
                 v-for="n in 10"
                 :key="n"
+                :imageID="n"
             ></ImageThumbnail>
             <button
                 @click="addBlankPage"
@@ -35,6 +36,7 @@ export default {
     },
     methods: {
         addBlankPage() {},
+        editImage() {},
     },
 };
 </script>

@@ -16,15 +16,17 @@
                 top: top + 'px',
                 bottom: bottom + 'px',
             }"
+            @closemodal="isBeingEdited = false"
             :class="isBeingEdited ? 'active' : 'closed'"
-            class="duration-300 transition-all ease-in-out"
-            :tile="tile"
+            class="duration-100 transition-all ease-in-out"
+            :id="imageID"
         ></AnnotationModal>
     </div>
 </template>
 <script>
 import AnnotationModal from "../components/AnnotationModal.vue";
 export default {
+    props: ["imageID"],
     components: {
         AnnotationModal,
     },
@@ -43,7 +45,6 @@ export default {
         this.right = this.$refs.tile.getBoundingClientRect().right;
         this.top = this.$refs.tile.getBoundingClientRect().top;
         this.bottom = this.$refs.tile.getBoundingClientRect().bottom;
-        console.log(this.left, this.right);
     },
     methods: {
         editImage() {

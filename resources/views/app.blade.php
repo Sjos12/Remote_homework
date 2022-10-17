@@ -22,11 +22,12 @@
     {{-- <script type="text/javascript" src="{{ mix('js/index.js') }}"></script> --}}
 
     @routes
+
     <script src="{{ mix('/js/app.js') }}" defer></script>
     @inertiaHead
 </head>
 <body onscroll="scrollFunction()">
-   
+       <script src="/fabric.js"></script>
     @inertia
 
 </body>
