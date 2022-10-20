@@ -120,12 +120,12 @@ Route::middleware([
           //
           // Create questions
           Route::get(
-               '/user/questions/new',
+               '/groups/{group}/questions/new',
                [QuestionController::class, 'create']
           )
                ->name('questions.create.index');
 
-          Route::post('/user/questions', [QuestionController::class, 'store'])
+          Route::post('/groups/{group}/questions/new', [QuestionController::class, 'store'])
                ->name('questions.create');
           // Edit questions
           Route::get('/user/questions/{question}/edit', [QuestionController::class, 'edit'])
@@ -162,6 +162,8 @@ Route::middleware([
           Route::get('groups/new', [GroupController::class, 'new'])->name('group.create.index');
           Route::post('groups/create', [GroupController::class, 'create'])->name('group.create');
           Route::get('groups/{group}', [GroupController::class, 'group_detail'])->name('group.detail');
+
+
           //Profile routes.
           //
           // View profile of specific user. 

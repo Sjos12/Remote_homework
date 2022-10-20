@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App;
@@ -30,7 +31,7 @@ final class Question extends Model
      */
     protected $guarded = [];
 
-    public function category() 
+    public function category()
     {
         // Define eloquent hasMany relationship, for multiple categories, with category-questions table.
         return $this->belongsToMany(Category::class);
@@ -44,12 +45,17 @@ final class Question extends Model
     public function illustrations(): HasMany
     {
         return $this->hasMany(Illustration::class)
-                    ->orderBy('created_at');
+            ->orderBy('created_at');
     }
 
     public function answers(): HasMany
     {
         return $this->hasMany(Answer::class)
-                    ->orderBy('created_at', 'desc');
+            ->orderBy('created_at', 'desc');
+    }
+
+    public function group()
+    {
+        return $this->belongsTo(Group::class);
     }
 }

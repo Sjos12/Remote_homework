@@ -42,7 +42,7 @@ class GroupController extends Controller
 
     public function group_detail(Request $request, Group $group)
     {
-        $group->load(['members', 'invite']);
+        $group->load(['members', 'invite', 'questions']);
         return Inertia::render('Pages/GroupDetail', ['group' => $group]);
     }
 

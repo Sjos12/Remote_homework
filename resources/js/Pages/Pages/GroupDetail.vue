@@ -8,6 +8,11 @@
         Invite code
         {{ group.invite.invite_code }}
     </h1>
+    <Link
+        class="btn btn-primary"
+        :href="$route('questions.create.index', this.group.id)"
+        >Create question</Link
+    >
     <button
         v-if="isAdmin && inviteLinkNotGeneratedYet()"
         @click="generateInvite"
@@ -15,12 +20,26 @@
     >
         Invite user
     </button>
+
+    <div v-for="question of getQuestions" :key="question.id">
+        {{ question.title }}
+    </div>
 </template>
 <script>
 import LayoutVue from "../Layouts/Layout.vue";
+import { Link } from "@inertiajs/inertia-vue3";
 export default {
     layout: LayoutVue,
     props: ["group"],
+    components: {
+        Link,
+    },
+    computed: {
+        getQuestions() {
+            if (this.group.questions) return this.group.questions;
+            return [];
+        },
+    },
     methods: {
         isAdmin() {
             this.group.members.forEach((member) => {

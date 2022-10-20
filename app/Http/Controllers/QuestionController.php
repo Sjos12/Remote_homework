@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Group;
 use App\Illustration;
 use App\Question;
 use App\User;
@@ -21,21 +22,25 @@ use Inertia\Inertia;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
-final class QuestionController
+final class  QuestionController
 {
     use ValidatesRequests;
 
-    public function create()
+    public function create(Request $request, Group $group)
     {
+        // Return if user isn't member of pased group.
+        if (!$group->members->contains(Auth::user()->id)) return;
+
         // Return all categories to
         $categories = Category::all();
 
         return Inertia::render('Pages/CreateQuestion', [
-            'categories' => $categories
+            'categories' => $categories,
+            'group' => $group,
         ]);
     }
 
-    public function store(Request $request): Response
+    public function store(Request $request, Group $group): Response
     {
 
         $validated_data = $this->validate(
@@ -43,15 +48,17 @@ final class QuestionController
             [
                 'title'        => 'required|unique:questions,title', // @todo: should not be forbidden, but result in a suggestion to look at existing question, if permissions allow that
                 'content'      => 'nullable',
-                'illustration.*' => 'required|image',
+                'illustrations.*' => 'required|image',
                 'categories'   => 'nullable|exists:categories,id',
             ]
         );
+
         try {
             DB::beginTransaction();
 
             $question = Question::create([
                 'user_id' => $request->user()->id,
+                'group_id' => $group->id,
                 'title'   => $validated_data['title'],
                 'content' => $validated_data['content'] ?? null,
             ]);
@@ -62,7 +69,7 @@ final class QuestionController
             $illustration->question_id = $question->id;
 
             /** @var UploadedFile $uploaded_file */
-            $uploaded_file = $validated_data['illustration'];
+            $uploaded_file = $validated_data['illustrations'];
 
             $illustration->addAllMediaFromRequest()
                 ->each(function ($fileAdder) {
@@ -72,9 +79,9 @@ final class QuestionController
 
             $illustration->save();
 
-            foreach ($validated_data['categories'] as $category) {
-                $question->category()->attach($category);
-            }
+            // foreach ($validated_data['categories'] as $category) {
+            //     $question->category()->attach($category);
+            // }
             // Creates DB record in the category_question table
 
 
@@ -90,17 +97,10 @@ final class QuestionController
                     'content' => $validated_data['content'] ?? null,
                 ]
             );
-
-            return redirect()->back()
-                ->withErrors([
-                    'general' => [
-                        __('Could not create new Question'),
-                    ]
-                ])
-                ->withInput();
+            return back();
         }
 
-        return redirect()->to(route('questions.list'));
+        return redirect()->route('dashboard');
     }
 
     public function edit(Question $question): Renderable

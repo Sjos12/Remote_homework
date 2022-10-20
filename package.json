@@ -31,6 +31,7 @@
         "@inertiajs/inertia-vue3": "^0.6.0",
         "@inertiajs/progress": "^0.2.7",
         "@vue/compiler-sfc": "^3.2.40",
-        "font-awesome": "^4.7.0"
+        "font-awesome": "^4.7.0",
+        "vue3-dropzone": "^2.0.1"
     }
 }
