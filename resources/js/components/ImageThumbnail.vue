@@ -8,7 +8,7 @@
             alt=""
             srcset=""
         />
-
+        
         <AnnotationModal
             :style="{
                 left: left + 'px',
