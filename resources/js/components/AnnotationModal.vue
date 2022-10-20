@@ -107,6 +107,7 @@ export default {
                 fill: "blue",
                 originX: "center",
                 originY: "center",
+                padding: 10,
             });
             let comment = new fabric.Textbox(this.commentText, {
                 visible: false,
@@ -116,6 +117,8 @@ export default {
                 fontFamily: "Roboto",
                 fontSize: 12,
                 padding: 20,
+
+                absolutePositioned: true,
                 left: this.getCommentPosition(handle),
             });
             console.log(comment.left);
@@ -123,13 +126,19 @@ export default {
             let group = new fabric.Group([handle, comment], {
                 left: this.mouseX,
                 top: this.mouseY,
+                subTargetCheck: true,
+                hasControls: false,
+                hasBorders: false,
+                selection: false,
             });
-            group.on("mouseover", (option) => {
-                this.canvas.on("mouse:move", this.onMouseMove(group, option));
+            group.item(0).on("mousedown", (option) => {
+                console.log("mousedown");
+                this.onMouseMove(group, option);
+                // this.canvas.on("mouse:move");
             });
-            group.on("mouseout", (option) => {
-                console.log("mouseout");
-                this.canvas.off("mouse:move", this.onMouseMove(group, option));
+            group.item(0).on("mouseup", (option) => {
+                console.log("mouseup");
+                // this.canvas.off("mouse:move", this.onMouseMove(group, option));
                 this.onMouseMove(group);
             });
 
