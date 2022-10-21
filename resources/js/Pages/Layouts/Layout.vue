@@ -1,26 +1,39 @@
 <template>
-    <div>
-        <nav class="shadow-lg py-2 bg-darkmodecolor-300 flex">
-            <div class="container mx-auto flex justify-between w-full">
-                <ul class="flex">
-                    <li></li>
-                </ul>
-                <Link
-                    href="/login"
-                    method="get"
-                    v-if="!user"
-                    class="btn btn-primary"
-                >
-                    Log In
-                </Link>
-                <button v-if="user" @click="logout" class="btn btn-primary">
-                    Logout
-                </button>
-            </div>
-        </nav>
-        <div class="container my-10 mx-auto">
+    <div class="grid h-screen">
+        <div class="h-full w-full flex flex-col gap-y-3 my-10 mx-auto">
             <slot></slot>
         </div>
+        <nav class="mt-auto h-16 shadow-lg py-2 bg-darkmodecolor-500 flex">
+            <div class="container mx-auto flex justify-between w-full">
+                <ul class="flex w-full justify-between gap-5">
+                    <li>
+                        <Link>
+                            <i class="fa fa-users fa-lg"></i>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link :href="$route('dashboard')">
+                            <i class="fa fa-home fa-lg"></i>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link :href="$route('questions.create.index')">
+                            <i class="fa fa-plus fa-lg"></i>
+                        </Link>
+                    </li>
+                    <li>
+                        <button v-if="user" @click="logout">
+                            <i class="fa fa-sign-out fa-lg"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <Link href="/login" method="get" v-if="!user">
+                            <i class="fa fa-sign-in fa-lg"></i>
+                        </Link>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </div>
 </template>
 <script>

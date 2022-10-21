@@ -120,7 +120,7 @@ Route::middleware([
           //
           // Create questions
           Route::get(
-               '/groups/{group}/questions/new',
+               '/questions/new',
                [QuestionController::class, 'create']
           )
                ->name('questions.create.index');

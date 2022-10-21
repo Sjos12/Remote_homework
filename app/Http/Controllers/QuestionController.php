@@ -26,17 +26,16 @@ final class  QuestionController
 {
     use ValidatesRequests;
 
-    public function create(Request $request, Group $group)
+    public function create(Request $request)
     {
         // Return if user isn't member of pased group.
-        if (!$group->members->contains(Auth::user()->id)) return;
+        //if (!$group->members->contains(Auth::user()->id)) return;
 
         // Return all categories to
         $categories = Category::all();
 
         return Inertia::render('Pages/CreateQuestion', [
             'categories' => $categories,
-            'group' => $group,
         ]);
     }
 
