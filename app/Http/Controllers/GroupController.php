@@ -61,4 +61,7 @@ class GroupController extends Controller
         // Send invite object back to frontend for sharing.
         return redirect()->route('group.detail', $group);
     }
+    public function join()
+    {
+    }
 }

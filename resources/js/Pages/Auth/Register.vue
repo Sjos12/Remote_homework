@@ -1,11 +1,11 @@
 <template>
-    <div class="container mx-auto d-flex justify-center items-center h-screen">
+    <div class="container mx-auto flex justify-center items-center h-screen">
         <div
             class="
                 max-w-32
                 card card--login card--shadow card-body
-                d-flex
-                justify-content-center
+                flex
+                justify-center
             "
         >
             <div class="card__content">
@@ -21,7 +21,7 @@
                 </span>
 
                 <form>
-                    <div class="form-group row d-flex justify-content-center">
+                    <div class="form-group row flex justify-center">
                         <div class="col-lg-7 col-md-10 col-sm-12 col-xs-12">
                             <label
                                 for="email"
@@ -45,7 +45,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group row d-flex justify-content-center">
+                    <div class="form-group row flex justify-center">
                         <div class="col-lg-7 col-md-10 col-sm-12 col-xs-12">
                             <label
                                 for="email"
@@ -69,7 +69,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group row d-flex justify-content-center">
+                    <div class="form-group row flex justify-center">
                         <div class="col-lg-7 col-md-10 col-sm-12 col-xs-12">
                             <label
                                 for="password"
@@ -91,7 +91,7 @@
                             @enderror -->
                         </div>
                     </div>
-                    <div class="form-group row d-flex justify-content-center">
+                    <div class="form-group row flex justify-center">
                         <div class="col-lg-7 col-md-10 col-sm-12 col-xs-12">
                             <label
                                 for="password"
@@ -117,8 +117,8 @@
                     <div
                         class="
                             form-group
-                            d-flex
-                            justify-content-center
+                            flex
+                            justify-center
                             form-group--padding
                         "
                     >
@@ -154,8 +154,8 @@
                         class="
                             password-forget-container
                             password-forget-container--padding
-                            d-flex
-                            justify-content-center
+                            flex
+                            justify-center
                             col-12
                         "
                     >

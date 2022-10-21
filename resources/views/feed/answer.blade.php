@@ -200,7 +200,7 @@
     >
             <!-- All the objects and images get spawned here.-->
     </canvas>
-    <div class="w-100 pt-5 d-flex justify-content-center">
+    <div class="w-100 pt-5 flex justify-center">
         <button type="submit" class="btn btn-primary btn-lg">{{ __('Save Answer') }}</button>
     </div>
 

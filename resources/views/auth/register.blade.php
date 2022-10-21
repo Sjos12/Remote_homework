@@ -2,15 +2,15 @@
 
 @section('content')
 <div class="container vh-100">
-    <div class="row justify-content-center">
+    <div class="row justify-center">
         <div class="col-md-7 col-sm-12 col-xs-12 ">
-            <div class="card card--login card--shadow card-body d-flex justify-content-center">
+            <div class="card card--login card--shadow card-body flex justify-center">
                 <div class="card__content">
                     <h1 class="title2 pb-4">{{ __('Register') }}</h1>
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
-                        <div class="form-group row d-flex justify-content-center">
+                        <div class="form-group row flex justify-center">
                             <div class="col-lg-7 col-md-10 col-sm-12 col-xs-12">
                                 <label for="name" class="col-md-12 col-form-label text-left pl-0">{{ __('Username') }}</label>
                            
@@ -24,7 +24,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row d-flex justify-content-center">
+                        <div class="form-group row flex justify-center">
                             <div class="col-lg-7 col-md-10 col-sm-12 col-xs-12">
                                 <label for="email" class="col-md-12 col-form-label text-left pl-0">{{ __('E-Mail Address') }}</label>
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror input--shadow " name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -37,7 +37,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row d-flex justify-content-center">
+                        <div class="form-group row flex justify-center">
                             
 
                             <div class="col-lg-7 col-md-10 col-sm-12 col-xs-12">
@@ -52,7 +52,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row d-flex justify-content-center">
+                        <div class="form-group row flex justify-center">
                             <div class="col-lg-7 col-md-10 col-sm-12 col-xs-12">
                                 <label for="password-confirm" class="col-md-12 col-form-label text-left pl-0">{{ __('Confirm Password') }}</label>
                                 <input id="password-confirm" type="password" class="form-control input--shadow" name="password_confirmation" required autocomplete="new-password">

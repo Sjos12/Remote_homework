@@ -4,14 +4,14 @@
     <div class="container">
         <div class="row">
             <div class="card card--list">
-                <div class="container px-5 d-flex justify-content-center flex-column">
+                <div class="container px-5 flex justify-center flex-column">
                     <h1 class="mx-auto">Your Account</h1>
                     <form method="POST" action="{{ route('account.edit') }}" enctype='multipart/form-data'>
                         @csrf
                         @method('PUT')
                         <!-- Equivalent to... -->
                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                        <div class="d-flex justify-content-between">
+                        <div class="flex justify-content-between">
                             <div class="w-100 pr-5">
                                 @if ($errors->any())
                                     <div class="alert alert-danger">

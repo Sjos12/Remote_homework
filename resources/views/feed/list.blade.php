@@ -21,7 +21,7 @@
 
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 d-flex justify-content-center my-4">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 flex justify-center my-4">
                             <div class="profilepicture-container shadow ml-4">
                                 <a href=""><img src="{{ \Illuminate\Support\Facades\Auth::user()->getFirstMediaUrl('profiles') }}" class="h-100" alt=""></a>                
                             </div>
@@ -66,7 +66,7 @@
 
                             </div>
 
-                            <div class="col-3 d-flex justify-content-center mt-auto mb-auto">
+                            <div class="col-3 flex justify-center mt-auto mb-auto">
                                 <a class="desktopinfo btn btn-lg btn-primary float-right pl-5 pr-5"
                                 href="{{ route('feed.detail', ['question' => $view_model->question()->uuid]) }}"
                                 >

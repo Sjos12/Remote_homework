@@ -21,7 +21,7 @@
             </div>
         @endif
 
-        <div class="d-flex justify-content-center mb-4">
+        <div class="flex justify-center mb-4">
             <span class="circle"><h1>1</h1></span>
             <span class="circle"><h1>2</h1></span>
         </div>
@@ -36,7 +36,7 @@
                     <div class="row">
                             <div class="form-group col-12 col-md-8 offset-md-2">
                                 <h4 class="text-center">Choose your question type</h4>
-                                <div class="d-flex justify-content-center">
+                                <div class="flex justify-center">
                                     <h1 type="button" class="title6 font-white typebtn activebtn" onclick="questionType(1)">Public</h1> 
                                     <h1 type="button" class="title6 font-white typebtn" onclick="questionType(2)">Private</h1>
                                 </div>
@@ -45,7 +45,7 @@
                                     
                                     <ul>
                                         @foreach ($categories as $category)
-                                            <li class="d-flex my-4"><input type="checkbox" name="categories[]" value="{{$category->id}}"><p class="m-0 ml-2 ">{{ $category->category }}</p></li>
+                                            <li class="flex my-4"><input type="checkbox" name="categories[]" value="{{$category->id}}"><p class="m-0 ml-2 ">{{ $category->category }}</p></li>
                                         @endforeach
                                     </ul>
                                     
