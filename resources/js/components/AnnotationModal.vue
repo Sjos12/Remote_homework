@@ -4,36 +4,56 @@
         class="bg-modal fixed grid justify-center items-center"
     >
         <div :id="'canvas-wrapper' + canvasID" class="relative">
-            <div
+            <Commentcard
                 v-if="isCommenting"
-                :style="{ left: this.mouseX + 'px', top: this.mouseY + 'px' }"
-                class="card p-2 w-48 h-32 absolute z-50"
-            >
-                <input v-model="commentText" type="text" class="form-control" />
-                <button @click="drawComment">Done</button>
-            </div>
+                :mouseX="mouseX"
+                :mouseY="mouseY"
+                @drawComment="drawComment"
+            ></Commentcard>
             <canvas :id="canvasID" class="canvas"></canvas>
         </div>
 
-        <div class="flex w-full bg-darkmodecolor-300">
+        <div
+            class="
+                flex
+                p-2
+                justify-between
+                rounded-md
+                w-full
+                bg-darkmodecolor-300
+            "
+        >
             <button>Text</button>
-            <button>Free draw</button>
+            <button
+                :class="markerSelected && 'active'"
+                @click="activeTool = 'comments'"
+            >
+                Comment
+            </button>
+            <button
+                :class="markerSelected && 'active'"
+                @click="activeTool = 'marker'"
+            >
+                Marker
+            </button>
         </div>
     </div>
 </template>
 <script>
 import { CanvasTools } from "../tools";
-
+import Commentcard from "./Commentcard.vue";
 export default {
+    components: {
+        Commentcard,
+    },
     emits: ["closemodal"],
     props: ["id"],
     data() {
         return {
             canvas: null,
             tools: new CanvasTools(),
-            activeObject: "comments",
+            activeTool: "comments",
             isCommenting: false,
-            commentText: "",
             mouseX: 0,
             mouseY: 0,
         };
@@ -53,13 +73,12 @@ export default {
 
         this.canvas.on({
             "mouse:down": (options) => {
-                // 1 == left; 2 == middle; 3 == right
-                if (options.button !== 3) return;
                 let coords = this.currentMouseCoords(options);
                 this.mouseX = coords.x;
                 this.mouseY = coords.y;
-
-                this.chooseAction(options);
+                // 1 == left; 2 == middle; 3 == right
+                if (options.button == 3) this.onRightClick(options);
+                else if (options.button == 1) this.onLeftClick(options);
             },
             "touch:longpress": (options) => {
                 console.log("longpress", options);
@@ -70,18 +89,39 @@ export default {
         canvasID() {
             return "canvas" + this.id;
         },
+        markerSelected() {
+            if ((this.activeTool = "marker")) return true;
+            return false;
+        },
     },
     methods: {
-        chooseAction(event) {
-            switch (this.activeObject) {
-                case "comments":
-                    this.openCommentDialog(event);
-                    break;
+        onLeftClick(options) {
+            console.log("left click", this.activeTool);
+            switch (this.activeTool) {
                 case "text":
                     break;
                 case "drawing":
                     break;
+                case "marker":
+                    this.selectMarker(event);
+                    break;
             }
+        },
+        onRightClick(options) {
+            console.log("right click");
+            if (this.canvas.isDrawingMode && this.activeTool !== "comment")
+                return;
+
+            this.openCommentDialog(options);
+            switch (this.activeTool) {
+                case "comments":
+                    break;
+            }
+        },
+
+        selectMarker(event) {
+            this.canvas.set("isDrawingMode", true);
+            this.canvas.freeDrawingBrush.width = 5;
         },
         openCommentDialog() {
             this.isCommenting = true;
@@ -100,7 +140,7 @@ export default {
             group.dirty = true;
             this.canvas.requestRenderAll();
         },
-        drawComment(event) {
+        drawComment(text) {
             this.isCommenting = false;
             let handle = new fabric.Circle({
                 radius: 10,
@@ -109,7 +149,7 @@ export default {
                 originY: "center",
                 padding: 10,
             });
-            let comment = new fabric.Textbox(this.commentText, {
+            let comment = new fabric.Textbox(text, {
                 visible: false,
                 width: 100,
                 backgroundColor: "#252525",

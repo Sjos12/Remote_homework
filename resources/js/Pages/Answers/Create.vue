@@ -3,7 +3,7 @@
         <h1 class="text-6xl">Answer the question</h1>
 
         <input type="textarea" />
-        <div class="mx-auto grid grid-cols-4 gap-4 gap-y-4">
+        <div class="mx-auto grid grid-cols-2 gap-4 gap-y-4">
             <ImageThumbnail
                 @edit-image="editImage"
                 v-for="n in 10"
