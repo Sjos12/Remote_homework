@@ -125,7 +125,7 @@ Route::middleware([
           )
                ->name('questions.create.index');
 
-          Route::post('/groups/{group}/questions/new', [QuestionController::class, 'store'])
+          Route::post('/questions/new', [QuestionController::class, 'store'])
                ->name('questions.create');
           // Edit questions
           Route::get('/user/questions/{question}/edit', [QuestionController::class, 'edit'])

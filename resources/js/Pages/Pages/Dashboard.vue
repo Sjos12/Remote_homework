@@ -37,18 +37,24 @@
     <div class="grid gap-y-5">
         <div v-for="question of questions" :key="question.id" class="card">
             <h1 class="question__title">{{ question.title }}</h1>
+            <CarouselThumbnail :illustrations="question.illustrations" />
         </div>
     </div>
 </template>
 <script>
 import LayoutVue from "../Layouts/Layout.vue";
 import { Link } from "@inertiajs/inertia-vue3";
+import CarouselThumbnail from "../../components/CarouselThumbnail.vue";
 export default {
     props: ["groups", "user", "questions"],
     components: {
         Link,
+        CarouselThumbnail,
     },
     layout: LayoutVue,
+    setup(props) {
+        console.log(props);
+    },
     data() {
         return {};
     },

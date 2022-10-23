@@ -34,13 +34,15 @@ import { createInertiaApp } from "@inertiajs/inertia-vue3";
 import { InertiaProgress } from "@inertiajs/progress";
 import { createApp, h } from "vue";
 import { app } from "vue";
+import Vue3TouchEvents from "vue3-touch-events";
+
 // Create Inertia/Vue3 app.
 createInertiaApp({
     resolve: (name) => require(`./Pages/${name}`),
     setup({ el, App, props, plugin }) {
         let app = createApp({ render: () => h(App, props) });
         app.config.globalProperties.$route = route;
-        app.use(plugin).mount(el);
+        app.use(plugin).use(Vue3TouchEvents).mount(el);
     },
 });
 

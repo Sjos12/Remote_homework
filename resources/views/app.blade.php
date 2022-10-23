@@ -26,7 +26,7 @@
     <script src="{{ mix('/js/app.js') }}" defer></script>
     @inertiaHead
 </head>
-<body onscroll="scrollFunction()">
+<body>
        <script src="/fabric.js"></script>
     @inertia
 

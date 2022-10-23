@@ -34,6 +34,7 @@
                     <div>
                         <input
                             type="file"
+                            multiple
                             @input="
                                 questionForm.illustrations = $event.target.files
                             "
@@ -61,7 +62,7 @@ import { useDropzone } from "vue3-dropzone";
 import { useForm } from "@inertiajs/inertia-vue3";
 export default {
     layout: LayoutVue,
-    props: ["categories", "group"],
+    props: ["categories"],
     data() {
         return {
             questionForm: useForm({
@@ -74,7 +75,8 @@ export default {
     },
     methods: {
         submit() {
-            let url = route("questions.create", this.group.id);
+            let url = route("questions.create");
+            console.log(this.questionForm);
             this.questionForm.post(url);
         },
     },

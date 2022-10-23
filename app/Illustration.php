@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App;
@@ -16,7 +17,7 @@ final class Illustration extends Model implements HasMedia
     use GeneratesUuid, InteractsWithMedia, SoftDeletes;
 
     public const COLLECTION_IMAGES = 'images';
-
+    protected $appends = ['url'];
     /**
      * @var array
      */
@@ -24,9 +25,10 @@ final class Illustration extends Model implements HasMedia
         'uuid' => EfficientUuid::class,
     ];
 
-    public function getMediaUrlArray($media) {
+    public function getMediaUrlArray($media)
+    {
         $arr = [];
-        foreach($media as $medium) {
+        foreach ($media as $medium) {
             array_push($arr, $medium->getUrl());
         }
         return $arr;
@@ -35,15 +37,16 @@ final class Illustration extends Model implements HasMedia
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection(self::COLLECTION_IMAGES)
-             ->acceptsMimeTypes([
-                 'image/gif',
-                 'image/jpeg',
-                 'image/png',
-             ]);
+            ->acceptsMimeTypes([
+                'image/gif',
+                'image/jpeg',
+                'image/png',
+            ]);
     }
 
-    public function author(): HasOne
+    public function getUrlAttribute()
     {
-        return $this->hasOne(User::class,'id', 'user_id');
+        return $this->getFirstMediaUrl(self::COLLECTION_IMAGES);
     }
+
 }

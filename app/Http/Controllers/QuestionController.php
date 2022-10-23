@@ -39,7 +39,7 @@ final class  QuestionController
         ]);
     }
 
-    public function store(Request $request, Group $group): Response
+    public function store(Request $request): Response
     {
 
         $validated_data = $this->validate(
@@ -57,26 +57,23 @@ final class  QuestionController
 
             $question = Question::create([
                 'user_id' => $request->user()->id,
-                'group_id' => $group->id,
+                //  'group_id' => $group->id,
                 'title'   => $validated_data['title'],
                 'content' => $validated_data['content'] ?? null,
             ]);
 
-            $illustration = new Illustration();
+            if ($validated_data['illustrations']) {
+                foreach ($validated_data['illustrations'] as $uploaded_file) {
+                    $illustration = new Illustration();
 
-            $illustration->user_id = $request->user()->id;
-            $illustration->question_id = $question->id;
+                    $illustration->user_id = $request->user()->id;
+                    $illustration->question_id = $question->id;
 
-            /** @var UploadedFile $uploaded_file */
-            $uploaded_file = $validated_data['illustrations'];
+                    $illustration->addMedia($uploaded_file)->toMediaCollection(Illustration::COLLECTION_IMAGES);
+                    $illustration->save();
+                }
+            }
 
-            $illustration->addAllMediaFromRequest()
-                ->each(function ($fileAdder) {
-                    $fileAdder->withResponsiveImages();
-                    $fileAdder->toMediaCollection(Illustration::COLLECTION_IMAGES);
-                });
-
-            $illustration->save();
 
             // foreach ($validated_data['categories'] as $category) {
             //     $question->category()->attach($category);

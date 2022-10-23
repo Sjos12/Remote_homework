@@ -26,7 +26,7 @@
                         <img
                             v-bind:id="'preview' + slide.slide"
                             class="d-block h-100"
-                            :src="slidesArray[activeSlide].url"
+                            :src="medium.url"
                         />
                     </div>
                 </div>
@@ -88,6 +88,16 @@ export default {
         };
     },
     props: ["media"],
+    setup(props) {
+        console.log(props);
+        for(let url of question.illustrations) {
+            this.slidesArray.push({
+                slide: i, 
+                class: 'inactive',
+                url: medium.url,
+            })
+        }
+    },
     methods: {
         getInputName: function (index) {
             let name = "illustration" + index;
@@ -208,9 +218,6 @@ export default {
         // Set both buttons to disabled since when this function is called there can only be one slide.
         this.prevBtnClass = "disabled";
         this.nextBtnClass = "disabled";
-        if (this.media.length > 0) {
-        }
-        console.log(this.media);
     },
 };
 </script>
