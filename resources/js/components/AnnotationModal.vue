@@ -2,7 +2,7 @@
     <div class="bg-modal fixed grid justify-center items-center">
         <div :id="'canvas-wrapper' + canvasID" class="relative">
             <button
-                @click.self="closeModal"
+                @click="closeModal"
                 class="
                     z-20
                     bg-darkmodecolor-300
@@ -288,7 +288,14 @@ export default {
         },
         closeModal() {
             this.annotations = this.canvas.toJSON();
-            this.$emit("closemodal", this.annotations);
+            const dataURL = this.canvas.toDataURL({
+                width: this.imgWidth,
+                height: this.imgHeight,
+                left: 0,
+                top: 0,
+                format: "png",
+            });
+            this.$emit("closemodal", this.annotations, dataURL);
         },
         onImageClick(event) {
             console.log(event.target);

@@ -4,7 +4,7 @@
             ref="tile"
             class="imagetile relative z-50"
             @click="editImage"
-            :src="illustration.url"
+            :src="thumbnail"
             alt="Edited image"
         />
 
@@ -32,6 +32,7 @@ export default {
     emits: ["editImage", "annotations"],
     data() {
         return {
+            thumbnail: "",
             isBeingEdited: false,
             left: 0,
             right: 0,
@@ -40,14 +41,16 @@ export default {
         };
     },
     mounted() {
+        this.thumbnail = this.illustration.url;
         this.left = this.$refs.tile.getBoundingClientRect().left;
         this.right = this.$refs.tile.getBoundingClientRect().right;
         this.top = this.$refs.tile.getBoundingClientRect().top;
         this.bottom = this.$refs.tile.getBoundingClientRect().bottom;
     },
     methods: {
-        closeModal(annotations) {
+        closeModal(annotations, newThumbnail) {
             this.isBeingEdited = false;
+            if (newThumbnail) this.thumbnail = newThumbnail;
             this.$emit("annotations", annotations);
         },
         editImage() {
