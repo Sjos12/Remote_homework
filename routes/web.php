@@ -148,7 +148,7 @@ Route::middleware([
           Route::get('questions/{question:uuid}/answer/', [FeedController::class, 'answer'])
                ->name('questions.answer');
           // @todo: refactor to API route
-          Route::post('questions/{question}/answer/', [FeedController::class, 'answered'])
+          Route::post('questions/{question:uuid}/answer/', [FeedController::class, 'answered'])
                ->name('questions.answered');
           Route::get('questions/{question}/answers/{answer}/', ShowAnswer::class)
                ->name('questions.answer.show');

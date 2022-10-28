@@ -1,9 +1,26 @@
 <template>
-    <div
-        @click.self="closeModal"
-        class="bg-modal fixed grid justify-center items-center"
-    >
+    <div class="bg-modal fixed grid justify-center items-center">
         <div :id="'canvas-wrapper' + canvasID" class="relative">
+            <button
+                @click.self="closeModal"
+                class="
+                    z-20
+                    bg-darkmodecolor-300
+                    flex
+                    justify-center
+                    items-center
+                    rounded-full
+                    p-4
+                    h-12
+                    w-12
+                    shadow-md
+                    absolute
+                    top-7
+                    left-3
+                "
+            >
+                <i class="fa fa-chevron-left fa-lg text-white"></i>
+            </button>
             <Commentcard
                 v-if="isCommenting"
                 :mouseX="mouseX"
@@ -11,31 +28,34 @@
                 @drawComment="drawComment"
             ></Commentcard>
             <canvas :id="canvasID" class="canvas"></canvas>
-        </div>
-
-        <div
-            class="
-                flex
-                p-2
-                justify-between
-                rounded-md
-                w-full
-                bg-darkmodecolor-300
-            "
-        >
-            <button>Text</button>
-            <button
-                :class="markerSelected && 'active'"
-                @click="activeTool = 'comments'"
+            <div
+                class="
+                    flex
+                    absolute
+                    bottom-0
+                    z-20
+                    p-2
+                    m-3
+                    justify-between
+                    rounded-md
+                    w-full
+                    bg-darkmodecolor-300
+                "
             >
-                Comment
-            </button>
-            <button
-                :class="markerSelected && 'active'"
-                @click="activeTool = 'marker'"
-            >
-                Marker
-            </button>
+                <button>Text</button>
+                <button
+                    :class="markerSelected && 'active'"
+                    @click="activeTool = 'comments'"
+                >
+                    Comment
+                </button>
+                <button
+                    :class="markerSelected && 'active'"
+                    @click="activeTool = 'marker'"
+                >
+                    Marker
+                </button>
+            </div>
         </div>
     </div>
 </template>
@@ -58,40 +78,17 @@ export default {
             mouseY: 0,
             imgWidth: 0,
             imgHeight: 0,
+            annotations: {},
         };
     },
     mounted() {
-        let img = this.getMeta(this.illustration.url);
         this.canvas = new fabric.Canvas(this.canvasID, {
-            height: 800,
-            width: 400,
+            height: window.innerHeight,
+            width: window.innerWidth,
             fireRightClick: true,
             stopContextMenu: true,
         });
-        console.log(this.imgWidth);
-        this.canvas.setBackgroundImage(
-            this.illustration.url,
-            this.canvas.renderAll.bind(this.canvas),
-            {
-                scaleX: this.canvas.width / this.imgWidth,
-                scaleY: this.canvas.height / this.imgHeight,
-            }
-        );
-        this.canvas.selection = true;
-
-        this.canvas.on({
-            "mouse:down": (options) => {
-                let coords = this.currentMouseCoords(options);
-                this.mouseX = coords.x;
-                this.mouseY = coords.y;
-                // 1 == left; 2 == middle; 3 == right
-                if (options.button == 3) this.onRightClick(options);
-                else if (options.button == 1) this.onLeftClick(options);
-            },
-            "touch:longpress": (options) => {
-                console.log("longpress", options);
-            },
-        });
+        this.getImageMeta(this.illustration.url);
     },
     computed: {
         canvasID() {
@@ -103,13 +100,84 @@ export default {
         },
     },
     methods: {
-        getMeta(url) {
-            const img = new Image();
-            let self = this;
-            img.addEventListener("load", function () {
-                self.imgWidth = this.naturalWidth;
-                self.imgHeight = this.naturalHeight;
+        initializeCanvasImage(img) {
+            this.imgWidth = img.width;
+            this.imgHeight = img.height;
+            console.log(this.imgWidth, this.imgHeight);
+            this.canvas.setBackgroundImage(
+                this.illustration.url,
+                this.canvas.renderAll.bind(this.canvas)
+                // {
+                //     scaleX: this.canvas.width / this.imgWidth,
+                //     scaleY: this.canvas.height / this.imgHeight,
+                // }
+            );
+            this.canvas.selection = true;
+
+            this.canvas.on({
+                "mouse:down": (options) => {
+                    let coords = this.currentMouseCoords(options);
+                    this.mouseX = coords.x;
+                    this.mouseY = coords.y;
+                    switch (options.button) {
+                        case 3:
+                            this.onRightClick(options);
+                            break;
+                        case 1:
+                            this.onLeftClick(options);
+                            break;
+                    }
+
+                    // Multi press controls
+                    let event = options.e;
+                    if (event.altKey === true) {
+                        this.isDragging = true;
+                        this.selection = false;
+                        this.lastPosX = event.clientX;
+                        this.lastPosY = event.clientY;
+                    }
+                    // 1 == left; 2 == middle; 3 == right
+                    if (options.button == 3) this.onRightClick(options);
+                    else if (options.button == 1) this.onLeftClick(options);
+                },
+                "mouse:move": function (opt) {
+                    if (!this.isDragging) return;
+                    var e = opt.e;
+                    var vpt = this.viewportTransform;
+                    vpt[4] += e.clientX - this.lastPosX;
+                    vpt[5] += e.clientY - this.lastPosY;
+                    this.requestRenderAll();
+                    this.lastPosX = e.clientX;
+                    this.lastPosY = e.clientY;
+                },
+                "mouse:up": function (opt) {
+                    // on mouse up we want to recalculate new interaction
+                    // for all objects, so we call setViewportTransform
+                    this.setViewportTransform(this.viewportTransform);
+                    this.isDragging = false;
+                    this.selection = true;
+                },
+                "mouse:wheel": (opt) => {
+                    var delta = opt.e.deltaY;
+                    var zoom = this.canvas.getZoom();
+                    zoom *= 0.999 ** delta;
+                    if (zoom > 20) zoom = 20;
+                    if (zoom < 0.01) zoom = 0.01;
+                    this.canvas.zoomToPoint(
+                        { x: opt.e.offsetX, y: opt.e.offsetY },
+                        zoom
+                    );
+                    opt.e.preventDefault();
+                    opt.e.stopPropagation();
+                },
+                "touch:longpress": (options) => {
+                    console.log("longpress", options);
+                },
             });
+        },
+        getImageMeta(url) {
+            const img = new Image();
+            img.onload = (res) => this.initializeCanvasImage(res.target);
             img.src = url;
         },
         onLeftClick(options) {
@@ -219,7 +287,8 @@ export default {
             return { x: posX, y: posY };
         },
         closeModal() {
-            this.$emit("closemodal");
+            this.annotations = this.canvas.toJSON();
+            this.$emit("closemodal", this.annotations);
         },
         onImageClick(event) {
             console.log(event.target);

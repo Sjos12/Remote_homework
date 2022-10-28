@@ -6,10 +6,14 @@
             <h1 class="title">Answering a question</h1>
         </div>
         <div class="card">
-            <textarea></textarea>
+            <textarea v-model="answerForm.content"></textarea>
             <div class="mx-auto grid grid-cols-2 gap-4 gap-y-4">
                 <ImageThumbnail
                     @edit-image="editImage"
+                    @annotations="
+                        (annotations) =>
+                            saveAnnotations(annotations, illustration)
+                    "
                     v-for="illustration of question.illustrations"
                     :key="illustration.id"
                     :illustration="illustration"
@@ -22,16 +26,23 @@
                     <i class="fa fa-plus fa-lg"></i>
                 </button>
             </div>
+
+            <div class="flex">
+                <button type="button" @click="submitAnswer" class="btn">
+                    Submit
+                </button>
+            </div>
         </div>
     </div>
 </template>
 
-<script>
+<script >
 import AnnotationModalVue from "../../components/AnnotationModal.vue";
 import LayoutVue from "../Layouts/Layout.vue";
 import AnnotationModal from "../../components/AnnotationModal.vue";
 import ImageThumbnailVue from "../../components/ImageThumbnail.vue";
 import ImageThumbnail from "../../components/ImageThumbnail.vue";
+import { useForm } from "@inertiajs/inertia-vue3";
 
 export default {
     components: { AnnotationModalVue, ImageThumbnail },
@@ -40,13 +51,30 @@ export default {
     data() {
         console.log(this.question);
         return {
-            annotations: [],
+            answerForm: useForm({
+                content: "",
+                annotations: [],
+            }),
         };
     },
-    
+
     methods: {
+        saveAnnotations(annotations, illustration) {
+            this.answerForm.annotations = [
+                ...this.answerForm.annotations,
+                {
+                    illustration_id: illustration.id,
+                    annotation: annotations,
+                },
+            ];
+        },
+        submitAnswer() {
+            console.log(this.answerForm);
+            let url = route("questions.answered", this.question.uuid);
+            this.answerForm.post(url);
+        },
         addBlankPage() {
-            this.annotations.push()
+            this.annotations.push();
         },
         editImage() {},
     },

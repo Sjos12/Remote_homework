@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App;
@@ -35,5 +36,9 @@ final class Answer extends Model
     public function question(): BelongsTo
     {
         return $this->belongsTo(Question::class);
+    }
+    public function annotations()
+    {
+        return $this->hasMany(Annotation::class);
     }
 }

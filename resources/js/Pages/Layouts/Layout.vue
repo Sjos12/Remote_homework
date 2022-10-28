@@ -10,6 +10,7 @@
                 right-0
                 h-16
                 fixed
+                z-50
                 shadow-lg
                 py-2
                 bg-darkmodecolor-500

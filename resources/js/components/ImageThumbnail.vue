@@ -15,7 +15,7 @@
                 top: top + 'px',
                 bottom: bottom + 'px',
             }"
-            @closemodal="isBeingEdited = false"
+            @closemodal="closeModal"
             :class="isBeingEdited ? 'active' : 'closed'"
             class="duration-100 transition-all ease-in-out"
             :illustration="illustration"
@@ -29,7 +29,7 @@ export default {
     components: {
         AnnotationModal,
     },
-    emits: ["editImage"],
+    emits: ["editImage", "annotations"],
     data() {
         return {
             isBeingEdited: false,
@@ -46,6 +46,10 @@ export default {
         this.bottom = this.$refs.tile.getBoundingClientRect().bottom;
     },
     methods: {
+        closeModal(annotations) {
+            this.isBeingEdited = false;
+            this.$emit("annotations", annotations);
+        },
         editImage() {
             this.isBeingEdited = true;
         },

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Annotation;
 use App\Answer;
 use App\Question;
 use App\ViewModels\QuestionViewModel;
@@ -52,6 +53,7 @@ final class FeedController
 
     public function answered(Request $request, Question $question): Response
     {
+
         $validated_data = $this->validate(
             $request,
             [
@@ -62,13 +64,18 @@ final class FeedController
 
         try {
             DB::beginTransaction();
-
-            Answer::create([
+            $answer_model = Answer::create([
                 'user_id'     => $request->user()->id,
                 'question_id' => $question->id,
                 'content'     => $validated_data['content'],
-                'annotations' => $validated_data['annotations'],
             ]);
+            foreach ($validated_data['annotations'] as $annotation) {
+                $annotation_model = new Annotation();
+                $annotation_model->answer_id = $answer_model->id;
+                $annotation_model->illustration_id = $annotation['illustration_id'];
+                $annotation_model->annotation = json_encode($annotation['annotation']);
+                $annotation_model->save();
+            }
 
             DB::commit();
         } catch (Throwable $exception) {
@@ -81,17 +88,9 @@ final class FeedController
                 ]
             );
 
-            return redirect()->back()
-                ->withErrors([
-                    'general' => [
-                        __('Could not create new Answer'),
-                    ]
-                ])
-                ->withInput();
+            return back();
         }
 
-        return redirect()->to(
-            route('feed.detail', ['question' => $question->uuid])
-        );
+        return redirect()->route('dashboard');
     }
 }
