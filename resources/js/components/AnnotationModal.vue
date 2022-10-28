@@ -47,7 +47,7 @@ export default {
         Commentcard,
     },
     emits: ["closemodal"],
-    props: ["id"],
+    props: ["illustration"],
     data() {
         return {
             canvas: null,
@@ -56,18 +56,26 @@ export default {
             isCommenting: false,
             mouseX: 0,
             mouseY: 0,
+            imgWidth: 0,
+            imgHeight: 0,
         };
     },
     mounted() {
+        let img = this.getMeta(this.illustration.url);
         this.canvas = new fabric.Canvas(this.canvasID, {
             height: 800,
             width: 400,
             fireRightClick: true,
             stopContextMenu: true,
         });
+        console.log(this.imgWidth);
         this.canvas.setBackgroundImage(
-            "https://via.placeholder.com/300",
-            this.canvas.renderAll.bind(this.canvas)
+            this.illustration.url,
+            this.canvas.renderAll.bind(this.canvas),
+            {
+                scaleX: this.canvas.width / this.imgWidth,
+                scaleY: this.canvas.height / this.imgHeight,
+            }
         );
         this.canvas.selection = true;
 
@@ -87,7 +95,7 @@ export default {
     },
     computed: {
         canvasID() {
-            return "canvas" + this.id;
+            return "canvas" + this.illustration.uuid;
         },
         markerSelected() {
             if ((this.activeTool = "marker")) return true;
@@ -95,6 +103,15 @@ export default {
         },
     },
     methods: {
+        getMeta(url) {
+            const img = new Image();
+            let self = this;
+            img.addEventListener("load", function () {
+                self.imgWidth = this.naturalWidth;
+                self.imgHeight = this.naturalHeight;
+            });
+            img.src = url;
+        },
         onLeftClick(options) {
             console.log("left click", this.activeTool);
             switch (this.activeTool) {

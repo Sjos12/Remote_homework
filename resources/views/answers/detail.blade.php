@@ -44,7 +44,7 @@
 
             <div class="col-4 my-auto">
                 <a class="btn btn-primary btn-lg float-right"
-                   href="{{ route('feed.detail', ['question' => $question->question()->uuid]) }}"
+                   href="{{ route('question.detail', ['question' => $question->question()->uuid]) }}"
                 >
                     {{ __('Back') }}
                 </a>

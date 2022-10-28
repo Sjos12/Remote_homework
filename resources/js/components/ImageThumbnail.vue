@@ -4,11 +4,10 @@
             ref="tile"
             class="imagetile relative z-50"
             @click="editImage"
-            src="https://via.placeholder.com/300"
-            alt=""
-            srcset=""
+            :src="illustration.url"
+            alt="Edited image"
         />
-        
+
         <AnnotationModal
             :style="{
                 left: left + 'px',
@@ -19,14 +18,14 @@
             @closemodal="isBeingEdited = false"
             :class="isBeingEdited ? 'active' : 'closed'"
             class="duration-100 transition-all ease-in-out"
-            :id="imageID"
+            :illustration="illustration"
         ></AnnotationModal>
     </div>
 </template>
 <script>
 import AnnotationModal from "../components/AnnotationModal.vue";
 export default {
-    props: ["imageID"],
+    props: ["illustration"],
     components: {
         AnnotationModal,
     },

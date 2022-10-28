@@ -35,10 +35,15 @@
         <Link class="btn" :href="$route('group.join.index')"> Join Group </Link>
     </div>
     <div class="grid gap-y-5">
-        <div v-for="question of questions" :key="question.id" class="card">
+        <Link
+            v-for="question of questions"
+            :key="question.id"
+            :href="$route('questions.answer', question.uuid)"
+            class="card"
+        >
             <h1 class="question__title">{{ question.title }}</h1>
             <CarouselThumbnail :illustrations="question.illustrations" />
-        </div>
+        </Link>
     </div>
 </template>
 <script>

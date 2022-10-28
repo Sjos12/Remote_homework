@@ -1,4 +1,5 @@
 <template>
+
     <div class="grid">
         <div class="thumbnail__wrapper">
             <img
@@ -41,7 +42,11 @@
 </template>
 
 <script>
+import { Link } from "@inertiajs/inertia-vue3";
 export default {
+    components: {
+        Link,
+    },
     props: ["illustrations"],
     data() {
         return {

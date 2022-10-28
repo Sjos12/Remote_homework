@@ -1,4 +1,4 @@
-@extends('layouts.app')
+
 
 @section('content')
     <div class="container">
@@ -68,7 +68,7 @@
 
                             <div class="col-3 flex justify-center mt-auto mb-auto">
                                 <a class="desktopinfo btn btn-lg btn-primary float-right pl-5 pr-5"
-                                href="{{ route('feed.detail', ['question' => $view_model->question()->uuid]) }}"
+                                href="{{ route('question.detail', ['question' => $view_model->question()->uuid]) }}"
                                 >
                                     {{ __('View') }}
                                 </a>
@@ -97,7 +97,7 @@
 
                                 <div class="col-4 mt-auto mb-auto">
                                     <a class="mobileinfo btn btn-lg btn-primary float-right pl-5 pr-5"
-                                    href="{{ route('feed.detail', ['question' => $view_model->question()->uuid]) }}"
+                                    href="{{ route('question.detail', ['question' => $view_model->question()->uuid]) }}"
                                     >
                                         {{ __('View') }}
                                     </a>

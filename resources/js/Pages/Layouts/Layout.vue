@@ -3,7 +3,19 @@
         <div class="h-full w-full flex flex-col gap-y-3 my-10 mx-auto">
             <slot></slot>
         </div>
-        <nav class="mt-auto h-16 shadow-lg py-2 bg-darkmodecolor-500 flex">
+        <nav
+            class="
+                bottom-0
+                left-0
+                right-0
+                h-16
+                fixed
+                shadow-lg
+                py-2
+                bg-darkmodecolor-500
+                flex
+            "
+        >
             <div class="container mx-auto flex justify-between w-full">
                 <ul class="flex w-full justify-between gap-5">
                     <li>

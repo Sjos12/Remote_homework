@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Http\Controllers;
@@ -12,6 +13,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Inertia\Inertia;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
@@ -22,10 +24,10 @@ final class FeedController
     public function list(Request $request): Renderable
     {
         $questions = Question::orderBy('updated_at', 'desc')
-                             ->get()
-                             ->map(
-                                 fn(Question $question) => new QuestionViewModel($question)
-                             );
+            ->get()
+            ->map(
+                fn (Question $question) => new QuestionViewModel($question)
+            );
 
         return view('feed.list', [
             'user' => (new UserViewModel($request->user()))->toArray(),
@@ -36,13 +38,16 @@ final class FeedController
     public function detail(Question $question): Renderable
     {
         $vm = new QuestionViewModel($question);
- //       dd($vm->illustrations()[0]->getMedia('images')[0]->getUrl());
+        //       dd($vm->illustrations()[0]->getMedia('images')[0]->getUrl());
         return view('feed.detail', new QuestionViewModel($question));
     }
 
-    public function answer(Question $question): Renderable
+    public function answer(Request $request, Question $question)
     {
-        return view('feed.answer', new QuestionViewModel($question));
+        $question->load('illustrations', 'illustrations.media');
+        return Inertia::render('Pages/CreateAnswer', [
+            'question' => $question,
+        ]);
     }
 
     public function answered(Request $request, Question $question): Response
@@ -77,12 +82,12 @@ final class FeedController
             );
 
             return redirect()->back()
-                             ->withErrors([
-                                 'general' => [
-                                     __('Could not create new Answer'),
-                                 ]
-                             ])
-                             ->withInput();
+                ->withErrors([
+                    'general' => [
+                        __('Could not create new Answer'),
+                    ]
+                ])
+                ->withInput();
         }
 
         return redirect()->to(

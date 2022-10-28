@@ -8,7 +8,7 @@
 <div class="container pb-5">
     <form id="answered"
           method="POST"
-          action="{{ route('feed.answered', ['question' => $question->uuid]) }}"
+          action="{{ route('question.answered', ['question' => $question->uuid]) }}"
           onsubmit="return saveCanvas()"
     >
     <div class="card mb-5">

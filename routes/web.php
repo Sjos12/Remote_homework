@@ -21,6 +21,7 @@ use App\Http\Controllers\OwnQuestions\Delete as DeleteOwnQuestion;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\ShowAnswer;
 use App\Http\Controllers\UserController;
+use App\Question;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -141,17 +142,16 @@ Route::middleware([
           Route::delete('user/questions/{question}', DeleteOwnQuestion::class);
 
           // Feed
-          Route::get('feed', [FeedController::class, 'list'])
-               ->name('feed.list');
-          Route::get('feed/{question}', [FeedController::class, 'detail'])
-               ->name('feed.detail');
-          Route::get('feed/{question}/answer/', [FeedController::class, 'answer'])
-               ->name('feed.answer');
+          Route::get('questions/{question}', [FeedController::class, 'detail'])
+               ->name('questions.detail');
+
+          Route::get('questions/{question:uuid}/answer/', [FeedController::class, 'answer'])
+               ->name('questions.answer');
           // @todo: refactor to API route
-          Route::post('feed/{question}/answer/', [FeedController::class, 'answered'])
-               ->name('feed.answered');
-          Route::get('feed/{question}/{answer}/', ShowAnswer::class)
-               ->name('feed.answer.show');
+          Route::post('questions/{question}/answer/', [FeedController::class, 'answered'])
+               ->name('questions.answered');
+          Route::get('questions/{question}/answers/{answer}/', ShowAnswer::class)
+               ->name('questions.answer.show');
 
           //Marketplace route
           Route::get('marketplace', MarketplaceController::class)

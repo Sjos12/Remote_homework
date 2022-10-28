@@ -25,7 +25,7 @@
                     </div>
 
                     <div class="col-6 ">
-                        <a class="btn btn-primary btn-lg text-right nowrap" href="{{  route('feed.answer', ['question' => $question->uuid]) }}">
+                        <a class="btn btn-primary btn-lg text-right nowrap" href="{{  route('question.answer', ['question' => $question->uuid]) }}">
                             {{ __('Answer Question') }}
                         </a>
                     </div>
@@ -84,7 +84,7 @@
                                 <span class="answerauthor">{{ $answer->author->name }}</span> {{ __('gave an answer') }}</h1>
                         </div>
                         <div class="col-md-6 col-lg-6">
-                            <a href="{{ route('feed.answer.show', ['question' => $question->uuid, 'answer' => $answer->uuid]) }}"
+                            <a href="{{ route('question.answer.show', ['question' => $question->uuid, 'answer' => $answer->uuid]) }}"
                                class="btn btn-primary btn-lg text-right viewanserbtn"
                             >
                                 {{ __('View answer') }}
