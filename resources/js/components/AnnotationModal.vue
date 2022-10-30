@@ -23,11 +23,11 @@
             </button>
             <Commentcard
                 v-if="isCommenting"
-                :mouseX="mouseX"
-                :mouseY="mouseY"
+                :mouseX="(mouseX + this.canvas._offset.left) * this.getZoom"
+                :mouseY="(mouseY + this.canvas._offset.top) * this.getZoom"
                 @drawComment="drawComment"
             ></Commentcard>
-            <canvas :id="canvasID" class="canvas"></canvas>
+            <canvas ref="canvas" :id="canvasID" class="canvas"></canvas>
             <div
                 class="
                     flex
@@ -111,12 +111,21 @@ export default {
             if ((this.activeTool = "marker")) return true;
             return false;
         },
+        getZoom() {
+            return this.canvas.getZoom();
+        },
     },
     methods: {
         initializeCanvasImage(img) {
             this.imgWidth = img.width;
             this.imgHeight = img.height;
             console.log(this.imgWidth, this.imgHeight);
+            fabric.Canvas.prototype.getAbsoluteCoords = function (object) {
+                return {
+                    left: object.left + this._offset.left,
+                    top: object.top + this._offset.top,
+                };
+            };
             this.canvas.setBackgroundImage(
                 this.illustration.url,
                 this.canvas.renderAll.bind(this.canvas)
@@ -125,6 +134,7 @@ export default {
                 //     scaleY: this.canvas.height / this.imgHeight,
                 // }
             );
+
             this.canvas.selection = true;
 
             this.canvas.on({
@@ -272,9 +282,21 @@ export default {
         },
         drawComment(text) {
             this.isCommenting = false;
+
+            let radius = 8;
+
+            let [r, g, b, a] = this.getAverageColorFromRectangle(
+                this.mouseX - radius / 2,
+                this.mouseY - radius / 2,
+                radius,
+                radius
+            );
+            console.log(this.mouseX, this.mouseY, r, g, b, a);
+            let color = this.getContrastingColor(r, g, b);
+
             let handle = new fabric.Circle({
-                radius: 8,
-                fill: "#141414",
+                radius: radius,
+                fill: color,
                 originX: "center",
                 originY: "center",
                 padding: 10,
@@ -328,8 +350,9 @@ export default {
         },
         currentMouseCoords(options) {
             var pointer = this.canvas.getPointer(options.e);
-            var posX = pointer.x;
-            var posY = pointer.y;
+            var posX = pointer.x * this.canvas.getZoom();
+            var posY = pointer.y * this.canvas.getZoom();
+            console.log(posX, posY);
             return { x: posX, y: posY };
         },
         closeModal() {
@@ -353,6 +376,74 @@ export default {
         },
         deleteSelectedObject() {
             this.canvas.remove(this.canvas.getActiveObject());
+        },
+        getAverageColorFromRectangle(sx, sy, sw, sh) {
+            let ctx = this.$refs.canvas.getContext("2d");
+
+            let R = 0;
+            let G = 0;
+            let B = 0;
+            let A = 0;
+            let wR = 0;
+            let wG = 0;
+            let wB = 0;
+            let wTotal = 0;
+
+            let data = ctx.getImageData(sx, sy, sw, sh).data;
+            const components = data.length;
+
+            for (let i = 0; i < components; i += 4) {
+                // A single pixel (R, G, B, A) will take 4 positions in the array:
+                const r = data[i];
+                const g = data[i + 1];
+                const b = data[i + 2];
+                const a = data[i + 3];
+
+                // Update components for solid color and alpha averages:
+                R += r;
+                G += g;
+                B += b;
+                A += a;
+
+                // Update components for alpha-weighted average:
+                const w = a / 255;
+                wR += r * w;
+                wG += g * w;
+                wB += b * w;
+                wTotal += w;
+            }
+
+            const pixelsPerChannel = components / 4;
+
+            // The | operator is used here to perform an integer division:
+
+            R = (R / pixelsPerChannel) | 0;
+            G = (G / pixelsPerChannel) | 0;
+            B = (B / pixelsPerChannel) | 0;
+            wR = (wR / wTotal) | 0;
+            wG = (wG / wTotal) | 0;
+            wB = (wB / wTotal) | 0;
+
+            // The alpha channel need to be in the [0, 1] range:
+
+            A = A / pixelsPerChannel / 255;
+            return [R, G, B, A];
+        },
+        getContrastingColor(r, g, b) {
+            let colors = { light: "#757474", dark: "#0A0A0A" };
+
+            let hsp = Math.sqrt(
+                0.299 * (r * r) + 0.587 * (g * g) + 0.114 * (b * b)
+            );
+            console.log("hsp" + hsp);
+            // Using the HSP value, determine whether the color is light or dark
+            if (hsp > 127.5) {
+                console.log("dark");
+                return colors.light;
+            } else {
+                console.log("light");
+                return colors.dark;
+            }
         },
     },
 };

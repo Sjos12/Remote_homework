@@ -162,7 +162,7 @@ Route::middleware([
           Route::get('groups/new', [GroupController::class, 'new'])->name('group.create.index');
           Route::post('groups/create', [GroupController::class, 'create'])->name('group.create');
           Route::get('groups/{group}', [GroupController::class, 'group_detail'])->name('group.detail');
-
+          Route::post('groups/join', [GroupController::class, 'join'])->name('group.join');
 
           //Profile routes.
           //

@@ -32,7 +32,11 @@
                 >
             </Link>
         </div>
-        <Link class="btn" :href="$route('group.join.index')"> Join Group </Link>
+
+        <div class="flex">
+            <input type="text" v-model="joinGroupForm.groupCode" />
+            <button @click="submitJoinGroupForm">Join</button>
+        </div>
     </div>
     <div class="grid gap-y-5">
         <Question
@@ -44,7 +48,7 @@
 </template>
 <script>
 import LayoutVue from "../Layouts/Layout.vue";
-import { Link } from "@inertiajs/inertia-vue3";
+import { Link, useForm } from "@inertiajs/inertia-vue3";
 import CarouselThumbnail from "../../components/CarouselThumbnail.vue";
 import Question from "../../components/Question.vue";
 export default {
@@ -59,7 +63,17 @@ export default {
         console.log(props);
     },
     data() {
-        return {};
+        return {
+            joinGroupForm: useForm({
+                groupCode: "",
+            }),
+        };
+    },
+    methods: {
+        submitJoinGroupForm() {
+            let url = route("group.join");
+            this.joinGroupForm.post(url);
+        },
     },
 };
 </script>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Group;
 use App\Invite;
 use Carbon\Carbon;
+use DateTime;
 use Faker\Provider\Uuid;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -61,7 +62,36 @@ class GroupController extends Controller
         // Send invite object back to frontend for sharing.
         return redirect()->route('group.detail', $group);
     }
-    public function join()
+    public function join(Request $request)
     {
+        $validatedData = $request->validate([
+            'groupCode' => 'required|exists:invites,invite_code',
+        ]);
+
+        $invite = Invite::where('invite_code', $validatedData)->first();
+
+        if (!$invite) return back()->withErrors([
+            'Sorry, this invite code is invalid'
+        ]);
+
+        $expiry = new DateTime($invite->expires_at);
+        $now = new DateTime();
+        if ($expiry < $now) {
+            $invite->delete();
+            return back()->withErrors([
+                'Sorry, This invite code is expired'
+            ]);
+        }
+        $group = $invite->group;
+
+        if ($group->members()->where('groups.user_id', Auth::user()->id)) {
+            return back()->withErrors([
+                'You have already joined this group'
+            ]);
+        }
+
+        $group->members()->attach(Auth::user()->id);
+
+        return back();
     }
 }
