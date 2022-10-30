@@ -15,7 +15,7 @@ final class DashboardController
     {
         $groups = Auth::user()->groups;
 
-        $questions = Question::with('illustrations')->get();
+        $questions = Question::with('illustrations', 'answers', 'answers.author')->get();
 
 
         return Inertia::render('Pages/Dashboard', ['groups' => $groups, 'questions' => $questions]);

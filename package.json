@@ -32,6 +32,7 @@
         "@inertiajs/progress": "^0.2.7",
         "@vue/compiler-sfc": "^3.2.40",
         "font-awesome": "^4.7.0",
+        "luxon": "^3.0.4",
         "vue3-dropzone": "^2.0.1",
         "vue3-touch-events": "^4.1.0"
     }

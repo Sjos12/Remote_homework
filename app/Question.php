@@ -26,6 +26,9 @@ final class Question extends Model
         'uuid' => EfficientUuid::class,
     ];
 
+    protected $appends = [
+        'answers_count'
+    ];
     /**
      * @var array
      */
@@ -57,5 +60,10 @@ final class Question extends Model
     public function group()
     {
         return $this->belongsTo(Group::class);
+    }
+
+    public function getAnswersCountAttribute()
+    {
+        return $this->answers->count();
     }
 }

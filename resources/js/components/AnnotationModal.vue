@@ -38,22 +38,34 @@
                     m-3
                     justify-between
                     rounded-md
-                    w-full
+                    left-0
+                    right-0
                     bg-darkmodecolor-300
                 "
             >
-                <button>Text</button>
-                <button
-                    :class="markerSelected && 'active'"
-                    @click="activeTool = 'comments'"
+                <!-- <button
+                    :class="activeTool == 'text' ? 'active' : 'inactive'"
+                    @click="activeTool = 'text'"
                 >
-                    Comment
+                    Text
+                </button> -->
+                <button
+                    :class="activeTool == 'comments' ? 'active' : 'inactive'"
+                    @click="switchToTool('comments')"
+                >
+                    Comments
                 </button>
                 <button
-                    :class="markerSelected && 'active'"
-                    @click="activeTool = 'marker'"
+                    :class="activeTool == 'marker' ? 'active' : 'inactive'"
+                    @click="switchToTool('marker')"
                 >
                     Marker
+                </button>
+                <button
+                    :class="activeTool == 'trash' ? 'active' : 'inactive'"
+                    @click="deleteSelectedObject()"
+                >
+                    <i class="fa fa-trash"></i>
                 </button>
             </div>
         </div>
@@ -73,6 +85,7 @@ export default {
             canvas: null,
             tools: new CanvasTools(),
             activeTool: "comments",
+            toolKeys: ["comments", "marker", "rectangle", "trash"],
             isCommenting: false,
             mouseX: 0,
             mouseY: 0,
@@ -175,13 +188,8 @@ export default {
                 },
             });
         },
-        getImageMeta(url) {
-            const img = new Image();
-            img.onload = (res) => this.initializeCanvasImage(res.target);
-            img.src = url;
-        },
+
         onLeftClick(options) {
-            console.log("left click", this.activeTool);
             switch (this.activeTool) {
                 case "text":
                     break;
@@ -189,6 +197,9 @@ export default {
                     break;
                 case "marker":
                     this.selectMarker(event);
+                    break;
+                case "comments":
+                    this.openCommentDialog(options);
                     break;
             }
         },
@@ -203,18 +214,52 @@ export default {
                     break;
             }
         },
+        switchToTool(tool) {
+            this.activeTool = tool;
+            this.deselectTools();
+        },
+        deselectTools() {
+            this.toolKeys.forEach((key) => {
+                if (key === this.activeTool) return;
 
+                switch (key) {
+                    case "text":
+                        break;
+                    case "drawing":
+                        break;
+                    case "comments":
+                        this.deselectComments();
+                        break;
+                    case "marker":
+                        this.deselectMarker();
+                        break;
+                }
+            });
+        },
         selectMarker(event) {
+            console.log("select");
             this.canvas.set("isDrawingMode", true);
             this.canvas.freeDrawingBrush.width = 5;
+        },
+        deselectMarker() {
+            this.canvas.set("isDrawingMode", false);
+        },
+
+        getImageMeta(url) {
+            const img = new Image();
+            img.onload = (res) => this.initializeCanvasImage(res.target);
+            img.src = url;
         },
         openCommentDialog() {
             this.isCommenting = true;
         },
+        deselectComments() {
+            this.isCommenting = false;
+        },
         onMouseMove(group, option) {
             var textObj = group.item(1);
             console.log(option);
-            if (option) {
+            if (group.displayComment) {
                 if (textObj.visible) return;
                 textObj.set("visible", true);
             } else {
@@ -228,8 +273,8 @@ export default {
         drawComment(text) {
             this.isCommenting = false;
             let handle = new fabric.Circle({
-                radius: 10,
-                fill: "blue",
+                radius: 8,
+                fill: "#141414",
                 originX: "center",
                 originY: "center",
                 padding: 10,
@@ -241,6 +286,7 @@ export default {
                 stroke: "white",
                 fontFamily: "Roboto",
                 fontSize: 12,
+                fontWeight: 200,
                 padding: 20,
 
                 absolutePositioned: true,
@@ -256,16 +302,16 @@ export default {
                 hasBorders: false,
                 selection: false,
             });
+            group.displayComment = false;
             group.item(0).on("mousedown", (option) => {
-                console.log("mousedown");
+                group.displayComment = !group.displayComment;
                 this.onMouseMove(group, option);
-                // this.canvas.on("mouse:move");
             });
-            group.item(0).on("mouseup", (option) => {
-                console.log("mouseup");
-                // this.canvas.off("mouse:move", this.onMouseMove(group, option));
-                this.onMouseMove(group);
-            });
+            // group.item(0).on("mouseup", (option) => {
+            //     console.log("mouseup");
+            //     // this.canvas.off("mouse:move", this.onMouseMove(group, option));
+            //     this.onMouseMove(group);
+            // });
 
             this.canvas.add(group);
 
@@ -287,6 +333,8 @@ export default {
             return { x: posX, y: posY };
         },
         closeModal() {
+            // Reset viewport
+            this.resetCanvasViewport();
             this.annotations = this.canvas.toJSON();
             const dataURL = this.canvas.toDataURL({
                 width: this.imgWidth,
@@ -300,6 +348,12 @@ export default {
         onImageClick(event) {
             console.log(event.target);
         },
+        resetCanvasViewport() {
+            this.canvas.setViewportTransform([1, 0, 0, 1, 0, 0]);
+        },
+        deleteSelectedObject() {
+            this.canvas.remove(this.canvas.getActiveObject());
+        },
     },
 };
 </script>
@@ -311,5 +365,12 @@ export default {
     height: 800px;
     width: 400px;
     background: white;
+}
+
+.active {
+    @apply bg-mainblue rounded-sm p-2 duration-200 ease-in-out;
+}
+.inactive {
+    @apply bg-darkmodecolor-200 rounded-sm p-2 duration-200 ease-in-out;
 }
 </style>

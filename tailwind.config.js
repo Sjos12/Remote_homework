@@ -27,7 +27,7 @@ module.exports = {
                 darkblue: "#3490dc",
                 darkmodecolor: {
                     100: "#757474",
-                    200: "302C2D",
+                    200: "#302C2D",
                     300: "#1E1E1E",
                     400: "#252525",
                     500: "#2E2E2E",

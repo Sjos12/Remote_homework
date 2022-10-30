@@ -136,9 +136,9 @@ Route::middleware([
           // View own questions
           Route::get('user/questions', [QuestionController::class, 'list'])
                ->name('questions.list');
-          Route::get('user/questions/{question}', [QuestionController::class, 'detail'])
-               ->name('questions.detail');
-          // Delete own question
+          // Route::get('user/questions/{question}', [QuestionController::class, 'detail'])
+          //      ->name('questions.detail');
+          // // Delete own question
           Route::delete('user/questions/{question}', DeleteOwnQuestion::class);
 
           // Feed
@@ -150,7 +150,7 @@ Route::middleware([
           // @todo: refactor to API route
           Route::post('questions/{question:uuid}/answer/', [FeedController::class, 'answered'])
                ->name('questions.answered');
-          Route::get('questions/{question}/answers/{answer}/', ShowAnswer::class)
+          Route::get('questions/{question:uuid}/answers/{answer:uuid}', ShowAnswer::class)
                ->name('questions.answer.show');
 
           //Marketplace route
