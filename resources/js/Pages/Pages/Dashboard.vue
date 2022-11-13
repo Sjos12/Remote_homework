@@ -3,17 +3,18 @@
         <div class=""><span class="card__pill"> Question feed </span></div>
 
         <h1 class="title">Welcome, {{ user.name }}</h1>
-        <div class="flex">
+    </div>
+
+    <div class="card flex flex-col gap-y-3">
+        <div class="flex justify-between">
+            <h2>Your groups</h2>
             <Link
-                class="btn btn-primary my-auto"
+                class="text-mainblue my-auto"
                 :href="$route('group.create.index')"
                 >Create group</Link
             >
         </div>
-    </div>
 
-    <div class="card flex flex-col">
-        <h2>Your groups</h2>
         <div class="flex">
             <Link
                 v-for="group of groups"
@@ -21,21 +22,19 @@
                 :href="$route('group.detail', group)"
             >
                 <span
-                    class="
-                        h-10
-                        w-10
-                        rounded-full
-                        shadow-md
-                        bg-darkmodecolor-100
-                    "
+                    class="rounded-full my-4 shadow-md p-3 bg-darkmodecolor-200"
                     >{{ group.name }}</span
                 >
             </Link>
         </div>
 
         <div class="flex">
-            <input type="text" v-model="joinGroupForm.groupCode" />
-            <button @click="submitJoinGroupForm">Join</button>
+            <input
+                placeholder="Enter an invite code..."
+                type="text"
+                v-model="joinGroupForm.groupCode"
+            />
+            <button class="btn" @click="submitJoinGroupForm">Join</button>
         </div>
     </div>
     <div class="grid gap-y-5">

@@ -27,7 +27,7 @@ final class RegisterController
 
     public function redirectTo(): string
     {
-        return route('dashboard');
+        return route('group.join.guest');
     }
 
     /**

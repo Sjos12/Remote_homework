@@ -1,5 +1,5 @@
 <template>
-    <div class="card">
+    <div class="card flex flex-col gap-y-5">
         <h1 class="title">Creating a group</h1>
         <div class="form">
             <div class="form__row">

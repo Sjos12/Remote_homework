@@ -94,4 +94,11 @@ class GroupController extends Controller
 
         return back();
     }
+
+    public function join_guest()
+    {
+        if (url()->previous() !== route('register.create')) return redirect()->route('home');
+
+        return Inertia::render('Auth/JoinGroup', []);
+    }
 }

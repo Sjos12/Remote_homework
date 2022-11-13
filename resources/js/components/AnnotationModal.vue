@@ -114,6 +114,12 @@ export default {
         getZoom() {
             return this.canvas.getZoom();
         },
+        isOutsideOfCanvas() {
+            if (this.mouseX < 0 || this.mouseY < 0) {
+                return true;
+            }
+            return false;
+        },
     },
     methods: {
         initializeCanvasImage(img) {
@@ -190,6 +196,7 @@ export default {
                         { x: opt.e.offsetX, y: opt.e.offsetY },
                         zoom
                     );
+                    console.log(this.canvas);
                     opt.e.preventDefault();
                     opt.e.stopPropagation();
                 },

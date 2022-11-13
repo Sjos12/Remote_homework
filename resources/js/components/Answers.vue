@@ -1,7 +1,7 @@
 <template>
     <div class="flex justify-between items-center">
         <label class="text-mainblue">{{ count }} answers</label>
-        <button @click.prevent="loadAnswers" class="btn bg-blue-300">
+        <button @click.prevent="loadAnswers" class="btn bg-blue-800">
             See answers
         </button>
     </div>

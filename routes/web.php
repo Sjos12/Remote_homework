@@ -42,7 +42,7 @@ Route::post('logout', [LoginController::class, 'logout'])
 Route::get('/answers/create', function () {
      return Inertia::render('Answers/Create', []);
 });
-
+Route::get('groups/guests/join', [GroupController::class, 'join_guest'])->name('group.join.guest');
 Route::middleware(['guest'])->group(function () {
      // Authentication Routes...
      Route::get('login', [LoginController::class, 'showLoginForm'])
@@ -163,6 +163,7 @@ Route::middleware([
           Route::post('groups/create', [GroupController::class, 'create'])->name('group.create');
           Route::get('groups/{group}', [GroupController::class, 'group_detail'])->name('group.detail');
           Route::post('groups/join', [GroupController::class, 'join'])->name('group.join');
+
 
           //Profile routes.
           //

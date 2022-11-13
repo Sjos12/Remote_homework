@@ -1,14 +1,7 @@
 <template>
     <div class="container mx-auto flex justify-center items-center h-screen">
-        <div
-            class="
-                max-w-32
-                card card--login card--shadow card-body
-                flex
-                justify-center
-            "
-        >
-            <div class="card__content">
+        <div class="card form">
+            <div class="">
                 <h1 class="title2 pb-4">Register</h1>
 
                 <span
@@ -20,121 +13,79 @@
                     <strong>{{ error }}</strong>
                 </span>
 
-                <form>
-                    <div class="form-group row flex justify-center">
-                        <div class="col-lg-7 col-md-10 col-sm-12 col-xs-12">
-                            <label
-                                for="email"
-                                class="col-md-12 col-form-label text-left pl-0"
-                                >Name</label
-                            >
-                            <input
-                                type="text"
-                                class="form-control input--shadow"
-                                v-model="registerForm.name"
-                                autocomplete="name"
-                                required
-                                autofocus
-                            />
-
-                            <!-- @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>Error</strong>
-                            </span>
-                            @enderror -->
-                        </div>
+                <form class="">
+                    <div class="form__row">
+                        <label
+                            for="email"
+                            class="col-md-12 col-form-label text-left pl-0"
+                            >Name</label
+                        >
+                        <input
+                            type="text"
+                            class="form-control input--shadow"
+                            v-model="registerForm.name"
+                            autocomplete="name"
+                            required
+                            autofocus
+                        />
                     </div>
 
-                    <div class="form-group row flex justify-center">
-                        <div class="col-lg-7 col-md-10 col-sm-12 col-xs-12">
-                            <label
-                                for="email"
-                                class="col-md-12 col-form-label text-left pl-0"
-                                >Email address</label
-                            >
-                            <input
-                                type="email"
-                                v-model="registerForm.email"
-                                class="form-control input--shadow"
-                                required
-                                autocomplete="email"
-                                autofocus
-                            />
-
-                            <!-- @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>Error</strong>
-                            </span>
-                            @enderror -->
-                        </div>
+                    <div class="form__row">
+                        <label
+                            for="email"
+                            class="col-md-12 col-form-label text-left pl-0"
+                            >Email address</label
+                        >
+                        <input
+                            type="email"
+                            v-model="registerForm.email"
+                            class="form-control input--shadow"
+                            required
+                            autocomplete="email"
+                            autofocus
+                        />
                     </div>
 
-                    <div class="form-group row flex justify-center">
-                        <div class="col-lg-7 col-md-10 col-sm-12 col-xs-12">
-                            <label
-                                for="password"
-                                class="col-md-12 col-form-label text-left pl-0"
-                                >Password</label
-                            >
-                            <input
-                                type="password"
-                                v-model="registerForm.password"
-                                class="form-control input--shadow"
-                                required
-                                autocomplete="current-password"
-                            />
-
-                            <!-- @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>Error</strong>
-                            </span>
-                            @enderror -->
-                        </div>
-                    </div>
-                    <div class="form-group row flex justify-center">
-                        <div class="col-lg-7 col-md-10 col-sm-12 col-xs-12">
-                            <label
-                                for="password"
-                                class="col-md-12 col-form-label text-left pl-0"
-                                >Repeat Password</label
-                            >
-                            <input
-                                type="password"
-                                v-model="registerForm.password_confirmation"
-                                class="form-control input--shadow"
-                                required
-                                autocomplete="new-password"
-                            />
-
-                            <!-- @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>Error</strong>
-                            </span>
-                            @enderror -->
-                        </div>
+                    <div class="form__row">
+                        <label
+                            for="password"
+                            class="col-md-12 col-form-label text-left pl-0"
+                            >Password</label
+                        >
+                        <input
+                            type="password"
+                            v-model="registerForm.password"
+                            class="form-control input--shadow"
+                            required
+                            autocomplete="current-password"
+                        />
                     </div>
 
-                    <div
-                        class="
-                            form-group
-                            flex
-                            justify-center
-                            form-group--padding
-                        "
-                    >
-                        <div class="row">
-                            <div class="form-check">
-                                <input
-                                    class="form-check-input"
-                                    type="checkbox"
-                                    v-model="registerForm.remember_me"
-                                />
+                    <div class="form__row">
+                        <label
+                            for="password"
+                            class="col-md-12 col-form-label text-left pl-0"
+                            >Repeat Password</label
+                        >
+                        <input
+                            type="password"
+                            v-model="registerForm.password_confirmation"
+                            class="form-control input--shadow"
+                            required
+                            autocomplete="new-password"
+                        />
+                    </div>
 
-                                <label class="form-check-label" for="remember">
-                                    Remember me
-                                </label>
-                            </div>
-                        </div>
+                    <div class="form__row">
+                        <input
+                            class="form-check-input"
+                            type="checkbox"
+                            v-model="registerForm.remember_me"
+                        />
+
+                        <label class="form-check-label" for="remember">
+                            Remember me
+                        </label>
                     </div>
 
                     <div class="form-group row mb-0 pt-3">
@@ -148,7 +99,7 @@
                             </button>
                         </div>
                     </div>
-
+                    <!-- 
                     @if (Route::has('password.request'))
                     <div
                         class="
@@ -166,7 +117,7 @@
                             Forgot your password?
                         </a>
                     </div>
-                    @endif
+                    @endif -->
                 </form>
             </div>
         </div>

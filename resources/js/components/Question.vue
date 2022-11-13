@@ -1,13 +1,17 @@
 <template>
-    <Link :href="$route('questions.answer', question.uuid)" class="card">
-        <h1 class="question__title">{{ question.title }}</h1>
+    <div class="card">
+        <label>{{ question.author.name }}</label>
+        <h1 class="question__title mb-4">{{ question.title }}</h1>
         <CarouselThumbnail :illustrations="question.illustrations" />
         <Answers
             :question="question"
             :count="this.question.answers_count"
             :answers="question.answers"
         />
-    </Link>
+        <Link :href="$route('questions.answer', question.uuid)" class="card">
+            Answer question
+        </Link>
+    </div>
 </template>
 <script>
 import CarouselThumbnail from "./CarouselThumbnail.vue";

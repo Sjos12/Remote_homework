@@ -29,6 +29,14 @@ final class Question extends Model
     protected $appends = [
         'answers_count'
     ];
+
+    /**
+     * The attributes that should be visible in arrays.
+     *
+     * @var array
+     */
+    protected $with = ['author'];
+
     /**
      * @var array
      */

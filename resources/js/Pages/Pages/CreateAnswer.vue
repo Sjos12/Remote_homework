@@ -6,6 +6,10 @@
             <h1 class="title">Answering a question</h1>
         </div>
         <div class="card">
+            <QuestionVue v-if="showQuestion" :question="question" />
+            <button @click="toggleQuestion">See original question</button>
+        </div>
+        <div class="card">
             <textarea v-model="answerForm.content"></textarea>
             <div class="mx-auto grid grid-cols-2 gap-4 gap-y-4">
                 <ImageThumbnail
@@ -43,9 +47,9 @@ import AnnotationModal from "../../components/AnnotationModal.vue";
 import ImageThumbnailVue from "../../components/ImageThumbnail.vue";
 import ImageThumbnail from "../../components/ImageThumbnail.vue";
 import { useForm } from "@inertiajs/inertia-vue3";
-
+import QuestionVue from "../../components/Question.vue";
 export default {
-    components: { AnnotationModalVue, ImageThumbnail },
+    components: { AnnotationModalVue, ImageThumbnail, QuestionVue },
     layout: LayoutVue,
     props: ["question"],
     data() {
@@ -55,10 +59,14 @@ export default {
                 content: "",
                 annotations: [],
             }),
+            showQuestion: false,
         };
     },
 
     methods: {
+        toggleQuestion() {
+            this.showQuestion = !this.showQuestion;
+        },
         saveAnnotations(annotations, illustration) {
             this.answerForm.annotations = [
                 ...this.answerForm.annotations,
