@@ -27,7 +27,6 @@
     @inertiaHead
 </head>
 <body>
-       <script src="/fabric.js"></script>
     @inertia
 
 </body>

@@ -1,4 +1,5 @@
-export class Comments {
+import { Tool } from './Tools';
+export class Comments implements Tool {
     canvas = null;
     constructor(canvas) {
         this.canvas = canvas;
@@ -7,7 +8,7 @@ export class Comments {
 
     }
     render() {
-        
+
     }
-    deselect() {}
+    deselect() { }
 }

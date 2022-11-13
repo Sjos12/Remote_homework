@@ -1,6 +1,10 @@
 <template>
     <div class="bg-modal fixed grid justify-center items-center">
-        <div :id="'canvas-wrapper' + canvasID" class="relative">
+        <div
+            @click="getCursorPosition($event)"
+            :id="'canvas-wrapper' + canvasID"
+            class="relative"
+        >
             <button
                 @click="closeModal"
                 class="
@@ -23,8 +27,8 @@
             </button>
             <Commentcard
                 v-if="isCommenting"
-                :mouseX="(mouseX + this.canvas._offset.left) * this.getZoom"
-                :mouseY="(mouseY + this.canvas._offset.top) * this.getZoom"
+                :mouseX="absoluteX"
+                :mouseY="absoluteY"
                 @drawComment="drawComment"
             ></Commentcard>
             <canvas ref="canvas" :id="canvasID" class="canvas"></canvas>
@@ -44,11 +48,11 @@
                 "
             >
                 <!-- <button
-                    :class="activeTool == 'text' ? 'active' : 'inactive'"
-                    @click="activeTool = 'text'"
-                >
-                    Text
-                </button> -->
+                :class="activeTool == 'text' ? 'active' : 'inactive'"
+                @click="activeTool = 'text'"
+            >
+                Text
+            </button> -->
                 <button
                     :class="activeTool == 'comments' ? 'active' : 'inactive'"
                     @click="switchToTool('comments')"
@@ -71,10 +75,12 @@
         </div>
     </div>
 </template>
-<script>
+<script >
+import { defineComponent } from "vue";
 import { CanvasTools } from "../tools";
 import Commentcard from "./Commentcard.vue";
-export default {
+import { fabric } from "fabric";
+export default defineComponent({
     components: {
         Commentcard,
     },
@@ -89,9 +95,14 @@ export default {
             isCommenting: false,
             mouseX: 0,
             mouseY: 0,
+            absoluteX: 0,
+            absoluteY: 0,
             imgWidth: 0,
             imgHeight: 0,
             annotations: {},
+            lastPosY: 0,
+            lastPosX: 0,
+            isDragging: false,
         };
     },
     mounted() {
@@ -122,16 +133,21 @@ export default {
         },
     },
     methods: {
+        getCursorPosition(object) {
+            console.log("call");
+            this.absoluteX =
+                (this.canvas.getPointer().x + this.canvas._offset.left) *
+                this.canvas.zoom;
+            this.absoluteY =
+                (this.canvas.getPointer().y + this.canvas._offset.top) *
+                this.canvas.zoom;
+            console.log(this.absoluteX, this.absoluteY);
+        },
         initializeCanvasImage(img) {
             this.imgWidth = img.width;
             this.imgHeight = img.height;
             console.log(this.imgWidth, this.imgHeight);
-            fabric.Canvas.prototype.getAbsoluteCoords = function (object) {
-                return {
-                    left: object.left + this._offset.left,
-                    top: object.top + this._offset.top,
-                };
-            };
+
             this.canvas.setBackgroundImage(
                 this.illustration.url,
                 this.canvas.renderAll.bind(this.canvas)
@@ -146,8 +162,10 @@ export default {
             this.canvas.on({
                 "mouse:down": (options) => {
                     let coords = this.currentMouseCoords(options);
+
                     this.mouseX = coords.x;
                     this.mouseY = coords.y;
+                    // this.setAbsolutePosition(options);
                     switch (options.button) {
                         case 3:
                             this.onRightClick(options);
@@ -169,13 +187,14 @@ export default {
                     if (options.button == 3) this.onRightClick(options);
                     else if (options.button == 1) this.onLeftClick(options);
                 },
-                "mouse:move": function (opt) {
+                "mouse:move": (opt) => {
                     if (!this.isDragging) return;
                     var e = opt.e;
-                    var vpt = this.viewportTransform;
+                    var vpt = this.canvas.viewportTransform;
+
                     vpt[4] += e.clientX - this.lastPosX;
                     vpt[5] += e.clientY - this.lastPosY;
-                    this.requestRenderAll();
+                    this.canvas.requestRenderAll();
                     this.lastPosX = e.clientX;
                     this.lastPosY = e.clientY;
                 },
@@ -196,7 +215,7 @@ export default {
                         { x: opt.e.offsetX, y: opt.e.offsetY },
                         zoom
                     );
-                    console.log(this.canvas);
+                    this.getCursorPosition(opt.e);
                     opt.e.preventDefault();
                     opt.e.stopPropagation();
                 },
@@ -267,8 +286,20 @@ export default {
             img.onload = (res) => this.initializeCanvasImage(res.target);
             img.src = url;
         },
-        openCommentDialog() {
+        openCommentDialog(option) {
             this.isCommenting = true;
+
+            let temp = new fabric.Circle({
+                left: this.canvas.getPointer(option).x,
+                top: this.canvas.getPointer(option).y,
+                color: "blue",
+                radius: 4,
+                originX: "center",
+                originY: "center",
+            });
+
+            this.canvas.add(temp);
+            this.getCursorPosition(temp);
         },
         deselectComments() {
             this.isCommenting = false;
@@ -453,7 +484,7 @@ export default {
             }
         },
     },
-};
+});
 </script>
 <style lang="scss" scoped>
 .toolbar {
