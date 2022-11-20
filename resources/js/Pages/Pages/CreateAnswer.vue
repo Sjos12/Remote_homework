@@ -82,7 +82,10 @@ export default {
             this.answerForm.post(url);
         },
         addBlankPage() {
-            this.annotations.push();
+            this.answerForm.annotations.push({
+                illustration_id: null,
+                annotation: "",
+            });
         },
         editImage() {},
     },
